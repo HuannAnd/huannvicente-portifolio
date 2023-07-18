@@ -1,66 +1,72 @@
 "use client";
 
-import Image from "next/image";
-
 import { useRef } from "react";
 
-import { Square, ColorazedButton } from '@/components';
+import { SpringOptions, motion, useInView, useScroll, useTransform } from 'framer-motion';
 
-import { motion } from 'framer-motion';
-
-import { useIsVisible } from "@/hooks";
+import evalWithPercentage from "@/utils/evalWithPercentage";
+import splittedText from "@/utils/splittedText";
+import Loading from "@/app/loading";
+import Load from "@/components/Follower/Load";
 
 
 export default function About() {
-  const ref = useRef<HTMLDivElement>(null!);
-  const isVisible = useIsVisible(ref);
+  const ref = useRef<HTMLDivElement>(null!)
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "start start"] });
+  const springConfig = {
+    damping: 20,
+    stiffness: 100,
+  } as SpringOptions
 
-  console.log(`About section is visible? = ${isVisible}`);
 
+  const y = useTransform(scrollYProgress, [0, 1], ["-150%", "0%"], { clamp: false })
+
+  const pY = useTransform(
+    y,
+    (value) => {
+      const percentageResult = evalWithPercentage(value);
+      const newValue = `${percentageResult}%`;
+      // console.log(newValue);
+
+      return newValue;
+    }
+  )
+
+  const text = "I'm Frontend developer. My favorite framework is Next.js and for CSS is Tailwind. works since 2018, I like RPG games like Minecraft, Terraria and Gmod. My Hobbies are Gym, programming, and solve Math problems"
 
   return (
-    <section className=" w-full text-darkPrimary relative mb-[200px]" ref={ref}>
+    <section
+      data-scroll
+      data-scroll-section
+      ref={ref}
+      className="w-full min-h- h-screen max-h-[1200px] overflow-y-hidden text-darkPrimary relative pt-[3vw]
+      before:absolute before:w-full before:z-10 before:pointer-events-none before:content-[''] before:-translate-y-1/2 before:h-[5vw] before:top-0 before:left-0 before:rotate-180 before:bg-gradient-to-t before:from-black before:via-black before:to-transparent
+      "
+    >
+      <motion.div className="absolute top-0 pointer-events-none left-0 bg-white z-10 -translate-y-full h-[4px] w-full" initial={{ scaleX: 0 }} whileInView={{ scaleX: 1, transition: { duration: 1, ease: "easeIn" } }}></motion.div>
       <motion.div
-        className="w-[541px] grid z-10 absolute bg-[#DCDCDC] top-0 h-[calc(100%+_124px)] shadow-md"
-        initial={{
-          clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)"
-        }}
-        animate={{
-          clipPath: isVisible ? "polygon(0 0, 100% 0, 100% 100%, 0 100%)" : "polygon(0 0, 100% 0, 100% 0, 0 0)",
-          visibility: "visible",
-        }}
-        transition={{ duration: 1.4 }}
+        data-scroll
+        data-scroll-speed="-1"
+        data-scroll-offset="-100%,0%"
+        initial={{ y: "-100%" }}
+        className="clip-around w-full h-full bg-primaryColor bg-darkPrimary flex flex-col"
       >
-        <Image
-          className="w-full absolute bottom-0 mix-blend-darken saturate-0"
-          src={"/profile/image.jpeg"}
-          alt={"Profile image"} width={531} height={480}
-        />
-      </motion.div>
-      <div className="clip-around py-24 w-full h-auto bg-primaryColor bg-darkPrimary grid grid-cols-12 gap-x-2 shadow-[0_0_0_100vmax_#222]">
-        <article className="col-span-7 col-start-6">
-          <h1 className="mb-2">Huann Vicente V.</h1>
-          <ul className="mb-4">
-            {["Frontend Developer", "Web Designer", "3D animator"].map((el, i) => <li key={i} className="text-body uppercase font-bold text-white/60 list-none">{el}</li>)}
-          </ul>
-          <p className="mb-16 text-darkSecondary/60">
-            I am passionate about computer graphics and the Blender software. With expertise in React and Next, I enjoy combining my love for web development with my interest in creating visually stunning experiences.
-            <br />
-            <br />
-            I strive to push the boundaries of design and technology, bringing engaging and immersive content to life. Let's collaborate and bring your ideas to the forefront of the digital world!
-          </p>
-          <ColorazedButton className="w-full">Takes a conversation!</ColorazedButton>
+        <div className="border-b-2 border-b-white/50 z-10 bg-darkPrimary">
+          <h1 className="font-semibold  block text-[clamp(140px,_10vw,200px)] col-span-12 text-left relative pl-[3vw]">
+            ABOUT
+            {/* <span className="absolute text-[.66em] ease-fast z-50 uppercase text-white/30 translate-y-1/2">me</span> */}
+          </h1>
+        </div>
+        <article data-scroll-class="about-me-scroll" id="about-me" className="grow grid align-baseline grid-cols-12 font-light pr-[3vw] z-20 col-start-6">
+          <div className="col-span-7 pt-[3vw] pb-[3vw] [grid-column-end:_-1] ">
+            {splittedText(text)
+              .map(
+                (text, key) => <motion.span key={key} className="mb-[3vw] text-white even:text-white/50">{text}{". "}</motion.span>
+              )
+            }
+          </div>
         </article>
-      </div>
-      <Square start={isVisible} delay={1} color="#716BCD" className="z-20 top-[56px] right-[104px] opacity-0" scale={1} />
-      <Square start={isVisible} delay={2} color="#A379D5" width={40} className="z-20 -top-[24px] -right-[24px]" scale={1} />
-      <Square start={isVisible} delay={3} color="#C6A068" className="-top-[24px] -left-[50px]" scale={1} />
-      <Square start={isVisible} delay={4} color="#7BC58B" className="z-20 -top-[50px] left-[427px]" scale={1} />
-      <Square start={isVisible} delay={5} color="#AFD992" className="z-20 -bottom-[161px] left-[318px]" scale={1} />
-      <Square start={isVisible} delay={6} color="#7DC5C0" className=" bottom-[127px] left-[478px]" scale={1} />
-      <Square start={isVisible} delay={7} color="#CC6462" className=" -bottom-[196px] left-[115px]" scale={1} />
-      <Square start={isVisible} delay={8} color="#6677C6" className="z-20 -bottom-[46px] right-[155px]" scale={1} />
-      <Square start={isVisible} delay={9} color="#82AED3" className="z-20 bottom-[5px] right-[267px] scale-[0.4]" scale={1} />
+      </motion.div>
     </section>
   )
 }

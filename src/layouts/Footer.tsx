@@ -2,8 +2,13 @@
 
 export default function Footer() {
   return (
-    <footer className="h-auto w-full p-5 bottom-0 clip-around bg-black shadow-[0_0_0_100vmax_#000]">
-      <h1 className="text-white text-center font-bold">Footer</h1>
+    <footer
+      data-scroll
+      data-scroll-section
+      className="h-auto w-full text-white"
+    >
+      <h5>huanvicente14@outlook.com</h5>
+      <small>Im waiting for you...</small>
     </footer>
   )
 }

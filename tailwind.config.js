@@ -17,7 +17,7 @@ module.exports = {
         roboto: "var(--font-roboto)",
       },
       colors: {
-        darkPrimary: "#222",
+        darkPrimary: "#000",
         darkBg: "#444",
         lightBg: "#fff",
         lightPrimary: "#222",
@@ -26,7 +26,7 @@ module.exports = {
         lightPrimary: "#222",
         lightSecondary: "#555",
         darkPrimary: "#fff",
-        darkSecondary: "#ccc",
+        darkSecondary: "#bbb",
       },
       fontSize: {
         h1: "64px",
@@ -35,6 +35,10 @@ module.exports = {
         body: "20px",
         small: "12px",
       },
+      transitionTimingFunction: {
+        "smooth": "cubic-bezier(0.45, 0, 0.55, 1)",
+        "fast": "cubic-bezier(0.22, 1, 0.36, 1)"
+      }
     },
   },
   plugins: [],

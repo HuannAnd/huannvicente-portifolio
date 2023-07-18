@@ -3,14 +3,12 @@
 import React, { SVGProps } from "react"
 
 import { motion } from 'framer-motion'
-import useIsVisible from "@/hooks/useIsVisible";
+
 
 
 type SquareProps = SVGProps<SVGSVGElement> & {
   scale: number,
   color: string | undefined,
-  start: boolean,
-  delay: number
 }
 
 export default function Square({
@@ -19,8 +17,6 @@ export default function Square({
   className,
   scale,
   color,
-  start,
-  delay,
   ...props
 }: SquareProps) {
   const height = width;
@@ -31,18 +27,7 @@ export default function Square({
       width="108" height="108" viewBox="0 0 108 108"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      initial={{
-        opacity: 0,
-        filter: "blur(10px)"
-      }}
-      animate={{
-        opacity: start ? 1 : 0,
-        filter: "blur(0px)"
-      }}
-      transition={{
-        delay,
-        duration: 1
-      }}
+      initial={{ opacity: 0 }}
     >
       <g filter="url(#filter0_d_5_224)">
         <rect x="4" width={width ? width : (scale * 100)} height={height ? height : (scale * 100)} fill={color ?? "#333"} />
