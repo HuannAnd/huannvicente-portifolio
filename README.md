@@ -1,12 +1,6 @@
 # mypersonalportifolio.io
 
-<img style="width: 100%; height: auto;" src="./assets/image.png" />
-<img style="width: 100%; height: auto;" src="./assets/image2.png" />
-
-## Production
-
-[Deploy](#)
-
+See website on live: [Deploy](#)
 ## Technologies
 
 - **Framework:** Next.js 
