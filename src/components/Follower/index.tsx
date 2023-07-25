@@ -3,8 +3,7 @@
 import React, { MutableRefObject, forwardRef, memo, useEffect, useRef } from 'react';
 
 import { motion, useMotionValue, useSpring, AnimationScope } from 'framer-motion';
-import { useHSLAPositioner } from '@/hooks';
-import Load from './Load';
+import Load from '../Load';
 
 
 type FollowerProps = {

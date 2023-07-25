@@ -66,24 +66,7 @@ class GithubServiceHttpClient {
     }
   }
 
-  private async getProjectDetails(repository: string): Promise<GITHUB.GithubRepoData> {
-    try {
-      const username = process.env.NEXT_PUBLIC_GITHUB_PROFILE
-      const auth = GithubHttpClient.createAuthHeader(process.env.NEXT_PUBLIC_GITHUB_API_KEY)
-
-      const project = await GithubHttpClient.get<GITHUB.GithubRepoData>(`/users/${username}/${repository}`, auth);
-
-      return project;
-    } catch (error) {
-      const err = error as Error;
-
-
-      console.error(err.message);
-      throw new Error("Error to fetch data at endpoint /users/{repo}/")
-    }
-  }
-
-  public async getProjectFrameworks(repositoryId: number): Promise<{ language: string, percentage: number }[]> {
+  public async getProjectLanguages(repositoryId: number): Promise<{ language: string, percentage: number }[]> {
     const auth = GithubHttpClient.createAuthHeader(process.env.NEXT_PUBLIC_GITHUB_API_KEY)
 
     const languages = await GithubHttpClient.get<GITHUB.GithubLanguagesBody>(`/repositories/${repositoryId}/languages`, auth)

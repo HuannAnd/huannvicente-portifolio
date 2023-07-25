@@ -3,6 +3,7 @@
 import Link from "next/link";
 
 import { useFollowerContext } from "@/hooks/useFollowerContext";
+import { memo } from "react";
 
 interface BackToHomeProps {
 
@@ -57,3 +58,4 @@ export default function BackToHome({ }: BackToHomeProps) {
     </section>
   )
 } 
+

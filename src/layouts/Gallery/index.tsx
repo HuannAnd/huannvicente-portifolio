@@ -4,25 +4,30 @@ import { useLayoutEffect } from "react";
 
 import { useFollowerContext } from "@/hooks/useFollowerContext";
 
-import SnapShot from "./Snapshot";
+import Row from "./Snapshot";
+
+import { IProjectData } from "@/services/projects/type";
 
 
 type GalleryProps = {
-  photos: { title: string, id: number, }[]
+  photos: IProjectData["gallery"]
 }
 
 export default function Gallery({ photos }: GalleryProps) {
   const { setIsLoading } = useFollowerContext()
-
-  useLayoutEffect(() => setIsLoading(false))
+  useLayoutEffect(() => setIsLoading(false), [])
 
   return (
     <section
       data-scroll-section
       data-scroll
-      className="w-full h-[200vh] py-[9vw] min-h-[100vh] overflow-hidden gap-x-2 gap-y-[3vw] grid grid-cols-3 justify-center"
+      className="w-full h-auto px-[3vw] py-[9vw] min-h-[200vh] overflow-hidden gap-x-2 gap-y-[3vw] flex flex-col gap-[3vw]"
     >
-      {photos.map((photo, i) => <SnapShot key={i} nTh={i + 1} isMobile={i === 1 || i === 2} {...photo} />)}
+      {photos.map((x, i) => (
+        <Row.Root key={i} nTh={i + 1} strategy={x.strategy}>
+          {x.content.map((v, j) => <Row.Content key={j} strategy={x.strategy} {...v} /> )}
+        </Row.Root>
+      ))}
     </section>
   )
 }

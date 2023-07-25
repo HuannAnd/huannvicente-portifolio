@@ -7,6 +7,7 @@ import Image from "next/image";
 import { motion, useScroll } from "framer-motion";
 
 import { useFollowerContext } from "@/hooks/useFollowerContext";
+import Link from "next/link";
 
 interface ContactProps {
 
@@ -20,10 +21,6 @@ const springConfig = {
 const Contact: React.FunctionComponent<ContactProps> = ({ }) => {
   const ref = useRef<HTMLDivElement>(null!)
   const title = useRef<HTMLDivElement>(null!)
-
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const contactTitle = useScroll({ target: ref, offset: ["start end", "end end"] });
-
 
   const { updateEvent } = useFollowerContext()
 
@@ -67,19 +64,18 @@ const Contact: React.FunctionComponent<ContactProps> = ({ }) => {
         className="pt-[3vw]"
       >
         <div className="block pt-[9vw] pb-[3vw] -z-10">
-          {["Linkedin", "Discord", "Dribbble"]
+          {[{ title: "Linkedin", href: "https://www.linkedin.com/in/huann-vicente-5092a9261/" }, { title: "Dribbble", href: "#" }]
             .map(
               (midia, key) => (
-                <motion.div
+                <Link
+                  href={midia.href}
                   key={key}
-                  className="col-span-3 mx-[3vw] saturate-0 group/midia  cursor-pointer py-[3vw] border-t-[#222] border-t-2"
                   onMouseEnter={() => updateEvent({ type: "hovered" })}
                   onMouseDown={() => updateEvent({ type: "pressed" })}
                   onMouseUp={() => updateEvent({ type: "hovered" })}
                   onMouseLeave={() => updateEvent({ type: "normal" })}
-                >
-                  <h5 className="text-center group-hover/midia:opacity-50 my-auto ease-smooth duration-300 font-regular">{midia}</h5>
-                </motion.div>
+                  className="text-center block saturate-0 mx-[3vw] w-full cursor-pointer text-white py-[3vw] border-t-[#222] border-t-2 hover:text-white/50 ease-smooth duration-300 font-regular"
+                >{midia.title}</Link>
               )
             )}
         </div>

@@ -1,15 +1,10 @@
 'use client';
-
-import { useFollowerContext } from "@/hooks/useFollowerContext";
-
 interface TechnologiesProps {
   languages: { language: string, percentage: number }[],
   frameworks: string[]
 }
 
 export default function Technologies({ languages, frameworks }: TechnologiesProps) {
-  const { updateEvent } = useFollowerContext()
-
   return (
     <section data-scroll-section data-scroll className="w-full max-w-[1440px] border-t-4 border-t-white h-[auto] py-[9vw]">
       <small className="font-light text-white block text-[16px] py-[3vw]">Languages</small>

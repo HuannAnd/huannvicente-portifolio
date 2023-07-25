@@ -45,20 +45,23 @@ export default function Overview({ name, description }: OverviewProps) {
       <div className="relative">
         <motion.h1
           data-scroll
-          // data-scroll-speed="2"
-          // data-scroll-offset="-50"
           initial={{ opacity: 0 }}
           className="text-[clamp(48px,_5vw,_140px)] mb-8 text-center duration-300 ease-fast text-white font-bold tracking-tighter">{name}</motion.h1>
         <motion.q
           id="text"
-          // data-scroll
-          // data-scroll-speed="1"
           className="text-[clamp(25px,_3vw,_48px)] px-[9vw] duration-300 ease-fast block text-center text-white/60 font-normal">{description}</motion.q>
-        <a
-          onMouseEnter={() => { updateEvent({ type: "hovered" }); setTitle("See") }}
-          onMouseLeave={() => { updateEvent({ type: "normal" }); setTitle(null) }}
-          className="text-white mx-[3vw] py-[3vw] translate-y-full w-full block absolute font-regular border-t-2 border-t-[#222]"
-          href="#">Live at</a>
+        <div className="grid grid-cols-2 w-full h-auto gap-4">
+          <a
+            className="text-white py-[3vw] translate-y-full block font-regular border-t-2 border-t-[#222]"
+            onMouseEnter={() => { updateEvent({ type: "hovered" }); setTitle("See") }}
+            onMouseLeave={() => { updateEvent({ type: "normal" }); setTitle(null) }}
+            href="#">Live at</a>
+          <a
+            className="text-white py-[3vw] translate-y-full block font-regular border-t-2 border-t-[#222]"
+            onMouseEnter={() => { updateEvent({ type: "hovered" }); setTitle("See") }}
+            onMouseLeave={() => { updateEvent({ type: "normal" }); setTitle(null) }}
+            href="#">See Repo</a>
+        </div>
 
       </div>
     </section>

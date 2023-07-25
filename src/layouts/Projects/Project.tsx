@@ -21,6 +21,21 @@ export default function Project({ project, nTh, ...props }: ProjectProps) {
   const ref = useRef<HTMLDivElement>(null!)
   const { updateEvent, setTitle, setIsLoading } = useFollowerContext()
 
+  const handles = {
+    onClick: previewProject,
+    onMouseEnter: () => {
+      updateEvent({ type: "hovered" })
+      setTitle("View more")
+    },
+    onMouseUp: () => updateEvent({ type: "hovered" }),
+    onMouseDown: () => updateEvent({ type: "pressed" }),
+    onMouseLeave: () => {
+      setTitle(null)
+      updateEvent({ type: "normal" })
+    }
+
+  }
+
   function previewProject() {
     setTitle(null)
     updateEvent({ type: "normal" })
@@ -32,17 +47,7 @@ export default function Project({ project, nTh, ...props }: ProjectProps) {
     <div
       className="col-span-12 bg-darkPrimary ease-fast group/item flex pl-0 duration-300 border-t-[#111] border-t-2 relative cursor-pointer justify-between items-center py-[clamp(2rem,_5vw,_4em)] h-auto"
       ref={ref}
-      onClick={previewProject}
-      onMouseEnter={() => {
-        updateEvent({ type: "hovered" })
-        setTitle("View more")
-      }}
-      onMouseDown={() => updateEvent({ type: "pressed" })}
-      onMouseUp={() => updateEvent({ type: "hovered" })}
-      onMouseLeave={() => {
-        setTitle(null)
-        updateEvent({ type: "normal" })
-      }}
+      {...handles}
       {...props}
     >
       <div className="flex items-center ease-fast group-hover/item:pl-[1vw] duration-300">

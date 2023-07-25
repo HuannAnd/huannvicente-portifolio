@@ -1,4 +1,4 @@
-import { MutableRefObject, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { MutableRefObject, useEffect, useState } from "react";
 
 
 export default function useHSLAPositioner<T extends Element>(ref: MutableRefObject<T>) {
@@ -6,7 +6,7 @@ export default function useHSLAPositioner<T extends Element>(ref: MutableRefObje
   const h_f = 300;
   const [color, setColor] = useState<[number, number, number]>([h_0, 0, 20]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const button = ref.current;
     const { x } = button.getBoundingClientRect();
 

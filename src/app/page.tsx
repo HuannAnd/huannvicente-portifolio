@@ -1,4 +1,8 @@
 import dynamic from 'next/dynamic';
+const Load = dynamic(
+  () => import("@/components/Load"),
+  { ssr: true }
+)
 
 const About = dynamic(
   () => import('@/layouts/About'),
@@ -25,7 +29,7 @@ const Contact = dynamic(
 const CubicsFalling = dynamic(
   () => import('@/layouts/CubicsFalling'),
   {
-    loading: () => <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full border-4 border-gray-300 border-t-4 animate-spin"></div>,
+    loading: () => <Load className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2' />,
     ssr: false,
   }
 );
@@ -42,10 +46,8 @@ export default async function Home() {
   const projects = [
     { name: "Letmeask", id: 617670848, isDeveloped: true },
     { name: "Warren", id: 599657419, isDeveloped: true },
-    { name: "Blog", id: 617668310, isDeveloped: false },
     { name: "Mercantte", id: 624459441, isDeveloped: true },
-    { name: "Portifolio", id: 12998282, isDeveloped: false },
-    { name: "Next Blog", id: 620027499, isDeveloped: false }
+    { name: "Portifolio", id: 12998282, isDeveloped: false }
   ]
 
   return (

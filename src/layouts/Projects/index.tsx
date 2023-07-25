@@ -19,11 +19,6 @@ type ProjectsProps = {
 export default function Projects({ projects }: ProjectsProps) {
   const ref = useRef<HTMLDivElement>(null!)
 
-  const { scroll } = useLocomotiveScroll();
-  console.log("locomotive scroll: ", scroll);
-
-  const { scrollYProgress } = useScroll();
-
   const developed = projects.filter(r => r.isDeveloped)
   const prototyped = projects.filter(r => !r.isDeveloped)
 

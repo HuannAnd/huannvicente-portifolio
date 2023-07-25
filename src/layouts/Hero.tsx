@@ -2,8 +2,6 @@
 
 import { useEffect } from "react";
 
-import ColorazedButton from "@/components/ColorazedButton"
-
 import { stagger, useAnimate, useInView, motion } from "framer-motion";
 
 import SplitType from "split-type";
@@ -45,7 +43,7 @@ export default function Hero() {
   }, [isInView]);
 
   return (
-    <div
+    <section
       className="h-full grid grid-cols-12 z-10 justify-between gap-x-2 mx-auto clip-around shadow-[0_0_0_100vmax_rgba(0,0,0,.5)] bg-black/50 bg-blend-hard-light items-center top-0 absolute text-black"
       ref={scope}
     >
@@ -64,12 +62,6 @@ export default function Hero() {
           </motion.div>
         </div>
       </div>
-      <div
-        className="r"
-        style={{ backgroundImage: "" }}
-      >
-        <img src="" alt="" />
-      </div>
-    </div>
+    </section>
   )
 }
