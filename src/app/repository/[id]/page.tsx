@@ -1,5 +1,3 @@
-import GithubService from "@/services/github"
-
 import Gallery from "@/layouts/Gallery";
 import BackToHome from "@/layouts/BackToHome";
 import Technologies from "@/layouts/Technologies";
@@ -7,6 +5,8 @@ import Overview from "@/layouts/Overview";
 import Filosophy from "@/layouts/Filosophy";
 
 import projects from '@/services/projects'
+import GithubService from "@/services/github"
+
 import wait from "@/utils/wait";
 
 
@@ -20,16 +20,24 @@ export default async function ProjectPage({
   const languages = await GithubService.getProjectLanguages(id)
   const repository = projects.find(x => x.id === id)!
 
-  const time = 1000 * 1
+  const overviewProps = {
+    domain_url: repository.domain_url,
+    hasDomain: repository.hasDomain,
+    repository_url: repository.repository_url,
+    name: repoDetails.name,
+    description: repoDetails.description
+  } as React.ComponentProps<typeof Overview>
+
+  const time = 1000 * 2
   await wait(time)
 
   return (
     <>
-      <Overview name={repoDetails.name} description={repoDetails.description} />
+      <Overview {...overviewProps} />
       <Gallery photos={repository.gallery} />
       <Technologies frameworks={repository.frameworks} languages={languages} />
       <Filosophy {...repository.filosophy} />
-      <BackToHome />
+      <BackToHome id={id} />
     </>
   )
 }

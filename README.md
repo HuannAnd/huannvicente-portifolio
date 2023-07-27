@@ -1,6 +1,6 @@
 # mypersonalportifolio.io
 
-See website on live: [Deploy](#)
+See website [on live](#)
 ## Technologies
 
 - **Framework:** Next.js 
@@ -11,7 +11,7 @@ See website on live: [Deploy](#)
 
 Please if you see any problems, contact me, otherwise if you not see problem, least send me a feedback about code, structure oo anything, please contact me below:
 
-Email me: mailto:huannvicente14@outlook.com
+Email me: [huannvicente14@outlook.com](mailto:huannvicente14@outlook.com)
 
 Connect with me at [Linkedin](https://www.linkedin.com/in/huann-vicente-5092a9261/)
 
@@ -20,7 +20,7 @@ Connect with me at [Linkedin](https://www.linkedin.com/in/huann-vicente-5092a926
 
 This application requires Node.js v16.13+.
 
-```
+```cmd
   git clone 
   cd repo
   npm install

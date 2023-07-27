@@ -3,14 +3,20 @@
 import Link from "next/link";
 
 import { useFollowerContext } from "@/hooks/useFollowerContext";
-import { memo } from "react";
+import getNextProjectId from "@/utils/getNextProjectId";
+import { useMemo } from "react";
+import useProjectsContext from "@/hooks/useProjectsContext";
 
 interface BackToHomeProps {
-
+  id: number
 }
 
-export default function BackToHome({ }: BackToHomeProps) {
+export default function BackToHome({ id }: BackToHomeProps) {
   const { setTitle, updateEvent } = useFollowerContext()
+  const projects = useProjectsContext();
+  console.log("useProjectsContext value: ", projects);
+
+  const nextProjectId = useMemo(() => getNextProjectId(projects, id), [id])
 
   function handleMouseEnter() {
     setTitle("Letmeask")
@@ -24,22 +30,26 @@ export default function BackToHome({ }: BackToHomeProps) {
 
   return (
     <section data-scroll-section data-scroll className="w-full px-[3vw] h-[100vh] relative flex justify-center gap-[3vw] items-center py-[9vw]">
-      <p
+      <Link
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        href={`/repository/${nextProjectId}`}
+        onClick={() => updateEvent({ type: "normal" })}
         className="w-full py-[3vw] hover:text-white/50 duration-300 ease-smooth cursor-pointer text-[20px] font-regular text-white text-center border-t-2 border-t-[#111]"
       >
-        <Link href="/" onClick={() => updateEvent({ type: "normal" })} >Next</Link>
-      </p>
-      <p
+        Next
+      </Link>
+      <Link
+        onMouseLeave={handleMouseLeave}
         onMouseEnter={() => {
           updateEvent({ type: "hovered" })
         }}
-        onMouseLeave={handleMouseLeave}
+        href="/"
+        onClick={() => updateEvent({ type: "normal" })}
         className="w-full py-[3vw] hover:text-white/50 duration-300 ease-smooth cursor-pointer text-[20px] font-regular text-white text-center border-t-2 border-t-[#111]"
       >
-        <Link href="/" onClick={() => updateEvent({ type: "normal" })} >Home</Link>
-      </p>
+        Home
+      </Link>
       <footer className="absolute flex flex-row justify-between clip-around shadow-[0_0_0_100vmax_#060606] bottom-0 w-full pt-[3vw] px-[9vw] bg-[#060606]">
         <div>
           <small className="font-normal text-white/50">SOCIALS</small>
@@ -57,5 +67,5 @@ export default function BackToHome({ }: BackToHomeProps) {
       </footer>
     </section>
   )
-} 
+}
 

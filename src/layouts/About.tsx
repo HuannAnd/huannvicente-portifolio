@@ -5,7 +5,6 @@ import { useRef } from "react";
 import { motion } from 'framer-motion';
 
 import splittedText from "@/utils/splittedText";
-// import ASCIIScene from "./ASCIIScene";
 
 
 export default function About() {

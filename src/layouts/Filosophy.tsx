@@ -31,7 +31,7 @@ export default function Filosophy({ author, phrase }: FilosophyProps) {
       data-scroll
       ref={scope}
       transition={{ duration: 1 }}
-      className="w-full flex flex-col ab justify-center items-center clip-around shadow-[0_0_0_100vmax_#141414] h-auto p-[9vw] bg-[#141414]">
+      className="w-full invert flex flex-col ab justify-center items-center clip-around shadow-[0_0_0_100vmax_#141414] h-auto p-[9vw] bg-[#141414]">
       <q
         id="filosophy"
         className="font-light w-full text-[20px] px-[9vw] text-[#bbb]">
