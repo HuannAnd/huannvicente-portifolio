@@ -5,6 +5,8 @@ type URLPattern = `${TDirectoryID}/${TContentOrder}`
 
 type TRowStrategie = "mobile" | "desktop" | "mixed"
 
+
+
 export interface IImageContent {
   title: string,
   url: URLPattern,
@@ -27,6 +29,9 @@ export interface IProjectData {
   frameworks: string[]
   filosophy: IFilosophy
   gallery: TGalleryData[]
+  hasDomain: boolean
+  domain_url?: string
+  repository_url: string
 }
 
 export type TProjectsBody = IProjectData[]

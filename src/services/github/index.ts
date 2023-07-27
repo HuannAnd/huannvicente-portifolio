@@ -23,7 +23,6 @@ class GithubServiceHttpClient {
       const auth = GithubHttpClient.createAuthHeader(process.env.NEXT_PUBLIC_GITHUB_API_KEY)
       const repoDetails = await GithubHttpClient.get<GithubApi.GithubRepoBody>(`/repositories/${repositoryId}`, auth);
 
-      console.log(repoDetails);
       return repoDetails
     } catch (error) {
       console.error('Erro ao obter os detalhes do repositório:', error);

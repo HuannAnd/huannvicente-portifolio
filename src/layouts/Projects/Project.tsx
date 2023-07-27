@@ -2,8 +2,6 @@
 
 import { useRef } from "react";
 
-import { GithubRepoData } from "@/@types/github";
-
 import { useFollowerContext } from "@/hooks/useFollowerContext";
 import { useRouter } from "next/navigation";
 

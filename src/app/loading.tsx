@@ -2,16 +2,54 @@
 
 import { useFollowerContext } from "@/hooks/useFollowerContext"
 
-import { Canvas } from "@react-three/fiber"
+import { Canvas, useFrame } from "@react-three/fiber"
 import { OrbitControls } from "@react-three/drei"
 
-import { Suspense } from "react"
+import { Suspense, memo, useRef, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { usePathname } from "next/navigation"
+
+import * as THREE from 'three'
+
+interface ThingProps {
+  size: number
+  speed: number
+  color: string
+}
+
+const Thing = memo(function ({ size, speed, color }: ThingProps) {
+  const ref = useRef<THREE.Mesh>()
+  const [data] = useState({
+    size: [size, size, size],
+    color: new THREE.Color(color)
+
+  })
+  useFrame(() => ((ref.current!).rotation.x = (ref.current!).rotation.y += 0.01 * speed))
+  console.log("Selected color: ", data.color);
+
+  return (
+    <mesh
+      ref={ref as any}
+      position={[0, 0, 0]}
+    >
+      <boxBufferGeometry attach="geometry" args={data.size} />
+      {/* <meshNormalMaterial attach="material" /> */}
+      <meshLambertMaterial args={[{ color, clipShadows: true }]} attach="material" />
+    </mesh>
+  )
+})
 
 export default function Loading() {
-  const path = usePathname()
   const { setIsLoading, updateEvent } = useFollowerContext()
+
+  const minDeg = 30
+  const maxDeg = 360
+  const randDeg = THREE.MathUtils.randInt(minDeg, maxDeg)
+  const randColor = `hsl(${randDeg}, 100%, 75%)`
+
+  const [data] = useState({
+    color: randColor
+  })
+
   // camera
   const depth = 30
 
@@ -33,18 +71,7 @@ export default function Loading() {
           <color attach="background" args={["#000"]} />
           <OrbitControls />
           {/* <axesHelper args={[20]} /> */}
-          {/* <mesh castShadow position={[0, -2, 0]}>
-            <meshPhongMaterial color="blue" />
-            <sphereGeometry args={[3, 15, 15]} />
-          </mesh>
-          <mesh castShadow position={[4, -3, -5]}>
-            <meshPhongMaterial color="red" />
-            <sphereGeometry args={[2, 15, 15]} />
-          </mesh>
-          <mesh castShadow position={[-4, -4, -6]}>
-            <meshPhongMaterial color="green" />
-            <sphereGeometry args={[1, 15, 15]} />
-          </mesh> */}
+          <Thing color={data.color} speed={2} size={4} />
           <spotLight position={[0, 10, 0]} args={[color, intensity, distance, angle, penumbra, decay]} />
           <mesh castShadow position={[0, -5, 0]} rotation={[Math.PI * -0.5, 0, 0]}>
             <planeGeometry args={[30, 30]} />
@@ -53,22 +80,14 @@ export default function Loading() {
         </Canvas>
       </Suspense>
       <div className="absolute w-full h-full top-0 left-0 bg-black/50 bg-blend-hard-light">
-        <AnimatePresence>
-          <motion.h1
-            className="text-[clamp(120px,_10vw,_200px)] text-white font-bold"
-            initial={{ opacity: 0 }}
-            exit={{ opacity: 0 }}
-            whileInView={{ opacity: 1, transition: { duration: 2 } }}
-          >Redirecting</motion.h1>
+        <AnimatePresence initial={false}>
           <div className="absolute w-full px-[9vw] top-1/2 -translate-y-1/2">
-            <motion.p
-              className="text-white text-center tracking-tighter text-[30px]"
+            <motion.h5
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ type: "spring", stiffness: 100, mass: 2, duration: 1 }}
-            >{path}</motion.p>
-            {/* <small className="text-white w-full block font-light text-center"></small> */}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+              className="text-white text-center w-full">Please dont close window, wait a little bit</motion.h5>
           </div>
         </AnimatePresence>
         <p className="absolute py-[3vw] text-center text-[12px] font-light">Please don't close screen</p>

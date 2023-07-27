@@ -46,6 +46,8 @@ export default [
       phrase: "some phrase",
       author: "René Descartes"
     },
+    hasDomain: false,
+    repository_url: "https://github.com/HuannAnd/warren-challange/tree/master",
     gallery: [
       {
         strategy: "desktop",
@@ -84,24 +86,10 @@ export default [
       phrase: "Eureka!",
       author: "Archimedes of Syracuse"
     },
+    hasDomain: true,
+    domain_url: "#",
+    repository_url: "https://github.com/HuannAnd/Mercantte/tree/master",
     gallery: [
-      {
-        strategy: "desktop",
-        content: [
-          {
-            url: "624459441/1",
-            isMobile: false,
-            isMP4: true,
-            title: "Open Animation"
-          },
-          {
-            url: "624459441/2",
-            isMobile: false,
-            isMP4: true,
-            title: "Page Overview"
-          }
-        ]
-      },
       {
         strategy: "desktop",
         content: [
@@ -110,6 +98,25 @@ export default [
             isMobile: false,
             isMP4: false,
             title: "Random Plant"
+          },
+          {
+            url: "624459441/1",
+            isMobile: false,
+            isMP4: false,
+            title: "Open Animation"
+          },
+
+        ]
+      },
+      {
+        strategy: "desktop",
+        content: [
+          ,
+          {
+            url: "624459441/2",
+            isMobile: false,
+            isMP4: true,
+            title: "Page Overview"
           }
         ]
       }
@@ -122,6 +129,9 @@ export default [
       phrase: "Imagination is more important than knowledge. For knowledge is limited, whereas imagination embraces the entire world.",
       author: "Henri Poincaré"
     },
+    hasDomain: true,
+    repository_url: "",
+    domain_url: "#",
     gallery: [
       {
         strategy: "mixed",

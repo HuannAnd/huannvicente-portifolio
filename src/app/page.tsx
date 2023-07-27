@@ -44,10 +44,10 @@ const Skills = dynamic(
 
 export default async function Home() {
   const projects = [
-    { name: "Letmeask", id: 617670848, isDeveloped: true },
-    { name: "Warren", id: 599657419, isDeveloped: true },
+    { name: "Letmeask", id: 617670848, isDeveloped: false },
+    { name: "Warren", id: 599657419, isDeveloped: false },
     { name: "Mercantte", id: 624459441, isDeveloped: true },
-    { name: "Portifolio", id: 12998282, isDeveloped: false }
+    { name: "Portifolio", id: 12998282, isDeveloped: true }
   ]
 
   return (
