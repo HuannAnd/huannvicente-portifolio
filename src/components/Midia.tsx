@@ -1,5 +1,6 @@
-import { useFollowerContext } from "@/hooks/useFollowerContext";
 import { motion } from "framer-motion";
+
+import useFollowerSetState from "@/hooks/useFollowerSetState";
 
 type MidiaProps = {
   title: string,
@@ -8,15 +9,19 @@ type MidiaProps = {
 }
 
 export default function Midia({ title, image }: MidiaProps) {
-  const { updateEvent } = useFollowerContext()
+  const setCursorState = useFollowerSetState()
+
+  const handles = {
+    onMouseEnter: () => setCursorState("hovered"),
+    onMouseDown: () => setCursorState("pressed"),
+    onMouseUp: () => setCursorState("hovered"),
+    onMouseLeave: () => setCursorState("normal")
+  }
 
   return (
     <motion.div
       className="col-span-3 saturate-0 cursor-pointer py-10"
-      onMouseEnter={() => updateEvent({ type: "hovered" })}
-      onMouseDown={() => updateEvent({ type: "pressed" })}
-      onMouseUp={() => updateEvent({ type: "hovered" })}
-      onMouseLeave={() => updateEvent({ type: "normal" })}
+      {...handles}
     >
       <motion.img
         className="w-[100px] object-cover aspect-square mx-auto "

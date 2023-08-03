@@ -3,26 +3,22 @@
 import { useRef } from "react";
 
 import Image from "next/image";
-
-import { motion, useScroll } from "framer-motion";
-
-import { useFollowerContext } from "@/hooks/useFollowerContext";
 import Link from "next/link";
+
+import { motion } from "framer-motion";
+
+import useFollowerSetState from "@/hooks/useFollowerSetState";
 
 interface ContactProps {
 
 }
 
-const springConfig = {
-  stiffness: 100,
-  damping: 100,
-}
-
 const Contact: React.FunctionComponent<ContactProps> = ({ }) => {
+  console.log("Contact was render")
   const ref = useRef<HTMLDivElement>(null!)
   const title = useRef<HTMLDivElement>(null!)
 
-  const { updateEvent } = useFollowerContext()
+  const setCursorState = useFollowerSetState()
 
   return (
     <section
@@ -63,33 +59,34 @@ const Contact: React.FunctionComponent<ContactProps> = ({ }) => {
         data-scroll-offset="-100%,0%"
         className="pt-[3vw]"
       >
-        <div className="block pt-[9vw] pb-[3vw] -z-10">
+        <div className="flex flex-col justify-center items-center px-[3vw] pt-[9vw] pb-[3vw] -z-10">
           {[{ title: "Linkedin", href: "https://www.linkedin.com/in/huann-vicente-5092a9261/" }, { title: "Dribbble", href: "#" }]
             .map(
               (midia, key) => (
                 <Link
                   href={midia.href}
                   key={key}
-                  onMouseEnter={() => updateEvent({ type: "hovered" })}
-                  onMouseDown={() => updateEvent({ type: "pressed" })}
-                  onMouseUp={() => updateEvent({ type: "hovered" })}
-                  onMouseLeave={() => updateEvent({ type: "normal" })}
-                  className="text-center block saturate-0 mx-[3vw] w-full cursor-pointer text-white py-[3vw] border-t-[#222] border-t-2 hover:text-white/50 ease-smooth duration-300 font-regular"
+                  onMouseEnter={() => setCursorState("hovered")}
+                  onMouseDown={() => setCursorState("pressed")}
+                  onMouseUp={() => setCursorState("hovered")}
+                  onMouseLeave={() => setCursorState("normal")}
+                  className="text-center inline-block saturate-0 w-full cursor-pointer text-white py-[3vw] border-t-[#222] border-t-2 hover:text-white/50 font-regular"
                 >{midia.title}</Link>
               )
             )}
         </div>
       </motion.article>
-      <footer className="flex flex-row justify-between clip-around shadow-[0_0_0_100vmax_#060606] bottom-0 w-full pt-[3vw] px-[3vw] bg-[#060606]">
-        <div>
+      <footer className="flex lg:flex-row md:flex-row sm:flex-col justify-between clip-around shadow-[0_0_0_100vmax_#060606] bottom-0 w-full pt-[3vw] px-[3vw] bg-[#060606]">
+        <div className="sm:pb-[3vw]">
           <small className="font-normal text-white/50">SOCIALS</small>
-          <ul>
+          <ul className="lg:inline md:inline sm:flex sm:gap-x-[3vw]">
             {["Instagram", "Discord", "Facebook"]
               .map((x, i) => <li key={i} className="mb-4 text-white mix-blend-difference">{x}</li>)
             }
           </ul>
         </div>
-        <div className="grid place-content-center">
+        <hr className="" />
+        <div className="grid place-content-center pb-[3vw] sm:pt-[3vw]">
           <p className="text-white">
             &copy; Developed By Huann Vicente
           </p>

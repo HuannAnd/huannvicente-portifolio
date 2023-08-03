@@ -1,10 +1,8 @@
 'use client';
 
 import projects from '@/services/projects';
-import getNextProjectId from '@/utils/getNextProjectId';
-import { usePathname } from 'next/navigation';
 
-import { createContext, useEffect, useMemo, useState } from 'react'
+import { createContext, memo, useEffect, useState } from 'react'
 
 interface ProjectsProviderProps {
   children: React.ReactNode
@@ -12,14 +10,13 @@ interface ProjectsProviderProps {
 
 type Value = number[]
 
-
 export const ProjectsContext = createContext({} as Value)
 
-export default function ProjectsProvider({ children }: ProjectsProviderProps) {
+function ProjectsProvider({ children }: ProjectsProviderProps) {
   const [projectsIds] = useState(projects.map(x => x.id))
   console.log("ProjectsIds: ", projectsIds);
 
-  useEffect(() => console.log("useState render"), [projectsIds])
+  useEffect(() => console.log("useState render again"), [projectsIds])
 
   return (
     <ProjectsContext.Provider value={projectsIds}>
@@ -27,3 +24,5 @@ export default function ProjectsProvider({ children }: ProjectsProviderProps) {
     </ProjectsContext.Provider>
   )
 }
+
+export default memo(ProjectsProvider)

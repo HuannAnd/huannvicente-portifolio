@@ -5,11 +5,15 @@ import { useEffect } from "react";
 import { stagger, useAnimate, useInView, motion } from "framer-motion";
 
 import SplitType from "split-type";
+import useHamburguerContext from "@/hooks/useNavigationContext";
+import wait from "@/utils/wait";
 
 
 export default function Hero() {
   const [scope, animate] = useAnimate();
   const isInView = useInView(scope, { once: true });
+
+  const showHamburguer = useHamburguerContext()
 
   useEffect(() => {
     if (isInView) {
@@ -41,6 +45,11 @@ export default function Hero() {
 
     return
   }, [isInView]);
+
+  useEffect(() => {
+    wait(3000).then(() => showHamburguer(true))
+  }, [])
+
 
   return (
     <section

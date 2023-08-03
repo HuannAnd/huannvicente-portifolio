@@ -1,9 +1,12 @@
 "use client"
 
-import { useRef } from "react";
+import { memo } from "react";
 
-import { useFollowerContext } from "@/hooks/useFollowerContext";
 import { useRouter } from "next/navigation";
+
+import useFollowerSetTitle from "@/hooks/useFollowerSetTitle";
+import useFollowerSetState from "@/hooks/useFollowerSetState";
+import useFollowerSetIsLoading from "@/hooks/useFollowerSetIsLoading";
 
 type ProjectProps = React.HTMLAttributes<HTMLDivElement> & {
   project: {
@@ -14,29 +17,31 @@ type ProjectProps = React.HTMLAttributes<HTMLDivElement> & {
   nTh: number
 }
 
-export default function Project({ project, nTh, ...props }: ProjectProps) {
+function Project({ project, nTh, ...props }: ProjectProps) {
+  console.log("Project render ", nTh);
   const router = useRouter()
-  const ref = useRef<HTMLDivElement>(null!)
-  const { updateEvent, setTitle, setIsLoading } = useFollowerContext()
+
+  const setCursorState = useFollowerSetState()
+  const setTitle = useFollowerSetTitle()
+  const setIsLoading = useFollowerSetIsLoading()
 
   const handles = {
     onClick: previewProject,
     onMouseEnter: () => {
-      updateEvent({ type: "hovered" })
+      setCursorState("hovered")
       setTitle("View more")
     },
-    onMouseUp: () => updateEvent({ type: "hovered" }),
-    onMouseDown: () => updateEvent({ type: "pressed" }),
+    onMouseUp: () => setCursorState("hovered"),
+    onMouseDown: () => setCursorState("pressed"),
     onMouseLeave: () => {
       setTitle(null)
-      updateEvent({ type: "normal" })
+      setCursorState("normal")
     }
-
   }
 
   function previewProject() {
     setTitle(null)
-    updateEvent({ type: "normal" })
+    setCursorState("normal")
     setIsLoading(true)
     router.push(`/repository/${project.id}`)
   }
@@ -44,7 +49,6 @@ export default function Project({ project, nTh, ...props }: ProjectProps) {
   return (
     <div
       className="col-span-12 bg-darkPrimary ease-fast group/item flex pl-0 duration-300 border-t-[#111] border-t-2 relative cursor-pointer justify-between items-center py-[clamp(2rem,_5vw,_4em)] h-auto"
-      ref={ref}
       {...handles}
       {...props}
     >
@@ -55,3 +59,5 @@ export default function Project({ project, nTh, ...props }: ProjectProps) {
     </div>
   );
 }
+
+export default memo(Project)

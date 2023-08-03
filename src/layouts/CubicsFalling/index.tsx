@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect } from 'react';
+import { Suspense } from 'react';
 
 import { Canvas } from '@react-three/fiber';
 
@@ -8,13 +8,10 @@ import Plane from './Plane';
 import Cube from './Cube';
 import Lights from './Lights';
 
-import { useFollowerContext } from '@/hooks/useFollowerContext';
-
 
 export default function CubicsFalling({ speed = 5, count = 40, depth = 30, size = 1, easing = (x: number) => Math.sqrt(1 - Math.pow(x - 1, 2)) }) {
-  const { setIsLoading } = useFollowerContext()
+  console.log("CubicsFalling was render")
 
-  useEffect(() => setIsLoading(false), [])
 
   return (
     <Suspense fallback={null}>

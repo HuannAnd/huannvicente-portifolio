@@ -1,8 +1,10 @@
 "use client"
 
-import { usePathname } from 'next/navigation';
 import { useRef } from 'react';
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
+
+import { usePathname } from 'next/navigation';
+
 
 interface LocomotiveScrollProps {
   children: React.ReactNode
@@ -19,7 +21,7 @@ export default function LocomotiveScrollLayout({ children }: LocomotiveScrollPro
       options={{
         smooth: true,
         smartphone: {
-          smooth: false
+          smooth: true
         }
       }}
       onLocationChange={(scroll: any) => scroll.scrollTo(0, { duration: 0, disableLerp: true })}
