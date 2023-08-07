@@ -18,7 +18,7 @@ export default function CubicsFalling({ speed = 5, count = 40, depth = 30, size 
       <Canvas gl={{ antialias: false }} camera={{ position: [0, 0, depth + 8], fov: 20, near: 0.01, far: depth + 15 }}>
         <color attach="background" args={["#000"]} />
         {/* <OrbitControls /> */}
-        {Array.from({ length: count }, (_, i) => <Cube count={count} z={Math.round(easing(i / count) * depth)} size={size} speed={speed} index={i} key={i} />)}
+        {Array.from({ length: count }, (_, i) => <Cube count={count} z={Math.round(easing(i / count) * depth)} size={size} maxSpeed={speed} index={i} key={i} />)}
         {/* <axesHelper args={[20]} /> */}
         <Lights />
         <Plane />

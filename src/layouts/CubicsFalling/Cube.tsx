@@ -7,13 +7,13 @@ import * as THREE from 'three'
 
 type CubeProps = ThreeElements['mesh'] & {
   index: number,
-  speed: number,
+  maxSpeed: number,
   size: number,
   z: number,
   count: number
 }
 
-export default function Cube({ speed, size, index, z, count, ...props }: CubeProps) {
+export default function Cube({ maxSpeed, size, index, z, count, ...props }: CubeProps) {
   const mesh = useRef<THREE.Mesh>(null!)
   const { viewport, camera } = useThree();
 
@@ -27,6 +27,7 @@ export default function Cube({ speed, size, index, z, count, ...props }: CubePro
     x: xMin + (index / count) * (width - (2 * size * Math.sqrt(3))) + 2,
     y: THREE.MathUtils.randFloat(yMin, -yMin) * 2,
     z: Math.sin(index * (360 / count)),
+    speed: THREE.MathUtils.randInt(1, maxSpeed),
     scale: THREE.MathUtils.randFloat(0, 3),
     rX: Math.random() * Math.PI,
     rZ: Math.random() * Math.PI,
@@ -36,7 +37,7 @@ export default function Cube({ speed, size, index, z, count, ...props }: CubePro
   useFrame((_, dt) => {
     const cube = mesh.current;
 
-    if (dt < 0.1) cube.position.set(data.x, data.y += dt * speed, data.z);
+    if (dt < 0.1) cube.position.set(data.x, data.y += dt * data.speed, data.z);
     cube.rotation.set(data.rX += dt, 1, data.rZ += dt);
 
     if (cube.position.y > height) {

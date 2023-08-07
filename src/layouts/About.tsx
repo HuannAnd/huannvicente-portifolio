@@ -23,6 +23,7 @@ export default function About() {
     <section
       data-scroll
       data-scroll-section
+      id="about"
       ref={ref}
       className="w-full min-h- h-screen max-h-[1200px] overflow-y-hidden text-darkPrimary relative pt-[3vw]
       before:absolute before:w-full before:z-10 before:pointer-events-none before:content-[''] before:-translate-y-1/2 before:h-[5vw] before:top-0 before:left-0 before:rotate-180 before:bg-gradient-to-t before:from-black before:via-black before:to-transparent

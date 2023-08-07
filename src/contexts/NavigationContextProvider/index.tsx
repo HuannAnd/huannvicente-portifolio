@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useCallback, useState } from 'react'
+import { createContext, useCallback, useReducer, useState } from 'react'
 
 import Hamburguer from './Hamburguer';
 import Aside from './Aside';
@@ -9,20 +9,40 @@ interface NavigationProviderProps {
   children: React.ReactNode
 }
 
-type Value = (canBeShowed: boolean) => void
+type TValueHamburguerContext = (canBeShowed: boolean) => void
+type TValueAsideContext = React.Dispatch<TAction>
 
-export const NavigationContext = createContext({} as Value)
+type TState = boolean;
 
-export default function NavigationProvider({ children }: NavigationProviderProps) {
+export type TAction = { type: 'toogle' } | { type: 'set'; payload: boolean };
+
+function reducer(state: TState, action: TAction): TState {
+  switch (action.type) {
+    case 'toogle':
+      return !state;
+    case 'set':
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
+export const NavigationHamburguerContext = createContext({} as TValueHamburguerContext)
+export const NavigationAsideContext = createContext({} as TValueAsideContext)
+
+export default function NavigationContextProvider({ children }: NavigationProviderProps) {
   const [showHamburguer, setShowHamburguer] = useState(false)
+  const [showAside, handleAsideStates] = useReducer(reducer, false);
 
-  const canBeShow = useCallback((canBeShowed: boolean) => setShowHamburguer(canBeShowed), [])
+  const canBeShowHamburguer = useCallback((canBeShowed: boolean) => setShowHamburguer(canBeShowed), [])
 
   return (
-    <NavigationContext.Provider value={canBeShow}>
-      <Hamburguer canBeShow={showHamburguer} />
-      {/* <Aside hamburguerIsOpen={showHamburguer} /> */}
-      {children}
-    </NavigationContext.Provider>
+    <NavigationHamburguerContext.Provider value={canBeShowHamburguer}>  
+      <NavigationAsideContext.Provider value={handleAsideStates}>
+        <Hamburguer canBeShow={showHamburguer} />
+        <Aside canBeShow={showAside} />
+        {children}
+      </NavigationAsideContext.Provider>
+    </NavigationHamburguerContext.Provider>
   )
 }

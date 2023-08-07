@@ -13,8 +13,8 @@ const roboto = Roboto({
   variable: "--font-roboto",
 })
 
+const NavigationContextProvider = dynamic(() => import("@/contexts/NavigationContextProvider"), { ssr: false })
 const CursorFollowerProvider = dynamic(() => import("@/contexts/CursorFollowerProvider"), { ssr: true })
-const NavigationContextProvider = dynamic(() => import("@/contexts/NavigationContextProvider"), { ssr: true })
 const LocomotiveScrollProvider = dynamic(() => import("@/contexts/LocomotiveScrollProvider"), { ssr: true })
 
 export const metadata = {
@@ -31,11 +31,9 @@ export default function RootLayout({
     <html lang="en">
       <body data-scroll className={`${roboto.variable} pointer-events-none font-roboto h-screen overflow-x-hidden w-screen bg-black selection:bg-green-200 selection:text-lightPrimary`}>
         <CursorFollowerProvider>
-          <NavigationContextProvider>
-            <LocomotiveScrollProvider>
-              {children}
-            </LocomotiveScrollProvider>
-          </NavigationContextProvider>
+          <LocomotiveScrollProvider context={NavigationContextProvider}>
+            {children}
+          </LocomotiveScrollProvider>
         </CursorFollowerProvider>
         {/* <Footer /> */}
       </body>

@@ -9,7 +9,7 @@ import SplitType from "split-type"
 import useFollowerSetIsLoading from "@/hooks/useFollowerSetIsLoading"
 import useFollowerSetTitle from "@/hooks/useFollowerSetTitle"
 import useFollowerSetState from "@/hooks/useFollowerSetState"
-import useHamburguerContext from "@/hooks/useNavigationContext"
+import useHamburguerContext from "@/hooks/useHamburguerContext"
 
 import wait from "@/utils/wait";
 
@@ -75,13 +75,13 @@ export default function Overview({
           {hasDomain && (
             <a
               className="text-white grow basis-0 py-[3vw] min-w-[18vw] block cursor-pointer font-regular border-t-2 border-t-[#222]"
-              onMouseEnter={() => { setCursorState("hovered"); setTitle("See") }}
+              onMouseEnter={() => { setCursorState("hovered"); setTitle(null) }}
               onMouseLeave={() => { setCursorState("normal"); setTitle(null) }}
               href={domain_url}>On live</a>
           )}
           <a
             className="text-white py-[3vw] basis-0 grow w-full min-w-[9vw] block cursor-pointer font-regular border-t-2 border-t-[#222]"
-            onMouseEnter={() => { setCursorState("hovered"); setTitle("Github"); setIsLoading(false) }}
+            onMouseEnter={() => { setCursorState("hovered"); setTitle(null); setIsLoading(false) }}
             onMouseLeave={() => { setCursorState("normal"); setTitle(null) }}
             href={repository_url}>Repository</a>
         </div>

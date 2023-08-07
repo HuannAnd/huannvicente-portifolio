@@ -31,6 +31,7 @@ function Skills() {
     <section
       data-scroll
       data-scroll-section
+      id="skills"
       ref={scope}
       className="w-full overflow-x-hidden h-auto min-h-screen text-white bg-black z-50 pb-[9vw]"
     >

@@ -11,7 +11,7 @@ import { motion, AnimatePresence } from "framer-motion"
 
 import useFollowerSetIsLoading from "@/hooks/useFollowerSetIsLoading"
 import useFollowerSetState from "@/hooks/useFollowerSetState"
-import useHamburguerContext from "@/hooks/useNavigationContext"
+import useHamburguerContext from "@/hooks/useHamburguerContext"
 
 interface ThingProps {
   size: number
@@ -109,7 +109,7 @@ export default function Loading() {
 
   const minDeg = 30
   const maxDeg = 360
-
+        
   showHamburguer(false)
 
   const [data] = useState({
@@ -117,12 +117,12 @@ export default function Loading() {
     strategy: ["sphereBouncing", "squareRotating"]
   })
 
-  const randStrategy = Math.floor(data.strategy.length * Math.random())
-  const Component = data.strategy[1] === "sphereBouncing" ? Thing : Sphere
+  const randFractionalNum = Math.random()   
+  const Component = randFractionalNum > 0.5 ? Thing : Sphere
 
   const depth = 30
 
-  setCursorState("normal")
+  setCursorState("normal")  
   setIsLoading(true)
 
   return (

@@ -4,7 +4,7 @@ import { memo, useEffect, useRef } from "react";
 
 import { motion, useInView } from "framer-motion";
 
-import useHamburguerContext from "@/hooks/useNavigationContext";
+import useHamburguerContext from "@/hooks/useHamburguerContext";
 
 import Project from "./Project";
 
