@@ -9,6 +9,7 @@ import useFollowerSetTitle from "@/hooks/useFollowerSetTitle";
 import useAsideContext from "@/hooks/useAsideContext";
 
 import generatePyramidArray from "@/utils/generatedPyramidArray";
+import useFollowerSetCursorIcon from "@/hooks/useFollowerSetCursorIcon";
 
 interface AsideProps {
   canBeShow: boolean
@@ -17,6 +18,7 @@ interface AsideProps {
 export default function Aside({ canBeShow }: AsideProps) {
   const setCursorState = useFollowerSetState()
   const setCursorTitle = useFollowerSetTitle()
+  const setCursorIcon = useFollowerSetCursorIcon()
 
   console.log("Aside has render")
 
@@ -32,10 +34,12 @@ export default function Aside({ canBeShow }: AsideProps) {
 
   function handleOnMouseEnter() {
     setCursorState("normal")
+    setCursorIcon("arrow")
     setCursorTitle(null)
   }
   function handleOnMouseLeave() {
     setCursorState("normal")
+    setCursorIcon(null)
     setCursorTitle(null)
   }
 

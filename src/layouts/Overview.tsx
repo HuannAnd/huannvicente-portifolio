@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo } from "react"
+import { useEffect } from "react"
 
 import { motion, stagger, useAnimate, useInView } from "framer-motion"
 
@@ -10,6 +10,7 @@ import useFollowerSetIsLoading from "@/hooks/useFollowerSetIsLoading"
 import useFollowerSetTitle from "@/hooks/useFollowerSetTitle"
 import useFollowerSetState from "@/hooks/useFollowerSetState"
 import useHamburguerContext from "@/hooks/useHamburguerContext"
+import useFollowerSetCursorIcon from "@/hooks/useFollowerSetCursorIcon";
 
 import wait from "@/utils/wait";
 
@@ -60,6 +61,7 @@ export default function Overview({
   const setTitle = useFollowerSetTitle()
   const setIsLoading = useFollowerSetIsLoading()
   const setCursorState = useFollowerSetState()
+  const setCursorIcon = useFollowerSetCursorIcon()
 
   return (
     <section ref={scope} data-scroll-section data-scroll className="w-full text-[#bbb] grid place-content-center text-center h-screen">
@@ -75,14 +77,14 @@ export default function Overview({
           {hasDomain && (
             <a
               className="text-white grow basis-0 py-[3vw] min-w-[18vw] block cursor-pointer font-regular border-t-2 border-t-[#222]"
-              onMouseEnter={() => { setCursorState("hovered"); setTitle(null) }}
-              onMouseLeave={() => { setCursorState("normal"); setTitle(null) }}
+              onMouseEnter={() => { setCursorState("hovered"); setTitle(null); setCursorIcon("externalLink") }}
+              onMouseLeave={() => { setCursorState("normal"); setTitle(null); setCursorIcon(null) }}
               href={domain_url}>On live</a>
           )}
           <a
             className="text-white py-[3vw] basis-0 grow w-full min-w-[9vw] block cursor-pointer font-regular border-t-2 border-t-[#222]"
-            onMouseEnter={() => { setCursorState("hovered"); setTitle(null); setIsLoading(false) }}
-            onMouseLeave={() => { setCursorState("normal"); setTitle(null) }}
+            onMouseEnter={() => { setCursorState("hovered"); setTitle(null); setIsLoading(false); setCursorIcon("externalLink") }}
+            onMouseLeave={() => { setCursorState("normal"); setTitle(null); setCursorIcon(null) }}
             href={repository_url}>Repository</a>
         </div>
       </div>

@@ -12,6 +12,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import useFollowerSetIsLoading from "@/hooks/useFollowerSetIsLoading"
 import useFollowerSetState from "@/hooks/useFollowerSetState"
 import useHamburguerContext from "@/hooks/useHamburguerContext"
+import useFollowerSetCursorIcon from "@/hooks/useFollowerSetCursorIcon"
 
 interface ThingProps {
   size: number
@@ -104,12 +105,13 @@ function Sphere({ size, color, speed }: SphereProps) {
 export default function Loading() {
   console.log("Loading was render")
   const setCursorState = useFollowerSetState()
+  const setCursorIcon = useFollowerSetCursorIcon()
   const setIsLoading = useFollowerSetIsLoading()
   const showHamburguer = useHamburguerContext()
 
   const minDeg = 30
   const maxDeg = 360
-        
+
   showHamburguer(false)
 
   const [data] = useState({
@@ -117,13 +119,14 @@ export default function Loading() {
     strategy: ["sphereBouncing", "squareRotating"]
   })
 
-  const randFractionalNum = Math.random()   
+  const randFractionalNum = Math.random()
   const Component = randFractionalNum > 0.5 ? Thing : Sphere
 
   const depth = 30
 
-  setCursorState("normal")  
+  setCursorState("normal")
   setIsLoading(true)
+  setCursorIcon(null)
 
   return (
     <div className="absolute cursor-wait w-full h-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">

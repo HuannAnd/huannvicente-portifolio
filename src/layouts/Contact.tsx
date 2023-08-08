@@ -8,6 +8,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 import useFollowerSetState from "@/hooks/useFollowerSetState";
+import useFollowerSetCursorIcon from "@/hooks/useFollowerSetCursorIcon";
 
 interface ContactProps {
 
@@ -19,6 +20,7 @@ const Contact: React.FunctionComponent<ContactProps> = ({ }) => {
   const title = useRef<HTMLDivElement>(null!)
 
   const setCursorState = useFollowerSetState()
+  const setCursorIcon = useFollowerSetCursorIcon()
 
   return (
     <section
@@ -68,10 +70,10 @@ const Contact: React.FunctionComponent<ContactProps> = ({ }) => {
                   href={midia.href}
                   target="_blank"
                   key={key}
-                  onMouseEnter={() => setCursorState("hovered")}
+                  onMouseEnter={() => { setCursorState("hovered"); setCursorIcon("externalLink") }}
                   onMouseDown={() => setCursorState("pressed")}
                   onMouseUp={() => setCursorState("hovered")}
-                  onMouseLeave={() => setCursorState("normal")}
+                  onMouseLeave={() => {setCursorState("normal"); setCursorIcon(null)}}
                   className="text-center inline-block saturate-0 w-full duration-300 cursor-pointer text-white py-[3vw] border-t-[#222] border-t-2 hover:text-white/50 font-regular"
                 >{midia.title}</Link>
               )

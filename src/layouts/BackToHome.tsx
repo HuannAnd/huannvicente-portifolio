@@ -9,6 +9,7 @@ import useFollowerTitle from "@/hooks/useFollowerSetTitle";
 import useProjectsContext from "@/hooks/useProjectsContext";
 
 import getNextProjectId from "@/utils/getNextProjectId";
+import useFollowerSetCursorIcon from "@/hooks/useFollowerSetCursorIcon";
 
 
 interface BackToHomeProps {
@@ -17,6 +18,7 @@ interface BackToHomeProps {
 
 export default function BackToHome({ id }: BackToHomeProps) {
   const setCursorState = useFollowerSetState()
+  const setCursorIcon = useFollowerSetCursorIcon()
   const setTitle = useFollowerTitle()
 
   const projects = useProjectsContext();
@@ -33,6 +35,7 @@ export default function BackToHome({ id }: BackToHomeProps) {
 
   const handleMouseLeave = useCallback(() => {
     setTitle(null)
+    setCursorIcon(null)
     setCursorState("normal")
   },
     []
@@ -51,7 +54,7 @@ export default function BackToHome({ id }: BackToHomeProps) {
       </Link>
       <Link
         onMouseLeave={handleMouseLeave}
-        onMouseEnter={() => setCursorState("hovered")}
+        onMouseEnter={() => {setCursorState("hovered"); setCursorIcon("home")}}
         href="/"
         onClick={() => setCursorState("normal")}
         className="w-full py-[3vw] hover:text-white/50 duration-300 ease-smooth cursor-pointer text-[20px] font-regular text-white text-center border-t-2 border-t-[#111]"

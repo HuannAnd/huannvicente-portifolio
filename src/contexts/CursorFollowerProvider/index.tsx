@@ -1,8 +1,8 @@
 "use client"
 
-import React, { useReducer, memo, createContext, useEffect, useState, useCallback } from "react";
+import React, { useReducer, memo, createContext, useEffect, useState, useCallback, ElementType } from "react";
 
-import Follower from "./Follower";
+import NewFollowerContext from "./Follower";
 
 import { useAnimate } from "framer-motion";
 
@@ -13,13 +13,22 @@ interface CursorFollowerProviderProps {
 export const CursorFollowerSetCursorContext = createContext<(event: TCursorAction["type"]) => void>(() => { });
 export const CursorFollowerSetTitleContext = createContext<(newTitle: string | null) => void>(() => { });
 export const CursorFollowerSetIsLoadingContext = createContext<(state: boolean) => void>(() => { });
+export const CursorFollowerSetCursorIconContext = createContext<(state: TCursorIcon["type"]) => void>(() => { });
 
 type TCursorAction = {
   type: "hovered" | "invisible" | "pressed" | "normal"
 }
 
+type TCursorIcon = {
+  type: "none" | "arrow" | "home" | "externalLink" | null
+}
+
 function reducer(state: TCursorAction["type"], action: TCursorAction): TCursorAction["type"] {
   return action.type;
+}
+
+function iconReducer(state: TCursorIcon["type"], action: TCursorIcon): TCursorIcon["type"] {
+  return action.type
 }
 
 function CursorFollowerProvider({ children }: CursorFollowerProviderProps) {
@@ -31,10 +40,16 @@ function CursorFollowerProvider({ children }: CursorFollowerProviderProps) {
 
   const [title, setTitleValue] = useState<string | null>("Scroll");
   const [isLoading, setIsLoadingValue] = useState(true)
+  const [icon, updateIcon] = useReducer(
+    iconReducer,
+     null
+  )
+  console.log("icon inside CursorFollowerProvider:", icon)
 
   const setTitle = useCallback((newTitle: string | null) => setTitleValue(newTitle), [])
   const setCursorState = useCallback((event: TCursorAction["type"]) => updateEvent({ type: event }), [])
   const setIsLoading = useCallback((state: boolean) => setIsLoadingValue(state), [])
+  const setCursorIcon = useCallback((state: TCursorIcon["type"]) => updateIcon({ type: state }), [])
 
   useEffect(() => {
     function handleWithFollowerAnimation() {
@@ -64,8 +79,10 @@ function CursorFollowerProvider({ children }: CursorFollowerProviderProps) {
     <CursorFollowerSetCursorContext.Provider value={setCursorState}>
       <CursorFollowerSetTitleContext.Provider value={setTitle}>
         <CursorFollowerSetIsLoadingContext.Provider value={setIsLoading}>
-          <Follower title={title} isLoading={isLoading} ref={scope} />
-          {children}
+          <CursorFollowerSetCursorIconContext.Provider value={setCursorIcon}>
+            <NewFollowerContext title={title} icon={icon} isLoading={isLoading} ref={scope} />
+            {children}
+          </CursorFollowerSetCursorIconContext.Provider>
         </CursorFollowerSetIsLoadingContext.Provider>
       </CursorFollowerSetTitleContext.Provider>
     </CursorFollowerSetCursorContext.Provider>

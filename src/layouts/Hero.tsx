@@ -5,15 +5,20 @@ import { useEffect } from "react";
 import { stagger, useAnimate, useInView, motion } from "framer-motion";
 
 import SplitType from "split-type";
+
 import useHamburguerContext from "@/hooks/useHamburguerContext";
+import useFollowerSetCursorIcon from "@/hooks/useFollowerSetCursorIcon";
+
 import wait from "@/utils/wait";
 
 
 export default function Hero() {
   const [scope, animate] = useAnimate();
   const isInView = useInView(scope, { once: true });
+  const setCursorIcon = useFollowerSetCursorIcon()
 
   const showHamburguer = useHamburguerContext()
+  setCursorIcon(null)
 
   useEffect(() => {
     if (isInView) {
@@ -54,7 +59,7 @@ export default function Hero() {
   return (
     <section
       className="h-full grid grid-cols-12 z-10 justify-between gap-x-2 mx-auto clip-around shadow-[0_0_0_100vmax_rgba(0,0,0,.5)] bg-black/50 bg-blend-hard-light items-center top-0 absolute text-black"
-      id="hero" 
+      id="hero"
       ref={scope}
     >
       <div className="h-full col-span-6 mx-auto col-start-4 flex text-white items-center">
