@@ -151,7 +151,6 @@ export default function Loading() {
               className="text-white text-center w-full">Please dont close window, wait a little bit</motion.h5>
           </div>
         </AnimatePresence>
-        <p className="absolute py-[3vw] text-center text-[12px] font-light">Please don't close screen</p>
       </div>
     </div>
   )
