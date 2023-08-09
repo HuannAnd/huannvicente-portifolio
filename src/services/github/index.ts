@@ -20,7 +20,7 @@ class GithubServiceHttpClient {
 
   public async getRepositoryById(repositoryId: number) {
     try {
-      const auth = GithubHttpClient.createAuthHeader(process.env.NEXT_PUBLIC_GITHUB_API_KEY)
+      const auth = GithubHttpClient.createAuthHeader(process.env.NEXT_PUBLIC_GITHUB_API_TOKEN)
       const repoDetails = await GithubHttpClient.get<GithubApi.GithubRepoBody>(`/repositories/${repositoryId}`, auth);
 
       return repoDetails
@@ -33,7 +33,7 @@ class GithubServiceHttpClient {
   public async getRepositories(): Promise<GITHUB.GithubUserReposBody> {
     try {
       const username = process.env.NEXT_PUBLIC_GITHUB_PROFILE
-      const auth = GithubHttpClient.createAuthHeader(process.env.NEXT_PUBLIC_GITHUB_API_KEY)
+      const auth = GithubHttpClient.createAuthHeader(process.env.NEXT_PUBLIC_GITHUB_API_TOKEN)
 
       const repos = await GithubHttpClient.get<GITHUB.GithubUserReposBody>(`/users/${username}/repos`, auth)
 
@@ -49,7 +49,7 @@ class GithubServiceHttpClient {
   public async getProjectREADME(repository: string): Promise<string | undefined> {
     try {
       const username = process.env.NEXT_PUBLIC_GITHUB_PROFILE
-      const auth = GithubHttpClient.createAuthHeader(process.env.NEXT_PUBLIC_GITHUB_API_KEY)
+      const auth = GithubHttpClient.createAuthHeader(process.env.NEXT_PUBLIC_GITHUB_API_TOKEN)
 
       const res = await GithubHttpClient.get<GITHUB.GithubContentBody>(`/repos/${username}/${repository}/contents/README.md`, auth)
       const readMe = Buffer.from(res.content, "base64").toString("utf-8")
@@ -66,7 +66,7 @@ class GithubServiceHttpClient {
   }
 
   public async getProjectLanguages(repositoryId: number): Promise<{ language: string, percentage: number }[]> {
-    const auth = GithubHttpClient.createAuthHeader(process.env.NEXT_PUBLIC_GITHUB_API_KEY)
+    const auth = GithubHttpClient.createAuthHeader(process.env.NEXT_PUBLIC_GITHUB_API_TOKEN)
 
     const languages = await GithubHttpClient.get<GITHUB.GithubLanguagesBody>(`/repositories/${repositoryId}/languages`, auth)
     const mapLangs = new Map(Object.entries(languages))
