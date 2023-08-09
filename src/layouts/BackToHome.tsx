@@ -1,32 +1,45 @@
 'use client';
 
+import { useCallback, useMemo } from "react";
+
 import Link from "next/link";
 
-import { useFollowerContext } from "@/hooks/useFollowerContext";
-import getNextProjectId from "@/utils/getNextProjectId";
-import { useMemo } from "react";
+import useFollowerSetState from "@/hooks/useFollowerSetState";
+import useFollowerTitle from "@/hooks/useFollowerSetTitle";
 import useProjectsContext from "@/hooks/useProjectsContext";
+
+import getNextProjectId from "@/utils/getNextProjectId";
+import useFollowerSetCursorIcon from "@/hooks/useFollowerSetCursorIcon";
+
 
 interface BackToHomeProps {
   id: number
 }
 
 export default function BackToHome({ id }: BackToHomeProps) {
-  const { setTitle, updateEvent } = useFollowerContext()
+  const setCursorState = useFollowerSetState()
+  const setCursorIcon = useFollowerSetCursorIcon()
+  const setTitle = useFollowerTitle()
+
   const projects = useProjectsContext();
   console.log("useProjectsContext value: ", projects);
 
   const nextProjectId = useMemo(() => getNextProjectId(projects, id), [id])
 
-  function handleMouseEnter() {
+  const handleMouseEnter = useCallback(() => {
     setTitle("Letmeask")
-    updateEvent({ type: "hovered" })
-  }
+    setCursorState("hovered")
+  },
+    []
+  );
 
-  function handleMouseLeave() {
+  const handleMouseLeave = useCallback(() => {
     setTitle(null)
-    updateEvent({ type: "normal" })
-  }
+    setCursorIcon(null)
+    setCursorState("normal")
+  },
+    []
+  );
 
   return (
     <section data-scroll-section data-scroll className="w-full px-[3vw] h-[100vh] relative flex justify-center gap-[3vw] items-center py-[9vw]">
@@ -34,18 +47,16 @@ export default function BackToHome({ id }: BackToHomeProps) {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         href={`/repository/${nextProjectId}`}
-        onClick={() => updateEvent({ type: "normal" })}
+        onClick={() => setCursorState("normal")}
         className="w-full py-[3vw] hover:text-white/50 duration-300 ease-smooth cursor-pointer text-[20px] font-regular text-white text-center border-t-2 border-t-[#111]"
       >
         Next
       </Link>
       <Link
         onMouseLeave={handleMouseLeave}
-        onMouseEnter={() => {
-          updateEvent({ type: "hovered" })
-        }}
+        onMouseEnter={() => {setCursorState("hovered"); setCursorIcon("home")}}
         href="/"
-        onClick={() => updateEvent({ type: "normal" })}
+        onClick={() => setCursorState("normal")}
         className="w-full py-[3vw] hover:text-white/50 duration-300 ease-smooth cursor-pointer text-[20px] font-regular text-white text-center border-t-2 border-t-[#111]"
       >
         Home
@@ -65,7 +76,7 @@ export default function BackToHome({ id }: BackToHomeProps) {
           </p>
         </div>
       </footer>
-    </section>
+    </section >
   )
 }
 

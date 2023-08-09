@@ -1,9 +1,9 @@
 "use client"
 
-import dynamic from 'next/dynamic'
 import './globals.css'
+
+import dynamic from 'next/dynamic'
 import { Roboto } from 'next/font/google'
-import Hamburguer from '@/components/Hamburguer'
 
 
 const roboto = Roboto({
@@ -13,8 +13,9 @@ const roboto = Roboto({
   variable: "--font-roboto",
 })
 
-const LocomotiveScrollLayout = dynamic(() => import("@/contexts/LocomotiveScrollProvider"), { ssr: true })
+const NavigationContextProvider = dynamic(() => import("@/contexts/NavigationContextProvider"), { ssr: false })
 const CursorFollowerProvider = dynamic(() => import("@/contexts/CursorFollowerProvider"), { ssr: true })
+const LocomotiveScrollProvider = dynamic(() => import("@/contexts/LocomotiveScrollProvider"), { ssr: true })
 
 export const metadata = {
   title: 'Huann Vicente Portifolio',
@@ -29,11 +30,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body data-scroll className={`${roboto.variable} pointer-events-none font-roboto h-screen overflow-x-hidden w-screen bg-black selection:bg-green-200 selection:text-lightPrimary`}>
-        {/* <Hamburguer /> */}
         <CursorFollowerProvider>
-          <LocomotiveScrollLayout>
+          <LocomotiveScrollProvider context={NavigationContextProvider}>
             {children}
-          </LocomotiveScrollLayout>
+          </LocomotiveScrollProvider>
         </CursorFollowerProvider>
         {/* <Footer /> */}
       </body>

@@ -5,7 +5,6 @@ import React, { SVGProps } from "react"
 import { motion } from 'framer-motion'
 
 
-
 type SquareProps = SVGProps<SVGSVGElement> & {
   scale: number,
   color: string | undefined,

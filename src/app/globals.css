@@ -1,7 +1,10 @@
 @tailwind base;
-
 @tailwind components;
-@tailwind utilities;
+
+button {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
 
 * {
   margin: 0;
@@ -23,23 +26,8 @@ strong {
   font-size: 1.25rem;
 }
 
-button {
-  font-size: 1.25rem;
-  font-weight: 700;
-}
-
 small {
   font-size: 0.625rem;
-}
-
-@layer utilities {
-  .clip-around {
-    clip-path: inset(0 -100vmax);
-  }
-
-  .not-clip-square {
-    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-  }
 }
 
 html.has-scroll-smooth {
@@ -122,4 +110,16 @@ html.has-scroll-dragging {
 [data-scroll-direction="horizontal"] .c-scrollbar_thumb {
   right: auto;
   bottom: 0;
+}
+
+@tailwind utilities;
+
+@layer utilities {
+  .clip-around {
+    clip-path: inset(0 -100vmax);
+  }
+
+  .not-clip-square {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
 }

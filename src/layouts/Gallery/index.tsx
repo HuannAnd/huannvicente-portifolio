@@ -1,10 +1,11 @@
 "use client"
 
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 
-import { useFollowerContext } from "@/hooks/useFollowerContext";
+import RowContent from "./RowContent"
+import RowRoot from "./RowRoot"
 
-import Row from "./Snapshot";
+import useFollowerSetIsLoading from "@/hooks/useFollowerSetIsLoading";
 
 import { IProjectData } from "@/services/projects/type";
 
@@ -14,8 +15,9 @@ type GalleryProps = {
 }
 
 export default function Gallery({ photos }: GalleryProps) {
-  const { setIsLoading } = useFollowerContext()
-  useLayoutEffect(() => setIsLoading(false), [])
+  const setIsLoading = useFollowerSetIsLoading()
+
+  useEffect(() => setIsLoading(false), [])
 
   return (
     <section
@@ -24,9 +26,9 @@ export default function Gallery({ photos }: GalleryProps) {
       className="w-full h-auto px-[3vw] py-[9vw] min-h-[200vh] overflow-hidden gap-x-2 gap-y-[3vw] flex flex-col gap-[3vw]"
     >
       {photos.map((x, i) => (
-        <Row.Root key={i} nTh={i + 1} strategy={x.strategy}>
-          {x.content.map((v, j) => <Row.Content key={j} strategy={x.strategy} {...v} /> )}
-        </Row.Root>
+        <RowRoot key={i} nTh={i + 1} strategy={x.strategy}>
+          {x.content.map((v, j) => <RowContent key={j} index={j} strategy={x.strategy} {...v} />)}
+        </RowRoot>
       ))}
     </section>
   )

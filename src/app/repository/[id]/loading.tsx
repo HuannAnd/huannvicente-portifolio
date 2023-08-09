@@ -11,6 +11,8 @@ import { motion, AnimatePresence } from "framer-motion"
 
 import useFollowerSetIsLoading from "@/hooks/useFollowerSetIsLoading"
 import useFollowerSetState from "@/hooks/useFollowerSetState"
+import useHamburguerContext from "@/hooks/useHamburguerContext"
+import useFollowerSetCursorIcon from "@/hooks/useFollowerSetCursorIcon"
 
 interface ThingProps {
   size: number
@@ -19,7 +21,6 @@ interface ThingProps {
 }
 
 function Thing({ size, speed, color }: ThingProps) {
-  console.log("The world has choosed Thing as Strategy")
   const ref = useRef<THREE.Mesh>()
   const [data] = useState({
     size: [size, size, size],
@@ -81,11 +82,12 @@ function Sphere({ size, color, speed }: SphereProps) {
 
   })
 
-  useFrame(() => {
+  useFrame((state) => {
     const sphere = ref.current!
-
-    sphere.position.y = Math.abs(Math.sin(sphere.position.y += .01))
-  })
+    sphere.rotation.x = sphere.rotation.y += 0.01 * speed
+    sphere.position.y = -2 + 3 * Math.abs(Math.sin(speed * state.clock.getElapsedTime()))
+  }
+  )
   console.log("Selected color: ", data.color);
 
   return (
@@ -93,9 +95,9 @@ function Sphere({ size, color, speed }: SphereProps) {
       ref={ref as any}
       position={[0, 0, 0]}
     >
-      <boxBufferGeometry attach="geometry" args={data.size} />
+      <sphereGeometry attach="geometry" args={[3, 20, 20]} />
       {/* <meshNormalMaterial attach="material" /> */}
-      <meshLambertMaterial args={[{ color, clipShadows: true }]} attach="material" />
+      <meshLambertMaterial args={[{ color, clipShadows: false }]} attach="material" />
     </mesh>
   )
 }
@@ -103,23 +105,28 @@ function Sphere({ size, color, speed }: SphereProps) {
 export default function Loading() {
   console.log("Loading was render")
   const setCursorState = useFollowerSetState()
+  const setCursorIcon = useFollowerSetCursorIcon()
   const setIsLoading = useFollowerSetIsLoading()
+  const showHamburguer = useHamburguerContext()
 
   const minDeg = 30
   const maxDeg = 360
+
+  showHamburguer(false)
 
   const [data] = useState({
     color: `hsl(${THREE.MathUtils.randInt(minDeg, maxDeg)}, 100%, 75%)`,
     strategy: ["sphereBouncing", "squareRotating"]
   })
 
+  const randFractionalNum = Math.random()
+  const Component = randFractionalNum > 0.5 ? Thing : Sphere
+
   const depth = 30
 
   setCursorState("normal")
   setIsLoading(true)
-
-  const randStrategy = Math.floor(data.strategy.length * Math.random())
-  const Component = data.strategy[1] === "sphereBouncing" ? Thing : Sphere
+  setCursorIcon(null)
 
   return (
     <div className="absolute cursor-wait w-full h-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -128,9 +135,7 @@ export default function Loading() {
           <color attach="background" args={["#000"]} />
           <OrbitControls />
           {/* <axesHelper args={[20]} /> */}
-          {/* <MemoizedThing color={data.color} speed={2} size={4} /> */}
-          {/* <Component color={data.color} speed={2} size={4} /> */}
-          <Sphere color={data.color} speed={2} size={4} />
+          <Component color={data.color} speed={2} size={4} />
           <Lights />
           <Plane />
         </Canvas>

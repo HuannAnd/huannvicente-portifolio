@@ -1,9 +1,13 @@
 'use client';
 
-import splittedText from "@/utils/splittedText";
-import { motion, useAnimate, useInView } from "framer-motion";
 import { useEffect } from "react";
+
+import { motion, useAnimate, useInView } from "framer-motion";
+
 import SplitType from "split-type";
+
+import splittedText from "@/utils/splittedText";
+
 
 interface FilosophyProps {
   author: string,

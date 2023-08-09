@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+
 const Load = dynamic(
   () => import("@/components/Load"),
   { ssr: true }

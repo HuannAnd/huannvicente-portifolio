@@ -1,8 +1,8 @@
-import Gallery from "@/layouts/Gallery";
-import BackToHome from "@/layouts/BackToHome";
-import Technologies from "@/layouts/Technologies";
-import Overview from "@/layouts/Overview";
-import Filosophy from "@/layouts/Filosophy";
+import Gallery from "@/layouts/Gallery"
+import BackToHome from "@/layouts/BackToHome"
+import Technologies from "@/layouts/Technologies"
+import Overview from "@/layouts/Overview"
+import Filosophy from "@/layouts/Filosophy"
 
 import projects from '@/services/projects'
 import GithubService from "@/services/github"
@@ -28,7 +28,7 @@ export default async function ProjectPage({
     description: repoDetails.description
   } as React.ComponentProps<typeof Overview>
 
-  const time = 1000 * 2
+  const time = 1000 * 3
   await wait(time)
 
   return (

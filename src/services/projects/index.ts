@@ -58,12 +58,18 @@ export default [
             isMP4: true,
             title: "Open Animation"
           },
+
+        ]
+      },
+      {
+        strategy: "desktop",
+        content: [
           {
             url: "617668310/2",
             isMobile: false,
             isMP4: true,
             title: "Page Overview"
-          }
+          } 
         ]
       },
       {
