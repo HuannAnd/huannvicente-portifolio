@@ -22,9 +22,9 @@ function Skills() {
     [isInView]
   )
 
-  const technologies = ["HTML5", "Javascript & TypeScript", "CSS3 & SCSS"]
-  const frameworks = ["HTML5", "Javascript & TypeScript"]
-  const designSkills = ["HTML5"]
+  const technologies = ["HTML5", "Javascript & TypeScript", "CSS3 & SCSS", "MongoDB", "Firebase", "Docker", "Node.js"]
+  const frameworks = ["React", "Next.js", "Styled-Components", "TailwindCSS"]
+  const designSkills = ["UI & UX", "Interactive UI", "Full-stack Designer", "Figma"]
 
 
   return (

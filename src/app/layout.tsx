@@ -1,5 +1,3 @@
-"use client"
-
 import './globals.css'
 
 import dynamic from 'next/dynamic'
@@ -31,7 +29,7 @@ export default function RootLayout({
     <html lang="en">
       <body data-scroll className={`${roboto.variable} pointer-events-none font-roboto h-screen overflow-x-hidden w-screen bg-black selection:bg-green-200 selection:text-lightPrimary`}>
         <CursorFollowerProvider>
-          <LocomotiveScrollProvider context={NavigationContextProvider}>
+          <LocomotiveScrollProvider>
             {children}
           </LocomotiveScrollProvider>
         </CursorFollowerProvider>

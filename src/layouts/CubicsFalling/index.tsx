@@ -11,8 +11,6 @@ import Lights from './Lights';
 
 export default function CubicsFalling({ speed = 5, count = 40, depth = 30, size = 1, easing = (x: number) => Math.sqrt(1 - Math.pow(x - 1, 2)) }) {
   console.log("CubicsFalling was render")
-
-
   return (
     <Suspense fallback={null}>
       <Canvas gl={{ antialias: false }} camera={{ position: [0, 0, depth + 8], fov: 20, near: 0.01, far: depth + 15 }}>
