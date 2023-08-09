@@ -11,17 +11,17 @@ import NavigationContextProvider from '@/contexts/NavigationContextProvider'
 
 interface LocomotiveScrollProps {
   children: React.ReactNode,
-  context: React.ComponentType<any>
+  // context: React.ComponentType<any>
 }
 
 export default function LocomotiveScrollLayout({
   children,
-  context: NesteingContextProvider
+  // context: NesteingContextProvider
 }: LocomotiveScrollProps) {
   const ref = useRef(null!)
   const path = usePathname();
 
-  console.log("NavigationContextProvider Component: ", NesteingContextProvider)
+  // console.log("NavigationContextProvider Component: ", NesteingContextProvider)
 
   const options = {
     smooth: true,

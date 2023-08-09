@@ -25,7 +25,7 @@ export default function Aside({ canBeShow }: AsideProps) {
   const handleAsideStates = useAsideContext()
 
   const { scroll } = useLocomotiveScroll()
-  console.log("Scroll locomotive:", scroll)
+  // console.log("Scroll locomotive:", scroll)
 
   const variants = {
     close: { x: "-100%", transition: { duration: .5 } },
@@ -67,7 +67,7 @@ export default function Aside({ canBeShow }: AsideProps) {
   ]
 
   const pyrimadDelay = generatePyramidArray(links.length)
-  console.log("PyramidDELAY: ", pyrimadDelay)
+  // console.log("PyramidDELAY: ", pyrimadDelay)
 
   const linksVariants = {
     open: (i: number) => ({
@@ -101,7 +101,7 @@ export default function Aside({ canBeShow }: AsideProps) {
       <motion.ul transition={{ delayChildren: 3 }} className="w-full overflow-hidden">
         {links
           .map(({ title, value }, i) => (
-            <li className="border-t-2 border-y-[#222] lg:py-[1.75vh] sm:py-[3vh]">
+            <li key={i} className="border-t-2 border-y-[#222] lg:py-[1.75vh] sm:py-[3vh]">
               <motion.a
                 drag="x"
                 initial={{ x: 0 }}

@@ -15,8 +15,8 @@ export const FollowerTitleContext = createContext<string | null>(null)
 export const FollowerIconContext = createContext<string | null>(null)
 
 export default function FollowerContextProvider({ children, title, isLoading, icon }: FollowerContextProviderProviderProps) {
-  console.log("Title inside FollowerContext: ", title)
-  console.log("isLoading inside FollowerContext: ", isLoading)
+  // console.log("Title inside FollowerContext: ", title)
+  // console.log("isLoading inside FollowerContext: ", isLoading)
 
   return (
     <FollowerLoadingContext.Provider value={isLoading}>

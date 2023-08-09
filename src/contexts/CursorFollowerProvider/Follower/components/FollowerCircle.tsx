@@ -14,7 +14,7 @@ function FollowerCircle({  }: FollowerCircleProps, ref: React.ForwardedRef<Anima
   console.log("FollowerCircle has render")
   const isLoading = useLoading()
 
-  console.log("IsLoading inside FollowerCircle: ", isLoading)
+  // console.log("IsLoading inside FollowerCircle: ", isLoading)
 
   return (
     <motion.svg

@@ -22,7 +22,7 @@ export default function BackToHome({ id }: BackToHomeProps) {
   const setTitle = useFollowerTitle()
 
   const projects = useProjectsContext();
-  console.log("useProjectsContext value: ", projects);
+  // console.log("useProjectsContext value: ", projects);
 
   const nextProjectId = useMemo(() => getNextProjectId(projects, id), [id])
 

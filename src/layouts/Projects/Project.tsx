@@ -18,7 +18,7 @@ type ProjectProps = React.HTMLAttributes<HTMLDivElement> & {
 }
 
 function Project({ project, nTh, ...props }: ProjectProps) {
-  console.log("Project render ", nTh);
+  // console.log("Project render ", nTh);
   const router = useRouter()
 
   const setCursorState = useFollowerSetState()

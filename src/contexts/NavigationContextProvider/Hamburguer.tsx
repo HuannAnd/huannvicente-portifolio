@@ -31,8 +31,8 @@ export default function Hamburguer({ canBeShow }: HamburguerProps) {
     }
   }
 
-  console.log("Hamburguer was render")
-  console.log("canBeShow Hamburguer: ", canBeShow)
+  // console.log("Hamburguer was render")
+  // console.log("canBeShow Hamburguer: ", canBeShow)
 
   useEffect(() => {
     handleAsideOpening({ type: "set", payload: false })
