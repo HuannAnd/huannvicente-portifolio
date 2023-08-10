@@ -113,7 +113,7 @@ export default function Aside({ canBeShow }: AsideProps) {
                 onClick={() => handleOnClick(value)}
                 custom={pyrimadDelay[i]}
                 variants={linksVariants}
-                className="ease-smooth text-[clamp(25px,_5vw,_80px)] hover:text-white/50 relative block my-auto text-left w-full font-medium uppercase cursor-pointer text-white"
+                className="ease-smooth text-[clamp(25px,_7vw,_80px)] hover:text-white/50 relative block my-auto text-left w-full font-medium uppercase cursor-pointer text-white"
               >{title}</motion.a>
             </li>
           ))

@@ -46,7 +46,7 @@ function Skills() {
           data-scroll
           data-scroll-speed="-1"
           data-scroll-direction="horizontal"
-          className="text-[clamp(120px,_8vw,_200px)] ease-fast w-auto pl-[3vw] font-bold uppercase">
+          className="text-[clamp(100px,_10vw,_200px)] ease-fast w-auto pl-[3vw] font-bold uppercase">
           SKILLS
         </h1>
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 sm:gap-y-[3vw] gap-x-[3vw] w-full h-auto px-[3vw]">

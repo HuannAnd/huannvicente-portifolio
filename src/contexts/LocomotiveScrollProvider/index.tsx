@@ -26,7 +26,7 @@ export default function LocomotiveScrollLayout({
   const options = {
     smooth: true,
     smartphone: {
-      smooth: true
+      smooth: false
     }
   }
 
