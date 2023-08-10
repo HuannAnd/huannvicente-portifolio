@@ -9,6 +9,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        lg: { min: "648px" },
+        sm: { min: "1px", max: "647px" },
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -37,9 +41,9 @@ module.exports = {
         small: "12px",
       },
       transitionTimingFunction: {
-        "smooth": "cubic-bezier(0.45, 0, 0.55, 1)",
-        "fast": "cubic-bezier(0.22, 1, 0.36, 1)"
-      }
+        smooth: "cubic-bezier(0.45, 0, 0.55, 1)",
+        fast: "cubic-bezier(0.22, 1, 0.36, 1)",
+      },
     },
   },
   plugins: [],
