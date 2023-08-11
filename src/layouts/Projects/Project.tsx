@@ -48,7 +48,7 @@ function Project({ project, nTh, ...props }: ProjectProps) {
 
   return (
     <div
-      className="col-span-12 bg-darkPrimary ease-fast group/item flex pl-0 duration-300 border-t-[#111] border-t-2 relative cursor-pointer justify-between items-center py-[clamp(2rem,_5vw,_4em)] h-auto"
+      className="col-span-12 bg-darkPrimary z-10 ease-fast group/item flex pl-0 duration-300 border-t-[#111] border-t-2 relative cursor-pointer justify-between items-center py-[clamp(2rem,_5vw,_4em)] h-auto"
       {...handles}
       {...props}
     >

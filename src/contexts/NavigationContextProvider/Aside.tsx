@@ -10,12 +10,13 @@ import useAsideContext from "@/hooks/useAsideContext";
 
 import generatePyramidArray from "@/utils/generatedPyramidArray";
 import useFollowerSetCursorIcon from "@/hooks/useFollowerSetCursorIcon";
+import { memo } from "react";
 
 interface AsideProps {
   canBeShow: boolean
 }
 
-export default function Aside({ canBeShow }: AsideProps) {
+function Aside({ canBeShow }: AsideProps) {
   const setCursorState = useFollowerSetState()
   const setCursorTitle = useFollowerSetTitle()
   const setCursorIcon = useFollowerSetCursorIcon()
@@ -132,3 +133,5 @@ export default function Aside({ canBeShow }: AsideProps) {
     </motion.aside >
   )
 }
+
+export default memo(Aside)

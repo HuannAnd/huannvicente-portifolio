@@ -12,7 +12,7 @@ interface FollowerRootProps {
 const springConfig = {
   type: "spring",
   damping: 30,
-  stiffness: 100,
+  stiffness: 150,
   restDelta: 0.001
 }
 
