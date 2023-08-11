@@ -27,9 +27,7 @@ const Contact: React.FunctionComponent<ContactProps> = ({ }) => {
       data-scroll
       data-scroll-section
       id="contact"
-      className="w-full z-10 h-auto lg:h-[100dvh] sm:h-[100dvh] sm:px-[3vw] sm:grid sm:grid-rows-5 [--container-padding:3vw] relative ease-fast text-white
-      before:absolute before:w-full before:z-50 before:bg-black before:content-[''] before:h-[20vh] before:top-0 before:-translate-y-full before:left-0 before:rotate-180 before:bg-gradient-to-t before:from-black before:via-black before:to-transparent
-      "
+      className="w-full h-auto min-h-screen sm:h-[100dvh] sm:px-[3vw] sm:grid sm:grid-rows-5 [--container-padding:3vw] relative ease-fast text-white"
       ref={ref}
     >
       <motion.article

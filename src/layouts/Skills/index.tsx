@@ -33,7 +33,7 @@ function Skills() {
       data-scroll-section
       id="skills"
       ref={scope}
-      className="w-full overflow-x-hidden h-auto min-h-screen text-white bg-black z-50 pb-[9vw]"
+      className="w-full overflow-x-hidden h-auto z-50 min-h-screen text-white bg-black sm:pb-[20vh] lg:pb-[9vw]"
     >
       <div className="pt-[calc(3vw_*_.75)]">
         <motion.div
@@ -55,14 +55,16 @@ function Skills() {
               <small className="mb-[1.75vw] text-white/50 block uppercase" >Technologies</small>
               <hr />
             </div>
-            <ul className="w-full h-auto">
+            <ul className="w-full h-auto z-50">
               {technologies
                 .map((title, key) => (
-                  <motion.li
-                    key={key}
-                    className="py-[1.75vw] w-full ease-smooth duration-300 text-white text-[16px] font-normal"
-                    initial={{ opacity: 0, y: 32 }}
-                  >{title}</motion.li>)
+                  <div className="overflow-hidden" key={key}>
+                    <motion.li
+                      key={key}
+                      className="py-2 w-full text-white text-[16px] font-normal"
+                      initial={{ opacity: 0, y: 48 }}
+                    >{title}</motion.li>
+                  </div>)
                 )
               }
             </ul>
@@ -72,14 +74,16 @@ function Skills() {
               <small className="mb-[1.75vw] text-white/50 block uppercase">Frameworks</small>
               <hr />
             </div>
-            <ul className="w-full h-auto">
+            <ul className="w-full h-auto z-50">
               {frameworks
                 .map((title, key) => (
-                  <motion.li
-                    key={key}
-                    className="py-[1.75vw] w-full text-white text-[16px] font-normal"
-                    initial={{ opacity: 0, y: 32 }}
-                  >{title}</motion.li>)
+                  <div className="overflow-hidden" key={key}>
+                    <motion.li
+                      key={key}
+                      className="py-2 w-full text-white text-[16px] font-normal"
+                      initial={{ opacity: 0, y: 48 }}
+                    >{title}</motion.li>
+                  </div>)
                 )
               }
             </ul>
@@ -89,14 +93,16 @@ function Skills() {
               <small className="mb-[1.75vw] text-white/50 block uppercase">Design Skills</small>
               <hr />
             </div>
-            <ul className="w-full h-auto">
+            <ul className="w-full h-auto z-50">
               {designSkills
                 .map((title, key) => (
-                  <motion.li
-                    key={key}
-                    className="py-[1.75vw] w-full text-white text-[16px] font-normal"
-                    initial={{ opacity: 0, y: 32 }}
-                  >{title}</motion.li>)
+                  <div className="overflow-hidden" key={key}>
+                    <motion.li
+                      key={key}
+                      className="py-2 w-full text-white text-[16px] font-normal"
+                      initial={{ opacity: 0, y: 48 }}
+                    >{title}</motion.li>
+                  </div>)
                 )
               }
             </ul>
