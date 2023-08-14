@@ -3,21 +3,13 @@ type TContentOrder = 1 | 2 | 3
 
 type URLPattern = `${TDirectoryID}/${TContentOrder}`
 
-type TRowStrategie = "mobile" | "desktop" | "mixed"
-
-
-
 export interface IImageContent {
-  title: string,
-  url: URLPattern,
+  path: URLPattern,
   isMobile: boolean,
-  isMP4: boolean
+  isVideo: boolean
 }
 
-type TGalleryData = {
-  strategy: TRowStrategie
-  content: IImageContent[]
-}
+export type TGalleryData = IImageContent[]
 
 interface IFilosophy {
   phrase: string,
@@ -25,10 +17,11 @@ interface IFilosophy {
 }
 
 export interface IProjectData {
-  id: number,
+  id: TDirectoryID,
+  name: string,
   frameworks: string[]
   filosophy: IFilosophy
-  gallery: TGalleryData[]
+  gallery: IImageContent[]
   hasDomain: boolean
   domain_url?: string
   repository_url: string

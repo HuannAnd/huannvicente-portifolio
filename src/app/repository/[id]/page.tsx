@@ -18,6 +18,7 @@ export default async function ProjectPage({
   const id = eval(params.id) as number;
   const repoDetails = await GithubService.getRepositoryById(id)
   const languages = await GithubService.getProjectLanguages(id)
+  
   const repository = projects.find(x => x.id === id)!
 
   const overviewProps = {

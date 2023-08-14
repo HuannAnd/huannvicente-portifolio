@@ -2,6 +2,7 @@ import { TProjectsBody } from "./type";
 
 export default [
   {
+    name: "Warren",
     id: 599657419,
     frameworks: ["React", "Styled-Componets", "Firebase"],
     filosophy: {
@@ -9,37 +10,13 @@ export default [
       author: "Henri Poincaré"
     },
     gallery: [
-      {
-        strategy: "mixed",
-        content: [
-          {
-            title: "Desktop Design",
-            url: "599657419/1",
-            isMobile: true,
-            isMP4: false,
-          },
-          {
-            title: "Mobile Design",
-            url: "599657419/2",
-            isMobile: false,
-            isMP4: false,
-          }
-        ]
-      },
-      {
-        strategy: "desktop",
-        content: [
-          {
-            title: "Loading Screen",
-            url: "599657419/3",
-            isMobile: false,
-            isMP4: true
-          }
-        ]
-      }
+      { path: "599657419/1", isMobile: false, isVideo: false },
+      { path: "599657419/2", isMobile: false, isVideo: false },
+      { path: "599657419/3", isMobile: true, isVideo: true }
     ]
   },
   {
+    name: "Letmeask",
     id: 617670848,
     frameworks: ["React", "Firebase"],
     filosophy: {
@@ -49,44 +26,14 @@ export default [
     hasDomain: false,
     repository_url: "https://github.com/HuannAnd/warren-challange/tree/master",
     gallery: [
-      {
-        strategy: "desktop",
-        content: [
-          {
-            url: "617668310/1",
-            isMobile: false,
-            isMP4: true,
-            title: "Open Animation"
-          },
-
-        ]
-      },
-      {
-        strategy: "desktop",
-        content: [
-          {
-            url: "617668310/2",
-            isMobile: false,
-            isMP4: true,
-            title: "Page Overview"
-          } 
-        ]
-      },
-      {
-        strategy: "desktop",
-        content: [
-          {
-            url: "617668310/3",
-            isMobile: false,
-            isMP4: false,
-            title: "Random Plant"
-          }
-        ]
-      }
+      { path: "617668310/1", isMobile: false, isVideo: true },
+      { path: "617668310/2", isMobile: false, isVideo: true },
+      { path: "617668310/3", isMobile: false, isVideo: false },
     ]
   },
   {
     id: 624459441,
+    name: "Mercantte",
     frameworks: ["Next.js", "Tailwind", "MongoDb", "Node"],
     filosophy: {
       phrase: "Eureka!",
@@ -96,40 +43,14 @@ export default [
     domain_url: "#",
     repository_url: "https://github.com/HuannAnd/Mercantte/tree/master",
     gallery: [
-      {
-        strategy: "desktop",
-        content: [
-          {
-            url: "624459441/3",
-            isMobile: false,
-            isMP4: false,
-            title: "Random Plant"
-          },
-          {
-            url: "624459441/1",
-            isMobile: false,
-            isMP4: false,
-            title: "Open Animation"
-          },
-
-        ]
-      },
-      {
-        strategy: "desktop",
-        content: [
-          ,
-          {
-            url: "624459441/2",
-            isMobile: false,
-            isMP4: true,
-            title: "Page Overview"
-          }
-        ]
-      }
+      { path: "624459441/1", isMobile: false, isVideo: false },
+      { path: "624459441/2", isMobile: false, isVideo: true },
+      { path: "624459441/3", isMobile: false, isVideo: false },
     ]
   },
   {
     id: 12998282,
+    name: "Portifolio",
     frameworks: ["Next.js", "MongoDb", "Tailwind"],
     filosophy: {
       phrase: "Imagination is more important than knowledge. For knowledge is limited, whereas imagination embraces the entire world.",
@@ -139,34 +60,7 @@ export default [
     repository_url: "",
     domain_url: "#",
     gallery: [
-      {
-        strategy: "mixed",
-        content: [
-          {
-            url: "12998282/1",
-            isMobile: false,
-            isMP4: true,
-            title: "Open Animation"
-          },
-          {
-            url: "12998282/2",
-            isMobile: true,
-            isMP4: false,
-            title: "Mobile Design"
-          }
-        ]
-      },
-      {
-        strategy: "mobile",
-        content: [
-          {
-            url: "12998282/3",
-            title: "Contact Design",
-            isMobile: true,
-            isMP4: false
-          }
-        ]
-      }
+
     ]
   },
 ] as TProjectsBody

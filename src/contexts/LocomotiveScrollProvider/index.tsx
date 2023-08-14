@@ -22,10 +22,6 @@ export default function LocomotiveScrollLayout({
   const ref = useRef(null!)
   const path = usePathname();
   const windowWidth = useWindowWidth()
-  // console.log("Window Width return inside LocomotiveScrollLayout: ", windowWidth)
-
-
-  // console.log("NavigationContextProvider Component: ", NesteingContextProvider)
 
   const options = {
     smooth: true,

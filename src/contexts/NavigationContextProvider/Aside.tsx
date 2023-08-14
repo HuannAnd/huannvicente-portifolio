@@ -87,7 +87,7 @@ function Aside({ canBeShow }: AsideProps) {
 
   return (
     <motion.aside
-      className="h-screen bg-[#080808] pl-[9vw] pr-[3vw] pointer-events-auto backdrop-blur-sm flex flex-col justify-between items-center gap-[3vw] px-[9vw] fixed z-20 left-0 top-0 "
+      className="h-[100dvh] bg-[#080808] pl-[9vw] pr-[3vw] pointer-events-auto backdrop-blur-sm flex flex-col justify-between items-center gap-[3vw] px-[9vw] fixed z-20 left-0 top-0 "
       animate={canBeShow ? "open" : "close"}
       onMouseEnter={handleOnMouseEnter}
       onMouseLeave={handleOnMouseLeave}
@@ -125,7 +125,7 @@ function Aside({ canBeShow }: AsideProps) {
           <small className="lg:text-[calc(100vw*0.00625)] md:text-[clamp(11px,_4vw,_1em)] sm:text-[1vh] font-normal block text-white/50">SOCIALS</small>
           <ul className="flex justify-between sm:gap-x-[3vw]">
             {["Instagram", "Discord", "Facebook"]
-              .map((x, i) => <li key={i} className="mb-4 text-white text-[clamp(11px,_4vw,_1em)] sm:text-[clamp(11px,_4vw,_1em)] inline first:mx-0 last:mx-0 mx-[.3em] mix-blend-difference">{x}</li>)
+              .map((x, i) => <li key={i} onMouseEnter={() => setCursorState("hovered")} onMouseLeave={() => setCursorState("normal")} className="mb-4 text-white text-[clamp(11px,_4vw,_1em)] hover:text-white/50 duration-300 ease-smooth cursor-pointer sm:text-[clamp(11px,_4vw,_1em)] inline first:mx-0 last:mx-0 mx-[.3em] mix-blend-difference">{x}</li>)
             }
           </ul>
         </div>
