@@ -25,7 +25,16 @@ function Aside({ canBeShow, navigation }: AsideProps) {
 
   const handleAsideStates = useAsideContext()
 
-  const { scroll } = useLocomotiveScroll()
+  useEffect(() => {
+    const handleWindowClick = () => handleAsideStates({ type: "set", payload: false })
+
+    window.addEventListener("click", handleWindowClick)
+    return () => {
+      window.removeEventListener("click", handleWindowClick)
+    }
+  },
+    []
+  )
 
   function handleOnMouseEnter() {
     setCursorState("normal")
@@ -48,11 +57,6 @@ function Aside({ canBeShow, navigation }: AsideProps) {
       setCursorTitle(null)
     }
   } as any
-
-  function handleOnClick(section: string) {
-    scroll.scrollTo(section)
-    handleAsideStates({ type: "set", payload: false })
-  }
 
   const pyrimadDelay = generatePyramidArray(navigation.length)
 

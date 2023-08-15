@@ -42,7 +42,8 @@ export default function Hamburguer({ canBeShow }: HamburguerProps) {
     closed: { opacity: 0, scale: 0, transition: { duration: .3 } }
   } as Variants
 
-  function handleOnClick() {
+  function handleOnClick(e: React.MouseEvent<Element, MouseEvent>) {
+    e.stopPropagation()
     handleAsideOpening({ type: "toogle" })
     setisPressed(isPressed => !isPressed)
   }
