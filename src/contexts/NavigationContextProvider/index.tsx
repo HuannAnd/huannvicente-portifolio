@@ -5,6 +5,8 @@ import { createContext, useCallback, useReducer, useState } from 'react'
 import Hamburguer from './Hamburguer';
 import Aside from './Aside';
 
+import useNavigationRouting from './useNavigationRouting';
+
 interface NavigationProviderProps {
   children: React.ReactNode
 }
@@ -34,15 +36,18 @@ export default function NavigationContextProvider({ children }: NavigationProvid
   const [showHamburguer, setShowHamburguer] = useState(false)
   const [showAside, handleAsideStates] = useReducer(reducer, false);
 
+  const navigation = useNavigationRouting(handleAsideStates)
+
   const canBeShowHamburguer = useCallback((canBeShowed: boolean) => setShowHamburguer(canBeShowed), [])
 
   return (
-    <NavigationHamburguerContext.Provider value={canBeShowHamburguer}>  
+    <NavigationHamburguerContext.Provider value={canBeShowHamburguer}>
       <NavigationAsideContext.Provider value={handleAsideStates}>
         <Hamburguer canBeShow={showHamburguer} />
-        <Aside canBeShow={showAside} />
+        <Aside navigation={navigation} canBeShow={showAside} />
         {children}
       </NavigationAsideContext.Provider>
     </NavigationHamburguerContext.Provider>
   )
 }
+

@@ -15,6 +15,20 @@ interface LocomotiveScrollProps {
   // context: React.ComponentType<any>
 }
 
+const options = {
+  smooth: true,
+  smartphone: {
+    smooth: true,
+    lerp: 1,
+    breakpoint: 0
+  },
+  tablet: {
+    smooth: true,
+    lerp: 1,
+    breakpoint: 0
+  },
+  reloadOnContextChange: true
+}
 export default function LocomotiveScrollLayout({
   children,
   // context: NesteingContextProvider
@@ -22,19 +36,6 @@ export default function LocomotiveScrollLayout({
   const ref = useRef(null!)
   const path = usePathname();
   const windowWidth = useWindowWidth()
-
-  const options = {
-    smooth: true,
-    smartphone: {
-      smooth: true,
-      breakpoint: 0
-    },
-    tablet: {
-      smooth: true,
-      breakpoint: 0
-    },
-    reloadOnContextChange: true
-  }
 
   return (
     <LocomotiveScrollProvider
