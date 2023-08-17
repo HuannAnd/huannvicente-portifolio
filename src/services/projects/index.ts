@@ -13,7 +13,8 @@ export default [
       { path: "599657419/1", isMobile: false, isVideo: false },
       { path: "599657419/2", isMobile: false, isVideo: false },
       { path: "599657419/3", isMobile: true, isVideo: true }
-    ]
+    ],
+    isInMaintenance: false
   },
   {
     name: "Letmeask",
@@ -29,7 +30,8 @@ export default [
       { path: "617668310/1", isMobile: false, isVideo: true },
       { path: "617668310/2", isMobile: false, isVideo: true },
       { path: "617668310/3", isMobile: false, isVideo: false },
-    ]
+    ],
+    isInMaintenance: false
   },
   {
     id: 624459441,
@@ -46,7 +48,8 @@ export default [
       { path: "624459441/1", isMobile: false, isVideo: false },
       { path: "624459441/2", isMobile: false, isVideo: true },
       { path: "624459441/3", isMobile: false, isVideo: false },
-    ]
+    ],
+    isInMaintenance: false
   },
   {
     id: 12998282,
@@ -61,7 +64,40 @@ export default [
     domain_url: "#",
     gallery: [
 
-    ]
+    ],
+    isInMaintenance: true
   },
+  {
+    id: 13123,
+    name: "Concessionaria A Turma",
+    frameworks: ["SCSS", "Next.js", "Java Spring", "MongoDb"],
+    filosophy: {
+      phrase: "",
+      author: ""
+    },
+    hasDomain: false,
+    repository_url: "",
+    domain_url: "",
+    gallery: [
+
+    ],
+    isInMaintenance: true
+  },
+  {
+    id: 123123123,
+    name: "HigiaBit",
+    frameworks: [],
+    filosophy: {
+      phrase: "",
+      author: ""
+    },
+    hasDomain: false,
+    repository_url: "",
+    domain_url: "",
+    gallery: [
+
+    ],
+    isInMaintenance: true
+  }
 ] as TProjectsBody
 

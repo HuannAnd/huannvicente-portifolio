@@ -24,7 +24,8 @@ export interface IProjectData {
   gallery: IImageContent[]
   hasDomain: boolean
   domain_url?: string
-  repository_url: string
+  repository_url: string,
+  isInMaintenance: boolean
 }
 
 export type TProjectsBody = IProjectData[]

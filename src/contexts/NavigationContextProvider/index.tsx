@@ -1,11 +1,14 @@
 'use client';
 
-import { createContext, useCallback, useReducer, useState } from 'react'
+import { createContext, useCallback, useLayoutEffect, useReducer, useState } from 'react'
 
 import Hamburguer from './Hamburguer';
 import Aside from './Aside';
 
 import useNavigationRouting from './useNavigationRouting';
+
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 interface NavigationProviderProps {
   children: React.ReactNode
@@ -37,7 +40,6 @@ export default function NavigationContextProvider({ children }: NavigationProvid
   const [showAside, handleAsideStates] = useReducer(reducer, false);
 
   const navigation = useNavigationRouting(handleAsideStates)
-
   const canBeShowHamburguer = useCallback((canBeShowed: boolean) => setShowHamburguer(canBeShowed), [])
 
   return (

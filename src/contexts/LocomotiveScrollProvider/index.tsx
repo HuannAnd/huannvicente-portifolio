@@ -1,6 +1,6 @@
 "use client"
 
-import { ElementType, useMemo, useRef } from 'react';
+import { ElementType, useEffect, useMemo, useRef } from 'react';
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 
 import { usePathname } from 'next/navigation';
@@ -36,6 +36,15 @@ export default function LocomotiveScrollLayout({
   const ref = useRef(null!)
   const path = usePathname();
   const windowWidth = useWindowWidth()
+
+  useEffect(() => {
+    setTimeout(() => {
+      const html = document.querySelector("html")!
+      html.style.cursor = "default"
+    }, 1000)
+  },
+    []
+  )
 
   return (
     <LocomotiveScrollProvider

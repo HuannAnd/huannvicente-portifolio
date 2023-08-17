@@ -16,7 +16,7 @@ function Skills() {
 
   useEffect(() => {
     if (isInView) {
-      animate("li", { opacity: 1, y: 0 }, { delay: stagger(0.3), duration: 1 })
+      animate("li", { opacity: 1, y: 0 }, { delay: stagger(0.1), duration: 2 })
     }
   },
     [isInView]
@@ -38,7 +38,7 @@ function Skills() {
       <div className="pt-[calc(3vw_*_.75)]">
         <motion.div
           initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1, transition: { duration: 1, ease: "easeIn" } }}
+          whileInView={{ scaleX: 1, transition: { duration: .3, ease: "easeIn" } }}
           viewport={{ once: true }}
           className="absolute top-0 font-semibold left-0 bg-white z-10 -translate-y-full h-[4px] w-full"
         />
@@ -63,6 +63,7 @@ function Skills() {
                       key={key}
                       className="py-2 w-full text-white text-[16px] font-normal"
                       initial={{ opacity: 0, y: 48 }}
+                      transition={{ duration: .1 }}
                     >{title}</motion.li>
                   </div>)
                 )
@@ -82,6 +83,7 @@ function Skills() {
                       key={key}
                       className="py-2 w-full text-white text-[16px] font-normal"
                       initial={{ opacity: 0, y: 48 }}
+                      transition={{ duration: .1 }}
                     >{title}</motion.li>
                   </div>)
                 )
@@ -101,6 +103,7 @@ function Skills() {
                       key={key}
                       className="py-2 w-full text-white text-[16px] font-normal"
                       initial={{ opacity: 0, y: 48 }}
+                      transition={{ duration: .1 }}
                     >{title}</motion.li>
                   </div>)
                 )

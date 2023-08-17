@@ -1,5 +1,9 @@
 import dynamic from 'next/dynamic';
 
+import projects from '@/services/projects';
+
+// import { useEffect, useState } from 'react';
+
 const Load = dynamic(
   () => import("@/components/Load"),
   { ssr: true }
@@ -44,19 +48,12 @@ const Skills = dynamic(
 
 
 export default async function Home() {
-  const projects = [
-    { name: "Letmeask", id: 617670848, isDeveloped: false },
-    { name: "Warren", id: 599657419, isDeveloped: false },
-    { name: "Mercantte", id: 624459441, isDeveloped: true },
-    { name: "Portifolio", id: 12998282, isDeveloped: true }
-  ]
-
   return (
     <>
-      <main data-scroll data-scroll-section className='text-white h-screen relative'>
+      <div data-scroll data-scroll-section className='text-white h-screen relative'>
         <CubicsFalling />
         <Hero />
-      </main>
+      </div>
       <About />
       <Projects projects={projects} />
       <Skills />

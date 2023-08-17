@@ -14,6 +14,11 @@ interface ContactProps {
 
 }
 
+const midia = [
+  { title: "Instagram", href: "https://www.instagram.com/huann_vt/" },
+  { title: "Discord", href: "#" }
+]
+
 const Contact: React.FunctionComponent<ContactProps> = ({ }) => {
   console.log("Contact was render")
   const ref = useRef<HTMLDivElement>(null!)
@@ -82,8 +87,8 @@ const Contact: React.FunctionComponent<ContactProps> = ({ }) => {
         <div className="sm:pb-[3vw]">
           <small className="font-normal text-white/50">SOCIALS</small>
           <ul className="lg:inline md:inline sm:flex sm:gap-x-[3vw]">
-            {["Instagram", "Discord", "Facebook"]
-              .map((x, i) => <li key={i} onMouseEnter={() => setCursorState("hovered")} onMouseLeave={() => setCursorState("normal")} className="mb-4 hover:text-white/50 duration-300 ease-smooth cursor-pointer text-white mix-blend-difference">{x}</li>)
+            {midia
+              .map((x, i) => <li key={i} onMouseEnter={() => setCursorState("hovered")} onMouseLeave={() => setCursorState("normal")} className="mb-4 hover:text-white/50 duration-300 ease-smooth cursor-pointer text-white mix-blend-difference"><a target="_blank" href={x.href}>{x.title}</a></li>)
             }
           </ul>
         </div>

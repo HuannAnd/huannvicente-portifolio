@@ -18,6 +18,10 @@ interface AsideProps {
   navigation: { title: string, onClick: () => void }[]
 }
 
+const midia = [
+  { title: "Instagram", href: "https://www.instagram.com/huann_vt/" },
+  { title: "Discord", href: "#" }
+]
 function Aside({ canBeShow, navigation }: AsideProps) {
   const setCursorState = useFollowerSetState()
   const setCursorTitle = useFollowerSetTitle()
@@ -99,8 +103,8 @@ function Aside({ canBeShow, navigation }: AsideProps) {
         <div className="sm:pb-[3vw] w-full">
           <small className="lg:text-[calc(100vw*0.00625)] md:text-[clamp(11px,_4vw,_1em)] sm:text-[1vh] font-normal block text-white/50">SOCIALS</small>
           <ul className="flex justify-between sm:gap-x-[3vw]">
-            {["Instagram", "Discord", "Facebook"]
-              .map((x, i) => <li key={i} onMouseEnter={() => setCursorState("hovered")} onMouseLeave={() => setCursorState("normal")} className="mb-4 text-white text-[clamp(11px,_4vw,_1em)] hover:text-white/50 duration-300 ease-smooth cursor-pointer sm:text-[clamp(11px,_4vw,_1em)] inline first:mx-0 last:mx-0 mx-[.3em] mix-blend-difference">{x}</li>)
+            {midia
+              .map((x, i) => <li key={i} onMouseEnter={() => setCursorState("hovered")} onMouseLeave={() => setCursorState("normal")} className="mb-4 text-white text-[clamp(11px,_4vw,_1em)] hover:text-white/50 duration-300 ease-smooth cursor-pointer sm:text-[clamp(11px,_4vw,_1em)] inline first:mx-0 last:mx-0 mx-[.3em] mix-blend-difference"><a target="_blank" href={x.href}>{x.title}</a></li>)
             }
           </ul>
         </div>

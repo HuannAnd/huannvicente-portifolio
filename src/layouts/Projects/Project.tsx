@@ -7,14 +7,16 @@ import { useRouter } from "next/navigation";
 import useFollowerSetTitle from "@/hooks/useFollowerSetTitle";
 import useFollowerSetState from "@/hooks/useFollowerSetState";
 import useFollowerSetIsLoading from "@/hooks/useFollowerSetIsLoading";
+import wait from "@/utils/wait";
 
 type ProjectProps = React.HTMLAttributes<HTMLDivElement> & {
   project: {
     name: string,
     id: number,
-    isDeveloped: boolean
+    isInMaintenance: boolean
   },
-  nTh: number
+  nTh: number,
+  // isInMaintanance?: boolean
 }
 
 function Project({ project, nTh, ...props }: ProjectProps) {
@@ -40,10 +42,14 @@ function Project({ project, nTh, ...props }: ProjectProps) {
   }
 
   function previewProject() {
-    setTitle(null)
-    setCursorState("normal")
-    setIsLoading(true)
-    router.push(`/repository/${project.id}`)
+    if (project.isInMaintenance) {
+      setTitle("Maintenance")
+    } else {
+      setTitle(null)
+      setCursorState("normal")
+      setIsLoading(true)
+      router.push(`/repository/${project.id}`)
+    }
   }
 
   return (

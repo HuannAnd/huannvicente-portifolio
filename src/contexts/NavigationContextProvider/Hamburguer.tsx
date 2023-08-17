@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Variants, motion } from "framer-motion";
 
@@ -9,12 +9,19 @@ import useFollowerSetTitle from "@/hooks/useFollowerSetTitle";
 import useAsideContext from "@/hooks/useAsideContext";
 
 
-
 interface HamburguerProps {
   canBeShow: boolean
 }
 
+const variants = {
+  pressed: { opacity: 1, scale: 1, borderRadius: "999px" },
+  normal: { opacity: 1, scale: 1, borderRadius: "0px" },
+  closed: { opacity: 0, scale: 0, transition: { duration: .3 } }
+} as Variants
+
+
 export default function Hamburguer({ canBeShow }: HamburguerProps) {
+  const burger = useRef(null!)
   const setCursorState = useFollowerSetState()
   const setCursorTitle = useFollowerSetTitle()
   const [isPressed, setisPressed] = useState(false)
@@ -36,12 +43,6 @@ export default function Hamburguer({ canBeShow }: HamburguerProps) {
     setisPressed(false)
   }, [canBeShow])
 
-  const variants = {
-    pressed: { opacity: 1, scale: 1, borderRadius: "999px" },
-    normal: { opacity: 1, scale: 1, borderRadius: "0px" },
-    closed: { opacity: 0, scale: 0, transition: { duration: .3 } }
-  } as Variants
-
   function handleOnClick(e: React.MouseEvent<Element, MouseEvent>) {
     e.stopPropagation()
     handleAsideOpening({ type: "toogle" })
@@ -51,11 +52,10 @@ export default function Hamburguer({ canBeShow }: HamburguerProps) {
   return (
     <motion.div
       aria-label="hamburguer"
-      // animate={controls}
+      ref={burger}
       onClick={handleOnClick}
       initial="closed"
       animate={canBeShow ? (isPressed ? "pressed" : "normal") : "closed"}
-      // whileHover={{ rotate: "45deg" }}
       transition={{ duration: .3 }}
       variants={variants}
       {...handles}
@@ -82,3 +82,4 @@ export default function Hamburguer({ canBeShow }: HamburguerProps) {
     </motion.div>
   )
 }
+

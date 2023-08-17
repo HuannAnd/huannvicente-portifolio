@@ -7,22 +7,19 @@ import { motion, useInView } from "framer-motion";
 import useHamburguerContext from "@/hooks/useHamburguerContext";
 
 import Project from "./Project";
+import { TProjectsBody } from "@/services/projects/type";
 
 
 type ProjectsProps = {
-  projects: {
-    name: string,
-    id: number,
-    isDeveloped: boolean
-  }[]
+  projects: TProjectsBody
 }
 
 function Projects({ projects }: ProjectsProps) {
   const ref = useRef<HTMLDivElement>(null!)
   console.log("Projects was render")
 
-  const developed = projects.filter(r => r.isDeveloped)
-  const prototyped = projects.filter(r => !r.isDeveloped)
+  const developed = projects.filter(r => !r.isInMaintenance)
+  const prototyped = projects.filter(r => r.isInMaintenance)
 
   return (
     <section
@@ -55,7 +52,7 @@ function Projects({ projects }: ProjectsProps) {
       >
         <small className="py-10 uppercase bg-transparent text-white/50 h-auto col-span-12 font-light select-none">Developed</small>
         {developed.map((project, i) => <Project key={i} nTh={i + 1} project={project} />)}
-        <small className="py-10 uppercase bg-transparent text-white/50 h-auto col-span-12 font-light select-none">Prototyped</small>
+        <small className="py-10 uppercase bg-transparent text-white/50 h-auto col-span-12 font-light select-none">Developing</small>
         {prototyped.map((project, i) => <Project key={i} nTh={developed.length + i + 1} project={project} />)}
       </motion.div>
     </section>

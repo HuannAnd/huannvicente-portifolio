@@ -13,6 +13,7 @@ const springConfig = {
   type: "spring",
   damping: 30,
   stiffness: 150,
+  mass: .2,
   restDelta: 0.001
 }
 
