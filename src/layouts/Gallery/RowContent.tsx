@@ -2,16 +2,16 @@
 
 import { useRef } from "react"
 
-import useFollowerSetState from "@/hooks/useFollowerSetState"
+import { VariantProps, cva } from "class-variance-authority"
+
 import useLoad from "@/hooks/useLoad"
 
 import { IImageContent } from "@/services/projects/type"
-import { VariantProps, cva } from "class-variance-authority"
 
 import cn from "@/utils/cn"
 
 const divContentVariants = cva(
-  "cursor-pointer relative group/snapshot min-h-[80vh] flex flex-wrap justify-center items-center overflow-hidden",
+  "relative group/snapshot min-h-[80vh] flex flex-wrap justify-center items-center overflow-hidden",
   {
     variants: {
       device: {
@@ -64,7 +64,7 @@ function VideoSnapshot({ path }: { path: string }) {
   return (
     <video
       className={cn(
-        "my-auto block sm:my-auto w-full cursor-pointer h-auto duration-500 ease-smooth",
+        "my-auto block w-full h-auto duration-500 ease-smooth",
         "sm:my-auto"
       )}
       aria-label="Video"
@@ -89,7 +89,7 @@ function Snapshot({ path }: { path: string }) {
     >
       <img
         className={cn(
-          "object-contain w-full h-auto group-hover/snapshot:scale-105 delay-300 duration-300 ease-smooth",
+          "object-contain w-full h-auto delay-300 duration-300 ease-smooth",
           "sm:my-auto",
           isLoaded ? "" : "animate-pulse"
         )}

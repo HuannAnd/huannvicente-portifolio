@@ -14,6 +14,11 @@ interface ContactProps {
 
 }
 
+const midia = [
+  { title: "Instagram", href: "https://www.instagram.com/huann_vt/" },
+  { title: "Discord", href: "#" }
+]
+
 const Contact: React.FunctionComponent<ContactProps> = ({ }) => {
   console.log("Contact was render")
   const ref = useRef<HTMLDivElement>(null!)
@@ -41,7 +46,7 @@ const Contact: React.FunctionComponent<ContactProps> = ({ }) => {
         <div className="col-span-8 lg:order-1 md:order-1 sm:order-2">
           <div className="col-span-5">
             <div className="w-full">
-              <h1 className="text-[clamp(100px,_10vw,_200px)] my-auto align-middle sm:text-center md:text-left lg:text-left font-semibold uppercase text-white">Contact</h1>
+              <h1 className="text-[clamp(5em,_10vw,_200px)] my-auto align-middle sm:text-center md:text-left lg:text-left font-semibold uppercase text-white">Contact</h1>
             </div>
           </div>
         </div>
@@ -82,13 +87,13 @@ const Contact: React.FunctionComponent<ContactProps> = ({ }) => {
         <div className="sm:pb-[3vw]">
           <small className="font-normal text-white/50">SOCIALS</small>
           <ul className="lg:inline md:inline sm:flex sm:gap-x-[3vw]">
-            {["Instagram", "Discord", "Facebook"]
-              .map((x, i) => <li key={i} onMouseEnter={() => setCursorState("hovered")} onMouseLeave={() => setCursorState("normal")} className="mb-4 hover:text-white/50 duration-300 ease-smooth cursor-pointer text-white mix-blend-difference">{x}</li>)
+            {midia
+              .map((x, i) => <li key={i} onMouseEnter={() => setCursorState("hovered")} onMouseLeave={() => setCursorState("normal")} className="mb-4 hover:text-white/50 duration-300 ease-smooth cursor-pointer text-white mix-blend-difference"><a target="_blank" href={x.href}>{x.title}</a></li>)
             }
           </ul>
         </div>
         <hr className="" />
-        <div className="grid place-content-center pb-[3vw] sm:pt-[3vw]">
+        <div className="grid place-content-center sm:py-[3vw]">
           <p className="text-white">
             &copy; Developed By Huann Vicente
           </p>

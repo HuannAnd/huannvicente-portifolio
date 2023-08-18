@@ -1,6 +1,6 @@
 "use client"
 
-import { ElementType, useMemo, useRef } from 'react';
+import { ElementType, useEffect, useMemo, useRef } from 'react';
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 
 import { usePathname } from 'next/navigation';
@@ -15,6 +15,20 @@ interface LocomotiveScrollProps {
   // context: React.ComponentType<any>
 }
 
+const options = {
+  smooth: true,
+  smartphone: {
+    smooth: true,
+    lerp: 1,
+    breakpoint: 0
+  },
+  tablet: {
+    smooth: true,
+    lerp: 1,
+    breakpoint: 0
+  },
+  reloadOnContextChange: true
+}
 export default function LocomotiveScrollLayout({
   children,
   // context: NesteingContextProvider
@@ -23,18 +37,14 @@ export default function LocomotiveScrollLayout({
   const path = usePathname();
   const windowWidth = useWindowWidth()
 
-  const options = {
-    smooth: true,
-    smartphone: {
-      smooth: true,
-      breakpoint: 0
-    },
-    tablet: {
-      smooth: true,
-      breakpoint: 0
-    },
-    reloadOnContextChange: true
-  }
+  useEffect(() => {
+    setTimeout(() => {
+      const html = document.querySelector("html")!
+      html.style.cursor = "default"
+    }, 1000)
+  },
+    []
+  )
 
   return (
     <LocomotiveScrollProvider

@@ -16,7 +16,7 @@ function Skills() {
 
   useEffect(() => {
     if (isInView) {
-      animate("li", { opacity: 1, y: 0 }, { delay: stagger(0.3), duration: 1 })
+      animate("li", { opacity: 1, y: 0 }, { delay: stagger(0.1), duration: 2 })
     }
   },
     [isInView]
@@ -38,7 +38,7 @@ function Skills() {
       <div className="pt-[calc(3vw_*_.75)]">
         <motion.div
           initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1, transition: { duration: 1, ease: "easeIn" } }}
+          whileInView={{ scaleX: 1, transition: { duration: .3, ease: "easeIn" } }}
           viewport={{ once: true }}
           className="absolute top-0 font-semibold left-0 bg-white z-10 -translate-y-full h-[4px] w-full"
         />
@@ -46,7 +46,7 @@ function Skills() {
           data-scroll
           data-scroll-speed="-1"
           data-scroll-direction="horizontal"
-          className="text-[clamp(100px,_10vw,_200px)] ease-fast w-auto pl-[3vw] font-bold uppercase">
+          className="text-[clamp(5em,_10vw,_200px)] ease-fast w-auto pl-[3vw] font-bold uppercase">
           SKILLS
         </h1>
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 sm:gap-y-[3vw] gap-x-[3vw] w-full h-auto px-[3vw]">
@@ -63,6 +63,7 @@ function Skills() {
                       key={key}
                       className="py-2 w-full text-white text-[16px] font-normal"
                       initial={{ opacity: 0, y: 48 }}
+                      transition={{ duration: .1 }}
                     >{title}</motion.li>
                   </div>)
                 )
@@ -82,6 +83,7 @@ function Skills() {
                       key={key}
                       className="py-2 w-full text-white text-[16px] font-normal"
                       initial={{ opacity: 0, y: 48 }}
+                      transition={{ duration: .1 }}
                     >{title}</motion.li>
                   </div>)
                 )
@@ -101,6 +103,7 @@ function Skills() {
                       key={key}
                       className="py-2 w-full text-white text-[16px] font-normal"
                       initial={{ opacity: 0, y: 48 }}
+                      transition={{ duration: .1 }}
                     >{title}</motion.li>
                   </div>)
                 )

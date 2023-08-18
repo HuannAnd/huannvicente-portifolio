@@ -26,7 +26,7 @@ export default function Gallery({ photos }: GalleryProps) {
       <div
         className="w-full px-[3vw] flex flex-wrap justify-center items-start"
         data-scroll
-        data-scroll-speed=".7"
+        data-scroll-speed=".3"
       >
         {photos.map((photo, index) => <RowContent {...photo} device={photo.isMobile ? "mobile" : "desktop"}  key={`snapshot_${index}`} />)}
       </div>

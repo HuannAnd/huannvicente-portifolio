@@ -1,11 +1,17 @@
-export default function getNextProjectId(projects: any[], id: number): number {
-  let nextIndex = projects.findIndex(x => x === id) + 1
-  console.log("Next index: ", nextIndex);
+
+import { IProjectData, TProjectsBody } from "@/services/projects/type";
+
+export default function getNextProjectId(projects: TProjectsBody, id: number): IProjectData {
+  let nextIndex = projects.findIndex(x => x.id === id) + 1
   nextIndex = nextIndex % projects.length
 
-  const nextProjectId = projects[nextIndex]
-  console.log("Next Project id: ", nextProjectId);
+  while (projects[nextIndex].isInMaintenance) {
+    nextIndex = (nextIndex + 1) % projects.length
+  }
+
+  const nextProject = projects[nextIndex]
+  console.log("Next Project id: ", nextProject);
 
 
-  return nextProjectId
+  return nextProject
 }

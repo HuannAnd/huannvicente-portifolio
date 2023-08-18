@@ -6,33 +6,35 @@ import Link from "next/link";
 
 import useFollowerSetState from "@/hooks/useFollowerSetState";
 import useFollowerTitle from "@/hooks/useFollowerSetTitle";
-import useProjectsContext from "@/hooks/useProjectsContext";
-
-import getNextProjectId from "@/utils/getNextProjectId";
+// import useProjectsContext from "@/hooks/useProjectsContext";
 import useFollowerSetCursorIcon from "@/hooks/useFollowerSetCursorIcon";
 
+import projects from "@/services/projects";
+
+import getNextProjectId from "@/utils/getNextProjectId";
 
 interface BackToHomeProps {
   id: number
 }
+
+const midia = [
+  { title: "Instagram", href: "https://www.instagram.com/huann_vt/" },
+  { title: "Discord", href: "#" }
+]
 
 export default function BackToHome({ id }: BackToHomeProps) {
   const setCursorState = useFollowerSetState()
   const setCursorIcon = useFollowerSetCursorIcon()
   const setTitle = useFollowerTitle()
 
-  const projects = useProjectsContext();
-  // console.log("useProjectsContext value: ", projects);
-
-  const nextProjectId = useMemo(() => getNextProjectId(projects, id), [id])
-
+  const nextProject = useMemo(() => getNextProjectId(projects, id), [id])
+  console.log("nextProject value: ", nextProject)
   const handleMouseEnter = useCallback(() => {
-    setTitle("Letmeask")
+    setTitle(nextProject.name)
     setCursorState("hovered")
   },
     []
   );
-
   const handleMouseLeave = useCallback(() => {
     setTitle(null)
     setCursorIcon(null)
@@ -46,7 +48,7 @@ export default function BackToHome({ id }: BackToHomeProps) {
       <Link
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        href={`/repository/${nextProjectId}`}
+        href={`/repository/${nextProject.id}`}
         onClick={() => setCursorState("normal")}
         className="w-full py-[3vw] hover:text-white/50 duration-300 ease-smooth cursor-pointer text-[20px] font-regular text-white text-center border-t-2 border-t-[#111]"
       >
@@ -54,9 +56,9 @@ export default function BackToHome({ id }: BackToHomeProps) {
       </Link>
       <Link
         onMouseLeave={handleMouseLeave}
-        onMouseEnter={() => {setCursorState("hovered"); setCursorIcon("home")}}
+        onMouseEnter={() => { setCursorState("hovered"); setCursorIcon("home") }}
         href="/"
-        onClick={() => setCursorState("normal")}
+        onClick={() => { setCursorState("normal") }}
         className="w-full py-[3vw] hover:text-white/50 duration-300 ease-smooth cursor-pointer text-[20px] font-regular text-white text-center border-t-2 border-t-[#111]"
       >
         Home
@@ -65,8 +67,8 @@ export default function BackToHome({ id }: BackToHomeProps) {
         <div>
           <small className="font-normal text-white/50">SOCIALS</small>
           <ul>
-            {["Instagram", "Discord", "Facebook"]
-              .map((x, i) => <li key={i} className="mb-4 text-white mix-blend-difference">{x}</li>)
+            {midia
+              .map((x, i) => <li key={i} className="mb-4 text-white mix-blend-difference"><a target="_blank" href={x.href}>{x.title}</a></li>)
             }
           </ul>
         </div>
