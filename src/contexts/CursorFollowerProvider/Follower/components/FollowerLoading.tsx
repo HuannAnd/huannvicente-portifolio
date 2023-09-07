@@ -8,7 +8,7 @@ interface FolowerLoadingProps {
 }
 
 export default function FolowerLoading({ }: FolowerLoadingProps) {
-  console.log("FolowerLoading has render")
+  // console.log("FolowerLoading has render")
   const isLoading = useLoading()
 
   // console.log("IsLoading inside FolowerLoading: ", isLoading)

@@ -22,6 +22,26 @@ const midia = [
   { title: "Instagram", href: "https://www.instagram.com/huann_vt/" },
   { title: "Discord", href: "#" }
 ]
+
+const linksVariants = {
+  open: (i: number) => ({
+    x: "0%",
+    color: "rgba(255,255,255)",
+    opacity: 1,
+    transition: { delay: i * -0.1, duration: 1, ease: [0.22, 1, 0.36, 1] }
+  }),
+  closed: (i: number) => ({
+    x: "-100%",
+    color: "rgba(255,255,255)",
+    opacity: 0,
+    transition: { delay: i * -0.1, duration: 1, ease: [0.22, 1, 0.36, 1] }
+  })
+} as Variants
+
+const variants = {
+  close: { x: "-100%", transition: { duration: .5 } },
+  open: { x: "0%", transition: { duration: .5, ease: "easeOut" } }
+} as Variants
 function Aside({ canBeShow, navigation }: AsideProps) {
   const setCursorState = useFollowerSetState()
   const setCursorTitle = useFollowerSetTitle()
@@ -102,7 +122,7 @@ function Aside({ canBeShow, navigation }: AsideProps) {
       <footer className="flex bottom-0 lg:flex-row md:flex-row sm:flex-col justify-between w-full pt-[3vw]">
         <div className="sm:pb-[3vw] w-full">
           <small className="lg:text-[calc(100vw*0.00625)] md:text-[clamp(11px,_4vw,_1em)] sm:text-[1vh] font-normal block text-white/50">SOCIALS</small>
-          <ul className="flex justify-between sm:gap-x-[3vw]">
+          <ul className="flex justify-evenly sm:gap-x-[3vw]">
             {midia
               .map((x, i) => <li key={i} onMouseEnter={() => setCursorState("hovered")} onMouseLeave={() => setCursorState("normal")} className="mb-4 text-white text-[clamp(11px,_4vw,_1em)] hover:text-white/50 duration-300 ease-smooth cursor-pointer sm:text-[clamp(11px,_4vw,_1em)] inline first:mx-0 last:mx-0 mx-[.3em] mix-blend-difference"><a target="_blank" href={x.href}>{x.title}</a></li>)
             }
@@ -113,24 +133,6 @@ function Aside({ canBeShow, navigation }: AsideProps) {
   )
 }
 
-const linksVariants = {
-  open: (i: number) => ({
-    x: "0%",
-    color: "rgba(255,255,255)",
-    opacity: 1,
-    transition: { delay: i * -0.1, duration: 1, ease: [0.22, 1, 0.36, 1] }
-  }),
-  closed: (i: number) => ({
-    x: "-100%",
-    color: "rgba(255,255,255)",
-    opacity: 0,
-    transition: { delay: i * -0.1, duration: 1, ease: [0.22, 1, 0.36, 1] }
-  })
-} as Variants
 
-const variants = {
-  close: { x: "-100%", transition: { duration: .5 } },
-  open: { x: "0%", transition: { duration: .5, ease: "easeOut" } }
-} as Variants
 
 export default memo(Aside)

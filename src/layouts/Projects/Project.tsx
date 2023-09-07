@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation";
 import useFollowerSetTitle from "@/hooks/useFollowerSetTitle";
 import useFollowerSetState from "@/hooks/useFollowerSetState";
 import useFollowerSetIsLoading from "@/hooks/useFollowerSetIsLoading";
-import wait from "@/utils/wait";
 
 type ProjectProps = React.HTMLAttributes<HTMLDivElement> & {
   project: {
@@ -16,11 +15,9 @@ type ProjectProps = React.HTMLAttributes<HTMLDivElement> & {
     isInMaintenance: boolean
   },
   nTh: number,
-  // isInMaintanance?: boolean
 }
 
 function Project({ project, nTh, ...props }: ProjectProps) {
-  // console.log("Project render ", nTh);
   const router = useRouter()
 
   const setCursorState = useFollowerSetState()

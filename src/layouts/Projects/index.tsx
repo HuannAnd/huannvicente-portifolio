@@ -1,12 +1,9 @@
 "use client";
 
-import { memo, useEffect, useRef } from "react";
-
-import { motion, useInView } from "framer-motion";
-
-import useHamburguerContext from "@/hooks/useHamburguerContext";
+import { motion } from "framer-motion";
 
 import Project from "./Project";
+
 import { TProjectsBody } from "@/services/projects/type";
 
 
@@ -15,9 +12,6 @@ type ProjectsProps = {
 }
 
 function Projects({ projects }: ProjectsProps) {
-  const ref = useRef<HTMLDivElement>(null!)
-  console.log("Projects was render")
-
   const developed = projects.filter(r => !r.isInMaintenance)
   const prototyped = projects.filter(r => r.isInMaintenance)
 
@@ -25,9 +19,8 @@ function Projects({ projects }: ProjectsProps) {
     <section
       data-scroll
       data-scroll-section
-      ref={ref}
       id="projects"
-      className="w-full h-auto grid grid-rows-1 overflow-x-hidden py-[9vw] relative bg-inherit text-white shadow-[0_20px_20px_#00000081]
+      className="w-full h-auto grid bg-black grid-rows-1 overflow-x-hidden py-[9vw] relative bg-inherit text-white shadow-[0_20px_20px_#00000081]
         after:w-full after:absolute after:top-full"
     >
       <motion.div

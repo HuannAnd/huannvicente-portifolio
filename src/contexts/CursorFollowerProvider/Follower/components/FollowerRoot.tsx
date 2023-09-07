@@ -35,29 +35,29 @@ export default function FollowerRoot({ children }: FollowerRootProps) {
 }
 
 function useFollowerCoordinates() {
-  const left = useMotionValue(0)
-  const top = useMotionValue(0)
+const left = useMotionValue(0)
+const top = useMotionValue(0)
 
-  const x = useSpring(left, springConfig)
-  const y = useSpring(top, springConfig)
+const x = useSpring(left, springConfig)
+const y = useSpring(top, springConfig)
 
-  useEffect(() => {
-    function handleMouseMove(e: PointerEvent) {
-      const newLeft = e.clientX - 50;
-      const newTop = e.clientY - 50;
+useEffect(() => {
+  function handleMouseMove(e: PointerEvent) {
+    const newLeft = e.clientX - 50;
+    const newTop = e.clientY - 50;
 
-      left.set(newLeft)
-      top.set(newTop)
-    }
+    left.set(newLeft)
+    top.set(newTop)
+  }
 
-    window.addEventListener("pointermove", handleMouseMove)
+  window.addEventListener("pointermove", handleMouseMove)
 
-    return () => {
-      window.removeEventListener("pointermove", handleMouseMove)
-    }
-  },
-    []
-  )
+  return () => {
+    window.removeEventListener("pointermove", handleMouseMove)
+  }
+},
+  []
+)
 
-  return [x, y]
+return [x, y]
 }

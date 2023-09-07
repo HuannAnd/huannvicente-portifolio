@@ -45,9 +45,9 @@ export default [
     domain_url: "#",
     repository_url: "https://github.com/HuannAnd/Mercantte/tree/master",
     gallery: [
-      { path: "624459441/1", isMobile: false, isVideo: false },
+      { path: "624459441/1", isMobile: true, isVideo: false },
       { path: "624459441/2", isMobile: false, isVideo: true },
-      { path: "624459441/3", isMobile: false, isVideo: false },
+      { path: "624459441/3", isMobile: false, isVideo: true },
     ],
     isInMaintenance: false
   },

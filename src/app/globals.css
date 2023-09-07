@@ -15,6 +15,7 @@ button {
 *::-webkit-scrollbar {
   display: none;
 }
+
 html {
   cursor: wait;
 }

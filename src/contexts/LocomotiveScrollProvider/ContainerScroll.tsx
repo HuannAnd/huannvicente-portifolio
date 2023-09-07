@@ -9,7 +9,7 @@ function ContainerScroll({ children, ...props }: ContainerScrollProps, ref: Reac
     <div
       data-scroll-container
       ref={ref}
-      className="max-w-[1440px] pointer-events-none lg:w-auto h-auto sm:w-screen mx-auto mb-8 bg-transparent"
+      className="max-w-[1440px] pointer-events-none bg-black lg:w-auto h-auto sm:w-screen mx-auto mb-8"
       {...props}
     >
       {children}

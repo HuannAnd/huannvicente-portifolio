@@ -9,7 +9,7 @@ interface SkillsProps {
 }
 
 function Skills() {
-  console.log("Skills was render")
+  // console.log("Skills was render")
 
   const [scope, animate] = useAnimate()
   const isInView = useInView(scope, { once: true })

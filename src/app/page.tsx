@@ -1,5 +1,7 @@
 import dynamic from 'next/dynamic';
 
+import StaticPlaceholderBlur from '@/components/StaticPlaceholderBlur'
+
 import projects from '@/services/projects';
 
 // import { useEffect, useState } from 'react';
@@ -58,6 +60,9 @@ export default async function Home() {
       <Projects projects={projects} />
       <Skills />
       <Contact />
+      {/* <div className='w-[250px] aspect-square relative'>
+        <StaticPlaceholderBlur quality={100} alt='image' src="/profile/image.jpeg" />
+      </div> */}
     </>
   );
 }

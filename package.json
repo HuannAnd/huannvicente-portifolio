@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@plaiceholder/next": "^3.0.0",
     "@radix-ui/react-icons": "^1.3.0",
     "@react-three/drei": "^9.77.3",
     "@react-three/fiber": "^8.13.3",
@@ -32,7 +33,8 @@
     "gsap": "^3.12.1",
     "locomotive-scroll": "^4.1.4",
     "mongodb": "^5.7.0",
-    "next": "13.4.5",
+    "next": "^13.4.19",
+    "plaiceholder": "^3.0.0",
     "postcss": "8.4.24",
     "react": "18.2.0",
     "react-dom": "18.2.0",

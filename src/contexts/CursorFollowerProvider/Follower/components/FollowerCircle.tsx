@@ -11,7 +11,7 @@ interface FollowerCircleProps {
 }
 
 function FollowerCircle({  }: FollowerCircleProps, ref: React.ForwardedRef<AnimationScope<SVGSVGElement>>) {
-  console.log("FollowerCircle has render")
+  // console.log("FollowerCircle has render")
   const isLoading = useLoading()
 
   // console.log("IsLoading inside FollowerCircle: ", isLoading)

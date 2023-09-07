@@ -1,18 +1,14 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 
-import { motion, stagger, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 import splittedText from "@/utils/splittedText";
 import useFollowerSetIsLoading from "@/hooks/useFollowerSetIsLoading";
-// import useHamburguerContext from "@/hooks/useNavigationContext";
 
 
 export default function About() {
-  console.log("About was render")
-
-  const ref = useRef<HTMLDivElement>(null!)
   const text = "I'm Frontend developer. My favorite framework is Next.js and for CSS is Tailwind. works since 2018, I like RPG games like Minecraft, Terraria and Gmod. My Hobbies are Gym, programming, and solve Math problems"
 
   const setIsLoading = useFollowerSetIsLoading()
@@ -24,7 +20,6 @@ export default function About() {
       data-scroll
       data-scroll-section
       id="about"
-      ref={ref}
       className="w-full min-h- h-screen max-h-[1200px] overflow-y-hidden text-darkPrimary relative pt-[3vw]
       before:absolute before:w-full before:z-10 before:pointer-events-none before:content-[''] before:-translate-y-1/2 before:h-[5vw] before:top-0 before:left-0 before:rotate-180 before:bg-gradient-to-t before:from-black before:via-black before:to-transparent
       "

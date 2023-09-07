@@ -28,7 +28,7 @@ export default function Gallery({ photos }: GalleryProps) {
         data-scroll
         data-scroll-speed=".3"
       >
-        {photos.map((photo, index) => <RowContent {...photo} device={photo.isMobile ? "mobile" : "desktop"}  key={`snapshot_${index}`} />)}
+        {photos.map((photo, index) => <RowContent {...photo} device={photo.isMobile ? "mobile" : "desktop"} key={`snapshot_${index}`} />)}
       </div>
     </section>
   )

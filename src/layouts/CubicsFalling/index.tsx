@@ -12,7 +12,7 @@ import useMobileEffect from '@/hooks/useMobileEffect';
 
 
 export default function CubicsFalling({ speed = 5, depth = 30, size = 1, easing = (x: number) => Math.sqrt(1 - Math.pow(x - 1, 2)) }) {
-  console.log("CubicsFalling was render")
+  // console.log("CubicsFalling was render")
   const [count, setCount] = useState(40)
 
   useMobileEffect(() => {
