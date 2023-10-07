@@ -1,8 +1,8 @@
-import Gallery from "@/layouts/Gallery"
-import BackToHome from "@/layouts/BackToHome"
-import Technologies from "@/layouts/Technologies"
-import Overview from "@/layouts/Overview"
-import Filosophy from "@/layouts/Filosophy"
+import Gallery from "./_layouts/Gallery"
+import BackToHome from "./_layouts/BackToHome"
+import Technologies from "./_layouts/Technologies"
+import Overview from "./_layouts/Overview"
+import Filosophy from "./_layouts/Filosophy"
 
 import ProjectsService from '@/services/projects'
 import GithubService from "@/services/github"

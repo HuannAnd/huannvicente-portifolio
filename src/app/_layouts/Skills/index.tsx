@@ -1,31 +1,18 @@
 "use client"
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 import { motion, useAnimate, useInView, stagger } from "framer-motion";
 
-interface SkillsProps {
+interface SkillsProps { }
 
-}
+const technologies = ["HTML5", "Javascript & TypeScript", "CSS3 & SCSS", "MongoDB", "Firebase", "Docker", "Node.js"]
+const frameworks = ["React", "Next.js", "Styled-Components", "TailwindCSS"]
+const designSkills = ["UI & UX", "Interactive UI", "Full-stack Designer", "Figma"]
 
-function Skills() {
+export default function Skills({ }: SkillsProps) {
   console.log("Skills was render")
-
-  const [scope, animate] = useAnimate()
-  const isInView = useInView(scope, { once: true })
-
-  useEffect(() => {
-    if (isInView) {
-      animate("li", { opacity: 1, y: 0 }, { delay: stagger(0.1), duration: 2 })
-    }
-  },
-    [isInView]
-  )
-
-  const technologies = ["HTML5", "Javascript & TypeScript", "CSS3 & SCSS", "MongoDB", "Firebase", "Docker", "Node.js"]
-  const frameworks = ["React", "Next.js", "Styled-Components", "TailwindCSS"]
-  const designSkills = ["UI & UX", "Interactive UI", "Full-stack Designer", "Figma"]
-
+  const scope = useAnimationContext();
 
   return (
     <section
@@ -46,7 +33,7 @@ function Skills() {
           data-scroll
           data-scroll-speed="-1"
           data-scroll-direction="horizontal"
-          className="text-[clamp(5em,_10vw,_200px)] ease-fast w-auto pl-[3vw] font-bold uppercase">
+          className="ease-fast w-auto pl-[3vw] uppercase">
           SKILLS
         </h1>
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 sm:gap-y-[3vw] gap-x-[3vw] w-full h-auto px-[3vw]">
@@ -116,4 +103,17 @@ function Skills() {
   );
 }
 
-export default Skills
+function useAnimationContext() {
+  const [scope, animate] = useAnimate()
+  const isInView = useInView(scope, { once: true })
+
+  useEffect(() => {
+    if (isInView) {
+      animate("li", { opacity: 1, y: 0 }, { delay: stagger(0.1), duration: 2 })
+    }
+  },
+    [isInView]
+  )
+
+  return scope
+}

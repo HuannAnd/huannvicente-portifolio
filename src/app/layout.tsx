@@ -1,19 +1,16 @@
 import './globals.css'
+import './typography.css'
 
-import dynamic from 'next/dynamic'
 import { Roboto } from 'next/font/google'
 
 
 const roboto = Roboto({
   subsets: ["latin"],
-  weight: ["400", "300", "500", "700"],
+  weight: ["400", "300", "500", "700", "900"],
   style: ["italic", "normal"],
   variable: "--font-roboto",
 })
 
-const NavigationContextProvider = dynamic(() => import("@/contexts/NavigationContextProvider"), { ssr: false })
-const CursorFollowerProvider = dynamic(() => import("@/contexts/CursorFollowerProvider"), { ssr: true })
-const LocomotiveScrollProvider = dynamic(() => import("@/contexts/LocomotiveScrollProvider"), { ssr: true })
 import Providers from '@/contexts/Providers'
 
 export const metadata = {
@@ -32,11 +29,6 @@ export default function RootLayout({
         <Providers>
           {children}
         </Providers>
-        {/* <CursorFollowerProvider>
-          <LocomotiveScrollProvider>
-          </LocomotiveScrollProvider>
-        </CursorFollowerProvider> */}
-        {/* <Footer /> */}
       </body>
     </html >
   )

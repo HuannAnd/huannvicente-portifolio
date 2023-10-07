@@ -10,22 +10,22 @@ const Load = dynamic(
 )
 
 const About = dynamic(
-  () => import('@/layouts/About'),
+  () => import('./_layouts/About'),
   { ssr: true }
 )
 
 const Hero = dynamic(
-  () => import('@/layouts/Hero'),
+  () => import('./_layouts/Hero'),
   { ssr: true }
-)
+) 
 
 const Projects = dynamic(
-  () => import('@/layouts/Projects'),
+  () => import('./_layouts/Projects'),
   { ssr: false }
 )
 
 const Contact = dynamic(
-  () => import('@/layouts/Contact'),
+  () => import('./_layouts/Contact'),
   {
     ssr: true,
   }
@@ -40,7 +40,7 @@ const CubicsFalling = dynamic(
 );
 
 const Skills = dynamic(
-  () => import('@/layouts/Skills'),
+  () => import('./_layouts/Skills'),
   {
     ssr: true,
   }

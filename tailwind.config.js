@@ -21,6 +21,11 @@ module.exports = {
       fontFamily: {
         roboto: "var(--font-roboto)",
       },
+      spacing: {
+        "@section": "var(--section-padding)",
+        "@container": "var(--container-padding)",
+        "@gap": "var(--gap-padding)"
+      },
       colors: {
         darkPrimary: "#000",
         darkBg: "#444",
@@ -32,6 +37,9 @@ module.exports = {
         lightSecondary: "#555",
         darkPrimary: "#fff",
         darkSecondary: "#bbb",
+      },
+      maxWidth: {
+        "@content": "var(--content-width)"
       },
       fontSize: {
         h1: "64px",

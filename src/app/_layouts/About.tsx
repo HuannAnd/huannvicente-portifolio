@@ -1,12 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
-import { motion, stagger, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 import splittedText from "@/utils/splittedText";
 import useFollowerSetIsLoading from "@/hooks/useFollowerSetIsLoading";
-// import useHamburguerContext from "@/hooks/useNavigationContext";
 
 
 export default function About() {
@@ -43,7 +42,7 @@ export default function About() {
         className="clip-around w-full h-full bg-primaryColor bg-darkPrimary flex flex-col"
       >
         <div aria-label="About-me" className="border-b-2 border-b-white/50 z-10 bg-darkPrimary">
-          <h1 className="font-semibold  block text-[clamp(5em,_10vw,200px)] col-span-12 text-left relative pl-[3vw]">
+          <h1 className="block col-span-12 text-left relative pl-[3vw]">
             ABOUT
           </h1>
         </div>

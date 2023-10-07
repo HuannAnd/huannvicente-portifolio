@@ -46,7 +46,7 @@ const Contact: React.FunctionComponent<ContactProps> = ({ }) => {
         <div className="col-span-8 lg:order-1 md:order-1 sm:order-2">
           <div className="col-span-5">
             <div className="w-full">
-              <h1 className="text-[clamp(5em,_10vw,_200px)] my-auto align-middle sm:text-center md:text-left lg:text-left font-semibold uppercase text-white">Contact</h1>
+              <h1 className="my-auto align-middle sm:text-center md:text-left lg:text-left uppercase text-white">Contact</h1>
             </div>
           </div>
         </div>

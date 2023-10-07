@@ -9,6 +9,7 @@ import Cube from './Cube';
 import Lights from './Lights';
 
 import useMobileEffect from '@/hooks/useMobileEffect';
+import useDelayTime from '@/animations/hooks/useDelayTime';
 
 
 export default function CubicsFalling({ speed = 5, depth = 30, size = 1, easing = (x: number) => Math.sqrt(1 - Math.pow(x - 1, 2)) }) {
@@ -23,6 +24,10 @@ export default function CubicsFalling({ speed = 5, depth = 30, size = 1, easing 
 
   console.log("CubicsFalling count: ", count)
 
+  // const isPending = useDelayTime();
+
+  // if (isPending) return null
+
   return (
     <Suspense fallback={null}>
       <Canvas gl={{ antialias: false }} camera={{ position: [0, 0, depth + 8], fov: 20, near: 0.01, far: depth + 15 }}>
@@ -34,6 +39,5 @@ export default function CubicsFalling({ speed = 5, depth = 30, size = 1, easing 
         <Plane />
       </Canvas>
     </Suspense>
-
   )
 }

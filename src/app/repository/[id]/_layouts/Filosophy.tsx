@@ -15,19 +15,7 @@ interface FilosophyProps {
 }
 
 export default function Filosophy({ author, phrase }: FilosophyProps) {
-  const [scope, animate] = useAnimate()
-  const isInView = useInView(scope)
-
-  useEffect(() => {
-    new SplitType("filosophy", { types: "lines" })
-
-    animate([
-      ["#filosophy .line", {}]
-    ])
-
-  },
-    [isInView]
-  )
+  const scope = useAnimationContext()
 
   return (
     <motion.section
@@ -48,4 +36,22 @@ export default function Filosophy({ author, phrase }: FilosophyProps) {
       <small className="text-white block ml-auto text-right mt-8 font-light" title="">- {author}</small>
     </motion.section>
   )
+}
+
+function useAnimationContext() {
+  const [scope, animate] = useAnimate()
+  const isInView = useInView(scope)
+
+  useEffect(() => {
+    new SplitType("filosophy", { types: "lines" })
+
+    animate([
+      ["#filosophy .line", {}]
+    ])
+
+  },
+    [isInView]
+  )
+
+  return scope
 }

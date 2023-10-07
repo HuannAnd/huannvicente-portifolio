@@ -42,7 +42,7 @@ function Projects({ projects }: ProjectsProps) {
         data-scroll-offset="-50%, 0%"
         className="w-auto"
       >
-        <h1 className="text-[clamp(5em,_10vw,_200px)] pl-[3vw] font-semibold text-white uppercase">
+        <h1 className="pl-[3vw] text-white uppercase">
           Projects{""}
           <span className="relative translate-y-1/2 font-normal text-[30px]">({projects.length})</span>
         </h1>

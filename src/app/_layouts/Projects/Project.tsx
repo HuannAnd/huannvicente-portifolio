@@ -59,7 +59,7 @@ function Project({ project, nTh, ...props }: ProjectProps) {
       {...props}
     >
       <div className="flex items-center ease-fast group-hover/item:pl-[1vw] duration-300">
-        <h1 className="text-[clamp(30px,_5.7vw,_114px)] group-hover/item:opacity-30 duration-300 ease-smooth first-letter:uppercase truncate pointer-events-none text-darkPrimary">{project.name}</h1>
+        <h5 className="text-[clamp(30px,_5.7vw,_114px)] group-hover/item:opacity-30 duration-300 ease-smooth first-letter:uppercase truncate pointer-events-none text-darkPrimary">{project.name}</h5>
       </div>
       <p>{nTh}</p>
     </div>
