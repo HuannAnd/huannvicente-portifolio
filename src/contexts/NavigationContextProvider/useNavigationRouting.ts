@@ -4,12 +4,15 @@ import { usePathname, useRouter } from "next/navigation";
 
 import { useLocomotiveScroll } from "react-locomotive-scroll";
 
-import { TAction } from ".";
+import { TAction } from "./type";
 
 export default function useNavigationRouting(handleAsideStates: React.Dispatch<TAction>) {
   const currentRoute = usePathname()
+
   const { scroll } = useLocomotiveScroll();
+
   const router = useRouter()
+
   const [navigation, setNavigationValues] = useState([
     { title: "About", onClick: () => { scroll.scrollTo("#about") } },
     { title: "Projects", onClick: () => { scroll.scrollTo("#projects") } },

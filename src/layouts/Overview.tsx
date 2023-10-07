@@ -31,7 +31,7 @@ export default function Overview({
 }: OverviewProps) {
   const [scope, animate] = useAnimate()
   const isInView = useInView(scope, { once: true })
-  // console.log("Overview are in view:", isInView1  )
+
   const showHamburguer = useHamburguerContext()
 
   useEffect(() => {
@@ -50,7 +50,6 @@ export default function Overview({
         ]
       ])
     }
-
     return
   }, [isInView])
 

@@ -6,7 +6,7 @@ class GithubServiceHttpClient {
   public async getUser(): Promise<GITHUB.GithubUserBody | undefined> {
     try {
       const userName = process.env.NEXT_PUBLIC_GITHUB_PROFILE
-      const auth = GithubHttpClient.createAuthHeader(process.env.NEXT_PUBLIC_GITHUB_API_KEY)
+      const auth = GithubHttpClient.createAuthHeader(process.env.NEXT_PUBLIC_GITHUB_API_TOKEN)
       const data = await GithubHttpClient.get<GITHUB.GithubUserBody>(`/users/${userName}`, auth);
 
       return data;
@@ -20,6 +20,7 @@ class GithubServiceHttpClient {
 
   public async getRepositoryById(repositoryId: number) {
     try {
+      // console.log("DOT ENV value: ", process.env.NEXT_PUBLIC_GITHUB_API_KEY)
       const auth = GithubHttpClient.createAuthHeader(process.env.NEXT_PUBLIC_GITHUB_API_TOKEN)
       const repoDetails = await GithubHttpClient.get<GithubApi.GithubRepoBody>(`/repositories/${repositoryId}`, auth);
 

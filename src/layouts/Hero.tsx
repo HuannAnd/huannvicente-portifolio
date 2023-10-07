@@ -18,7 +18,7 @@ export default function Hero() {
   const setCursorIcon = useFollowerSetCursorIcon()
 
   const showHamburguer = useHamburguerContext()
-  setCursorIcon(null)
+  // setCursorIcon(null)
 
   useEffect(() => {
     if (isInView) {

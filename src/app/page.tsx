@@ -32,7 +32,7 @@ const Contact = dynamic(
 );
 
 const CubicsFalling = dynamic(
-  () => import('@/layouts/CubicsFalling'),
+  () => import('@/animations/scenes/CubicsFalling'),
   {
     loading: () => <Load className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2' />,
     ssr: false,

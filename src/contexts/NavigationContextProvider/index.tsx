@@ -1,25 +1,16 @@
 'use client';
 
-import { createContext, useCallback, useLayoutEffect, useReducer, useState } from 'react'
+import { createContext, useCallback, useReducer, useState } from 'react'
 
 import Hamburguer from './Hamburguer';
 import Aside from './Aside';
 
 import useNavigationRouting from './useNavigationRouting';
 
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { TAction, TState, TValueAsideContext, TValueHamburguerContext } from './type';
 
-interface NavigationProviderProps {
-  children: React.ReactNode
-}
 
-type TValueHamburguerContext = (canBeShowed: boolean) => void
-type TValueAsideContext = React.Dispatch<TAction>
-
-type TState = boolean;
-
-export type TAction = { type: 'toogle' } | { type: 'set'; payload: boolean };
+interface NavigationProviderProps extends React.PropsWithChildren { }
 
 function reducer(state: TState, action: TAction): TState {
   switch (action.type) {

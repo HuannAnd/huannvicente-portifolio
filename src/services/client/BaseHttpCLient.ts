@@ -31,6 +31,7 @@ export class BaseHttpClient {
   }
 
   public createAuthHeader = (token?: string): AxiosRequestConfig => {
+    console.log("token value inside createAuthHeader: ", token)
     if (!token) {
       throw new Error("The provided token is null");
     }

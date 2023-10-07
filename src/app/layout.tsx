@@ -14,6 +14,7 @@ const roboto = Roboto({
 const NavigationContextProvider = dynamic(() => import("@/contexts/NavigationContextProvider"), { ssr: false })
 const CursorFollowerProvider = dynamic(() => import("@/contexts/CursorFollowerProvider"), { ssr: true })
 const LocomotiveScrollProvider = dynamic(() => import("@/contexts/LocomotiveScrollProvider"), { ssr: true })
+import Providers from '@/contexts/Providers'
 
 export const metadata = {
   title: 'Huann Vicente Portifolio',
@@ -28,11 +29,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body data-scroll className={`${roboto.variable} pointer-events-none font-roboto h-screen overflow-x-hidden w-screen bg-black selection:bg-green-200 selection:text-lightPrimary`}>
-        <CursorFollowerProvider>
+        <Providers>
+          {children}
+        </Providers>
+        {/* <CursorFollowerProvider>
           <LocomotiveScrollProvider>
-            {children}
           </LocomotiveScrollProvider>
-        </CursorFollowerProvider>
+        </CursorFollowerProvider> */}
         {/* <Footer /> */}
       </body>
     </html >
