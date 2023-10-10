@@ -37,8 +37,8 @@ export default function Hero() {
             className="w-full italic text-center text-white/60 selection:bg-green-200 selection:text-lightPrimary"
             initial={{ visibility: "hidden" }}
           >
-            <span className="text-inherit">Web Developer</span>{" & "}
-            <span className="text-inherit">Full Stack Designer</span>
+            <span className="text-@subtitle italic">Web Developer</span>{" & "}
+            <span className="text-@subtitle italic">Full Stack Designer</span>
           </motion.h3>
         </div>
       </div>

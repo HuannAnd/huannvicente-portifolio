@@ -29,33 +29,11 @@ export default function Overview({
   domain_url,
   repository_url
 }: OverviewProps) {
-  const [scope, animate] = useAnimate()
-  const isInView = useInView(scope, { once: true })
+  const scope = useAnimationContext()
 
-  const showHamburguer = useHamburguerContext()
-
-  useEffect(() => {
-    if (isInView) {
-      new SplitType("#text", { types: "words" });
-      animate([
-        [
-          "h1",
-          { opacity: 1 },
-          { duration: 1 }
-        ],
-        [
-          "#text .word",
-          { y: [16, 0], opacity: [0, 1] },
-          { duration: 0.45, times: [0, 1], delay: stagger(0.07), at: "-0.5" }
-        ]
-      ])
-    }
-    return
-  }, [isInView])
-
-  useEffect(() => {
-    wait(3000).then(() => showHamburguer(true))
-  }, [])
+  // useEffect(() => {
+  //   wait(3000).then(() => showHamburguer(true))
+  // }, [])
 
   const setTitle = useFollowerSetTitle()
   const setIsLoading = useFollowerSetIsLoading()
@@ -89,4 +67,32 @@ export default function Overview({
       </div>
     </section>
   )
-} 
+}
+
+function useAnimationContext() {
+  const [scope, animate] = useAnimate()
+  const isInView = useInView(scope, { once: true })
+
+  const showHamburguer = useHamburguerContext()
+
+  useEffect(() => {
+    if (isInView) {
+      new SplitType("#text", { types: "words" });
+      animate([
+        [
+          "h1",
+          { opacity: 1 },
+          { duration: 1 }
+        ],
+        [
+          "#text .word",
+          { y: [16, 0], opacity: [0, 1] },
+          { duration: 0.45, times: [0, 1], delay: stagger(0.07), at: "-0.5" }
+        ]
+      ])
+    }
+    return
+  }, [isInView])
+
+  return scope
+}

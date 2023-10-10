@@ -14,7 +14,7 @@ export default function ContainerScroll({ children, ...props }: ContainerScrollP
     <div
       data-scroll-container
       ref={ref}
-      className="max-w-@content pointer-events-none lg:w-auto h-auto sm:w-screen mx-auto mb-8 bg-transparent"
+      className="max-w-@content pointer-events-none lg:w-auto h-auto -z-50 sm:w-screen mx-auto mb-8 bg-transparent"
       {...props}
     >
       {children}

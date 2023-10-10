@@ -1,10 +1,8 @@
 "use client";
 
-import { memo, useEffect, useRef } from "react";
+import {useRef } from "react";
 
-import { motion, useInView } from "framer-motion";
-
-import useHamburguerContext from "@/hooks/useHamburguerContext";
+import { motion } from "framer-motion";
 
 import Project from "./Project";
 import { TProjectsBody } from "@/services/projects/type";

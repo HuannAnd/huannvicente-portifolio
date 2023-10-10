@@ -7,11 +7,12 @@ import CustomLoading from "@/animations/scenes/Loading"
 
 
 export default function Loading() {
-  const setCursorState = useFollowerSetState()
-  const setIsLoading = useFollowerSetIsLoading()
+  // const setCursorState = useFollowerSetState()
+  // const setIsLoading = useFollowerSetIsLoading()
 
-  setCursorState("normal")
-  setIsLoading(true)
+  // setCursorState("normal")
+  // setIsLoading(true)
 
   return CustomLoading
+
 }

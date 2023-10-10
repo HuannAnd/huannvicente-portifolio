@@ -25,7 +25,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body data-scroll className={`${roboto.variable} pointer-events-none font-roboto h-screen overflow-x-hidden w-screen bg-black selection:bg-green-200 selection:text-lightPrimary`}>
+      <body data-scroll className={`${roboto.variable} pointer-events-none font-roboto h-screen overflow-x-hidden z-10 w-screen bg-black selection:bg-green-200 selection:text-lightPrimary`}>
         <Providers>
           {children}
         </Providers>

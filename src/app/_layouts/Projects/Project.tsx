@@ -7,7 +7,8 @@ import { useRouter } from "next/navigation";
 import useFollowerSetTitle from "@/hooks/useFollowerSetTitle";
 import useFollowerSetState from "@/hooks/useFollowerSetState";
 import useFollowerSetIsLoading from "@/hooks/useFollowerSetIsLoading";
-import wait from "@/utils/wait";
+import useGoTo from "@/hooks/useGoTo";
+
 
 type ProjectProps = React.HTMLAttributes<HTMLDivElement> & {
   project: {
@@ -16,16 +17,16 @@ type ProjectProps = React.HTMLAttributes<HTMLDivElement> & {
     isInMaintenance: boolean
   },
   nTh: number,
-  // isInMaintanance?: boolean
 }
 
 function Project({ project, nTh, ...props }: ProjectProps) {
-  // console.log("Project render ", nTh);
   const router = useRouter()
 
   const setCursorState = useFollowerSetState()
   const setTitle = useFollowerSetTitle()
   const setIsLoading = useFollowerSetIsLoading()
+
+  const goTo = useGoTo()
 
   const handles = {
     onClick: previewProject,
@@ -41,14 +42,14 @@ function Project({ project, nTh, ...props }: ProjectProps) {
     }
   }
 
-  function previewProject() {
+  async function previewProject() {
     if (project.isInMaintenance) {
       setTitle("Maintenance")
     } else {
       setTitle(null)
       setCursorState("normal")
       setIsLoading(true)
-      router.push(`/repository/${project.id}`)
+      goTo(`/repository/${project.id}`)
     }
   }
 

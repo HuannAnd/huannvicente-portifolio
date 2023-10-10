@@ -66,6 +66,7 @@ export default function Error({
           <Plane />
         </Canvas>
       </Suspense>
+      <h1 className='text-white z-10'>Error</h1>
     </div>
   )
 }

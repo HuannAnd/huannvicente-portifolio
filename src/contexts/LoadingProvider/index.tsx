@@ -1,36 +1,65 @@
 'use client';
 
-import { AnimatePresence } from 'framer-motion';
-import { usePathname } from 'next/navigation';
+import { createContext, useEffect, useLayoutEffect, useReducer, useState } from 'react'
+import { usePathname, useRouter } from 'next/navigation';
+import useFollowerSetIsLoading from '@/hooks/useFollowerSetIsLoading';
 
-import { createContext, useEffect, useState } from 'react'
 
-import Loading from '@/animations/scenes/Loading'
+import { TActionReducer, ActionReducer } from './type';
 
 interface LoadingProviderProps {
   children: React.ReactNode
 }
 
-interface Value {
+type LoadingGoToValue = (to: string) => void
 
+export const LoadingGoToContext = createContext({} as LoadingGoToValue)
+
+const ANIMATION_DURATION_IN_MS = 3000
+
+function reducer(action: TActionReducer, state: boolean) {
+  switch (action.type) {
+    case ActionReducer.PAYLOAD:
+      return  
+    case ActionReducer.TOOGLE:
+      return !state
+    case ActionReducer.SET:
+    default:
+      return
+  }
 }
 
-export const LoadingContext = createContext({} as Value)
-
 export default function LoadingProvider({ children }: LoadingProviderProps) {
+  const [isFirstTime, setIsFirstTime] = useState()
   const [isLoading, setIsLoading] = useState(true)
+  const setCursorLoading = useFollowerSetIsLoading()
+
+  const router = useRouter()
+
   const pathname = usePathname()
 
-  useEffect(() => { setIsLoading(false) }, [pathname])
+  async function goTo(to: string) {
+    setIsLoading(true)
+    setCursorLoading(true)
+    router.push(to, {})
+  }
 
-  useEffect(() => { }, [isLoading])
+  async function unsubscribeLoading() {
+    setIsLoading(false)
+    setCursorLoading(false)
+  }
+
+  useLayoutEffect(() => {
+      
+  }, [])
+
+  useEffect(() => {
+    setTimeout(() => { unsubscribeLoading() }, ANIMATION_DURATION_IN_MS)
+  }, [pathname])
 
   return (
-    <LoadingContext.Provider value={{}}>
-      <AnimatePresence mode='wait' >
-        {isLoading && <Loading />}
-      </AnimatePresence>
+    <LoadingGoToContext.Provider value={goTo}>
       {children}
-    </LoadingContext.Provider>
+    </LoadingGoToContext.Provider>
   )
 }

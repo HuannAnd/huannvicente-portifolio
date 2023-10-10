@@ -1,3 +1,5 @@
+"use client";
+
 import { useFrame } from '@react-three/fiber'
 import { useRef, useState } from 'react'
 import { Mesh, Color } from 'three'
@@ -14,7 +16,7 @@ export default function Cube({ size, speed, color }: CubeProps) {
   const [data] = useState({
     size: [size, size, size],
     color: new Color(color)
-
+    
   })
 
   useFrame(() => ((ref.current!).rotation.x = (ref.current!).rotation.y += 0.01 * speed))

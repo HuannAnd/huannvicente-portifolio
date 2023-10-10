@@ -43,7 +43,7 @@ module.exports = {
       },
       fontSize: {
         h1: "64px",
-        subTitle: "48px",
+        "@subtitle": "clamp(25px, 3vw, 48px)",
         bold: "20px",
         body: "20px",
         small: "12px",

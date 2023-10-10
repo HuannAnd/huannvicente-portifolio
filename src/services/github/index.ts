@@ -20,7 +20,6 @@ class GithubServiceHttpClient {
 
   public async getRepositoryById(repositoryId: number) {
     try {
-      // console.log("DOT ENV value: ", process.env.NEXT_PUBLIC_GITHUB_API_KEY)
       const auth = GithubHttpClient.createAuthHeader(process.env.NEXT_PUBLIC_GITHUB_API_TOKEN)
       const repoDetails = await GithubHttpClient.get<GithubApi.GithubRepoBody>(`/repositories/${repositoryId}`, auth);
 

@@ -22,26 +22,25 @@ export default async function RepositoryPage({
   const id = params.id;
   const details = await GithubService.getRepositoryById(id)
   const languages = await GithubService.getProjectLanguages(id)
-  
   const repository = ProjectsService.find(x => x.id === id)!
 
-  const overviewProps = {
-    domain_url: repository.domain_url,
-    hasDomain: repository.hasDomain,
-    repository_url: repository.repository_url,
-    name: details.name,
-    description: details.description
-  } as React.ComponentProps<typeof Overview>
+  // const overviewProps = {
+  //   domain_url: repository?.domain_url,
+  //   hasDomain: repository?.hasDomain,
+  //   repository_url: repository?.repository_url,
+  //   name: details?.name,
+  //   description: details?.description
+  // } as React.ComponentProps<typeof Overview>
 
-  const time = 1000 * 3
+  const time = 1000 * 30
   await wait(time)
 
   return (
     <>
-      <Overview {...overviewProps} />
-      <Gallery photos={repository.gallery} />
-      <Technologies frameworks={repository.frameworks} languages={languages} />
-      <Filosophy {...repository.filosophy} />
+      {/* <Overview {...overviewProps} />
+      <Gallery photos={repository?.gallery} />
+      <Technologies frameworks={repository?.frameworks} languages={languages} />
+      <Filosophy {...repository?.filosophy} /> */}
       <BackToHome id={id} />
     </>
   )

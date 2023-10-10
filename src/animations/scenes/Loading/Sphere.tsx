@@ -1,3 +1,5 @@
+"use client";
+
 import { useFrame } from "@react-three/fiber"
 import { useRef, useState } from "react"
 
@@ -14,23 +16,27 @@ export default function Sphere({ size, color, speed }: SphereProps) {
   const ref = useRef<THREE.Mesh>()
   const [data] = useState({
     size: [size, size, size],
-    color: new Color(color)
-
+    color: new Color(color),
+    x: 0,
+    y: 0,
+    z: 0
   })
 
-  useFrame(() => {
+  useFrame((state) => {
     const sphere = ref.current!
-
-    sphere.position.y = Math.abs(Math.sin(sphere.position.y += .01))
-  })
-  console.log("Selected color: ", data.color);
+    sphere.rotation.x = sphere.rotation.y += 0.01 * speed
+    sphere.position.y = -2 + 3 * Math.abs(Math.sin(speed * state.clock.getElapsedTime()))
+  }
+  )
 
   return (
     <mesh
       ref={ref as any}
       position={[0, 0, 0]}
+      castShadow
+      receiveShadow
     >
-      <boxBufferGeometry attach="geometry" args={data.size} />
+      <sphereGeometry attach="geometry" args={[3, 20, 20]} />
       {/* <meshNormalMaterial attach="material" /> */}
       <meshLambertMaterial args={[{ color, clipShadows: true }]} attach="material" />
     </mesh>

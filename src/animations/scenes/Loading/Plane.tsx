@@ -1,3 +1,5 @@
+"use client";
+
 export default function Plane() {
   return (
     <mesh castShadow position={[0, -5, 0]} rotation={[Math.PI * -0.5, 0, 0]}>

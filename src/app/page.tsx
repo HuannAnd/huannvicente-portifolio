@@ -2,8 +2,6 @@ import dynamic from 'next/dynamic';
 
 import projects from '@/services/projects';
 
-// import { useEffect, useState } from 'react';
-
 const Load = dynamic(
   () => import("@/components/Load"),
   { ssr: true }
@@ -17,7 +15,7 @@ const About = dynamic(
 const Hero = dynamic(
   () => import('./_layouts/Hero'),
   { ssr: true }
-) 
+)
 
 const Projects = dynamic(
   () => import('./_layouts/Projects'),
