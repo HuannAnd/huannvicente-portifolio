@@ -4,37 +4,27 @@ import React, { forwardRef, memo } from 'react';
 
 import { AnimationScope } from 'framer-motion';
 
-import FollowerCircle from './components/FollowerCircle';
-import FollowerIcons from './components/FollowerIcons';
-import FollowerText from './components/FollowerText';
-import FollowerLoading from './components/FollowerLoading';
-import FollowerRoot from './components/FollowerRoot';
+import FollowerCircle from './FollowerCircle';
+import FollowerIcons from './FollowerIcons';
+import FollowerText from './FollowerText';
+import FollowerLoading from './FollowerLoading';
+import FollowerRoot from './FollowerRoot';
 import FollowerContextProvider from './FollowerContextProvider';
 
+import { ICursor } from '../types';
 
-const Follower = {
-  Root: FollowerRoot,
-  Circle: FollowerCircle,
-  Icons: FollowerIcons,
-  Text: FollowerText,
-  Loading: FollowerLoading
-}
-
-interface NewFollowerContextProps {
-  isLoading: boolean,
-  title: string | null,
-  icon: string | null
-}
+interface NewFollowerContextProps
+  extends Omit<ICursor, "state"> { }
 
 function NewFollowerContext({ isLoading, title, icon }: NewFollowerContextProps, ref: React.ForwardedRef<AnimationScope<SVGSVGElement>>) {
   return (
     <FollowerContextProvider icon={icon} isLoading={isLoading} title={title}>
-      <Follower.Root>
-        <Follower.Text />
-        <Follower.Circle ref={ref!} />
-        <Follower.Icons icon={icon} />
-        <Follower.Loading />
-      </Follower.Root>
+      <FollowerRoot>
+        <FollowerText />
+        <FollowerCircle ref={ref!} />
+        <FollowerIcons icon={icon} />
+        <FollowerLoading />
+      </FollowerRoot>
     </FollowerContextProvider>
   )
 }

@@ -6,4 +6,4 @@ class GithubHttpClient extends BaseHttpClient {
   }
 }
 
-export default new GithubHttpClient(); 
+export default new GithubHttpClient();

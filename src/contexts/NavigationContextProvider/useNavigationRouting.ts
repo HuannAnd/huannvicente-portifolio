@@ -22,7 +22,7 @@ export default function useNavigationRouting(handleAsideStates: React.Dispatch<T
   useEffect(() => {
     function handleRoutingTravels() {
       if (currentRoute.includes("/repository")) {
-        setNavigationValues([{ title: "Home", onClick: () => { router.push("/") } }])
+        setNavigationValues([{ title: "Home", onClick: () => { router.push("/home") } }])
       } else {
         setNavigationValues([
           { title: "About", onClick: () => { scroll.scrollTo("#about") } },

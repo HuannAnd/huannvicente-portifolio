@@ -1,8 +1,8 @@
-import Gallery from "./_layouts/Gallery"
-import BackToHome from "./_layouts/BackToHome"
-import Technologies from "./_layouts/Technologies"
-import Overview from "./_layouts/Overview"
-import Filosophy from "./_layouts/Filosophy"
+import Gallery from "./layouts/Gallery"
+import BackToHome from "./layouts/BackToHome"
+import Technologies from "./layouts/Technologies"
+import Hero from "./layouts/Hero"
+import Filosophy from "./layouts/Filosophy"
 
 import ProjectsService from '@/services/projects'
 import GithubService from "@/services/github"
@@ -13,35 +13,39 @@ enum Params {
   ID = "id"
 }
 
+export const generateMetadata = ({
+  params,
+}: {
+  params: { [key in Params]: key extends Params.ID ? number : never }
+}) => GithubService.getMetadataRepository(params.id)
 
 export default async function RepositoryPage({
   params,
 }: {
-  params: { [key in Params]: key extends Params.ID ? number : never }
+  params: { [key in Params]: key extends Params.ID ? string : never }
 }) {
-  const id = params.id;
+  const id = Number(params.id);
+
+  const projectMetadata = await GithubService.getMetadataRepository(id)
+
   const details = await GithubService.getRepositoryById(id)
   const languages = await GithubService.getProjectLanguages(id)
-  const repository = ProjectsService.find(x => x.id === id)!
+  const hasDomain = ProjectsService.projectHasDomain(id)
+  const photos = ProjectsService.getProjectPhotos(id)
+  const urls = ProjectsService.getProjectUrls(id)
+  const info = await GithubService.getMetadataRepository(id)
+  const filosophy = ProjectsService.getProjectFilosophy(id)
 
-  // const overviewProps = {
-  //   domain_url: repository?.domain_url,
-  //   hasDomain: repository?.hasDomain,
-  //   repository_url: repository?.repository_url,
-  //   name: details?.name,
-  //   description: details?.description
-  // } as React.ComponentProps<typeof Overview>
-
-  const time = 1000 * 30
+  const time = 1000 * 3
   await wait(time)
 
   return (
     <>
-      {/* <Overview {...overviewProps} />
-      <Gallery photos={repository?.gallery} />
-      <Technologies frameworks={repository?.frameworks} languages={languages} />
-      <Filosophy {...repository?.filosophy} /> */}
-      <BackToHome id={id} />
+      <Hero {...projectMetadata} />
+      <Gallery />
+      <Technologies />
+      <Filosophy />
+      <BackToHome />
     </>
   )
 }

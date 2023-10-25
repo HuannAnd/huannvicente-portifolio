@@ -4,9 +4,13 @@ import { useEffect, useRef, useState } from "react";
 
 import { Variants, motion } from "framer-motion";
 
-import useFollowerSetState from "@/hooks/useFollowerSetState";
-import useFollowerSetTitle from "@/hooks/useFollowerSetTitle";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import useAsideContext from "@/hooks/useAsideContext";
+import useSetCursor from "@/hooks/useSetCursor";
+import { usePathname } from "next/navigation";
+import useLocomotiveScrollRef from "../LocomotiveScrollProvider/useLocomotiveScrollRef";
 
 
 interface HamburguerProps {
@@ -20,28 +24,37 @@ const variants = {
 } as Variants
 
 
-export default function Hamburguer({ canBeShow }: HamburguerProps) {
+export default function Hamburguer({  }: HamburguerProps) {
   const burger = useRef(null!)
-  const setCursorState = useFollowerSetState()
-  const setCursorTitle = useFollowerSetTitle()
+  const locomotiveScroll = useLocomotiveScrollRef()
+
+  const canBeShow = true
+
+  const setCursor = useSetCursor()
+  const pathname = usePathname()
+
   const [isPressed, setisPressed] = useState(false)
 
   const handleAsideOpening = useAsideContext()
-
-  const handles = {
-    onMouseEnter: () => {
-      setCursorState("invisible")
-      setCursorTitle(null)
-    },
-    onMouseLeave: () => {
-      setCursorState("normal")
-    }
-  }
 
   useEffect(() => {
     handleAsideOpening({ type: "set", payload: false })
     setisPressed(false)
   }, [canBeShow])
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger)
+    gsap.to(burger.current, {
+      scrollTrigger: {
+        start: 0,
+        end: window.innerHeight,
+        markers: true,
+        trigger: document.documentElement,
+        onLeave: () => { gsap.to(burger.current, { opacity: 1, scale: 1, duration: .3, ease: "power3.out" }); console.log("onLeave has fired")   },
+        onLeaveBack: () => { gsap.to(burger.current, { opacity: 0, scale: 0, duration: .3, ease: "power3.out" }); console.log("onLeaveBack has fired") }
+      }
+    })
+  }, [pathname])
 
   function handleOnClick(e: React.MouseEvent<Element, MouseEvent>) {
     e.stopPropagation()
@@ -50,36 +63,33 @@ export default function Hamburguer({ canBeShow }: HamburguerProps) {
   }
 
   return (
-    <motion.div
+    <div
       aria-label="hamburguer"
       ref={burger}
       onClick={handleOnClick}
-      initial="closed"
-      animate={canBeShow ? (isPressed ? "pressed" : "normal") : "closed"}
-      transition={{ duration: .3 }}
-      variants={variants}
-      {...handles}
-      className="rounded-none duration-300 ease-fast w-[10vh] sm:p-[2vh] lg:p-[1vw] md:[1.75vw] z-[101] fixed group/hamburguer cursor-pointer pointer-events-auto hover:bg-[#111] flex justify-evenly border-2 bg-black border-[#111] flex-col text-black text-center top-[3vw] left-[3vw] aspect-square"
+      onMouseEnter={() => setCursor({ state: "invisible", title: null })}
+      onMouseLeave={() => setCursor({ state: "normal" })}
+      className="rounded-none duration-300 ease-fast w-32 p-3 z-[101] fixed group/hamburguer cursor-pointer pointer-events-auto hover:bg-[#111] flex justify-evenly border-2 bg-[#111] border-[#111] flex-col text-black text-center top-[3vw] left-[3vw] aspect-square"
     >
       <motion.span
         initial={{ scaleX: 0 }}
         animate={canBeShow ? { scaleX: 1 } : { scaleX: 0 }}
         transition={{ delay: .3 }}
-        className="w-full h-[3px] bg-white duration-300 ease-smooth"
+        className="w-full h-2 bg-white duration-300 ease-smooth"
       ></motion.span>
       <motion.span
         initial={{ scaleX: 0 }}
         animate={canBeShow ? { scaleX: 1 } : { scaleX: 0 }}
         transition={{ delay: .6 }}
-        className="w-full h-[3px] bg-white duration-300 ease-smooth"
+        className="w-full h-2 bg-white duration-300 ease-smooth"
       ></motion.span>
       <motion.span
         initial={{ scaleX: 0 }}
         animate={canBeShow ? { scaleX: 1 } : { scaleX: 0 }}
         transition={{ delay: .9 }}
-        className="w-full h-[3px] bg-white duration-300 ease-smooth"
+        className="w-full h-2 bg-white duration-300 ease-smooth"
       ></motion.span>
-    </motion.div>
+    </div>
   )
 }
 

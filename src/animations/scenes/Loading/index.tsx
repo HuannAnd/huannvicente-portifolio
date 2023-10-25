@@ -1,8 +1,5 @@
 "use client";
 
-import useFollowerSetIsLoading from "@/hooks/useFollowerSetIsLoading"
-import useFollowerSetState from "@/hooks/useFollowerSetState"
-
 import * as THREE from 'three'
 
 import { useState } from "react"

@@ -1,18 +1,14 @@
 "use client"
 
-import useFollowerSetIsLoading from "@/hooks/useFollowerSetIsLoading"
-import useFollowerSetState from "@/hooks/useFollowerSetState"
-
 import CustomLoading from "@/animations/scenes/Loading"
+
+import useSetCursor from "@/hooks/useSetCursor"
 
 
 export default function Loading() {
-  // const setCursorState = useFollowerSetState()
-  // const setIsLoading = useFollowerSetIsLoading()
+  const setCursor = useSetCursor()
 
-  // setCursorState("normal")
-  // setIsLoading(true)
+  setCursor({ isLoading: true })
 
   return CustomLoading
-
 }

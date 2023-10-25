@@ -2,10 +2,9 @@
 
 import { createContext, useEffect, useLayoutEffect, useReducer, useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation';
-import useFollowerSetIsLoading from '@/hooks/useFollowerSetIsLoading';
-
 
 import { TActionReducer, ActionReducer } from './type';
+import useSetCursor from '@/hooks/useSetCursor';
 
 interface LoadingProviderProps {
   children: React.ReactNode
@@ -20,7 +19,7 @@ const ANIMATION_DURATION_IN_MS = 3000
 function reducer(action: TActionReducer, state: boolean) {
   switch (action.type) {
     case ActionReducer.PAYLOAD:
-      return  
+      return
     case ActionReducer.TOOGLE:
       return !state
     case ActionReducer.SET:
@@ -32,7 +31,8 @@ function reducer(action: TActionReducer, state: boolean) {
 export default function LoadingProvider({ children }: LoadingProviderProps) {
   const [isFirstTime, setIsFirstTime] = useState()
   const [isLoading, setIsLoading] = useState(true)
-  const setCursorLoading = useFollowerSetIsLoading()
+
+  const setCursor = useSetCursor()
 
   const router = useRouter()
 
@@ -40,17 +40,16 @@ export default function LoadingProvider({ children }: LoadingProviderProps) {
 
   async function goTo(to: string) {
     setIsLoading(true)
-    setCursorLoading(true)
+    setCursor({ isLoading: true })
     router.push(to, {})
   }
 
   async function unsubscribeLoading() {
     setIsLoading(false)
-    setCursorLoading(false)
+    // setCursor({ isLoading: false })
   }
 
   useLayoutEffect(() => {
-      
   }, [])
 
   useEffect(() => {

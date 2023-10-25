@@ -34,6 +34,7 @@ module.exports = {
       },
       textColor: {
         lightPrimary: "#222",
+        "@secondary": "#888",
         lightSecondary: "#555",
         darkPrimary: "#fff",
         darkSecondary: "#bbb",
@@ -43,7 +44,7 @@ module.exports = {
       },
       fontSize: {
         h1: "64px",
-        "@subtitle": "clamp(25px, 3vw, 48px)",
+        "@subtitle": "clamp(1.5625rem, 3vw, 3rem)",
         bold: "20px",
         body: "20px",
         small: "12px",
