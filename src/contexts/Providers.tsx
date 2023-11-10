@@ -10,15 +10,13 @@ interface ProvidersProps extends React.PropsWithChildren { }
 export default function Providers({ children }: ProvidersProps) {
   return (
     <CursorFollowerProvider>
-      <LoadingProvider>
+      <NavigationContextProvider>
         <LocomotiveScroll.Root>
-          <NavigationContextProvider>
-            <LocomotiveScroll.Container>
-              {children}
-            </LocomotiveScroll.Container>
-          </NavigationContextProvider>
+          <LoadingProvider>
+            {children}
+          </LoadingProvider>
         </LocomotiveScroll.Root>
-      </LoadingProvider>
+      </NavigationContextProvider>
     </CursorFollowerProvider>
   )
 }

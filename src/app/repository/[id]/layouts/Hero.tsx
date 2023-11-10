@@ -25,14 +25,14 @@ export default function Overview({ title, description }: HeroProps) {
   const domainURL = ProjectsService.getProjectUrls(projectId).domain_url
 
   return (
-    <section ref={scope} data-scroll-section data-scroll className="w-full text-[#bbb] grid place-content-center text-center h-screen">
+    <section ref={scope} data-scroll-section data-scroll className="max-w-@content mx-auto text-[#bbb] grid place-content-center text-center h-screen">
       <div className="relative px-[9vw]">
         <h1
           data-scroll
           className="text-[clamp(48px,_5vw,_140px)] mb-8 text-center duration-300 ease-fast text-white font-bold tracking-tighter">{title}</h1>
         <q
           id="text"
-          className="text-[clamp(25px,_3vw,_48px)] mb-[9vw] duration-300 ease-fast block text-center text-white/50 font-normal">{description}</q>
+          className="text-[clamp(25px,_3vw,_48px)] mb-4 duration-300 ease-fast block text-center text-white/50 font-normal">{description}</q>
         <div className="flex flex-row justify-between items-center w-full h-auto gap-4">
           {hasDomain && (
             <a

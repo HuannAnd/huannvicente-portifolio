@@ -21,33 +21,27 @@ export default function Skills({ }: SkillsProps) {
       data-scroll-section
       id="skills"
       ref={scope}
-      className="w-full overflow-x-hidden h-auto z-50 text-white bg-black sm:pb-[20vh] lg:pb-[9vw]"
+      className="max-w-@content mx-auto overflow-x-hidden h-auto z-50 text-white bg-transparent sm:pb-[20vh] lg:pb-[9vw]"
     >
       <div className="pt-[3vw]">
-        <h2
-          data-scroll
-          data-scroll-speed="-1"
-          data-scroll-direction="horizontal"
-          className="ease-fast w-auto pl-[3vw] uppercase">
-          SKILLS
-        </h2>
+        <h2 className="ease-fast w-auto pl-[3vw] uppercase">SKILLS</h2>
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 sm:gap-y-[3vw] gap-x-[3vw] w-full h-auto px-[3vw]">
           <Field.Root>
             <Field.Title>Technologies</Field.Title>
             <Field.Listener>
-              {TECHNOLOGIES.map((x, i) => <Field.Skill>{x}</Field.Skill> )}
+              {TECHNOLOGIES.map(x => <Field.Skill>{x}</Field.Skill>)}
             </Field.Listener>
           </Field.Root>
           <Field.Root>
             <Field.Title>Frameworks</Field.Title>
             <Field.Listener>
-              {FRAMEWORKS.map((x, i) => <Field.Skill>{x}</Field.Skill> )}
+              {FRAMEWORKS.map(x => <Field.Skill>{x}</Field.Skill>)}
             </Field.Listener>
           </Field.Root>
           <Field.Root>
             <Field.Title>Design Skills</Field.Title>
             <Field.Listener>
-              {DESIGN_SKILLS.map((x, i) => <Field.Skill>{x}</Field.Skill> )}
+              {DESIGN_SKILLS.map(x => <Field.Skill>{x}</Field.Skill>)}
             </Field.Listener>
           </Field.Root>
         </div>

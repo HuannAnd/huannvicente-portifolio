@@ -2,7 +2,7 @@
 
 import { Suspense, useEffect, useState } from 'react';
 
-import CustomLoading from '@/animations/scenes/Loading'
+import CustomLoading from '@/three/scenes/Loading'
 
 interface LoadingProps { }
 

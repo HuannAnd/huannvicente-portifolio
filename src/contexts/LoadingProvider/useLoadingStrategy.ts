@@ -1,7 +1,7 @@
 import { useAnimationControls } from "framer-motion"
 
-import AnimationsOrquestrator from "@/animations/scenes/AnimationOrquestrator"
-import { TAnimationKey } from '@/animations/scenes/type'
+import AnimationsOrquestrator from "@/three/scenes/AnimationOrquestrator"
+import { TAnimationKey } from '@/three/scenes/type'
 
 
 export default function useLoadingStrategy(strategy: TAnimationKey) {

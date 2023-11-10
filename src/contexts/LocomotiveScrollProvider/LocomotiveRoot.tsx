@@ -1,47 +1,52 @@
 "use client";
 
-import { useEffect, useRef, createContext } from 'react';
-import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
+import { useEffect, useRef, createContext, useLayoutEffect, useState } from 'react';
 
 import { usePathname } from 'next/navigation';
 
-import useWindowWidth from '@/hooks/useWindowWitdth';
+import { useScroll, useTransform } from 'framer-motion';
+import LocomotiveScroll from 'locomotive-scroll';
+import useWindowViewport from '@/hooks/useWindowViewport';
 
-import options from './options';
 
 interface LocomotiveScrollProps
   extends React.PropsWithChildren { }
 
-
-type LocomotiveScrollRefValue = React.RefObject<any>
-export const LocomotiveScrollRefContext = createContext({} as LocomotiveScrollRefValue);
+export const LocomotiveScrollRefContext = createContext({} as LocomotiveScroll | null);
 
 export default function LocomotiveScrollLayout({
   children
 }: LocomotiveScrollProps) {
-  const ref = useRef(null!)
-  const path = usePathname();
-  const windowWidth = useWindowWidth()
+  const [locomotiveScroll, setlocomotiveScroll] = useState<LocomotiveScroll | null>(null)
+
+  const pathname = usePathname()
+  const { width, height } = useWindowViewport()
+
   useEffect(() => {
-    setTimeout(() => {
-      const html = document.querySelector("html")!
-      html.style.cursor = "default"
-    }, 1000)
+    (
+      async () => {
+        const LocomotiveScroll = (await import('locomotive-scroll')).default
+        const locomotiveScroll = new LocomotiveScroll({ autoResize: true });
+        setlocomotiveScroll(locomotiveScroll)
+      }
+    )()
+
+    return () => {
+      locomotiveScroll?.destroy()
+    }
   },
     []
   )
 
+  useEffect(() => {
+    if (!locomotiveScroll) return
+    locomotiveScroll.resize()
+    window.scrollTo(0, 0)
+  }, [pathname, locomotiveScroll, width, height])
+
   return (
-    <LocomotiveScrollRefContext.Provider value={ref}>
-      <LocomotiveScrollProvider
-        containerRef={ref}
-        options={options}
-        onLocationChange={(scroll: any) => scroll.scrollTo(0, { duration: 0, disableLerp: true })}
-        location={path}
-        watch={[path, windowWidth]}
-      >
-        {children}
-      </LocomotiveScrollProvider>
+    <LocomotiveScrollRefContext.Provider value={locomotiveScroll}>
+      {children}
     </LocomotiveScrollRefContext.Provider>
   );
 }

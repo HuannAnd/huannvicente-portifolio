@@ -5,6 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 
 import { TActionReducer, ActionReducer } from './type';
 import useSetCursor from '@/hooks/useSetCursor';
+import useLocomotiveScrollRef from '../LocomotiveScrollProvider/useLocomotiveScrollRef';
 
 interface LoadingProviderProps {
   children: React.ReactNode
@@ -16,21 +17,8 @@ export const LoadingGoToContext = createContext({} as LoadingGoToValue)
 
 const ANIMATION_DURATION_IN_MS = 3000
 
-function reducer(action: TActionReducer, state: boolean) {
-  switch (action.type) {
-    case ActionReducer.PAYLOAD:
-      return
-    case ActionReducer.TOOGLE:
-      return !state
-    case ActionReducer.SET:
-    default:
-      return
-  }
-}
-
 export default function LoadingProvider({ children }: LoadingProviderProps) {
-  const [isFirstTime, setIsFirstTime] = useState()
-  const [isLoading, setIsLoading] = useState(true)
+  const locomotiveScroll = useLocomotiveScrollRef()
 
   const setCursor = useSetCursor()
 
@@ -38,18 +26,21 @@ export default function LoadingProvider({ children }: LoadingProviderProps) {
 
   const pathname = usePathname()
 
-  async function goTo(to: string) {
-    setIsLoading(true)
+  function goTo(to: string) {
     setCursor({ isLoading: true })
     router.push(to, {})
   }
 
-  async function unsubscribeLoading() {
-    setIsLoading(false)
-    // setCursor({ isLoading: false })
+  function unsubscribeLoading() {
+    setCursor({ isLoading: false })
+    if (!locomotiveScroll) return
+    locomotiveScroll.scrollTo(0)
+    // document.documentElement.style.cursor = "normal"
   }
 
   useLayoutEffect(() => {
+    setCursor({ isLoading: true })
+    // document.documentElement.style.cursor = "none"
   }, [])
 
   useEffect(() => {

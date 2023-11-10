@@ -27,7 +27,7 @@ module.exports = {
         "@gap": "var(--gap-padding)"
       },
       colors: {
-        darkPrimary: "#000",
+        darkPrimary: "var(--primary-color)",
         darkBg: "#444",
         lightBg: "#fff",
         lightPrimary: "#222",

@@ -6,9 +6,13 @@ import Link from "next/link";
 import useSetCursor from "@/hooks/useSetCursor";
 
 import Midialink from "./MidiaLink";
-import WordsFadeIn from "@/components/Words/WordsFadeIn";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
+
+
+import CustomButton from "@/components/CustomButton";
+import Polygon from "@/components/Polygon";
+import WordsFadeIn from "@/components/Words/WordsFadeIn";
 
 interface ContactProps { }
 
@@ -26,63 +30,42 @@ export function Contact({ }: ContactProps) {
   const ref = useRef<HTMLDivElement>(null!)
   const isInView = useInView(ref, { once: false })
 
+  const socialsMidiasLength = SOCIAL_MIDIA.length + PROFESSIONAL_MIDIA.length
+
   const setCursor = useSetCursor()
 
   return (
     <section
-      data-scroll
-      data-scroll-section
       ref={ref}
       id="contact"
-      className="w-full h-auto min-h-screen sm:h-[100dvh] sm:px-[3vw] sm:grid sm:grid-rows-5 [--container-padding:3vw] relative ease-fast text-white"
+      className="w-screen mx-auto h-[200vh] min-h-screen sm:h-[100dvh] sm:px-[3vw] px-4 relative ease-fast text-white"
     >
-      <article
-        data-scroll
-        data-scroll-speed="-2"
-        data-scroll-offset="-50%, 0%"
-        className="grid lg:grid-cols-12 px-[3vw] md:grid-cols-12 sm:grid-cols-1 sm:row-span-2 bg-black z-50 sm:pt-0 pt-[5vh]"
-      >
-        <h2 className="my-auto align-middle sm:text-center col-span-11  md:text-left lg:text-left uppercase text-white">Contact</h2>
-        <Image
-          className="lg:ml-auto md:ml-auto md:mx-0 sm:mx-auto mt-auto rounded-full"
-          src="/profile/image.jpeg"
-          alt="Huann Profile image" width={100} height={100}
-          quality={100}
-        />
+      <h1 className="my-auto sm:text-center block text-[7rem] col-span-11 mb-32 md:text-left lg:text-left uppercase text-white">
+        connect and
+        <br />
+        {" "}keep together
+      </h1>
+      <p className="sticky top-[8rem] uppercase inline font-semibold">Socials<span className="text-[11px] absolute translate-x-full text-white/50">{socialsMidiasLength}</span></p>
+      <Polygon trigger="#contact" className="absolute right-0 -z-[1]" radius={500} isRegular vertexs={5} />
+      <article className="pt-[3vw] h-1/2 w-auto block float-right ml-auto sm:row-span-2 sm:flex sm:justify-center">
+
+        <div data-scroll data-scroll-speed="0.2" className="w-[55dvh] relative overflow-hidden aspect-square rounded-2xl bg-white">
+          <img className="absolute h-full object-cover" src="/warren-poster4.png" alt="" />
+          <div className="absolute w-full pb-4 px-4 bottom-0 text-black">
+            <small className="font-semibold">&copy; Linkedin</small>
+            <small className="float-right inline">Art made by <span className="font-semibold">HuannAnd</span></small>
+          </div>
+        </div>
+
+        <div data-scroll data-scroll-speed="0.4" className="w-[55dvh] right-32 relative overflow-hidden aspect-square rounded-2xl bg-white">
+          <img className="absolute h-full object-cover" src="/linkedin-poster.png" alt="" />
+          <div className="absolute w-full pb-4 px-4 bottom-0 text-white">
+            <small className="font-semibold">&copy; Linkedin</small>
+            <small className="float-right inline">Art made by <span className="font-semibold">HuannAnd</span></small>
+          </div>
+        </div>
+
       </article>
-      <article
-        data-scrol
-        data-scroll-speed="-5"
-        data-scroll-offset="-100%,0%"
-        className="pt-[3vw] sm:row-span-2 sm:flex sm:justify-center"
-      >
-        <div className="sm:w-full flex flex-col justify-center items-center px-[3vw] lg:pt-[9vw] md:pt-[3vw] sm:pt-[9vw] pb-[3vw]">
-          {PROFESSIONAL_MIDIA
-            .map(
-              ({ title, ...rest }, i) => <Midialink key={`midia_link_${i}`} {...rest}>
-                <WordsFadeIn delayInSeconds={.5 * (i + 1)} isInView={isInView} splitType="letters">
-                  {title}
-                </WordsFadeIn>
-              </Midialink>
-            )}
-        </div>
-      </article>
-      <footer className="flex absolute lg:flex-row md:flex-row sm:flex-col sm:row-span-1 pb-[1.75vw] justify-between clip-around shadow-[0_0_0_100vmax_#060606] bottom-0 w-full pt-[3vw] px-[3vw] bg-[#060606]">
-        <div className="sm:pb-[3vw]">
-          <small className="font-normal text-white/50">SOCIALS</small>
-          <ul className="lg:inline md:inline sm:flex sm:gap-x-[3vw]">
-            {SOCIAL_MIDIA
-              .map((x, i) => <li key={i} onMouseEnter={() => setCursor({ state: "hovered" })} onMouseLeave={() => setCursor({ state: "normal" })} className="mb-4 hover:text-white/50 duration-300 ease-smooth cursor-pointer text-white mix-blend-difference"><a target="_blank" href={x.href}>{x.title}</a></li>)
-            }
-          </ul>
-        </div>
-        <hr className="" />
-        <div className="grid place-content-center sm:py-[3vw]">
-          <p className="text-white">
-            &copy; Developed By Huann Vicente
-          </p>
-        </div>
-      </footer>
     </section>
 
   );

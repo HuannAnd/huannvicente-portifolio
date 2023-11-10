@@ -2,7 +2,7 @@
 
 import React, { memo, createContext, useEffect, useState, useCallback } from "react";
 
-import Follower from "./Follower";
+import Cursor from "@/components/Cursor";
 
 import { useAnimate } from "framer-motion";
 
@@ -39,7 +39,7 @@ function CursorFollowerProvider({ children }: CursorFollowerProviderProps) {
     function handleWithFollowerAnimation() {
       switch (cursor.state) {
         case "normal":
-          animate(scope.current, { scale: .5, opacity: .5 }, { duration: .3 })
+          animate(scope.current, { scale: .5, opacity: 1 }, { duration: .3 })
           break;
         case "hovered":
           animate(scope.current, { scale: 1, opacity: 1 }, { duration: .3 })
@@ -61,7 +61,7 @@ function CursorFollowerProvider({ children }: CursorFollowerProviderProps) {
 
   return (
     <CursorFollowerSetCursor.Provider value={handleCursor}>
-      <Follower {...cursor} ref={scope} />
+      <Cursor {...cursor} ref={scope} />
       {children}
     </CursorFollowerSetCursor.Provider >
 

@@ -2,8 +2,9 @@
 
 import { createContext, useCallback, useReducer, useState } from 'react'
 
-import Hamburguer from './Hamburguer';
-import Aside from './Aside';
+import Hamburguer from '@/components/Hamburguer';
+import Aside from '@/components/Sidebar';
+import Traveler from '@/components/Traveler';
 
 import useNavigationRouting from './useNavigationRouting';
 
@@ -37,6 +38,7 @@ export default function NavigationContextProvider({ children }: NavigationProvid
     <NavigationHamburguerContext.Provider value={canBeShowHamburguer}>
       <NavigationAsideContext.Provider value={handleAsideStates}>
         <Hamburguer canBeShow={showHamburguer} />
+        <Traveler />
         <Aside navigation={navigation} canBeShow={showAside} />
         {children}
       </NavigationAsideContext.Provider>

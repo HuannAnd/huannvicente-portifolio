@@ -7,6 +7,15 @@ const nextConfig = {
     NEXT_GITHUB_API_KEY:
       "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",
   },
+  webpack(config, { isServer }) {
+    config.module.rules.push({
+      test: /\.(glsl|vs|fs|vert|frag|ps)$/,
+      exclude: /node_modules/,
+      use: ["raw-loader", "glslify-loader"],
+    });
+
+    return config
+  },
 };
 
 module.exports = nextConfig;

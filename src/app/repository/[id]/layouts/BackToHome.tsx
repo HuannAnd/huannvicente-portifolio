@@ -20,13 +20,13 @@ export default function BackToHome({ }: BackToHomeProps) {
   const nextProject = useNextProjectWithId(projectId)
 
   return (
-    <section data-scroll-section data-scroll className="w-full px-[3vw] h-[100vh] relative flex justify-center gap-[3vw] items-center py-[9vw]">
+    <section data-scroll-section data-scroll className="max-w-@content mx-auto px-[3vw] h-[100vh] relative flex justify-center gap-[3vw] items-center py-[9vw]">
       <Link
         onMouseEnter={() => setCursor({ title: nextProject.name, state: "hovered" })}
         onMouseLeave={() => setCursor({ title: null, icon: null, state: "normal" })}
         href={`/repository/${nextProject.id}`}
         onClick={() => setCursor({ state: "normal" })}
-        className="w-full py-[3vw] hover:text-white/50 duration-300 ease-smooth cursor-pointer text-[20px] font-regular text-white text-center border-t-2 border-t-[#111]"
+        className="w-full py-[3vw] hover:text-white/50 duration-300 ease-smooth cursor-pointer text-[20px] font-regular text-white text-center border-t-[#aaaaaa66] border-t-[1px]"
       >
         Next
       </Link>
@@ -35,7 +35,7 @@ export default function BackToHome({ }: BackToHomeProps) {
         onMouseLeave={() => setCursor({ title: null, icon: null, state: "normal" })}
         onMouseEnter={() => setCursor({ state: "hovered", icon: "home" })}
         href="/home"
-        className="w-full py-[3vw] hover:text-white/50 duration-300 ease-smooth cursor-pointer text-[20px] font-regular text-white text-center border-t-2 border-t-[#111]"
+        className="w-full py-[3vw] hover:text-white/50 duration-300 ease-smooth cursor-pointer text-[20px] font-regular text-white text-center border-t-[#aaaaaa66] border-t-[1px]"
       >
         Home
       </Link>

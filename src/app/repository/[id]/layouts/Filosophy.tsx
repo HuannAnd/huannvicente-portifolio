@@ -25,7 +25,7 @@ export default function Filosophy({ }: FilosophyProps) {
       data-scroll
       ref={scope}
       transition={{ duration: 1 }}
-      className="w-full invert flex flex-col ab justify-center items-center clip-around shadow-[0_0_0_100vmax_#141414] h-auto p-[9vw] bg-[#141414]">
+      className="max-w-@content mx-auto invert flex flex-col ab justify-center items-center clip-around shadow-[0_0_0_100vmax_#141414] h-auto p-[9vw] bg-[#141414]">
       <q
         id="filosophy"
         className="font-light w-full text-[20px] text-[#bbb]">

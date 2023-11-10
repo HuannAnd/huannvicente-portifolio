@@ -24,7 +24,7 @@ export default function Gallery({ }: GalleryProps) {
     <section
       data-scroll-section
       data-scroll
-      className="w-full h-auto py-[9vw] min-h-[200vh] overflow-hidden gap-x-2 gap-y-[3vw] flex flex-col gap-[3vw]"
+      className="max-w-@content mx-auto h-auto py-[9vw] min-h-[200vh] overflow-hidden gap-x-2 gap-y-[3vw] flex flex-col gap-[3vw]"
     >
       <div
         className="w-full px-[3vw] flex flex-wrap justify-center items-start"

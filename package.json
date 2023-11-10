@@ -29,14 +29,15 @@
     "eslint-config-next": "13.4.5",
     "framer-motion": "^10.12.16",
     "framer-motion-3d": "^10.12.16",
+    "glslify-loader": "^2.0.0",
     "gsap": "^3.12.1",
-    "locomotive-scroll": "^4.1.4",
+    "locomotive-scroll": "^5.0.0-beta.8",
     "mongodb": "^5.7.0",
-    "next": "13.4.5",
+    "next": "^14.0.1-canary.3",
     "postcss": "8.4.24",
+    "raw-loader": "^4.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-locomotive-scroll": "^0.2.2",
     "split-type": "^0.3.3",
     "tailwind-merge": "^1.14.0",
     "tailwindcss": "3.3.2",
@@ -45,6 +46,7 @@
   },
   "devDependencies": {
     "@types/chroma-js": "^2.4.0",
-    "@types/three": "^0.152.1"
+    "@types/three": "^0.152.1",
+    "babel-plugin-glsl": "^1.0.0"
   }
 }

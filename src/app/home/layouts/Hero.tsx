@@ -1,74 +1,98 @@
 "use client";
 
-import { useEffect } from "react";
+import WordsSlidein from "@/components/WordsSlideIn";
+import LettersMapping from '@/components/LettersMapping'
 
-import { stagger, useAnimate, useInView } from "framer-motion";
+import Windows11Scene from "@/three/scenes/Windows11Wallpaper";
 
-import SplitType from "split-type";
+
+import { useLayoutEffect, useRef } from "react";
+
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 
 export default function Hero() {
-  const scope = useAnimationRef()
+  const firstTitle = useRef<HTMLHeadElement>(null)
+  const secondTitle = useRef<HTMLHeadElement>(null)
+  const thirdTitle = useRef<HTMLHeadElement>(null)
+
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger)
+
+    const allSpans = document.querySelectorAll("#hero span > span")
+    gsap.set(allSpans, {
+      y: "-100%",
+      filter: "blur(10px)",
+      opacity: 0,
+    })
+
+    revealTitle("#heroInitial")
+
+    gsap.set(secondTitle.current, {
+      scrollTrigger: {
+        trigger: "#heroMiddle",
+        start: "top top",
+        markers: true,
+        once: true,
+        onEnter: () => { revealTitle("#heroMiddle") }
+      }
+    })
+
+    gsap.set(thirdTitle.current, {
+      scrollTrigger: {
+        trigger: "#heroEnd",
+        start: "top top",
+        once: true,
+        onEnter: () => { revealTitle("#heroEnd") }
+      }
+    })
+  }, [])
+
+  function revealTitle(htmlElementId: string) {
+    console.log("revealTitle has fired")
+    const innerSpans = document.querySelectorAll(`${htmlElementId} span > span`)
+
+    gsap.to(innerSpans, {
+      y: "0%",
+      delay: htmlElementId === "#heroInitial" ? 2 : 0,
+      filter: "blur(0px)",
+      opacity: 1,
+      ease: "power4.out",
+      duration: .8,
+      stagger: .02
+    })
+  }
+
+
 
   return (
     <section
-      className="h-full grid grid-cols-12 z-10 justify-between gap-x-2 mx-auto clip-around shadow-[0_0_0_100vmax_rgba(0,0,0,.5)] bg-black/50 bg-blend-hard-light items-center top-0 absolute text-black"
+      className="min-h-[300vh] grid grid-rows-4 w-screen mx-auto z-50 gap-x-2 text-black"
       id="hero"
-      ref={scope}
     >
-      <div className="h-full col-span-6 mx-auto col-start-4 flex text-white items-center">
-        <div className="w-full h-auto my-auto text-center">
-          <h1 className="font-bold  selection:bg-green-200 selection:text-lightPrimary tracking-tighter leading-none text-white duration-300 ease-fast text-[clamp(48px,_5vw,_140px)] w-auto mb-8 opacity-0">
-            Huann Vicente
-          </h1>
-          <h3
-            id="text"
-            className="w-full italic font-light text-center text-white/60 selection:bg-green-200 selection:text-lightPrimary"
-          >
-            Web Developer &
-            <br />
-            Full Stack Designer
-          </h3>
-        </div>
-      </div>
+      <Windows11Scene />
+      <article data-scroll className="w-full grid place-content-center h-screen text-center">
+        <h1 ref={firstTitle as any} id="heroInitial" className="text-center ml-16 py-[9vw] text-white leading-[80%] uppercase text-[7rem]">
+          <LettersMapping>Huann</LettersMapping> <LettersMapping>Vicente</LettersMapping>
+        </h1>
+      </article>
+      <article data-scroll-call={() => revealTitle("#heroMiddle")} className="w-full flex h-[200dvh] justify-start items-baseline">
+        <h1 id="heroMiddle" className="text-left sticky top-0 ml-16 py-[9vw] text-white leading-[80%] uppercase text-[7rem]">
+          <LettersMapping>Explore</LettersMapping>
+          <br />
+          <LettersMapping>Enjoy</LettersMapping>
+          <br />
+          <LettersMapping>The Worldwide Web</LettersMapping>
+        </h1>
+      </article>
+      <article data-scroll-call={() => revealTitle("#heroMiddle")} className="w-full flex h-[200dvh] justify-end items-center">
+        <h1 id="heroEnd" className="text-left sticky top-0 mr-16 py-[9vw] text-white leading-[80%] uppercase text-[7rem]">
+          <LettersMapping>Dont</LettersMapping> <LettersMapping>Forget</LettersMapping>
+          <br />
+          <LettersMapping>Me</LettersMapping>
+        </h1>
+      </article>
     </section>
   )
-}
-
-function useAnimationRef() {
-  const [scope, animate] = useAnimate();
-  const isInView = useInView(scope, { once: true });
-
-  useEffect(() => {
-    if (isInView) {
-      new SplitType("#text", { types: "words" });
-      animate([
-        [
-          "h1",
-          { opacity: 1 },
-          { duration: 1 }
-
-        ],
-        [
-          "#text",
-          { visibility: "visible" },
-          { at: "-1" }
-        ],
-        [
-          "#text .word",
-          { y: [16, 0], opacity: [0, 1] },
-          { duration: 0.45, times: [0, 1], delay: stagger(0.07), at: "+1" }
-        ],
-        [
-          "button",
-          { y: [32, 0], opacity: [0, 1] },
-          { duration: 0.45, at: "-0.5" }
-        ]
-      ])
-    }
-
-    return
-  }, [isInView]);
-
-  return scope
 }
