@@ -6,7 +6,7 @@ class ProjectsService {
   constructor(
     private projects: IProjectData[] = data
   ) { }
-  public getProjectPhotos(projectId: number) {
+  public getProjectPhotosById(projectId: number) {
     const project = this.getProjectById(projectId)
 
     return project?.gallery

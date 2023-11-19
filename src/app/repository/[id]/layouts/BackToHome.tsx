@@ -3,8 +3,8 @@
 import Link from "next/link";
 
 import useSetCursor from "@/hooks/useSetCursor";
-import useProjectId from "./useProjectId";
-import useNextProjectWithId from "./useNextProjectWithId";
+import useProjectId from "../hooks/useProjectId";
+import useNextProjectWithId from "../hooks/useNextProjectWithId";
 
 interface BackToHomeProps { }
 
@@ -22,18 +22,18 @@ export default function BackToHome({ }: BackToHomeProps) {
   return (
     <section data-scroll-section data-scroll className="max-w-@content mx-auto px-[3vw] h-[100vh] relative flex justify-center gap-[3vw] items-center py-[9vw]">
       <Link
-        onMouseEnter={() => setCursor({ title: nextProject.name, state: "hovered" })}
-        onMouseLeave={() => setCursor({ title: null, icon: null, state: "normal" })}
+        onMouseEnter={() => setCursor({ title: nextProject.name, mode: "hovered" })}
+        onMouseLeave={() => setCursor({ title: null, icon: null, mode: "normal" })}
         href={`/repository/${nextProject.id}`}
-        onClick={() => setCursor({ state: "normal" })}
+        onClick={() => setCursor({ mode: "normal" })}
         className="w-full py-[3vw] hover:text-white/50 duration-300 ease-smooth cursor-pointer text-[20px] font-regular text-white text-center border-t-[#aaaaaa66] border-t-[1px]"
       >
         Next
       </Link>
       <Link
-        onClick={() => setCursor({ state: "normal" })}
-        onMouseLeave={() => setCursor({ title: null, icon: null, state: "normal" })}
-        onMouseEnter={() => setCursor({ state: "hovered", icon: "home" })}
+        onClick={() => setCursor({ mode: "normal" })}
+        onMouseLeave={() => setCursor({ title: null, icon: null, mode: "normal" })}
+        onMouseEnter={() => setCursor({ mode: "hovered", icon: "home" })}
         href="/home"
         className="w-full py-[3vw] hover:text-white/50 duration-300 ease-smooth cursor-pointer text-[20px] font-regular text-white text-center border-t-[#aaaaaa66] border-t-[1px]"
       >

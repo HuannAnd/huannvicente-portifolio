@@ -1,25 +1,46 @@
 'use client';
 
-import { forwardRef } from "react";
-
-import { AnimationScope, motion } from "framer-motion";
+import { motion, animate } from "framer-motion";
 
 import useLoading from "./hooks/useLoading";
+import useCursorAnimationScope from "./hooks/useCursorAnimationScope";
+import { useEffect } from "react";
+import useCursorMode from "./hooks/useCursorMode";
 
-interface FollowerCircleProps {
-  // isLoading: boolean
-}
+interface Props { }
 
-function FollowerCircle({ }: FollowerCircleProps, ref: React.ForwardedRef<AnimationScope<SVGSVGElement>>) {
-  console.log("FollowerCircle has render")
+export default function FollowerCircle({ }: Props) {
+  const scope = useCursorAnimationScope()
   const isLoading = useLoading()
+  const mode = useCursorMode()
 
-  // console.log("IsLoading inside FollowerCircle: ", isLoading)
+  useEffect(() => {
+    if (!scope?.current) return
+    switch (mode) {
+      case "normal":
+        animate(scope.current, { scale: .5, opacity: 1 }, { duration: .3 })
+        break;
+      case "hovered":
+        animate(scope.current, { scale: 1.2, opacity: 1 }, { duration: .3 })
+        break;
+      case "invisible":
+        animate(scope.current, { scale: .5, opacity: 0 }, { duration: .3 })
+        break;
+      case "pressed":
+        animate(scope.current, { scale: 1.2, opacity: 1 }, { duration: .3 })
+        break;
+      default:
+        animate(scope.current, { scale: .5, opacity: 0 }, { duration: .3 })
+        break;
+    }
+  },
+    [mode]
+  )
 
   return (
     <motion.svg
-      className="w-[102px] aspect-square"
-      ref={ref as any}
+      className="w-[102px] aspect-square pointer-events-none"
+      ref={scope}
     >
       <circle
         style={{ opacity: isLoading ? 0 : 1 }}
@@ -32,5 +53,3 @@ function FollowerCircle({ }: FollowerCircleProps, ref: React.ForwardedRef<Animat
     </motion.svg>
   )
 }
-
-export default forwardRef(FollowerCircle)

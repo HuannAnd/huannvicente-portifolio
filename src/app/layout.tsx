@@ -13,6 +13,8 @@ const roboto = Roboto({
 
 import Providers from '@/contexts/Providers'
 
+import Hamburger from '@/components/Hamburger'
+
 export const metadata = {
   title: {
     default: "Portifolio",
@@ -30,6 +32,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${roboto.variable} font-roboto min-h-screen overflow-x-hidden relative w-screen bg-darkPrimary selection:bg-white selection:text-lightPrimary`}>
         <Providers>
+          <Hamburger />
+          {/* <Cursor /> */}
           {children}
         </Providers>
       </body>

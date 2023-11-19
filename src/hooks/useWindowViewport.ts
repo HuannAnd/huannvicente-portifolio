@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 
 interface WindowViewport {
-  height: number, width: number
+  height: number,
+  width: number
 }
 
 export default function useWindowViewport() {

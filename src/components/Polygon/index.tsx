@@ -63,7 +63,6 @@ export default function Polygon({
           start: "top top",
           end: "bottom top",
           trigger,
-          // markers: true,
           scrub: true
         }
       })
@@ -73,7 +72,6 @@ export default function Polygon({
           start: "top top",
           end: "bottom top",
           trigger,
-          // markers: true,
           scrub: true
         }
       })
@@ -85,12 +83,21 @@ export default function Polygon({
   }, [trigger])
 
   return (
-    <svg {...rest} ref={svg} style={{ transformOrigin: "center" }} width={width} height={height} viewBox={`0 0 ${width} ${height}`} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      {...rest}
+      ref={svg}
+      style={{ transformOrigin: "center" }}
+      width={width}
+      height={height}
+      viewBox={`0 0 ${width} ${height}`}
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <polygon
         points={handleAllVertices()}
         fill="none"
-        stroke="#252525"
-        strokeWidth="1"
+        stroke="#444"
+        strokeWidth=".5"
       />
     </svg>
   )

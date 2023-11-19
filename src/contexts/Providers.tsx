@@ -2,7 +2,7 @@
 
 import NavigationContextProvider from "./NavigationContextProvider"
 import CursorFollowerProvider from "./CursorFollowerProvider"
-import LocomotiveScroll from "./LocomotiveScrollProvider";
+import LocomotiveScrollProvider from "./LocomotiveScrollProvider";
 import LoadingProvider from "./LoadingProvider";
 
 interface ProvidersProps extends React.PropsWithChildren { }
@@ -11,11 +11,11 @@ export default function Providers({ children }: ProvidersProps) {
   return (
     <CursorFollowerProvider>
       <NavigationContextProvider>
-        <LocomotiveScroll.Root>
+        <LocomotiveScrollProvider>
           <LoadingProvider>
             {children}
           </LoadingProvider>
-        </LocomotiveScroll.Root>
+        </LocomotiveScrollProvider>
       </NavigationContextProvider>
     </CursorFollowerProvider>
   )

@@ -1,11 +1,13 @@
+import { AnimationScope } from "framer-motion"
+
 type TCursorActionType = "Set"
-type TCursorState =
+export type TCursorMode =
   "hovered"
   | "invisible"
   | "pressed"
   | "normal"
 
-type TCursorIcon =
+export type TCursorIcon =
   "none"
   | "arrow"
   | "home"
@@ -17,7 +19,7 @@ export interface ICursor {
   isLoading: boolean,
   icon: TCursorIcon,
   title: string | null,
-  state: TCursorState
+  mode: TCursorMode
 }
 
 export interface ICursorAction
@@ -25,3 +27,8 @@ export interface ICursorAction
   type: TCursorActionType,
 }
 
+export type TCursorModeContext = TCursorMode | null
+export type TCursorTitleContext = string | null
+export type TCursorIsLoadingContext = boolean | null
+export type TCursorIconContext = TCursorIcon | null
+export type TCursorAnimationScopeContext = AnimationScope<any> | null

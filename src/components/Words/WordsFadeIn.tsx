@@ -33,7 +33,7 @@ const variants = {
   appear: { opacity: 1 }
 } as Variants
 
-export default function WordsFadeIn({ children, textColor, className, isInView, splitType = "points" , delayInSeconds = 0, ...rest }: WordsFadeInProps) {
+export default function WordsFadeIn({ children, textColor, className, isInView, splitType = "points", delayInSeconds = 0, ...rest }: WordsFadeInProps) {
   const spliting = splitType === "letters"
     ? " "
     : splitType === "points"

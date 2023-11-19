@@ -1,32 +1,24 @@
 "use client"
 
-import React, { forwardRef, memo } from 'react';
-
-import { AnimationScope } from 'framer-motion';
+import React from 'react';
 
 import FollowerCircle from './FollowerCircle';
 import FollowerIcons from './FollowerIcons';
 import FollowerText from './FollowerText';
 import FollowerLoading from './FollowerLoading';
 import FollowerRoot from './FollowerRoot';
-import FollowerContextProvider from './FollowerContextProvider';
 
-import { ICursor } from '@/contexts/CursorFollowerProvider/types';
+interface Props
+  extends React.PropsWithChildren { }
 
-interface NewFollowerContextProps
-  extends Omit<ICursor, "state"> { }
 
-function NewFollowerContext({ isLoading, title, icon }: NewFollowerContextProps, ref: React.ForwardedRef<AnimationScope<SVGSVGElement>>) {
+export default function Cursor({ }: Props) {
   return (
-    <FollowerContextProvider icon={icon} isLoading={isLoading} title={title}>
-      <FollowerRoot>
-        <FollowerText />
-        <FollowerCircle ref={ref!} />
-        <FollowerIcons icon={icon} />
-        <FollowerLoading />
-      </FollowerRoot>
-    </FollowerContextProvider>
+    <FollowerRoot>
+      <FollowerText />
+      <FollowerCircle />
+      <FollowerIcons />
+      <FollowerLoading />
+    </FollowerRoot>
   )
 }
-
-export default memo(forwardRef(NewFollowerContext))

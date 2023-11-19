@@ -9,9 +9,7 @@ import useTitle from "./hooks/useTitle";
 import useIcon from "./hooks/useIcon";
 
 
-interface FollowerIconsProps {
-  icon: string | null
-}
+interface FollowerIconsProps { }
 
 function Arrow() {
   return (

@@ -17,7 +17,7 @@ export default function Windows11Shape({ }: Windows11ShapeProps) {
 
   const [data] = useState({
     color: new THREE.Color(`rgba(21,98,254,255)`),
-    bump: .5,
+    bump: .3,
   })
 
   console.log("Geometry: ", geometry.current)
@@ -36,7 +36,7 @@ export default function Windows11Shape({ }: Windows11ShapeProps) {
           trigger: "#about",
           start: "top bottom",
           end: "top top",
-          markers: true,
+          // markers: true,
           scrub: true
         }
       })
@@ -53,7 +53,7 @@ export default function Windows11Shape({ }: Windows11ShapeProps) {
           trigger: "#projects",
           start: "top bottom",
           end: "top top",
-          markers: true,
+          // markers: true,
           scrub: true
         }
       })
@@ -64,7 +64,7 @@ export default function Windows11Shape({ }: Windows11ShapeProps) {
   }, [])
 
   useFrame(({ clock }, dt) => {
-    shader.current.uTime = clock.getElapsedTime() / 2
+    shader.current.uTime = clock.getElapsedTime() / 4
 
     mesh.current.rotation.x += dt
     mesh.current.rotation.y += dt
@@ -73,11 +73,11 @@ export default function Windows11Shape({ }: Windows11ShapeProps) {
 
   return (
     <mesh ref={mesh} receiveShadow castShadow position={[0, -3, 0]}>
-      <sphereGeometry ref={geometry as any} args={[5, 1000, 1000]} />
-      {/* <coneGeometry ref={geometry as any} args={[3, 1, 300, 300, false, 0, 100]} /> */}
+      <sphereGeometry ref={geometry as any} args={[5, 200, 200]} />
       <noiseShaderMaterial
         uBump={data.bump}
-        uColor={"#188bfe"}
+        // uColor={"#188bfe"}
+        uColor={"#cc6804"}
         // uColor={"#089e08"}
         // uColor={"#73079e"}
         // uColor="#893a1b"

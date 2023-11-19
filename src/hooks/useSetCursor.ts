@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { CursorFollowerSetCursor } from '@/contexts/CursorFollowerProvider'
+import { SetCursorStatesContext } from '@/contexts/CursorFollowerProvider'
 export default function useSetCursor() {
-  return useContext(CursorFollowerSetCursor)
+  return useContext(SetCursorStatesContext)
 }

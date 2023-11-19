@@ -1,5 +1,3 @@
-import projects from '@/services/projects';
-
 import About from './layouts/About';
 import Hero from './layouts/Hero';
 import Projects from './layouts/Projects';

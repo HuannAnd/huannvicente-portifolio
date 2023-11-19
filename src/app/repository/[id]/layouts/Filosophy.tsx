@@ -7,8 +7,8 @@ import { motion, useAnimate, useInView } from "framer-motion";
 import SplitType from "split-type";
 
 import splittedText from "@/utils/splittedText";
-import useProjectFilosophy from "./useProjectFilosophy";
-import useProjectId from "./useProjectId";
+import useFilosophy from "../hooks/useFilosophy";
+import useProjectId from "../hooks/useProjectId";
 
 
 interface FilosophyProps { }
@@ -17,7 +17,7 @@ export default function Filosophy({ }: FilosophyProps) {
   const scope = useSplittedAnimationRef()
 
   const projectId = useProjectId()
-  const { author, phrase } = useProjectFilosophy(projectId)
+  const { author, phrase } = useFilosophy(projectId)
 
   return (
     <motion.section

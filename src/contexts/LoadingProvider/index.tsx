@@ -1,11 +1,10 @@
 'use client';
 
-import { createContext, useEffect, useLayoutEffect, useReducer, useState } from 'react'
+import { createContext, useEffect, useLayoutEffect } from 'react'
 import { usePathname, useRouter } from 'next/navigation';
 
-import { TActionReducer, ActionReducer } from './type';
 import useSetCursor from '@/hooks/useSetCursor';
-import useLocomotiveScrollRef from '../LocomotiveScrollProvider/useLocomotiveScrollRef';
+import useLocomotiveScrollRef from '../LocomotiveScrollProvider/useLocomotiveScroll';
 
 interface LoadingProviderProps {
   children: React.ReactNode
@@ -19,7 +18,6 @@ const ANIMATION_DURATION_IN_MS = 3000
 
 export default function LoadingProvider({ children }: LoadingProviderProps) {
   const locomotiveScroll = useLocomotiveScrollRef()
-
   const setCursor = useSetCursor()
 
   const router = useRouter()
@@ -35,12 +33,10 @@ export default function LoadingProvider({ children }: LoadingProviderProps) {
     setCursor({ isLoading: false })
     if (!locomotiveScroll) return
     locomotiveScroll.scrollTo(0)
-    // document.documentElement.style.cursor = "normal"
   }
 
   useLayoutEffect(() => {
     setCursor({ isLoading: true })
-    // document.documentElement.style.cursor = "none"
   }, [])
 
   useEffect(() => {

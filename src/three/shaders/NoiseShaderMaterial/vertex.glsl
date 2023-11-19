@@ -95,11 +95,8 @@ float fit(float unscaled, float originalMin, float originalMax, float minAllowed
 }
 
 float wave(vec3 position) {
-  return fit(smoothMod(position.y * uBump, 1.0, 1.0), 0.7, 0.6, 0.0, 1.0);
+  return fit(smoothMod(position.y * uBump, 0.7 , 1.0), 0.7, 0.6, 0.0, 1.0);
 }
-
-
-
 
 void main() {
   vec3 coords = normal;

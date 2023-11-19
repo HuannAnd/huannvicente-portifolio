@@ -9,8 +9,7 @@ import SplitType from "split-type"
 import ProjectsService from "@/services/projects";
 
 import useSetCursor from "@/hooks/useSetCursor";
-import useHamburguerContext from "@/hooks/useHamburguerContext"
-import useProjectId from "./useProjectId";
+import useProjectId from "../hooks/useProjectId";
 
 interface HeroProps { title: string, description: string }
 
@@ -25,11 +24,9 @@ export default function Overview({ title, description }: HeroProps) {
   const domainURL = ProjectsService.getProjectUrls(projectId).domain_url
 
   return (
-    <section ref={scope} data-scroll-section data-scroll className="max-w-@content mx-auto text-[#bbb] grid place-content-center text-center h-screen">
-      <div className="relative px-[9vw]">
-        <h1
-          data-scroll
-          className="text-[clamp(48px,_5vw,_140px)] mb-8 text-center duration-300 ease-fast text-white font-bold tracking-tighter">{title}</h1>
+    <section ref={scope} className="w-screen px-4 mx-auto text-[#bbb] grid place-content-center text-center h-screen">
+      <div className="relative">
+        <h1 className="text-[clamp(48px,_5vw,_140px)] mb-8 text-center duration-300 ease-fast text-white font-bold tracking-tighter">{title}</h1>
         <q
           id="text"
           className="text-[clamp(25px,_3vw,_48px)] mb-4 duration-300 ease-fast block text-center text-white/50 font-normal">{description}</q>
@@ -37,18 +34,18 @@ export default function Overview({ title, description }: HeroProps) {
           {hasDomain && (
             <a
               className="text-white grow basis-0 py-[3vw] min-w-[18vw] block cursor-pointer font-regular border-t-2 border-t-[#222]"
-              onMouseEnter={() => setCursor({ state: "hovered", title: null, icon: "externalLink" })}
-              onMouseLeave={() => setCursor({ state: "normal", title: null, icon: "externalLink" })}
+              onMouseEnter={() => setCursor({ mode: "hovered", title: null, icon: "externalLink" })}
+              onMouseLeave={() => setCursor({ mode: "normal", title: null, icon: "externalLink" })}
               href={domainURL}>On live</a>
           )}
           <a
             className="text-white py-[3vw] basis-0 grow w-full min-w-[9vw] block cursor-pointer font-regular border-t-2 border-t-[#222]"
-            onMouseEnter={() => setCursor({ state: "hovered", title: null, isLoading: false, icon: "externalLink" })}
-            onMouseLeave={() => setCursor({ state: "normal", title: null, icon: "none" })}
+            onMouseEnter={() => setCursor({ mode: "hovered", title: null, isLoading: false, icon: "externalLink" })}
+            onMouseLeave={() => setCursor({ mode: "normal", title: null, icon: "none" })}
             href={repositoryURL}>Repository</a>
         </div>
       </div>
-    </section>
+    </section >
   )
 }
 

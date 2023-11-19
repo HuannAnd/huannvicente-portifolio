@@ -2,68 +2,79 @@
 
 import React, { memo, createContext, useEffect, useState, useCallback } from "react";
 
-import Cursor from "@/components/Cursor";
-
 import { useAnimate } from "framer-motion";
 
-import reducer from "./reducer";
-import { ICursor } from "./types";
+import {
+  ICursor,
+  TCursorMode,
+  TCursorIcon,
+  TCursorModeContext,
+  TCursorIsLoadingContext,
+  TCursorTitleContext,
+  TCursorIconContext,
+  TCursorAnimationScopeContext
+} from "./types";
+
+import Cursor from "@/components/Cursor";
 
 interface CursorFollowerProviderProps
   extends React.PropsWithChildren { }
 
-export const CursorFollowerSetCursorContext = createContext<(event: TCursorAction["type"]) => void>(() => { });
-export const CursorFollowerSetTitleContext = createContext<(newTitle: string | null) => void>(() => { });
-export const CursorFollowerSetIsLoadingContext = createContext<(state: boolean) => void>(() => { });
-export const CursorFollowerSetCursorIconContext = createContext<(state: TCursorIcon["type"]) => void>(() => { });
-export const CursorFollowerSetCursor = createContext<(config: Partial<ICursor>) => void>(() => { });
+export const CursorModeContext = createContext<TCursorModeContext>(null);
+export const CursorTitleContext = createContext<TCursorTitleContext>(null);
+export const CursorIsLoadingContext = createContext<TCursorIsLoadingContext>(null);
+export const CursorIconContext = createContext<TCursorIconContext>(null);
+export const SetCursorStatesContext = createContext<(config: Partial<ICursor>) => void>(() => { });
+export const CursorAnimationScopeContext = createContext<TCursorAnimationScopeContext>(null);
 
-type TCursorAction = {
-  type: "hovered" | "invisible" | "pressed" | "normal"
-}
 
-type TCursorIcon = {
-  type: "none" | "arrow" | "home" | "externalLink" | null
-}
 function CursorFollowerProvider({ children }: CursorFollowerProviderProps) {
-  const [cursor, setCursor] = useState<ICursor>({ icon: "none", title: null, isLoading: false, state: "normal" })
-  const [scope, animate] = useAnimate()
-
-  console.log("icon inside CursorFollowerProvider:", cursor.icon)
-
+  const [isLoading, setIsLoading] = useState(true)
+  const [icon, setIcon] = useState<TCursorIcon>("none")
+  const [title, setTitle] = useState<string | null>(null)
+  const [mode, setMode] = useState<TCursorMode>("normal")
+  const [scope] = useAnimate()
+  
   const handleCursor = useCallback((config: Partial<ICursor>) => {
-    setCursor({ ...cursor, ...config })
-  }, [])
+    console.log("Cursor changing")
+    console.log("Config value: ", config)
 
-  useEffect(() => {
-    function handleWithFollowerAnimation() {
-      switch (cursor.state) {
-        case "normal":
-          animate(scope.current, { scale: .5, opacity: 1 }, { duration: .3 })
-          break;
-        case "hovered":
-          animate(scope.current, { scale: 1, opacity: 1 }, { duration: .3 })
-          break;
-        case "invisible":
-          animate(scope.current, { scale: .5, opacity: 0 }, { duration: .3 })
-          break;
-        case "pressed":
-          animate(scope.current, { scale: 1.2, opacity: 1 }, { duration: .3 })
-          break;
-        default:
-          animate(scope.current, { scale: .5, opacity: 0 }, { duration: .3 })
-          break;
-      }
+    if (config.mode !== undefined) {
+      console.log("Cursor mode change")
+      setMode(config.mode)
     }
-
-    handleWithFollowerAnimation()
-  }, [cursor.state])
+    if (config.icon !== undefined) {
+      console.log("Cursor icon change")
+      setIcon(config.icon)
+    }
+    if (config.isLoading !== undefined) {
+      console.log("Cursor isLoading change")
+      setIsLoading(config.isLoading)
+    }
+    if (config.title !== undefined) {
+      console.log("Cursor title change")
+      setTitle(config.title)
+    }
+  },
+    []
+  )
 
   return (
-    <CursorFollowerSetCursor.Provider value={handleCursor}>
-      <Cursor {...cursor} ref={scope} />
-      {children}
-    </CursorFollowerSetCursor.Provider >
+    <CursorTitleContext.Provider value={title}>
+      <CursorIsLoadingContext.Provider value={isLoading}>
+        <CursorIconContext.Provider value={icon}>
+          <CursorModeContext.Provider value={mode}>
+            <CursorAnimationScopeContext.Provider value={scope}>
+              <SetCursorStatesContext.Provider value={handleCursor}>
+                <Cursor />
+                {children}
+              </SetCursorStatesContext.Provider >
+            </CursorAnimationScopeContext.Provider>
+          </CursorModeContext.Provider>
+        </CursorIconContext.Provider>
+      </CursorIsLoadingContext.Provider>
+    </CursorTitleContext.Provider>
+
 
   );
 }

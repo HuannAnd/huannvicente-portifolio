@@ -1,7 +1,6 @@
 import { useContext } from "react";
-
-import { FollowerLoadingContext } from "../FollowerContextProvider";
+import { CursorIsLoadingContext } from "@/contexts/CursorFollowerProvider";
 
 export default function useLoading() {
-  return useContext(FollowerLoadingContext)
+  return useContext(CursorIsLoadingContext)
 }

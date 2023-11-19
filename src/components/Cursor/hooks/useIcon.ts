@@ -1,7 +1,6 @@
 import { useContext } from 'react'
-
-import { FollowerIconContext } from '../FollowerContextProvider'
+import { CursorIconContext } from '@/contexts/CursorFollowerProvider'
 
 export default function useIcon() {
-  return useContext(FollowerIconContext)
+  return useContext(CursorIconContext)
 }

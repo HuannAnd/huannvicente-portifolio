@@ -4,11 +4,9 @@ import { Suspense, useRef } from 'react';
 
 import { Canvas } from '@react-three/fiber';
 
-import Windows11Shape from './Windows11Shape';
+import Windows11Shape from './OrganicFluid';
 import Lights from './Lights';
 import Camera from './Camera';
-
-import { useScroll, useTransform } from "framer-motion"
 
 import "@/three/shaders"
 

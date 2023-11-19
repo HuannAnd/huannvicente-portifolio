@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 
 import { motion, useMotionValue, useSpring } from 'framer-motion';
+import useWindowViewport from '@/hooks/useWindowViewport';
 
 
 interface FollowerRootProps
@@ -16,15 +17,21 @@ const springConfig = {
   restDelta: 0.001
 }
 
+const isServer = typeof window === "undefined"
+
 export default function FollowerRoot({ children }: FollowerRootProps) {
   const [x, y] = useFollowerCoordinates()
+  const cursorWidth = 102
+  const cursorHeight = cursorWidth
+
+  const initialXPosition = isServer ? 50 : window.innerWidth / 2 - cursorWidth / 2
+  const initialYPosition = isServer ? -200 : window.innerHeight / 2 - cursorHeight / 2
 
   return (
     <motion.div
       className="pointer-events-none fixed lg:visible md:invisible sm:invisible select-none z-[202] w-[102px] aspect-square grid place-content-center m-0 left-0 top-0"
-      // initial={{ opacity: 0, x: 50, y: -200 }}
-      // animate={{ opacity: 1, transition: { duration: .7 } }}
-      // exit={{ opacity: 0 }}
+      initial={{ opacity: 0, x: initialXPosition, y: initialYPosition }}
+      animate={{ opacity: 1, transition: { duration: 1 } }}
       layout
       style={{ x, y }}
     >

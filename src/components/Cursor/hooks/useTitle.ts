@@ -1,7 +1,6 @@
 import { useContext } from "react";
-
-import { FollowerTitleContext } from "../FollowerContextProvider";
+import { CursorTitleContext } from "@/contexts/CursorFollowerProvider";
 
 export default function useTitle() {
-  return useContext(FollowerTitleContext)
+  return useContext(CursorTitleContext)
 }

@@ -1,15 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useLayoutEffect } from "react";
 
 import Project from "./Project";
-
 import Polygon from "@/components/Polygon";
-import WordsSlideIn from "@/components/WordsSlideIn";
+import LettersSlideInOnView from "@/components/LettersSlideInOnView";
 
 import ProjectsService from "@/services/projects";
-import { useLayoutEffect } from "react";
-import LettersMapping from "@/components/LettersMapping";
 
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -24,36 +21,45 @@ function Projects({ }: ProjectsProps) {
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
-    const innerSpans = document.querySelectorAll("#projects h1 span > span")
+    const projects = document.querySelectorAll("#projects [data-project]")
+    const timeline = gsap.timeline()
 
-    gsap.set(innerSpans, {
+    timeline.set(projects, {
       y: "-100%",
       filter: "blur(10px)",
       opacity: 0,
       scrollTrigger: {
         trigger: "#projects",
-        start: "top top",
+        start: "-=20px top",
         onEnter: () => {
-          gsap.to(innerSpans, {
-            y: "0%",
-            filter: "blur(0px)",
-            opacity: 1,
-            ease: "power4.out",
+          timeline.to(projects, {
+            stagger: .2,
             duration: .8,
-            stagger: .02
-          })
+            transform: "scaleX(1)",
+            ease: "expo.inOut",
+            opacity: 1,
+            filter: "blur(0px)"
+          }, 0)
         }
       },
     })
-  }, [])
+
+    return () => {
+      timeline.kill()
+    }
+  },
+    []
+  )
 
   return (
     <section id="projects" className="w-screen mx-auto h-auto grid grid-cols-6 py-[9vw] px-4 text-white after:w-full after:absolute after:top-full">
-      <h1 className="mb-32 z-50 text-[7rem] col-span-6">
-        <LettersMapping>Modern</LettersMapping> <LettersMapping>Products</LettersMapping>
-        <br />
-        <LettersMapping>And</LettersMapping> <LettersMapping>Proudled</LettersMapping>
-      </h1>
+      <LettersSlideInOnView trigger="#projects" threshold={20}>
+        <h1 className="mb-32 z-50 text-[7rem] col-span-6">
+          Modern Products
+          <br />
+          And Proudled
+        </h1>
+      </LettersSlideInOnView>
       <p data-scroll className="sticky top-[10vh] text-white uppercase font-semibold">Works <span className="font-normal text-white/50 text-[11px] absolute translate-x-1/2 -translate-y-1/2">{quantityOfProjects}</span></p>
       <div className="relative col-span-2 col-start-1">
         <Polygon trigger="#projects" vertexs={5} radius={400} data-scroll data-scroll-speed="0.4" className="-z-10" />
