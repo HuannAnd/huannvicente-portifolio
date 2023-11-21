@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
+
+import useWindowEventListenerEffect from "./useWindowEventListener"
 
 interface WindowViewport {
   height: number,
@@ -8,17 +10,9 @@ interface WindowViewport {
 export default function useWindowViewport() {
   const [windowViewport, setWindowViewport] = useState<WindowViewport>({} as WindowViewport)
 
-  useEffect(() => {
-    const handleWindowResizig = () => setWindowViewport({ width: window.innerWidth, height: window.innerHeight })
-
-    window.addEventListener("resize", handleWindowResizig)
-
-    return () => {
-      window.removeEventListener("resize", handleWindowResizig)
-    }
-  },
-    []
-  )
+  useWindowEventListenerEffect("resize", () => {
+    setWindowViewport({ width: window.innerWidth, height: window.innerHeight })
+  })
 
   return windowViewport
 }

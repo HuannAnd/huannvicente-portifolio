@@ -1,5 +1,5 @@
 h1 {
-  font-size: clamp(5em, 10vw, 200px);
+  font-size: 7rem;
   font-weight: 900;
   letter-spacing: -0.1vw;
   line-height: 80%;

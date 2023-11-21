@@ -1,6 +1,6 @@
 'use client';
 
-import Load from '@/components/Load'
+import Load from '@/components/DotsLoading'
 import useLoading from './hooks/useLoading';
 
 interface FolowerLoadingProps {

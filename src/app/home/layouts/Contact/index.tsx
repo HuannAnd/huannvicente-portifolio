@@ -3,6 +3,8 @@
 import Polygon from "@/components/Polygon";
 import LettersSlideInOnHover from "@/components/LettersSlideInOnHover";
 import LettersSlideInOnView from "@/components/LettersSlideInOnView";
+import SlideInOnTriggerHover from "@/components/LettersSlideInOnTriggerHover";
+import useSetCursor from "@/hooks/useSetCursor";
 
 
 interface ContactProps { }
@@ -18,6 +20,7 @@ const PROFESSIONAL_MIDIA = [
 ]
 
 export function Contact({ }: ContactProps) {
+  const setCursor = useSetCursor()
   const socialsMidiasLength = SOCIAL_MIDIA.length + PROFESSIONAL_MIDIA.length
 
   return (
@@ -33,30 +36,34 @@ export function Contact({ }: ContactProps) {
         </h1>
       </LettersSlideInOnView>
       <p className="sticky top-[8rem] uppercase inline font-semibold">Socials<span className="text-[11px] absolute translate-x-full text-white/50">{socialsMidiasLength}</span></p>
-      <Polygon trigger="#contact" className="absolute right-0 -z-[1]" radius={500} isRegular vertexs={5} />
+      <Polygon trigger="#contact" className="absolute right-0 -z-[1]" radius={500} isRegular vertexes={5} />
       <article className="pt-[3vw] h-1/2 w-auto block float-right ml-auto sm:row-span-2 sm:flex sm:justify-center">
-        <div data-scroll data-scroll-speed="0.2" className="w-[55dvh] relative group/snapshot overflow-hidden aspect-square rounded-2xl bg-white">
-          <img className="absolute h-full object-cover ease-smooth duration-300 group-hover/snapshot:scale-[1.05]" src="/warren-poster4.png" alt="" />
-          <div className="absolute w-full pb-4 px-4 bottom-0 text-black">
-            <LettersSlideInOnHover>
-              <small className="font-semibold overflow-hidden inline-block">&copy; Warren</small>
-            </LettersSlideInOnHover>
-            <LettersSlideInOnHover>
-              <small className="float-right overflow-hidden inline-block">Art made by <span className="font-semibold">HuannAnd</span></small>
-            </LettersSlideInOnHover>
+        <SlideInOnTriggerHover.Root>
+          <div data-scroll data-scroll-speed="0.2" className="w-[55dvh] relative group/snapshot overflow-hidden aspect-square rounded-2xl bg-white">
+            <img onMouseEnter={() => setCursor({ mode: "hovered" })} onMouseLeave={() => setCursor({ mode: "normal" })} className="absolute h-full object-cover ease-smooth duration-300 group-hover/snapshot:scale-[1.05]" src="/warren-poster4.png" alt="" />
+            <div className="absolute w-full pb-4 px-4 bottom-0 text-black">
+              <SlideInOnTriggerHover.Trigger>
+                <small className="font-semibold overflow-hidden inline-block">&copy; Warren</small>
+              </SlideInOnTriggerHover.Trigger>
+              <SlideInOnTriggerHover.Trigger>
+                <small className="float-right overflow-hidden inline-block">Art made by <span className="font-semibold">HuannAnd</span></small>
+              </SlideInOnTriggerHover.Trigger>
+            </div>
           </div>
-        </div>
-        <div data-scroll data-scroll-speed="0.4" className="w-[55dvh] group/snapshot right-32 relative overflow-hidden aspect-square rounded-2xl bg-white">
-          <img className="absolute h-full object-cover ease-smooth duration-300 group-hover/snapshot:scale-[1.05]" src="/linkedin-poster.png" alt="" />
-          <div className="absolute w-full pb-4 px-4 bottom-0 text-white">
-            <LettersSlideInOnHover>
-              <small className="font-semibold inline-block overflow-hidden">&copy; Linkedin</small>
-            </LettersSlideInOnHover>
-            <LettersSlideInOnHover>
-              <small className="float-right inline-block overflow-hidden">Art made by <span className="font-semibold">HuannAnd</span></small>
-            </LettersSlideInOnHover>
+        </SlideInOnTriggerHover.Root>
+        <SlideInOnTriggerHover.Root>
+          <div data-scroll data-scroll-speed="0.4" className="w-[55dvh] group/snapshot right-32 relative overflow-hidden aspect-square rounded-2xl bg-white">
+            <img onMouseEnter={() => setCursor({ mode: "hovered" })} onMouseLeave={() => setCursor({ mode: "normal" })} className="absolute h-full object-cover ease-smooth duration-300 group-hover/snapshot:scale-[1.05]" src="/linkedin-poster.png" alt="" />
+            <div className="absolute w-full pb-4 px-4 bottom-0 text-white">
+              <SlideInOnTriggerHover.Trigger>
+                <small className="font-semibold inline-block overflow-hidden">&copy; Linkedin</small>
+              </SlideInOnTriggerHover.Trigger>
+              <SlideInOnTriggerHover.Trigger>
+                <small className="float-right inline-block overflow-hidden">Art made by <span className="font-semibold">HuannAnd</span></small>
+              </SlideInOnTriggerHover.Trigger>
+            </div>
           </div>
-        </div>
+        </SlideInOnTriggerHover.Root>
 
       </article>
     </section>

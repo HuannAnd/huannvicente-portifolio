@@ -50,7 +50,7 @@ class ProjectsService {
     return developedProjects
   }
 
-  public getProjectFilosophy(projectId: number) {
+  public getProjectPhilosophy(projectId: number) {
     const project = this.getProjectById(projectId)
 
     return project.filosophy

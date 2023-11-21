@@ -9,7 +9,7 @@ export default function Loading(props: LoadingProps) {
     <div {...props}>
       <svg className="absolute">
         <filter id="gooey">
-          <feGaussianBlur in="SorceGraphic" stdDeviation="10"></feGaussianBlur>
+          <feGaussianBlur in="SourceGraphic" stdDeviation="10"></feGaussianBlur>
           <feColorMatrix values="
                         1 0 0 0 0 
                         0 1 0 0 0 

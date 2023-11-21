@@ -3,6 +3,7 @@
 import OrganicScene from "@/three/scenes/OrganicScene";
 
 import LettersSlideInOnView from "@/components/LettersSlideInOnView";
+import useWindowViewport from "@/hooks/useWindowViewport";
 
 
 export default function Hero() {
@@ -12,9 +13,9 @@ export default function Hero() {
       id="hero"
     >
       <OrganicScene />
-      <article data-scroll className="w-full grid place-content-center h-screen text-center">
-        <LettersSlideInOnView delay={1} trigger="#heroinitial" threshold={20}>
-          <h1 id="heroInitial" className="text-center overflow-hidden ml-16 py-[9vw] text-white leading-[80%] uppercase text-[7rem]">
+      <article id="heroInitial" data-scroll className="w-full grid place-content-center h-screen text-center">
+        <LettersSlideInOnView delay={1} trigger="#heroInitial" threshold={20}>
+          <h1 className="text-center overflow-hidden ml-16 py-[9vw] text-white leading-[80%] uppercase text-[7rem]">
             Huann Vicente
           </h1>
         </LettersSlideInOnView>

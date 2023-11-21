@@ -62,7 +62,7 @@ function Projects({ }: ProjectsProps) {
       </LettersSlideInOnView>
       <p data-scroll className="sticky top-[10vh] text-white uppercase font-semibold">Works <span className="font-normal text-white/50 text-[11px] absolute translate-x-1/2 -translate-y-1/2">{quantityOfProjects}</span></p>
       <div className="relative col-span-2 col-start-1">
-        <Polygon trigger="#projects" vertexs={5} radius={400} data-scroll data-scroll-speed="0.4" className="-z-10" />
+        <Polygon trigger="#projects" vertexes={5} radius={400} data-scroll data-scroll-speed="0.4" className="-z-10" />
       </div>
       <div className="h-auto mt-16 relative min-h-[800px] px-[3vw] w-full col-span-4 col-start-3 flex flex-col gap-2">
         {developedProjects.map((project, i) => <Project key={i} nTh={i + 1} {...project} />)}

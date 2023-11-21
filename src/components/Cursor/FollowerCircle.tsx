@@ -21,7 +21,7 @@ export default function FollowerCircle({ }: Props) {
         animate(scope.current, { scale: .5, opacity: 1 }, { duration: .3 })
         break;
       case "hovered":
-        animate(scope.current, { scale: 1.2, opacity: 1 }, { duration: .3 })
+        animate(scope.current, { scale: 1.1, opacity: 1 }, { duration: .3 })
         break;
       case "invisible":
         animate(scope.current, { scale: .5, opacity: 0 }, { duration: .3 })

@@ -1,15 +1,11 @@
 "use client";
 
-import { useLayoutEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { useInView } from 'framer-motion';
 
-import LettersFadeIn from "@/components/Words/WordsFadeIn";
 import Polygon from '@/components/Polygon';
-import LetterMapping from '@/components/LettersSlideInOnView';
-
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
 import LettersSlideInOnView from '@/components/LettersSlideInOnView';
+import TextFadeInOnView from '@/components/TextFadeInOnView';
 
 
 export default function About() {
@@ -30,23 +26,21 @@ export default function About() {
           </h1>
         </LettersSlideInOnView>
         <article ref={ref} id="about-me" className="grow grid sticky top-0 grid-cols-6 mt-32 gap-4 py-[3vw] align-baseline font-light z-20 col-start-6">
-          <Polygon data-scroll data-scroll-speed="-0.2" trigger='#about' className='-z-10' isRegular vertexs={4} radius={200} />
-          <div className='sticky top-0 col-start-2'>
-            <LettersFadeIn isInView={isInView} delayInSeconds={.2} splitType="points" textColor="mixed" className="w-full sticky top-0 inline-block float-right mt-8" >
-              I'm Frontend developer, from Brazil
-            </LettersFadeIn>
-            <LettersFadeIn isInView={isInView} delayInSeconds={.4} splitType="points" textColor="mixed" className="w-full inline-block float-right mt-8" >
-              As a Developer my favorites technologies are Next.js, React.js, TailwindCSS and SCSS. Studing Software Development since 2022, my first contact with Software Development was solving basic problems using C#. Right now I'm studing Next.js, Typescript, Docker, Three.js and C#
-            </LettersFadeIn>
-          </div>
-          <div className='col-start-3'>
-            <LettersFadeIn isInView={isInView} delayInSeconds={.6} splitType="points" textColor="mixed" className="w-full inline-block float-right mt-8" >
-              My Backends knowledges are C# (.NET Core), Java Spring Boot and Node.js
-            </LettersFadeIn>
-            <LettersFadeIn isInView={isInView} delayInSeconds={.8} splitType="points" textColor="mixed" className="w-full inline-block float-right mt-8" >
+          <Polygon data-scroll data-scroll-speed="-0.2" trigger='#about' className='-z-10' isRegular vertexes={4} radius={200} />
+          <TextFadeInOnView className='sticky top-0 col-start-2' delayInSeconds={.2} trigger='#about'>
+            <p className='text-[1rem] mb-4'>I'm Frontend developer, from Brazil</p>
+            <p className='text-[1rem]'>
+              As a Developer my favorites technologies are Next.js, React.js, TailwindCSS and SCSS. Studying Software Development since 2022, my first contact with Software Development was solving basic problems using C#. Right now I'm studing Next.js, Typescript, Docker, Three.js and C#
+            </p>
+          </TextFadeInOnView>
+          <TextFadeInOnView className='col-start-3' trigger='#about' delayInSeconds={.4}>
+            <p className='text-[1rem] mb-4'>
+              My Backends knowledge's are C# (.NET Core), Java Spring Boot and Node.js
+            </p>
+            <p className='text-[1rem]'>
               If you haven't seen my projects, please take a look. If you find any bug, or want to contribute, open an issue, PR or contact me
-            </LettersFadeIn>
-          </div>
+            </p>
+          </TextFadeInOnView>
         </article>
       </div>
     </section>

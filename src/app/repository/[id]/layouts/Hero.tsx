@@ -1,77 +1,53 @@
 'use client';
 
-import { useEffect } from "react"
+import LettersSlideInOnView from "@/components/LettersSlideInOnView";
+import Polygon from "@/components/Polygon";
 
-import { stagger, useAnimate, useInView } from "framer-motion"
+import useWindowViewport from "@/hooks/useWindowViewport";
 
-import SplitType from "split-type"
+interface Props { title: string, description: string }
 
-import ProjectsService from "@/services/projects";
+const isServer = typeof window === "undefined"
 
-import useSetCursor from "@/hooks/useSetCursor";
-import useProjectId from "../hooks/useProjectId";
+export default function Hero({ title }: Props) {
+  const windowViewport = useWindowViewport()
+  const percentage = 94 / 100
 
-interface HeroProps { title: string, description: string }
-
-export default function Overview({ title, description }: HeroProps) {
-  const projectId = useProjectId()
-
-  const scope = useAnimationContext()
-  const setCursor = useSetCursor()
-
-  const hasDomain = ProjectsService.projectHasDomain(projectId)
-  const repositoryURL = ProjectsService.getProjectUrls(projectId).github_repository_url
-  const domainURL = ProjectsService.getProjectUrls(projectId).domain_url
+  const radiusOfInscribedSquare = (windowViewport.height / Math.sqrt(2)) * percentage
 
   return (
-    <section ref={scope} className="w-screen px-4 mx-auto text-[#bbb] grid place-content-center text-center h-screen">
-      <div className="relative">
-        <h1 className="text-[clamp(48px,_5vw,_140px)] mb-8 text-center duration-300 ease-fast text-white font-bold tracking-tighter">{title}</h1>
-        <q
-          id="text"
-          className="text-[clamp(25px,_3vw,_48px)] mb-4 duration-300 ease-fast block text-center text-white/50 font-normal">{description}</q>
-        <div className="flex flex-row justify-between items-center w-full h-auto gap-4">
-          {hasDomain && (
-            <a
-              className="text-white grow basis-0 py-[3vw] min-w-[18vw] block cursor-pointer font-regular border-t-2 border-t-[#222]"
-              onMouseEnter={() => setCursor({ mode: "hovered", title: null, icon: "externalLink" })}
-              onMouseLeave={() => setCursor({ mode: "normal", title: null, icon: "externalLink" })}
-              href={domainURL}>On live</a>
-          )}
-          <a
-            className="text-white py-[3vw] basis-0 grow w-full min-w-[9vw] block cursor-pointer font-regular border-t-2 border-t-[#222]"
-            onMouseEnter={() => setCursor({ mode: "hovered", title: null, isLoading: false, icon: "externalLink" })}
-            onMouseLeave={() => setCursor({ mode: "normal", title: null, icon: "none" })}
-            href={repositoryURL}>Repository</a>
-        </div>
-      </div>
+    <section id="projectHero" className="w-screen px-4 mx-auto bg-white min-h-screen">
+      <article className="h-screen w-full grid items-center place-content-center">
+        <LettersSlideInOnView trigger="#projectHero">
+          <h1 data-scroll data-scroll-speed="0.2" className="text-[7rem] relative text-[#111] text-center">
+            Warren Challenge
+          </h1>
+        </LettersSlideInOnView>
+      </article>
+      <article id="projectHeroMiddle" className="h-[200dvh] w-full grid justify-end place-content-baseline">
+        <LettersSlideInOnView trigger="#projectHeroMiddle">
+          <h1 className="text-[7rem] pt-[9vw] leading-[80%] sticky top-0 text-[#111] text-left">
+            Less
+            <br />
+            Information
+            <br />
+            And Complexity
+          </h1>
+        </LettersSlideInOnView>
+        <Polygon className="left-1/2 absolute" vertexes={4} radius={radiusOfInscribedSquare} trigger="#projectHeroMiddle" />
+      </article>
+      <article id="projectHeroEnd" className="h-[200dvh] relative w-full grid justify-start place-content-baseline">
+        <LettersSlideInOnView trigger="#projectHeroEnd">
+          <h1 className="text-[7rem] pt-[9vw] sticky top-0 text-[#111] text-left">
+            More Conceptive
+            <br />
+            Performance
+            <br />
+            And Beauty
+          </h1>
+        </LettersSlideInOnView>
+        <Polygon className="right-1/2 top-0 absolute" vertexes={4} radius={radiusOfInscribedSquare} trigger="#projectHeroEnd" />
+      </article>
     </section >
   )
 }
-
-function useAnimationContext() {
-  const [scope, animate] = useAnimate()
-  const isInView = useInView(scope, { once: true })
-
-  useEffect(() => {
-    if (isInView) {
-      new SplitType("#text", { types: "words" });
-      animate([
-        [
-          "h1",
-          { opacity: 1 },
-          { duration: 1 }
-        ],
-        [
-          "#text .word",
-          { y: [16, 0], opacity: [0, 1] },
-          { duration: 0.45, times: [0, 1], delay: stagger(0.07), at: "-0.5" }
-        ]
-      ])
-    }
-    return
-  }, [isInView])
-
-  return scope
-}
-

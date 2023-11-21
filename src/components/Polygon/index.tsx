@@ -8,7 +8,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 interface PolygonProps
   extends Omit<React.SVGAttributes<SVGSVGElement>, "height" | "width" | "radius"> {
   isRegular?: boolean,
-  vertexs: number,
+  vertexes: number,
   trigger: string;
   radius: number
 }
@@ -17,7 +17,7 @@ export default function Polygon({
   radius = 200,
   trigger,
   isRegular = true,
-  vertexs,
+  vertexes,
   ...rest
 }: PolygonProps) {
   const svg = useRef<SVGSVGElement>(null!)
@@ -29,7 +29,7 @@ export default function Polygon({
   const width = 2 * radius
   const height = width
 
-  const sides = vertexs
+  const sides = vertexes
 
   const handleAllVertices = () => {
     const vertices = []
@@ -94,9 +94,10 @@ export default function Polygon({
       xmlns="http://www.w3.org/2000/svg"
     >
       <polygon
+        className="mix-blend-difference bg-blend-difference"
         points={handleAllVertices()}
         fill="none"
-        stroke="#444"
+        stroke="#ccc"
         strokeWidth=".5"
       />
     </svg>
