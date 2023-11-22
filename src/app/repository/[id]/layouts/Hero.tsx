@@ -4,10 +4,9 @@ import LettersSlideInOnView from "@/components/LettersSlideInOnView";
 import Polygon from "@/components/Polygon";
 
 import useWindowViewport from "@/hooks/useWindowViewport";
+import WarrenBrandScene from "@/three/scenes/FloatingWarrenBrand";
 
 interface Props { title: string, description: string }
-
-const isServer = typeof window === "undefined"
 
 export default function Hero({ title }: Props) {
   const windowViewport = useWindowViewport()
@@ -16,17 +15,18 @@ export default function Hero({ title }: Props) {
   const radiusOfInscribedSquare = (windowViewport.height / Math.sqrt(2)) * percentage
 
   return (
-    <section id="projectHero" className="w-screen px-4 mx-auto bg-white min-h-screen">
+    <section id="projectHero" className="w-screen px-4 mx-auto min-h-screen">
+      <WarrenBrandScene />
       <article className="h-screen w-full grid items-center place-content-center">
         <LettersSlideInOnView trigger="#projectHero">
-          <h1 data-scroll data-scroll-speed="0.2" className="text-[7rem] relative text-[#111] text-center">
+          <h1 data-scroll data-scroll-speed="0.2" className="text-[7rem] mix-blend-difference relative text-[#ddd] text-center">
             Warren Challenge
           </h1>
         </LettersSlideInOnView>
       </article>
       <article id="projectHeroMiddle" className="h-[200dvh] w-full grid justify-end place-content-baseline">
         <LettersSlideInOnView trigger="#projectHeroMiddle">
-          <h1 className="text-[7rem] pt-[9vw] leading-[80%] sticky top-0 text-[#111] text-left">
+          <h1 className="text-[7rem] pt-[9vw] mix-blend-difference z-10 leading-[80%] sticky top-0 text-[#ddd] text-left">
             Less
             <br />
             Information
@@ -38,7 +38,7 @@ export default function Hero({ title }: Props) {
       </article>
       <article id="projectHeroEnd" className="h-[200dvh] relative w-full grid justify-start place-content-baseline">
         <LettersSlideInOnView trigger="#projectHeroEnd">
-          <h1 className="text-[7rem] pt-[9vw] sticky top-0 text-[#111] text-left">
+          <h1 className="text-[7rem] mix-blend-difference z-10 pt-[9vw] sticky top-0 text-[#ddd] text-left">
             More Conceptive
             <br />
             Performance

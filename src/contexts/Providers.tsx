@@ -2,8 +2,8 @@
 
 import NavigationContextProvider from "./NavigationContextProvider"
 import CursorFollowerProvider from "./CursorFollowerProvider"
-import LocomotiveScrollProvider from "./LocomotiveScrollProvider";
-import LoadingProvider from "./LoadingProvider";
+import LocomotiveScrollProvider from "./LocomotiveScrollProvider"
+import LoadingProvider from "./LoadingProvider"
 
 interface ProvidersProps extends React.PropsWithChildren { }
 

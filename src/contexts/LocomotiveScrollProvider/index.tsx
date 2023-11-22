@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useRef, createContext, useLayoutEffect, useState } from 'react';
+import { useEffect, createContext, useState } from 'react';
 
 import { usePathname } from 'next/navigation';
 
-import { useScroll, useTransform } from 'framer-motion';
-import LocomotiveScroll from 'locomotive-scroll';
 import useWindowViewport from '@/hooks/useWindowViewport';
+
+import LocomotiveScroll from 'locomotive-scroll';
 
 
 interface LocomotiveScrollProps
@@ -17,7 +17,7 @@ export const LocomotiveScrollRefContext = createContext({} as LocomotiveScroll |
 export default function LocomotiveScrollLayout({
   children
 }: LocomotiveScrollProps) {
-  const [locomotiveScroll, setlocomotiveScroll] = useState<LocomotiveScroll | null>(null)
+  const [locomotiveScroll, setLocomotiveScroll] = useState<LocomotiveScroll | null>(null)
 
   const pathname = usePathname()
   const { width, height } = useWindowViewport()
@@ -27,7 +27,7 @@ export default function LocomotiveScrollLayout({
       async () => {
         const LocomotiveScroll = (await import('locomotive-scroll')).default
         const locomotiveScroll = new LocomotiveScroll({ autoResize: true });
-        setlocomotiveScroll(locomotiveScroll)
+        setLocomotiveScroll(locomotiveScroll)
       }
     )()
 

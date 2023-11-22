@@ -14,13 +14,14 @@ const roboto = Roboto({
 import Providers from '@/contexts/Providers'
 
 import Hamburger from '@/components/Hamburger'
+import Cursor from '@/components/Cursor'
 
 export const metadata = {
   title: {
-    default: "Portifolio",
+    default: "Portfolio",
     template: "%s | Huann Vicente"
   },
-  description: 'Porfiolofio created by Huann Vicente, with TailwindCSS and Nextjs',
+  description: 'Portfolio created by Huann Vicente, with TailwindCSS and Next.js',
 }
 
 export default function RootLayout({
@@ -30,10 +31,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${roboto.variable} font-roboto min-h-screen overflow-x-hidden relative w-screen bg-darkPrimary selection:bg-white selection:text-lightPrimary`}>
+      <body className={`${roboto.variable} font-roboto min-h-screen overflow-x-hidden relative w-screen bg-white selection:bg-white selection:text-lightPrimary`}>
         <Providers>
           <Hamburger />
-          {/* <Cursor /> */}
+          <Cursor />
           {children}
         </Providers>
       </body>

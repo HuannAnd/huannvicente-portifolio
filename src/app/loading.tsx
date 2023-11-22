@@ -1,14 +1,28 @@
 "use client"
 
-import CustomLoading from "@/three/scenes/Loading"
+import { motion } from "framer-motion"
 
 import useSetCursor from "@/hooks/useSetCursor"
+import { useEffect } from "react"
 
 
 export default function Loading() {
   const setCursor = useSetCursor()
 
-  setCursor({ isLoading: true })
+  useEffect(() => {
+    setCursor({ isLoading: true })
+    return () => {
+      setCursor({ isLoading: false })
+    }
+  })
 
-  return <CustomLoading />
+  return (
+    // <motion.div
+    //   className="w-screen h-screen fixed top-0 bg-white"
+    //   initial={{ y: "-100%" }}
+    //   animate={{ y: "0%" }}
+    //   exit={{ y: "100%" }}
+    // />
+    <h1></h1>
+  )
 }

@@ -1,6 +1,6 @@
 "use client"
 
-import React, { memo, createContext, useEffect, useState, useCallback } from "react";
+import React, { memo, createContext, useState, useCallback } from "react";
 
 import { useAnimate } from "framer-motion";
 
@@ -15,7 +15,6 @@ import {
   TCursorAnimationScopeContext
 } from "./types";
 
-import Cursor from "@/components/Cursor";
 
 interface CursorFollowerProviderProps
   extends React.PropsWithChildren { }
@@ -34,7 +33,7 @@ function CursorFollowerProvider({ children }: CursorFollowerProviderProps) {
   const [title, setTitle] = useState<string | null>(null)
   const [mode, setMode] = useState<TCursorMode>("normal")
   const [scope] = useAnimate()
-  
+
   const handleCursor = useCallback((config: Partial<ICursor>) => {
     console.log("Cursor changing")
     console.log("Config value: ", config)
@@ -66,7 +65,7 @@ function CursorFollowerProvider({ children }: CursorFollowerProviderProps) {
           <CursorModeContext.Provider value={mode}>
             <CursorAnimationScopeContext.Provider value={scope}>
               <SetCursorStatesContext.Provider value={handleCursor}>
-                <Cursor />
+                {/* <Cursor /> */}
                 {children}
               </SetCursorStatesContext.Provider >
             </CursorAnimationScopeContext.Provider>

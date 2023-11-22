@@ -1,10 +1,13 @@
 'use client';
 
-import { createContext, useEffect, useLayoutEffect } from 'react'
-import { usePathname, useRouter } from 'next/navigation';
+import { Suspense, createContext, useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation';
 
 import useSetCursor from '@/hooks/useSetCursor';
-import useLocomotiveScrollRef from '../LocomotiveScrollProvider/useLocomotiveScroll';
+import useLocomotiveScroll from '../LocomotiveScrollProvider/useLocomotiveScroll';
+import { AnimatePresence } from 'framer-motion';
+
+import Preloader from '@/components/Preloader';
 
 interface LoadingProviderProps {
   children: React.ReactNode
@@ -14,37 +17,44 @@ type LoadingGoToValue = (to: string) => void
 
 export const LoadingGoToContext = createContext({} as LoadingGoToValue)
 
-const ANIMATION_DURATION_IN_MS = 3000
-
 export default function LoadingProvider({ children }: LoadingProviderProps) {
-  const locomotiveScroll = useLocomotiveScrollRef()
+  const [requestPage, setRequestPage] = useState<string | null>(null)
+  const locomotiveScroll = useLocomotiveScroll()
   const setCursor = useSetCursor()
-
-  const router = useRouter()
 
   const pathname = usePathname()
 
-  function goTo(to: string) {
+  function pageTransitionTo(to: string) {
     setCursor({ isLoading: true })
-    router.push(to, {})
+    setRequestPage(to)
+  }
+
+  const resetCursor = () => setCursor({ isLoading: false, mode: "normal", title: null, icon: "none" })
+
+  const startLocomotiveScroll = () => {
+    if (!locomotiveScroll) return
+    locomotiveScroll.scrollTo(0, { immediate: true, duration: 0 })
+    locomotiveScroll.resize()
   }
 
   function unsubscribeLoading() {
-    setCursor({ isLoading: false })
-    if (!locomotiveScroll) return
-    locomotiveScroll.scrollTo(0)
+    resetCursor()
+    if (locomotiveScroll) {
+      startLocomotiveScroll()
+    }
   }
 
-  useLayoutEffect(() => {
-    setCursor({ isLoading: true })
-  }, [])
-
   useEffect(() => {
-    setTimeout(() => { unsubscribeLoading() }, ANIMATION_DURATION_IN_MS)
+    unsubscribeLoading()
   }, [pathname])
 
   return (
-    <LoadingGoToContext.Provider value={goTo}>
+    <LoadingGoToContext.Provider value={pageTransitionTo}>
+      <AnimatePresence mode="wait">
+        <Suspense fallback={null}>
+          <Preloader requestPage={requestPage} />
+        </Suspense>
+      </AnimatePresence>
       {children}
     </LoadingGoToContext.Provider>
   )

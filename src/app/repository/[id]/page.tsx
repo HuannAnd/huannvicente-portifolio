@@ -2,13 +2,15 @@ import { Suspense } from "react"
 
 import Gallery from "./layouts/Gallery"
 import GallerySkeleton from "./layouts/Gallery/Skeleton"
-import BackToHome from "./layouts/Suggestion"
-import Technologies from "./layouts/Technologies"
+
 import Hero from "./layouts/Hero"
 import Philosophy from "./layouts/Philosophy"
+import Suggestion from "./layouts/Suggestion"
 
 import ProjectsService from '@/services/projects'
 import GithubService from "@/services/github"
+
+// import wait from "@/utils/wait"
 
 
 enum Params {
@@ -31,14 +33,16 @@ export default async function RepositoryPage({
   const metadata = await GithubService.getMetadataRepository(id)
   const { author, phrase } = ProjectsService.getProjectPhilosophy(id)
 
+  // await wait(3 * 1000)
+
   return (
     <>
       <Hero {...metadata} />
       <Suspense fallback={<GallerySkeleton />}>
         <Gallery />
-      </Suspense>
+      </Suspense> 
       <Philosophy author={author} phrase={phrase} />
-      <BackToHome />
+      <Suggestion />
     </>
   )
 }

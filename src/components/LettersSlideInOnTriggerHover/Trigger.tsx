@@ -1,11 +1,11 @@
 'use client';
 
-import { Children, cloneElement, useEffect, useRef, useState } from "react"
+import { Children, cloneElement, useEffect, useRef } from "react"
 
 import SplitType from "split-type";
 
 import gsap from "gsap";
-import useIsHoveredContext from "./useIsHoveredContext";
+import useTriggerRefContext from "./useTriggerRefContext";
 
 
 interface Props
@@ -13,28 +13,36 @@ interface Props
 
 
 export default function Trigger({ children }: Props) {
-  const isHovered = useIsHoveredContext()
-  const timelineRef = useRef<gsap.core.Timeline>()
+  const triggerRef = useTriggerRefContext()
   const ref = useRef<HTMLElement>(null!)
 
   useEffect(() => {
     if (!ref.current) return
+    let isAnimating = false
     new SplitType(ref.current, { split: "chars" })
     const letters = ref.current.querySelectorAll(".char")
+    const timeline = gsap.timeline()
 
-    if (!isHovered) return
-    timelineRef.current = gsap.timeline()
+    const onMouseEnterInTheTrigger = async () => {
+      if (isAnimating) return
+      isAnimating = true
 
-    timelineRef.current
-      .from(letters, { y: "0%" })
-      .to(letters, { y: "-100%", stagger: .01, duration: .3 })
-      .to(letters, { y: "100%", duration: 0 })
-      .to(letters, { y: "0%", stagger: .01, duration: .3 })
+      await timeline
+        ?.from(letters, { y: "0%" })
+        .to(letters, { y: "-100%", stagger: .01, duration: .3 })
+        .to(letters, { y: "100%", duration: 0 })
+        .to(letters, { y: "0%", stagger: .01, duration: .3 })
+
+      isAnimating = false
+      return
+    }
+
+    triggerRef?.current?.addEventListener("mouseenter", onMouseEnterInTheTrigger)
 
     return () => {
-      timelineRef.current?.kill()
+      triggerRef?.current?.removeEventListener("mouseenter", onMouseEnterInTheTrigger)
     }
-  }, [isHovered])
+  }, [triggerRef, ref])
 
   const childrenWithRef = Children.map(children, (child) =>
     cloneElement(child as React.ReactElement, { ref })

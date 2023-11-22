@@ -4,10 +4,10 @@ import { createContext, useCallback, useReducer, useState } from 'react'
 
 import {
   TAction,
-  THamburguerIsOpenContext,
+  THamburgerIsOpenContext,
   TState,
   TValueAsideContext,
-  TValueHamburguerContext
+  TValueHamburgerContext
 } from './type';
 
 
@@ -24,23 +24,23 @@ function reducer(state: TState, action: TAction): TState {
   }
 }
 
-export const NavigationHamburguerContext = createContext({} as TValueHamburguerContext)
-export const NavigationHamburguerIsOpenContext = createContext({} as THamburguerIsOpenContext)
+export const NavigationHamburgerContext = createContext({} as TValueHamburgerContext)
+export const NavigationHamburgerIsOpenContext = createContext({} as THamburgerIsOpenContext)
 export const NavigationAsideContext = createContext({} as TValueAsideContext)
 
 export default function NavigationContextProvider({ children }: NavigationProviderProps) {
-  const [showHamburguer, setShowHamburguer] = useState(false)
+  const [showHamburger, setShowHamburger] = useState(false)
   const [showAside, handleAsideStates] = useReducer(reducer, false);
-  const canBeShowHamburguer = useCallback((canBeShowed: boolean) => setShowHamburguer(canBeShowed), [])
+  const canBeShowHamburger = useCallback((canBeShowed: boolean) => setShowHamburger(canBeShowed), [])
 
   return (
-    <NavigationHamburguerContext.Provider value={canBeShowHamburguer}>
-      <NavigationHamburguerIsOpenContext.Provider value={showHamburguer}>
+    <NavigationHamburgerContext.Provider value={canBeShowHamburger}>
+      <NavigationHamburgerIsOpenContext.Provider value={showHamburger}>
         <NavigationAsideContext.Provider value={handleAsideStates}>
           {children}
         </NavigationAsideContext.Provider>
-      </NavigationHamburguerIsOpenContext.Provider>
-    </NavigationHamburguerContext.Provider>
+      </NavigationHamburgerIsOpenContext.Provider>
+    </NavigationHamburgerContext.Provider>
   )
 }
 

@@ -44,6 +44,7 @@ export default function Polygon({
 
     return vertices.join(' ')
   };
+  
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
 
