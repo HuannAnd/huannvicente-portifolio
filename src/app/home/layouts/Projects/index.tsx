@@ -52,19 +52,19 @@ function Projects({ }: ProjectsProps) {
   )
 
   return (
-    <section id="projects" className="w-screen mx-auto h-auto grid grid-cols-6 py-[9vw] px-4 text-white after:w-full after:absolute after:top-full">
+    <section id="projects" className="w-screen relative mx-auto h-auto grid grid-cols-6 py-[9vw] px-@section text-white">
       <LettersSlideInOnView trigger="#projects" threshold={20}>
-        <h1 className="mb-32 z-50 text-[7rem] col-span-6">
+        <h1 className="@desktop:mb-32 @mobileAndTablet:mb-4 @mobileAndTablet:text-center z-50 col-span-full">
           Modern Products
           <br />
           And Proudled
         </h1>
       </LettersSlideInOnView>
-      <p data-scroll className="sticky top-[10vh] text-white uppercase font-semibold">Works <span className="font-normal text-white/50 text-[11px] absolute translate-x-1/2 -translate-y-1/2">{quantityOfProjects}</span></p>
-      <div className="relative col-span-2 col-start-1">
-        <Polygon trigger="#projects" vertexes={5} radius={400} data-scroll data-scroll-speed="0.4" className="-z-10" />
-      </div>
-      <div className="h-auto mt-16 relative min-h-[800px] px-[3vw] w-full col-span-4 col-start-3 flex flex-col gap-2">
+      <p data-scroll className="sticky self-start top-[10vh] text-white uppercase font-semibold">Works <span className="font-normal text-white/50 text-[11px] absolute translate-x-1/2 -translate-y-1/2">{quantityOfProjects}</span></p>
+      {/* <div className="absolute @desktop:col-span-1"> */}
+      <Polygon trigger="#projects" vertexes={5} radius={400} data-scroll data-scroll-speed="0.4" className="absolute right-0 -z-10" />
+      {/* </div> */}
+      <div className="h-auto mt-16 relative min-h-[800px] px-[3vw] w-full @desktop:col-span-4 @mobileAndTablet:col-span-5 @desktop:col-start-3 flex flex-col gap-2">
         {developedProjects.map((project, i) => <Project key={i} nTh={i + 1} {...project} />)}
         {mainatanceProjects.map((project, i) => <Project key={i} nTh={developedProjects.length + i + 1} {...project} />)}
       </div>

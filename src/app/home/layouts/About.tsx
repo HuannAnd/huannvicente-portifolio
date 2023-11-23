@@ -15,11 +15,11 @@ export default function About() {
   return (
     <section
       id="about"
-      className="w-screen min-h-[200vh] px-4 py-[9vw] mx-auto relative h-auto bg-transparent overflow-y-hidden text-darkPrimary"
+      className="w-screen @desktop:min-h-[200dvh] @mobileAndTablet:h-screen px-@section py-[9vw] mx-auto relative h-auto bg-transparent overflow-y-hidden text-darkPrimary"
     >
       <div className="clip-around w-full h-full bg-transparent flex flex-col">
         <LettersSlideInOnView trigger="#about" threshold={20}>
-          <h1 className='relative text-[7rem] float-right text-white inline-block ml-auto overflow-hidden'>
+          <h1 className='relative w-full @mobileAndTablet:text-center @mobileAndTablet:mx-auto @mobileAndTablet:block @desktop:float-right text-white inline-block @desktop:ml-auto overflow-hidden'>
             Delivering products
             <br />
             with respect

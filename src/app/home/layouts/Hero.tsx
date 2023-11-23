@@ -13,16 +13,16 @@ export default function Hero() {
       id="hero"
     >
       <OrganicScene />
-      <article id="heroInitial" data-scroll className="w-full grid place-content-center h-screen text-center">
+      <article id="heroInitial" data-scroll className="w-full px-@section grid place-content-center h-screen text-center">
         <LettersSlideInOnView delay={1} trigger="#heroInitial" threshold={20}>
-          <h1 className="text-center overflow-hidden ml-16 py-[9vw] text-white leading-[80%] uppercase text-[7rem]">
+          <h1 className="text-center overflow-hidden py-[9vw] text-white">
             Huann Vicente
           </h1>
         </LettersSlideInOnView>
       </article>
-      <article id="heroMiddle" className="w-full flex h-[200dvh] justify-start items-baseline">
+      <article id="heroMiddle" className="w-full px-@section flex @desktop:h-[200dvh] @mobileAndTablet:h-screen justify-start items-baseline">
         <LettersSlideInOnView trigger="#heroMiddle">
-          <h1 className="text-left sticky top-0 ml-16 py-[9vw] text-white leading-[80%] uppercase text-[7rem]">
+          <h1 className="@desktop:text-left sticky @mobile:text-center top-0 @desktop:ml-16 py-[9vw] text-white  ">
             Explore
             <br />
             Enjoy
@@ -31,9 +31,9 @@ export default function Hero() {
           </h1>
         </LettersSlideInOnView>
       </article>
-      <article id="heroEnd" className="w-full flex h-[200dvh] justify-end items-center">
+      <article id="heroEnd" className="w-full flex px-@section @desktop:h-[200dvh] @mobileAndTablet:h-screen justify-end items-center">
         <LettersSlideInOnView trigger="#heroEnd">
-          <h1 className="text-left sticky top-0 mr-16 py-[9vw] text-white leading-[80%] uppercase text-[7rem]">
+          <h1 className="@desktop:text-left @mobile:text-center sticky top-0 @desktop:mr-16 py-[9vw] text-white">
             Dont Forget
             <br />
             Me

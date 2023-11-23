@@ -2,7 +2,7 @@
 @tailwind components;
 
 :root {
-  --section-padding: 9vw;
+  --section-padding: clamp(1rem, 3vw, 4rem);
   --gap-padding: 1.75vw;
   --container-padding: 3vw;
 

@@ -1,9 +1,10 @@
 h1 {
-  font-size: 7rem;
+  font-size: clamp(4.5rem, 5.5vw, 7rem);
   font-weight: 900;
-  letter-spacing: -0.1vw;
+  letter-spacing: -0.3vw;
   line-height: 80%;
   text-transform: uppercase;
+  transition: font-size 300ms;
 }
 
 p,

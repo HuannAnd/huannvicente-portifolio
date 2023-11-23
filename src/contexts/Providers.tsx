@@ -3,7 +3,7 @@
 import NavigationContextProvider from "./NavigationContextProvider"
 import CursorFollowerProvider from "./CursorFollowerProvider"
 import LocomotiveScrollProvider from "./LocomotiveScrollProvider"
-import LoadingProvider from "./LoadingProvider"
+import PageTransitionProvider from "./PageTransitionProvider"
 
 interface ProvidersProps extends React.PropsWithChildren { }
 
@@ -12,9 +12,9 @@ export default function Providers({ children }: ProvidersProps) {
     <CursorFollowerProvider>
       <NavigationContextProvider>
         <LocomotiveScrollProvider>
-          <LoadingProvider>
+          <PageTransitionProvider>
             {children}
-          </LoadingProvider>
+          </PageTransitionProvider>
         </LocomotiveScrollProvider>
       </NavigationContextProvider>
     </CursorFollowerProvider>

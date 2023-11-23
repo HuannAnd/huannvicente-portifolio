@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import cn from "@/utils/cn";
 
 interface PolygonProps
   extends Omit<React.SVGAttributes<SVGSVGElement>, "height" | "width" | "radius"> {
@@ -15,6 +16,7 @@ interface PolygonProps
 
 export default function Polygon({
   radius = 200,
+  className,
   trigger,
   isRegular = true,
   vertexes,
@@ -44,7 +46,7 @@ export default function Polygon({
 
     return vertices.join(' ')
   };
-  
+
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
 
@@ -86,6 +88,7 @@ export default function Polygon({
   return (
     <svg
       {...rest}
+      className={cn("pointer-events-none", className)}
       ref={svg}
       style={{ transformOrigin: "center" }}
       width={width}

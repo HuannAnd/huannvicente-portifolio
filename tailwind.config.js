@@ -10,8 +10,10 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        lg: { min: "648px" },
-        sm: { min: "1px", max: "647px" },
+        "@desktop": { min: "1023px" },
+        "@tablet": { min: "648px", max: "1022px" },
+        "@mobile": { min: "1px", max: "647px" },
+        "@mobileAndTablet": { min: "1px", max: "1022px" },
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -24,7 +26,7 @@ module.exports = {
       spacing: {
         "@section": "var(--section-padding)",
         "@container": "var(--container-padding)",
-        "@gap": "var(--gap-padding)"
+        "@gap": "var(--gap-padding)",
       },
       colors: {
         darkPrimary: "var(--primary-color)",
@@ -40,7 +42,7 @@ module.exports = {
         darkSecondary: "#bbb",
       },
       maxWidth: {
-        "@content": "var(--content-width)"
+        "@content": "var(--content-width)",
       },
       fontSize: {
         h1: "64px",

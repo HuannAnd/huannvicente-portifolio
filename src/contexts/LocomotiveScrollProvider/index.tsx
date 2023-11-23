@@ -41,8 +41,13 @@ export default function LocomotiveScrollLayout({
   useEffect(() => {
     if (!locomotiveScroll) return
     locomotiveScroll.resize()
+    locomotiveScroll.start()
     window.scrollTo(0, 0)
-  }, [pathname, locomotiveScroll, width, height])
+
+    return () => {
+      locomotiveScroll.destroy()
+    }
+  }, [pathname, locomotiveScroll])
 
   return (
     <LocomotiveScrollRefContext.Provider value={locomotiveScroll}>
