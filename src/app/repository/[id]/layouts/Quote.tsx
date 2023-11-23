@@ -10,7 +10,7 @@ interface Props {
   author: string
 }
 
-export default function Philosophy({ phrase, author }: Props) {
+export default function Quote({ phrase, author }: Props) {
   return (
     <section
       id="philosophy"

@@ -7,12 +7,12 @@ type UnwrapPromise<T> = T extends Promise<infer U> ? U : T
 
 export default function useAsyncService<
   TService extends { [key in keyof TService]: (...args: any[]) => Promise<any> },
-  TMethods extends keyof TService,
-  TMethodArguments extends Parameters<TService[TMethods]>,
-  TReturn extends UnwrapPromise<ReturnType<TService[TMethods]>>
+  TMethodsOfService extends keyof TService,
+  TMethodArguments extends Parameters<TService[TMethodsOfService]>,
+  TReturn extends UnwrapPromise<ReturnType<TService[TMethodsOfService]>>
 >(
   service: TService,
-  method: TMethods,
+  method: TMethodsOfService,
   ...args: TMethodArguments
 ): TReturn {
   const [data, setData] = useState<TReturn | null>(null)
@@ -20,11 +20,12 @@ export default function useAsyncService<
   useLayoutEffect(() => {
     async function getData() {
       try {
-        console.log("trying catch data")
+        console.log("Trying to catch data")
         const newData = await service[method](...args)
         setData(newData)
+        console.log("Success to catch data")
       } catch (error) {
-        console.error("error to catch data")
+        console.error("Error to catch data")
         throw error
       }
     }

@@ -39,9 +39,7 @@ export default function LoadingProvider({ children }: LoadingProviderProps) {
 
   function unsubscribeLoading() {
     resetCursor()
-    if (locomotiveScroll) {
-      startLocomotiveScroll()
-    }
+    if (locomotiveScroll) startLocomotiveScroll()
   }
 
   useEffect(() => {

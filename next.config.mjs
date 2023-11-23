@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
+// @ts-check
+import withPlaiceholder from "@plaiceholder/next";
+
 const nextConfig = {
   transpilePackages: ["three"],
   env: {
@@ -14,8 +17,8 @@ const nextConfig = {
       use: ["raw-loader", "glslify-loader"],
     });
 
-    return config
+    return config;
   },
 };
 
-module.exports = nextConfig;
+export default withPlaiceholder(nextConfig);

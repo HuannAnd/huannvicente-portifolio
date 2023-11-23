@@ -1,23 +1,32 @@
-import data from "./data";
+import data from "./data"
+
+import fs from "fs/promises"
+
+import path from "path"
+
+import { getPlaiceholder } from "plaiceholder"
 
 import { IProjectData } from './type'
+
 
 class ProjectsService {
   constructor(
     private projects: IProjectData[] = data
   ) { }
-  public getProjectPhotosById(projectId: number) {
+  public async getPhotosPath(projectId: number) {
     const project = this.getProjectById(projectId)
+    const photosSrc = project.gallery
 
-    return project?.gallery
+    return photosSrc
   }
+  
   public getProjectFrameworks(projectId: number) {
     const project = this.getProjectById(projectId)
 
     return project.frameworks
   }
 
-  public projectHasDomain(projectId: number) {
+  public isInProduction(projectId: number) {
     const project = this.getProjectById(projectId)
     console.log("Project: ", project)
 
@@ -40,7 +49,7 @@ class ProjectsService {
     return nextProject
   }
 
-  public getProjectsInMainantance() {
+  public getWorkInProgressProjects() {
     const projectsInMaintance = this.projects.filter(x => x.isInMaintenance);
     return projectsInMaintance
   }

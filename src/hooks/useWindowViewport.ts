@@ -10,7 +10,7 @@ interface WindowViewport {
 const isServerRendering = typeof window === "undefined"
 
 export default function useWindowViewport() {
-  const [windowViewport, setWindowViewport] = useState<WindowViewport>({ width: 0, height: 0 } as WindowViewport)
+  const [windowViewport, setWindowViewport] = useState<WindowViewport>({ width: 1000, height: 1000 } as WindowViewport)
 
   useWindowEventListenerEffect("resize", () => {
     if (isServerRendering) {

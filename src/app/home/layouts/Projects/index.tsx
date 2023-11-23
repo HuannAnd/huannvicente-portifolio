@@ -16,7 +16,7 @@ interface ProjectsProps { }
 
 function Projects({ }: ProjectsProps) {
   const developedProjects = ProjectsService.getDevelopedProjects()
-  const mainatanceProjects = ProjectsService.getProjectsInMainantance()
+  const mainatanceProjects = ProjectsService.getWorkInProgressProjects()
   const quantityOfProjects = developedProjects.length + mainatanceProjects.length
 
   useLayoutEffect(() => {

@@ -10,11 +10,6 @@ import useGoTo from "@/hooks/useGoTo";
 
 interface BackToHomeProps { }
 
-const SOCIAL_MIDIA = [
-  { title: "Instagram", href: "https://www.instagram.com/huann_vt/" },
-  { title: "Discord", href: "#" }
-]
-
 export default function Suggestion({ }: BackToHomeProps) {
   const projectId = useProjectId()
   const goTo = useGoTo()
@@ -29,7 +24,7 @@ export default function Suggestion({ }: BackToHomeProps) {
   return (
     <section id="suggestion" className="w-screen h-auto min-h-screen px-1 py-[9vw] bg-white">
       <LettersSlideInOnView trigger="#suggestion" >
-        <h1 className="text-[#111]">
+        <h1 className="text-[#111] overflow-hidden">
           Discover My Journey
           <br />
           And Surprise

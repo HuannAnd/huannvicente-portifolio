@@ -42,7 +42,7 @@ export default function Hamburger({ }: HamburgerProps) {
     animateHamburger()
   })
 
-  const realocateCirclesToCenter = () => {
+  const relocatesCirclesToCenter = () => {
     return timeline
       .to(
         [circle1.current, circle2.current, circle3.current],
@@ -58,7 +58,7 @@ export default function Hamburger({ }: HamburgerProps) {
         })
   }
 
-  const moveCircleIndexToInitalPosition = (circle: React.MutableRefObject<SVGCircleElement | null>, index: number) => {
+  const moveCircleIndexToInitialPosition = (circle: React.MutableRefObject<SVGCircleElement | null>, index: number) => {
     if (!circle.current) return
     const initialCirclePositionX = centerX
     const initialCirclePositionY = getCirclePosY(index)
@@ -78,14 +78,14 @@ export default function Hamburger({ }: HamburgerProps) {
         }, 0)
   }
 
-  const shrinkCirclesToInitalPosition = () => {
-    moveCircleIndexToInitalPosition(circle1, 1)
-    moveCircleIndexToInitalPosition(circle2, 2)
-    moveCircleIndexToInitalPosition(circle3, 3)
+  const shrinkCirclesToInitialPosition = () => {
+    moveCircleIndexToInitialPosition(circle1, 1)
+    moveCircleIndexToInitialPosition(circle2, 2)
+    moveCircleIndexToInitialPosition(circle3, 3)
   }
   function animateHamburger() {
-    if (!isOpen) return realocateCirclesToCenter()
-    return shrinkCirclesToInitalPosition()
+    if (!isOpen) return relocatesCirclesToCenter()
+    return shrinkCirclesToInitialPosition()
   }
 
   function onClick(e: React.MouseEvent<Element, MouseEvent>) {

@@ -33,7 +33,7 @@ export default function LettersSlideinOnHover({ children }: LettersSlideinOnHove
       .to(letters, { y: "0%", stagger: .01, duration: .3 })
 
     return () => {
-      timeline.kill()
+      timeline.revert()
     }
   }, [isHover])
 

@@ -50,7 +50,7 @@ export default function LettersSlideInOnView({ children, trigger, threshold = 20
       })
 
     return () => {
-      timeline.kill()
+      timeline.revert()
     }
   },
     []
