@@ -1,6 +1,6 @@
 'use client';
 
-import splittedText from "@/utils/splittedText";
+import splitPointText from "@/utils/split-point-text";
 
 import Polygon from "@/components/Polygon";
 
@@ -10,14 +10,14 @@ interface Props {
   author: string
 }
 
-export default function Quote({ phrase, author }: Props) {
+export default function ClientQuote({ phrase, author }: Props) {
   return (
     <section
       id="philosophy"
       className="w-screen h-screen py-[9vw] px-1 bg-white grid grid-cols-6 gap-x-4 ">
       <div data-scroll data-scroll-speed="0.2" className="col-span-4 col-start-2 self-center grid grid-cols-4">
         <q className="font-normal leading-[200%] tracking-[-.07em] self-center col-span-2">
-          {splittedText(phrase)
+          {splitPointText(phrase)
             .map(
               (text, key) => <span className="text-[1.5rem] text-[#111] even:text-[#222]" key={`line_${key}`}>{text}{". "}</span>
             )

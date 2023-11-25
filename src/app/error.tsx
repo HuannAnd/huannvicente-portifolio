@@ -10,6 +10,8 @@ export default function Error({
   error: Error & { digest?: string }
   reset: () => void
 }) {
+  // redirect("/home")
+
   return (
     <section className='w-screen h-screen grid place-content-center'>
       <h1 className='text-white text-[7rem] text-center'>Something was Wrong</h1>

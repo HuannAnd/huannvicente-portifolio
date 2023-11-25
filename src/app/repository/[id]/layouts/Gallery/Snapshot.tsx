@@ -1,7 +1,9 @@
-'use client';
+import { type ImageProps } from "next/image";
 
 import cn from "@/utils/cn";
-import Image, { type ImageProps } from "next/image";
+import isVideo from "@/utils/is-video";
+
+import StaticImageWithFallback from "@/app/repository/[id]/StaticImageWithFallback";
 
 function getVariantBytIndex(index: number) {
   const restOfDivisionBySeven = index % 7
@@ -30,22 +32,29 @@ function getVariantBytIndex(index: number) {
 interface SnapshotProps extends Omit<ImageProps, "src"> {
   src: string,
   index: number,
-  isVideo: boolean,
   alt: string
 }
 
-export default function Snapshot({ index, src, alt, isVideo, blurDataURL, ...rest }: SnapshotProps) {
+export default async function Snapshot({ index, src, alt, blurDataURL, ...rest }: SnapshotProps) {
   const variant = getVariantBytIndex(index)
-  const scrollSpeed = -(index % 3) * 0.1 - 0.1
+  const scrollSpeed = -(index % 3) * 0.15 - 0.1
   const baseConfig = {
-    className: cn("object-contain w-full max-h-[100dvh] rounded-2xl", variant),
-    "data-scroll": true,
-    "data-scroll-speed": scrollSpeed,
+    className: cn("object-contain relative w-full h-full row-span-1 min-h-[50vh] max-h-[100dvh] rounded-2xl", variant),
     src,
   }
 
-
-  if (isVideo) return <video {...baseConfig} loop muted autoPlay />
-  return <img {...baseConfig} width={400} height={300} loading="lazy" alt="Content about that project" />
+  if (isVideo(src)) return <video data-scroll data-scroll-speed={scrollSpeed} {...baseConfig} loop muted autoPlay />
+  return (
+    <picture data-scroll data-scroll-speed={scrollSpeed} className={baseConfig.className}>
+      <StaticImageWithFallback
+        {...baseConfig}
+        style={{
+          objectPosition: "center",
+          objectFit: "contain"
+        }}
+        alt="Content about that project"
+      />
+    </picture>
+  )
 
 }

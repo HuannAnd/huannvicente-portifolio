@@ -14,6 +14,7 @@ export default function Model({ }) {
   const centerY = -2.5
 
   const { nodes } = useGLTF("/models/warren.gltf") as GLTF & { nodes: any };
+  console.log("Nodes value: ", nodes)
 
   const mouse = useSmoothMousePosition()
 

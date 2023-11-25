@@ -2,8 +2,6 @@ import GithubHttpClient from "@/services/client/GithubHttpClient";
 
 import GitHubTypes from './types'
 
-import { Metadata } from "next";
-
 class GithubServiceHttpClient {
   constructor(private token: string) { }
 
@@ -87,7 +85,7 @@ class GithubServiceHttpClient {
 
     return frameworkData
   }
-  public async getMetadataRepository(repositoryId: number): Promise<{title: string, description: string}> {
+  public async getMetadataRepository(repositoryId: number): Promise<{ title: string, description: string }> {
     try {
       console.log("token inside GithubServices methods: ", this.token)
       const repository = await this.getRepositoryById(repositoryId)

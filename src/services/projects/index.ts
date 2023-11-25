@@ -1,11 +1,5 @@
 import data from "./data"
 
-import fs from "fs/promises"
-
-import path from "path"
-
-import { getPlaiceholder } from "plaiceholder"
-
 import { IProjectData } from './type'
 
 
@@ -13,13 +7,26 @@ class ProjectsService {
   constructor(
     private projects: IProjectData[] = data
   ) { }
-  public async getPhotosPath(projectId: number) {
-    const project = this.getProjectById(projectId)
-    const photosSrc = project.gallery
-
-    return photosSrc
+  public static async getRepositoryPhotosById(projectId: number) {
+    // const assetsManager = new AssetsManager(`/projects/${projectId}`)
+    // const photos = await assetsManager.getPhotos()
+    // return photos
   }
-  
+
+  public async getRepositoryGLTFAssetById(projectId: number) {
+    // const assetsManager = new AssetsManager(`/projects/${projectId}`)
+
+    // const gltfModelPathname = (await assetsManager.getGLTFModels())[0]
+
+    // return gltfModelPathname
+  }
+  public async getRepositoryVideosById(projectId: number) {
+    // const assetsManager = new AssetsManager(`/projects/${projectId}`)
+
+    // const videos = await assetsManager.getPhotos()
+    // return videos
+  }
+
   public getProjectFrameworks(projectId: number) {
     const project = this.getProjectById(projectId)
 
@@ -37,7 +44,7 @@ class ProjectsService {
     return this.projects.find(x => x.id === projectId)!
   }
 
-  public getNextProjectWithId(projectId: number) {
+  public getNextProjectByLastId(projectId: number) {
     let nextIndex = this.projects.findIndex(x => x.id === projectId) + 1
     nextIndex = nextIndex % this.projects.length
 

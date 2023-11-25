@@ -26,10 +26,14 @@ export default function LoadingProvider({ children }: LoadingProviderProps) {
 
   function pageTransitionTo(to: string) {
     setCursor({ isLoading: true })
+    document.documentElement.style.cursor = "wait"
     setRequestPage(to)
   }
 
-  const resetCursor = () => setCursor({ isLoading: false, mode: "normal", title: null, icon: "none" })
+  const resetCursor = () => {
+    setCursor({ isLoading: false, mode: "normal", title: null, icon: "none" })
+    document.documentElement.style.cursor = "default"
+  }
 
   const startLocomotiveScroll = () => {
     if (!locomotiveScroll) return
@@ -49,9 +53,7 @@ export default function LoadingProvider({ children }: LoadingProviderProps) {
   return (
     <LoadingGoToContext.Provider value={pageTransitionTo}>
       <AnimatePresence mode="wait">
-        <Suspense fallback={null}>
-          <Preloader requestPage={requestPage} />
-        </Suspense>
+        <Preloader requestPage={requestPage} />
       </AnimatePresence>
       {children}
     </LoadingGoToContext.Provider>

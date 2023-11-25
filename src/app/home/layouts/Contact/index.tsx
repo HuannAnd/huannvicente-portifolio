@@ -40,7 +40,8 @@ export function Contact({ }: ContactProps) {
       <article className="pt-[3vw] h-auto w-auto @desktop:float-right @tablet:mx-auto @desktop:ml-auto @mobile:mx-auto @mobile:items-center @tablet:items-center @mobile:row-span-2 flex flex-col @mobile:justify-center">
         <SlideInOnTriggerHover.Root>
           <div data-scroll data-scroll-speed="0.2" className="w-[55vmin] h-[55vmin] relative group/snapshot overflow-hidden rounded-2xl bg-white">
-            <img onMouseEnter={() => setCursor({ mode: "hovered" })} onMouseLeave={() => setCursor({ mode: "normal" })} className="absolute h-full object-cover ease-smooth duration-300 group-hover/snapshot:scale-[1.05]" src="/warren-poster4.png" alt="" />
+            {/* <img onMouseEnter={() => setCursor({ mode: "hovered" })} onMouseLeave={() => setCursor({ mode: "normal" })} className="absolute h-full object-cover ease-smooth duration-300 group-hover/snapshot:scale-[1.05]" src="/warren-poster4.png" alt="" /> */}
+            
             <div className="absolute w-full pb-4 px-4 bottom-0 text-black">
               <SlideInOnTriggerHover.Trigger>
                 <small className="font-semibold overflow-hidden inline-block">&copy; Warren</small>

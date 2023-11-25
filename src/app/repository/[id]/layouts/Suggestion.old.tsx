@@ -22,7 +22,7 @@ export default function Suggestion({ }: BackToHomeProps) {
 
 
   return (
-    <section id="suggestion" className="w-screen h-auto min-h-screen px-1 py-[9vw] bg-white">
+    <section id="suggestion" className="w-screen h-auto  min-h-screen px-@section py-[9vw] bg-white">
       <LettersSlideInOnView trigger="#suggestion" >
         <h1 className="text-[#111] overflow-hidden">
           Discover My Journey

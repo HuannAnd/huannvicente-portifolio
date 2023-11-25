@@ -19,7 +19,7 @@ export default function About() {
     >
       <div className="clip-around w-full h-full bg-transparent flex flex-col">
         <LettersSlideInOnView trigger="#about" threshold={20}>
-          <h1 className='relative w-full @mobileAndTablet:text-center @mobileAndTablet:mx-auto @mobileAndTablet:block @desktop:float-right text-white inline-block @desktop:ml-auto overflow-hidden'>
+          <h1 className='relative w-full @mobileAndTablet:text-center @mobileAndTablet:mx-auto @mobileAndTablet:block @desktop:ml-auto text-white inline-block overflow-hidden'>
             Delivering products
             <br />
             with respect
@@ -37,7 +37,7 @@ export default function About() {
             <p className='text-[1rem] mb-4'>
               My Backends knowledge&apos;s are C# (.NET Core), Java Spring Boot and Node.js
             </p>
-            <p className='text-[1rem]'>
+          <p className='text-[1rem]'>
               If you haven&apos;t seen my projects, please take a look. If you find any bug, or want to contribute, open an issue, PR or contact me
             </p>
           </TextFadeInOnView>
