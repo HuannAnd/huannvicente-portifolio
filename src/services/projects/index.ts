@@ -66,6 +66,10 @@ class ProjectsService {
     return developedProjects
   }
 
+  public getProjects() {
+    return this.projects
+  }
+
   public getProjectPhilosophy(projectId: number) {
     const project = this.getProjectById(projectId)
 

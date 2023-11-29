@@ -14,40 +14,24 @@ interface LocomotiveScrollProps
 
 export const LocomotiveScrollRefContext = createContext({} as LocomotiveScroll | null);
 
-export default function LocomotiveScrollLayout({
+export default function LocomotiveScrollProvider({
   children
 }: LocomotiveScrollProps) {
   const [locomotiveScroll, setLocomotiveScroll] = useState<LocomotiveScroll | null>(null)
-
-  const pathname = usePathname()
-  const { width, height } = useWindowViewport()
 
   useEffect(() => {
     (
       async () => {
         const LocomotiveScroll = (await import('locomotive-scroll')).default
-        const locomotiveScroll = new LocomotiveScroll({ autoResize: true });
-        setLocomotiveScroll(locomotiveScroll)
+        const newLocomotiveScroll = new LocomotiveScroll({ autoResize: true, });
+        setLocomotiveScroll(newLocomotiveScroll)
       }
     )()
 
-    return () => {
-      locomotiveScroll?.destroy()
-    }
+    return () => locomotiveScroll?.destroy()
   },
     []
   )
-
-  useEffect(() => {
-    if (!locomotiveScroll) return
-    locomotiveScroll.resize()
-    locomotiveScroll.start()
-    window.scrollTo(0, 0)
-
-    return () => {
-      locomotiveScroll.destroy()
-    }
-  }, [pathname, locomotiveScroll])
 
   return (
     <LocomotiveScrollRefContext.Provider value={locomotiveScroll}>

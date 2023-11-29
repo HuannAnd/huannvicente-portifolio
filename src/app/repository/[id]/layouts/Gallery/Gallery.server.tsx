@@ -2,16 +2,16 @@ import ProjectsService from "@/services/projects"
 
 import path from "path";
 
-import fs from "fs"
+import fs from "fs/promises"
 
 import ClientGallery from "./Gallery.client";
 
 import Snapshot from "./Snapshot";
 
 class AssetsManager {
-  private readonly directoryPathname: string
-  constructor(directoryPathname: string | number) {
-    this.directoryPathname = path.join(`./public/${directoryPathname}`)
+  public directoryPathname: string
+  constructor(pathname: string | number) {
+    this.directoryPathname = `${pathname}`
     console.log("Repository Directory Assets Pathname: ", this.directoryPathname)
   }
 
@@ -31,9 +31,13 @@ class AssetsManager {
     return `${this.directoryPathname}/${filename}`
   }
 
-  private getDirectoryContent() {
+  private async getDirectoryContent() {
     try {
-      return fs.readdirSync(this.directoryPathname).map(this.formatFilename)
+      const staticDirectoryPathname = `./public${this.directoryPathname}`
+      let directoryContent = await fs.readdir(staticDirectoryPathname)
+      directoryContent = directoryContent.map(x => this.formatFilename(x))
+
+      return directoryContent
     } catch (error) {
       console.error("Error to fetch Static data from: ", this.directoryPathname)
       return []
@@ -41,15 +45,14 @@ class AssetsManager {
   }
 
   public async getPhotos() {
-    const directoryContent = this.getDirectoryContent()
+    const directoryContent = await this.getDirectoryContent()
     const photos = directoryContent.filter(this.isImage)
-    console.log("Photos: ", photos)
 
     return photos
   }
 
   public async getGLTFModels() {
-    const directoryContent = this.getDirectoryContent()
+    const directoryContent = await this.getDirectoryContent()
 
     const gltfFiles = directoryContent.filter(this.isGLTF)
 
@@ -57,7 +60,7 @@ class AssetsManager {
   }
 
   public async getVideos() {
-    const directoryContent = this.getDirectoryContent()
+    const directoryContent = await this.getDirectoryContent()
 
     const videos = directoryContent.filter(this.isVideo)
     return videos
@@ -89,15 +92,16 @@ interface Props
 
 
 export default async function ServerGallery({ repositoryId }: Props) {
-  const repositoryAssetsManager = new AssetsManager(`/projects/${repositoryId}/`)
+  const repositoryAssetsManager = new AssetsManager(`/projects/${repositoryId}`)
   const photos = await repositoryAssetsManager.getPhotos()
   const videos = await repositoryAssetsManager.getVideos()
 
   const content = videos.concat(photos)
+  // console.log("Assets", content)
 
   return (
     <ClientGallery>
-      {content.map((x, index) => <Snapshot index={index} alt="Snapshot" src={x} />)}
+      {content.map((x, index) => <Snapshot key={`Snapshot_${index}`} index={index} alt="Snapshot" src={x} />)}
     </ClientGallery>
   )
 }

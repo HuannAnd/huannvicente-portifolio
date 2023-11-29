@@ -13,9 +13,9 @@ interface LoadingProviderProps {
   children: React.ReactNode
 }
 
-type LoadingGoToValue = (to: string) => void
+type TRedirectWithPageTransitionValue = (to: string) => void
 
-export const LoadingGoToContext = createContext({} as LoadingGoToValue)
+export const RedirectWithPageTransitionContext = createContext({} as TRedirectWithPageTransitionValue)
 
 export default function LoadingProvider({ children }: LoadingProviderProps) {
   const [requestPage, setRequestPage] = useState<string | null>(null)
@@ -35,27 +35,19 @@ export default function LoadingProvider({ children }: LoadingProviderProps) {
     document.documentElement.style.cursor = "default"
   }
 
-  const startLocomotiveScroll = () => {
-    if (!locomotiveScroll) return
-    locomotiveScroll.scrollTo(0, { immediate: true, duration: 0 })
-    locomotiveScroll.resize()
-  }
+  const unsubscribeLoading = () => resetCursor()
 
-  function unsubscribeLoading() {
-    resetCursor()
-    if (locomotiveScroll) startLocomotiveScroll()
-  }
 
   useEffect(() => {
     unsubscribeLoading()
   }, [pathname])
 
   return (
-    <LoadingGoToContext.Provider value={pageTransitionTo}>
+    <RedirectWithPageTransitionContext.Provider value={pageTransitionTo}>
       <AnimatePresence mode="wait">
         <Preloader requestPage={requestPage} />
       </AnimatePresence>
       {children}
-    </LoadingGoToContext.Provider>
+    </RedirectWithPageTransitionContext.Provider>
   )
 }

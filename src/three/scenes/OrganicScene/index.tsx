@@ -1,14 +1,18 @@
 "use client";
 
-import { Suspense, useRef } from 'react';
+import dynamic from 'next/dynamic'
 
-import { Canvas } from '@react-three/fiber';
+import { Suspense, useRef } from 'react'
 
-import Windows11Shape from './OrganicFluid';
-import Lights from './Lights';
-import Camera from './Camera';
+import { Canvas } from '@react-three/fiber'
+
+const OrganicFluid = dynamic(() => import("./OrganicFluid"), { ssr: false })
+
+import Lights from './Lights'
+import Camera from './Camera'
 
 import "@/three/shaders"
+
 
 export default function Windows11Scene({ depth = 30 }) {
   const ref = useRef<HTMLCanvasElement>(null!)
@@ -17,7 +21,7 @@ export default function Windows11Scene({ depth = 30 }) {
   return (
     <Suspense fallback={null}>
       <Canvas className='top-0 bottom-0' style={{ height: "100vh", zIndex: -1, width: "100vw", position: "fixed" }} ref={ref} gl={{ antialias: true }} camera={{ position: [0, 0, 140], fov: 20, near: 0.01, far: depth + 300 }}>
-        <Windows11Shape z={10} />
+        <OrganicFluid z={10} />
         <color attach="background" args={["#050505"]} />
         <Lights />
         <Camera />

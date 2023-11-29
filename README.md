@@ -26,4 +26,3 @@ This application requires Node.js v16.13+.
   npm install
   npm run dev
 ```
-

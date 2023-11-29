@@ -1,5 +1,3 @@
-
-
 uniform vec3 uColor;
 uniform float uTime;
 

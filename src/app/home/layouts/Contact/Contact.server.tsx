@@ -1,24 +1,18 @@
-import ProjectsService from "@/services/projects"
+import ClientContact from "./Contact.client"
 
-import fs from 'fs'
-import path from "path"
-
-interface Props {
-  repositoryId: number
-}
+interface Props { }
 
 
 export default async function ServerContact({ }: Props) {
   const socialsMedias = [
-    { name: "Linkedin", imageURL: "/linkedin-poster.png" },
-    { name: "Instagram", imageURL: "" },
-    { name: "Facebook", imageURL: "" }
+    { name: "LinkedIn", imageURL: "/linkedin-poster.png" },
+    { name: "Dribbble", imageURL: "/dribbble-brand.png" },
   ]
 
 
   return (
     <>
-      { }
+      <ClientContact socialMedias={socialsMedias} />
     </>
   )
 }

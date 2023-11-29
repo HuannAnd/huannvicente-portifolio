@@ -3,7 +3,6 @@
 import OrganicScene from "@/three/scenes/OrganicScene";
 
 import LettersSlideInOnView from "@/components/LettersSlideInOnView";
-import useWindowViewport from "@/hooks/useWindowViewport";
 
 
 export default function Hero() {

@@ -2,7 +2,9 @@ import React, { useRef } from "react";
 
 import { useGLTF, Float } from "@react-three/drei";
 
-import { GLTF, GLTFReference } from "three/examples/jsm/loaders/GLTFLoader";
+import Skeleton3D from "@/components/Skeleton3D";
+
+import { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
 
 import { useTransform } from "framer-motion";
 import { motion } from "framer-motion-3d"
@@ -50,7 +52,6 @@ interface MeshProps {
 }
 
 function Mesh({ node }: MeshProps) {
-  // const { geometry, position, rotation, scale, material } = node
   return (
     <motion.mesh
       castShadow

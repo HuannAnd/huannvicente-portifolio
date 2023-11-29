@@ -11,11 +11,11 @@ export default function Providers({ children }: ProvidersProps) {
   return (
     <CursorFollowerProvider>
       <NavigationContextProvider>
-        <LocomotiveScrollProvider>
+        {/* <LocomotiveScrollProvider> */}
           <PageTransitionProvider>
             {children}
           </PageTransitionProvider>
-        </LocomotiveScrollProvider>
+        {/* </LocomotiveScrollProvider> */}
       </NavigationContextProvider>
     </CursorFollowerProvider>
   )

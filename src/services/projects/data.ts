@@ -4,7 +4,7 @@ export default [
   {
     name: "Warren",
     id: 599657419,
-    frameworks: ["React", "Styled-Componets", "Firebase"],
+    frameworks: ["React", "Styled-Components", "Firebase"],
     filosophy: {
       phrase: "Geometry allows us to explore and comprehend the fundamental properties of space, revealing the underlying beauty and order in our universe.. ",
       author: "Henri Poincaré"
@@ -56,7 +56,7 @@ export default [
   },
   {
     id: 12998282,
-    name: "Portifolio",
+    name: "Portfolio",
     frameworks: ["Next.js", "MongoDb", "Tailwind"],
     filosophy: {
       phrase: "Imagination is more important than knowledge. For knowledge is limited, whereas imagination embraces the entire world.",

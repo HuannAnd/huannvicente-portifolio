@@ -39,7 +39,7 @@ export default async function Snapshot({ index, src, alt, blurDataURL, ...rest }
   const variant = getVariantBytIndex(index)
   const scrollSpeed = -(index % 3) * 0.15 - 0.1
   const baseConfig = {
-    className: cn("object-contain relative w-full h-full row-span-1 min-h-[50vh] max-h-[100dvh] rounded-2xl", variant),
+    className: cn("object-contain relative w-full h-full row-span-1 min-h-[75vmin] max-h-[100dvh] rounded-2xl", variant),
     src,
   }
 
@@ -50,7 +50,8 @@ export default async function Snapshot({ index, src, alt, blurDataURL, ...rest }
         {...baseConfig}
         style={{
           objectPosition: "center",
-          objectFit: "contain"
+          objectFit: "contain",
+          borderRadius: "15px"
         }}
         alt="Content about that project"
       />

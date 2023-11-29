@@ -1,8 +1,8 @@
 "use client"
 
-import { memo, useEffect, useRef } from "react";
+import { memo } from "react";
 
-import useGoTo from "@/hooks/useGoTo";
+import useRedirectWithPageTransition from "@/hooks/useRedirectWithPageTransition";
 import useSetCursor from '@/hooks/useSetCursor'
 
 import { IProjectData } from "@/services/projects/type";
@@ -24,14 +24,25 @@ function Project({
   repository_url,
   ...props
 }: ProjectProps) {
+  console.log(`Project with id ${id}: `, name)
   const setCursor = useSetCursor()
 
-  const goTo = useGoTo()
+  const redirectWithPageTransitionTo = useRedirectWithPageTransition()
 
-  function previewProject() {
-    if (isInMaintenance) return setCursor({ title: "Maintenance", mode: "pressed" })
-    setCursor({ title: null, mode: "normal" })
-    goTo(`/repository/${id}`)
+  const setCursorToMaintenance = () => setCursor({ mode: "pressed", title: "Maintenance" })
+  const setCursorToHoverMode = () => setCursor({ mode: "hovered", title: "View More" })
+  const setCursorToPressMode = () => setCursor({ mode: "pressed" })
+  const setCursorToNormalMode = () => setCursor({ mode: "normal", title: null })
+
+  function handleOnClick() {
+    if (isInMaintenance) return setCursorToMaintenance()
+    setCursorToNormalMode()
+    redirectWithPageTransitionTo(`/repository/${id}`)
+  }
+
+  function handleOnMouseUp() {
+    if (isInMaintenance) return null
+    return setCursorToHoverMode()
   }
 
   return (
@@ -39,11 +50,11 @@ function Project({
       <div
         data-project
         className="col-span-12 z-10 group/item [transform-origin:top] [transform:_scaleX(0)] [filter:_blur(5px)] opacity-0 flex bg-transparent pl-4 border-t-[#333] border-t-[1px] relative cursor-pointer justify-between items-center py-8  h-auto"
-        onMouseEnter={() => isInMaintenance ? null : setCursor({ mode: "hovered", title: "View More" })}
-        onMouseUp={() => isInMaintenance ? null : setCursor({ mode: "hovered" })}
-        onMouseDown={() => setCursor({ mode: "pressed" })}
-        onMouseLeave={() => setCursor({ title: null, mode: "normal" })}
-        onClick={previewProject}
+        onClick={handleOnClick}
+        onMouseUp={handleOnMouseUp}
+        onMouseEnter={setCursorToHoverMode}
+        onMouseDown={setCursorToPressMode}
+        onMouseLeave={setCursorToNormalMode}
         {...props}
       >
         <small>0{nTh}</small>
@@ -54,7 +65,6 @@ function Project({
         </div>
       </div >
     </LettersSlideInOnTriggerHover.Root>
-
   );
 }
 

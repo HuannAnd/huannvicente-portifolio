@@ -1,21 +1,11 @@
-// import Gallery from "./layouts/Gallery/Gallery.server"
 import Gallery from "./layouts/Gallery"
-
 import Hero from "./layouts/Hero"
 import Quote from "./layouts/Quote"
 import Suggestion from "./layouts/Suggestion"
+import Technologies from "./layouts/Technologies"
 
-import ProjectsService from '@/services/projects'
 import GithubService from "@/services/github"
-
-import fs from 'fs'
-import fsPromise from 'node:fs/promises'
-import path from "path"
-import { getPlaiceholder } from "plaiceholder"
-
-import isImage from "@/utils/is-image"
-import isVideo from "@/utils/is-video"
-
+import LocomotiveScrollProvider from "@/contexts/LocomotiveScrollProvider"
 
 enum Params {
   ID = "id"
@@ -35,11 +25,12 @@ export default async function RepositoryPage({
   const repositoryId = Number(params.id)
 
   return (
-    <>
+    <LocomotiveScrollProvider>
       <Hero repositoryId={repositoryId} />
       <Gallery repositoryId={repositoryId} />
+      <Technologies repositoryId={repositoryId} />
       <Quote repositoryId={repositoryId} />
       <Suggestion repositoryId={repositoryId} />
-    </>
+    </LocomotiveScrollProvider>
   )
 }

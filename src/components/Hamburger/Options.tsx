@@ -17,14 +17,14 @@ const fades: Variants = {
 export default function Options({ }: OptionsProps) {
   const locomotiveScroll = useLocomotiveScroll()
   const setCursor = useSetCursor()
-  function goToSection(sectionHTMLId: string) {
+  function redirectWithPageTransitionSection(sectionHTMLId: string) {
     locomotiveScroll?.scrollTo(sectionHTMLId)
   }
 
   return (
     <div className="absolute top-0 -left-[10px] -translate-x-full aspect-square w-[250px]">
       <motion.p
-        onClick={() => goToSection("#about")}
+        onClick={() => redirectWithPageTransitionSection("#about")}
         onMouseEnter={() => setCursor({ mode: "hovered" })}
         variants={fades}
         initial="initial"
@@ -34,7 +34,7 @@ export default function Options({ }: OptionsProps) {
         className="top-0 left-0 font-semibold absolute text-white uppercase"
       >About</motion.p>
       <motion.p
-        onClick={() => goToSection("#projects")}
+        onClick={() => redirectWithPageTransitionSection("#projects")}
         onMouseEnter={() => setCursor({ mode: "hovered" })}
         variants={fades}
         initial="initial"
@@ -44,7 +44,7 @@ export default function Options({ }: OptionsProps) {
         className="top-1/2 left-1/2 font-semibold -translate-x-1/2 -translate-y-1/2 absolute text-white uppercase"
       >Projects</motion.p>
       <motion.p
-        onClick={() => goToSection("#contact")}
+        onClick={() => redirectWithPageTransitionSection("#contact")}
         onMouseEnter={() => setCursor({ mode: "hovered" })}
         variants={fades}
         custom={3}
