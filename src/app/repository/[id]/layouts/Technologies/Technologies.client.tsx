@@ -8,7 +8,11 @@ interface Props { }
 
 export default function ClientTechnologies({ }: Props) {
   return (
-    <section id="technologies" className="w-screen min-h-screen px-@section py-[9vw]">
+    <section
+      id="technologies"
+      className="w-screen min-h-screen px-@section py-[9vw]"
+      data-name="Technologies"
+    >
       <h1 className="mb-32">
         Who Used To
         <br />

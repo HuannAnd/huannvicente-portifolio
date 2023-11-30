@@ -14,7 +14,9 @@ export default function ClientQuote({ phrase, author }: Props) {
   return (
     <section
       id="philosophy"
-      className="w-screen h-screen py-[9vw] px-1 grid grid-cols-6 gap-x-4 ">
+      data-name="Quote"
+      className="w-screen h-screen py-[9vw] px-1 grid grid-cols-6 gap-x-4 "
+    >
       <div data-scroll data-scroll-speed="0.2" className="col-span-4 col-start-2 self-center grid grid-cols-4">
         <q className="font-normal leading-[200%] tracking-[-.07em] self-center col-span-2">
           {splitPointText(phrase)

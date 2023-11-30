@@ -7,7 +7,11 @@ interface Props
 
 export default function ClientGallery({ children }: Props) {
   return (
-    <section id="gallery" className="w-screen px-@section gap-4 relative h-auto py-[9vw] pb-[100dvh] grid grid-cols-6 grid-rows-1">
+    <section
+      id="gallery"
+      className="w-screen px-@section gap-4 relative h-auto py-[9vw] pb-[100dvh] grid grid-cols-6 grid-rows-1"
+      data-name="Gallery"
+    >
       {children}
     </section>
   )

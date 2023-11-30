@@ -2,7 +2,7 @@ import Image, { type ImageProps } from "next/image";
 
 import fsp from 'fs/promises'
 
-import { getPlaiceholder } from "plaiceholder"
+import { getPlaiceholder as getPlaceHolder } from "plaiceholder"
 
 interface Props
   extends Omit<ImageProps, "src"> {
@@ -12,7 +12,7 @@ interface Props
 async function createFallbackImage(src: string) {
   const fileInBuffer = await fsp.readFile(`./public${src}`)
 
-  const { base64 } = await getPlaiceholder(fileInBuffer)
+  const { base64 } = await getPlaceHolder(fileInBuffer)
 
   return base64
 }

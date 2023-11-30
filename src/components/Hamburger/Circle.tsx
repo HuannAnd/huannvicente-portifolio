@@ -7,22 +7,21 @@ import { centerX, centerY, getCirclePosY, finalRadius, radius } from "./anim"
 
 interface CircleProps {
   isHamburgerOpen: boolean,
-  timeline: gsap.core.Timeline,
   index: number
 }
 
 
 export default function Circle({
   isHamburgerOpen,
-  timeline,
   index
 
 }: CircleProps) {
   const ref = useRef<SVGCircleElement>(null)
   const initialX = centerX
-  const initialY = getCirclePosY(index)
+  const initialY = getCirclePosY(index + 1)
+  const staggeredDelay = index * .01
 
-  const realocateCircleToCenter = () => {
+  const relocateCircleToCenter = () => {
     return gsap
       .to(
         ref.current,
@@ -34,11 +33,11 @@ export default function Circle({
           },
           duration: 1,
           ease: "power3.out",
-          delay: index * .1
+          delay: staggeredDelay
         })
   }
 
-  const moveCircleToInitalPosition = () => {
+  const moveCircleToInitialPosition = () => {
     return gsap
       .to(
         ref.current,
@@ -55,11 +54,14 @@ export default function Circle({
   }
 
   useEffect(() => {
-    if (isHamburgerOpen) realocateCircleToCenter()
-    moveCircleToInitalPosition()
+    if (isHamburgerOpen) {
+      relocateCircleToCenter()
+    } else {
+      moveCircleToInitialPosition()
+    }
   }, [isHamburgerOpen])
 
   return (
-    <circle ref={ref} cx={initialX} cy={initialY} r={radius} fill="#fff" />
+    <circle ref={ref} fill="#fff" />
   )
 }

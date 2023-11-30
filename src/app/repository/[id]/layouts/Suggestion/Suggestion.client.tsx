@@ -22,7 +22,11 @@ export default function ClientSuggestion({ nextProject }: Props) {
 
 
   return (
-    <section id="suggestion" className="w-screen min-h-screen mx-auto block px-@section py-[9vw]">
+    <section
+      id="suggestion"
+      className="w-screen min-h-screen mx-auto block px-@section py-[9vw]"
+      data-name="Suggestions"
+    >
       <LettersSlideInOnView trigger="#suggestion" >
         <h1 className="mb-32 text-[#ddd] @mobileAndTablet:text-center relative overflow-hidden mix-blend-difference">
           Discover My Journey

@@ -9,6 +9,7 @@ export default function About() {
   return (
     <section
       id="about"
+      data-name="About"
       className="w-screen @desktop:min-h-[200dvh] @mobileAndTablet:h-screen px-@section py-[9vw] mx-auto relative h-auto bg-transparent overflow-y-hidden text-darkPrimary"
     >
       <div className="clip-around w-full h-full bg-transparent flex flex-col">

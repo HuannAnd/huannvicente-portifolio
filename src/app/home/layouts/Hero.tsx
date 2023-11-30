@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <section
       className="min-h-[300vh] grid grid-rows-4 w-screen mx-auto z-50 gap-x-2 text-black"
-      id="hero"
+      // id="hero"
     >
       <OrganicScene />
       <article id="heroInitial" data-scroll className="w-full px-@section grid place-content-center h-screen text-center">

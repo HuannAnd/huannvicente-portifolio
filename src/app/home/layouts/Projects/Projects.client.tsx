@@ -57,7 +57,11 @@ export default function ClientProjects({ projects }: Props) {
   )
 
   return (
-    <section id="projects" className="w-screen relative mx-auto h-auto grid grid-cols-6 py-[9vw] px-@section text-white">
+    <section
+      id="projects"
+      className="w-screen relative mx-auto h-auto grid grid-cols-6 py-[9vw] px-@section text-white"
+      data-name="Projects"
+    >
       <LettersSlideInOnView trigger="#projects" threshold={20}>
         <h1 className="@desktop:mb-32 @mobileAndTablet:mb-4 @mobileAndTablet:text-center z-50 col-span-full">
           Modern Products

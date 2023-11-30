@@ -5,6 +5,9 @@ import Suggestion from "./layouts/Suggestion"
 import Technologies from "./layouts/Technologies"
 
 import GithubService from "@/services/github"
+
+import Hamburger from "@/components/Hamburger"
+
 import LocomotiveScrollProvider from "@/contexts/LocomotiveScrollProvider"
 
 enum Params {
@@ -26,6 +29,7 @@ export default async function RepositoryPage({
 
   return (
     <LocomotiveScrollProvider>
+      <Hamburger />
       <Hero repositoryId={repositoryId} />
       <Gallery repositoryId={repositoryId} />
       <Technologies repositoryId={repositoryId} />

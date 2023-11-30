@@ -33,7 +33,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${roboto.variable} font-roboto min-h-screen overflow-x-hidden relative w-screen bg-white selection:bg-white selection:text-lightPrimary`}>
         <Providers>
-          <Hamburger />
+          {/* <Hamburger /> */}
           <Cursor />
           {children}
         </Providers>

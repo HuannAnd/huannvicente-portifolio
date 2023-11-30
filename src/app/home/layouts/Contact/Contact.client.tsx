@@ -20,6 +20,7 @@ export default function ClientContact({ socialMedias }: Props) {
   return (
     <section
       id="contact"
+      data-name="Contact"
       className="w-screen mx-auto py-[9vw] min-h-screen sm:px-[3vw] px-4 relative ease-fast text-white"
     >
       <div className="sticky top-0">
@@ -56,19 +57,6 @@ export default function ClientContact({ socialMedias }: Props) {
               </SlideInOnTriggerHover.Trigger>
               <SlideInOnTriggerHover.Trigger>
                 <small className="float-right inline-block overflow-hidden">Art made by <span className="font-semibold">HuannAnd</span></small>
-              </SlideInOnTriggerHover.Trigger>
-            </div>
-          </div>
-        </SlideInOnTriggerHover.Root>
-        <SlideInOnTriggerHover.Root>
-          <div data-scroll data-scroll-speed="0.6" className="w-[55vmin] h-[55vmin] relative group/snapshot overflow-hidden rounded-2xl bg-white">
-            <img onMouseEnter={() => setCursor({ mode: "hovered" })} onMouseLeave={() => setCursor({ mode: "normal" })} className="absolute h-full object-cover ease-smooth duration-300 group-hover/snapshot:scale-[1.05]" src="/whatsapp-brand.png" alt="" />
-            <div className="absolute w-full pb-4 px-4 bottom-0 text-black">
-              <SlideInOnTriggerHover.Trigger>
-                <small className="font-semibold overflow-hidden inline-block">&copy; WhatsApp</small>
-              </SlideInOnTriggerHover.Trigger>
-              <SlideInOnTriggerHover.Trigger>
-                <small className="float-right overflow-hidden inline-block">Art made by <span className="font-semibold">heyjeuss</span></small>
               </SlideInOnTriggerHover.Trigger>
             </div>
           </div>
