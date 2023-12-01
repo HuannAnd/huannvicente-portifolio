@@ -17,8 +17,8 @@ export default function ClientSuggestion({ nextProject }: Props) {
 
   const setCursor = useSetCursor()
 
-  const onHomeContainerClick = () => redirectWithPageTransition("/home")
-  const onNextProjectClick = () => redirectWithPageTransition(`/repository/${nextProject.id}`)
+  const redirectToHomepage = () => redirectWithPageTransition("/")
+  const redirectToNextProject = () => redirectWithPageTransition(`/repository/${nextProject.id}`)
 
 
   return (
@@ -36,7 +36,7 @@ export default function ClientSuggestion({ nextProject }: Props) {
       </LettersSlideInOnView>
       <article className="pt-[3vw] h-auto w-auto justify-center items-end @mobileAndTablet:mx-auto @desktop:ml-auto @mobileAndTablet:items-center @mobile:row-span-2 flex flex-col @mobile:justify-center">
         <LettersSlideInOnTriggerHover.Root>
-          <div data-scroll data-scroll-speed="0.2" onClick={onHomeContainerClick} className="@desktop:w-[55vmin] @tablet:w-[55vmin] @mobile:w-full @mobileAndTablet:aspect-square cursor-pointer z-10 relative group/snapshot overflow-hidden aspect-square rounded-2xl bg-white">
+          <div data-scroll data-scroll-speed="0.2" onClick={redirectToHomepage} className="@desktop:w-[55vmin] @tablet:w-[55vmin] @mobile:w-full @mobileAndTablet:aspect-square cursor-pointer z-10 relative group/snapshot overflow-hidden aspect-square rounded-2xl bg-white">
             <img onMouseEnter={() => setCursor({ mode: "hovered" })} onMouseLeave={() => setCursor({ mode: "normal" })} className="absolute scale-[.8] h-full object-cover ease-smooth duration-300 group-hover/snapshot:scale-[.9]" src="/portifolio-brand.png" alt="" />
             <div className="absolute w-full pb-4 px-4 bottom-0 text-black">
               <LettersSlideInOnTriggerHover.Trigger>
@@ -49,11 +49,11 @@ export default function ClientSuggestion({ nextProject }: Props) {
           </div>
         </LettersSlideInOnTriggerHover.Root>
         <LettersSlideInOnTriggerHover.Root>
-          <div data-scroll data-scroll-speed="0.4" onClick={onNextProjectClick} className="@desktop:w-[55vmin] right-32 @tablet:w-[55vmin] @mobile:w-full @mobileAndTablet:aspect-square relative cursor-pointer group/snapshot overflow-hidden aspect-square rounded-2xl bg-white">
+          <div data-scroll data-scroll-speed="0.4" onClick={redirectToNextProject} className="@desktop:w-[55vmin] right-32 @tablet:w-[55vmin] @mobile:w-full @mobileAndTablet:aspect-square relative cursor-pointer group/snapshot overflow-hidden aspect-square rounded-2xl bg-white">
             <img onMouseEnter={() => setCursor({ mode: "hovered" })} onMouseLeave={() => setCursor({ mode: "normal" })} className="absolute h-full object-cover ease-smooth duration-300 group-hover/snapshot:scale-[1.05]" src="/warren-poster4.png" alt="" />
             <div className="absolute flex justify-between w-full pb-4 px-4 bottom-0 text-black">
               <LettersSlideInOnTriggerHover.Trigger>
-                <small className="font-semibold overflow-hidden inline-block text-white">&copy; Warren</small>
+                <small className="font-semibold overflow-hidden inline-block text-white">&copy; {nextProject.name}</small>
               </LettersSlideInOnTriggerHover.Trigger>
               <LettersSlideInOnTriggerHover.Trigger>
                 <small className="float-right overflow-hidden text-white inline-block">Art made by <strong>HuannAnd</strong></small>

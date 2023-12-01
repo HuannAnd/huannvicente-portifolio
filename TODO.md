@@ -1,13 +1,13 @@
 # TODO
 
 - [x] Ajustar Hamburger para mostrar a navegação correta
-- [ ] Technologies tem que se ajustar de acordo com as tecnologias do projeto
+- [x] Technologies tem que se ajustar de acordo com as tecnologias do projeto
 - [ ] O card que está em Suggestion do próximo projeto deve aparecer o banner do próximo projeto
-- [ ] Redirect para /home imediato
+- [x] Redirect para /home imediato
 - [ ] Favicon com a brand do portfolio
 - [ ] Informações de Mídia social em Contact com artes de forma estável
-- [ ] Colocar About de forma _sticky_ 
-- [ ] Adicionar/Atualizar os projetos novos para exibir em Projects
+- [x] Colocar About de forma _sticky_ 
+- [x] Adicionar/Atualizar os projetos novos para exibir em Projects
 - [ ] Estilizar para mobile
 - [ ] Antes de fazer o _deploy_, tirar os _console logs_
 
@@ -19,6 +19,7 @@
 - [ ] PageTransition de uma esfera em _furred_
 - [x] Refatorar Hamburger
 - [ ] Ajustar o layout para o Hamburger ficar no layout.tsx de alguma forma
+- [ ] Macro para criar/sincronizar os repositórios e empurrar para a _public_ do projeto
 
 
 

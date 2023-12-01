@@ -3,7 +3,7 @@ import { type ImageProps } from "next/image";
 import cn from "@/utils/cn";
 import isVideo from "@/utils/is-video";
 
-import StaticImageWithFallback from "@/app/repository/[id]/StaticImageWithFallback";
+import StaticImageWithFallback from "@/app/(repository)/repository/[id]/StaticImageWithFallback";
 
 function getVariantBytIndex(index: number) {
   const restOfDivisionBySeven = index % 7

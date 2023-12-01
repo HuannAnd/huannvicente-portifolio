@@ -9,11 +9,11 @@ interface Props {
 
 export default async function ServerTechnologies({ repositoryId }: Props) {
   const frameworks = ProjectsService.getProjectFrameworks(repositoryId)
-  const languages = GithubService.getProjectLanguages(repositoryId)
+  const languages = await GithubService.getProjectLanguages(repositoryId)
 
   return (
     <>
-      <ClientTechnologies />
+      <ClientTechnologies frameworks={frameworks} languages={languages} />
     </>
   )
 }

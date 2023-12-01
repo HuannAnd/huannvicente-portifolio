@@ -98,7 +98,7 @@ export default function Preloader({ requestPage }: Props) {
         <circle className='mix-blend-difference bg-blend-difference' stroke='#121212' fill='none' strokeWidth="1" r={windowViewport.height / 1.4} cx={windowViewport.width / 2} cy={windowViewport.height / 2} />
         <circle className='mix-blend-difference bg-blend-difference' stroke='#121212' fill='none' strokeWidth="1" r={windowViewport.height / 1.6} cx={windowViewport.width} cy={0} />
       </svg>
-      <svg className='absolute w-full left-0 right-0 bottom-0 translate-y-full'>
+      <svg className='absolute w-full pointer-events-none select-none left-0 right-0 bottom-0 translate-y-full'>
         <path ref={path} />
       </svg>
     </motion.div>

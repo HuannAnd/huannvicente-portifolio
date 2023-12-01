@@ -101,5 +101,39 @@ export default [
 
     ],
     isInMaintenance: true
+  },
+  {
+    id: 646585608,
+    name: "Flashcard Automation",
+    frameworks: [".NET"],
+    filosophy: {
+      phrase: "",
+      author: ""
+    },
+    hasDomain: false,
+    repository_url: "",
+    domain_url: "",
+    gallery: [
+
+    ],
+    isInMaintenance: true
+
+  },
+  {
+    id: 677545465,
+    name: "A Turma Automóveis",
+    frameworks: ["Java Spring", "Next.js"],
+    filosophy: {
+      phrase: "",
+      author: ""
+    },
+    hasDomain: false,
+    repository_url: "",
+    domain_url: "",
+    gallery: [
+
+    ],
+    isInMaintenance: true
+
   }
 ] as TProjectsBody

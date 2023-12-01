@@ -31,15 +31,28 @@ class GithubServiceHttpClient {
       throw error
     }
   };
-  public async getRepositories(): Promise<GitHubTypes.GithubUserReposBody> {
+  public async getRepositories(): Promise<{
+    name: string;
+    has_pages: boolean;
+    visibility: string;
+  }[]> {
     try {
       console.log("token inside GithubServices methods: ", this.token)
       const username = process.env.NEXT_PUBLIC_GITHUB_PROFILE
       const auth = GithubHttpClient.createAuthHeader(this.token)
 
-      const repos = await GithubHttpClient.get<GitHubTypes.GithubUserReposBody>(`/users/${username}/repos`, auth)
+      const repos = await GithubHttpClient.get<GitHubTypes.GithubUserReposBody>(`/user/repos`, auth)
+      console.log("Full responde of repos: ", repos)
+      const myRepositories = repos.filter(x => x.owner.login === "HuannAnd")
+      const necessaryReposData = myRepositories.map(x => ({
+        id: x.id,
+        name: x.name,
+        has_pages: x.has_pages,
+        visibility: x.visibility,
+        created_at: x.created_at
+      }))
 
-      return repos
+      return necessaryReposData
     } catch (error) {
       const err = error as Error
 
