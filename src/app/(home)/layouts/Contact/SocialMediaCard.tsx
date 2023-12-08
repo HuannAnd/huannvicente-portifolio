@@ -36,7 +36,7 @@ export default function ClientSocialMedia({
         className="w-[55vmin] h-[55vmin] group/snapshot cursor-pointer @desktop:even:right-32 @mobileAndTablet:even:right-16 relative overflow-hidden rounded-2xl bg-white"
       >
         {imageContent}
-        <div className="absolute w-full pb-4 px-4 bottom-0 text-white">
+        <div className="absolute flex justify-between items-center w-full pb-4 px-4 bottom-0 text-white">
           <SlideInOnTriggerHover.Trigger>
             <small className="font-semibold text-[clamp(.6875rem,1.3vw,1rem)] inline-block overflow-hidden">&copy; {name}</small>
           </SlideInOnTriggerHover.Trigger>

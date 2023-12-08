@@ -59,11 +59,11 @@ export default function ClientProjects({ projects }: Props) {
   return (
     <section
       id="projects"
-      className="w-screen relative mx-auto h-auto flex flex-col gap-8 py-[9vw] px-@section text-white"
+      className="w-screen relative mx-auto h-auto flex flex-col gap-32 py-[9vw] px-@section text-white"
       data-name="Projects"
     >
       <LettersSlideInOnView trigger="#projects" threshold={20}>
-        <h1 className="@desktop:mb-32 @mobileAndTablet:mb-0 @mobileAndTablet:text-center z-50 col-span-full">
+        <h1 className="@mobileAndTablet:text-center z-50 col-span-full">
           Modern Products
           <br />
           And Prowled

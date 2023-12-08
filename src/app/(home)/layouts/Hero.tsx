@@ -1,7 +1,7 @@
 "use client";
 
-import LettersSlideInOnView from "@/components/LettersSlideInOnView";
 import { ElementType } from "react";
+import LettersSlideInOnView from "@/components/LettersSlideInOnView";
 
 interface Props {
   scene: ElementType
