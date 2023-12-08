@@ -37,7 +37,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var GithubHttpClient_1 = require("./GithubHttpClient");
-var token = "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";
+var dotenv = require("dotenv");
+var path = require("path");
+var envPath = path.resolve(__dirname, ".env.local");
+dotenv.config({ path: envPath });
 exports.default = {
     getRepositories: function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -46,9 +49,9 @@ exports.default = {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        console.log("GET /user/repositories into GithubService ", token);
+                        console.log("GET /user/repositories into GithubService ", process.env.NEXT_PUBLIC_GITHUB_API_TOKEN);
                         username = "HuannAnd";
-                        auth = GithubHttpClient_1.default.createAuthHeader(token);
+                        auth = GithubHttpClient_1.default.createAuthHeader(process.env.NEXT_PUBLIC_GITHUB_API_TOKEN);
                         return [4 /*yield*/, GithubHttpClient_1.default.get("/user/repos", auth)];
                     case 1:
                         repos = _a.sent();

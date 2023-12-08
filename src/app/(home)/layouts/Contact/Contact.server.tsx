@@ -27,7 +27,7 @@ export default async function ServerContact({ }: Props) {
   return (
     <>
       <ClientContact>
-        {socialsMedias.map((x, index) => <ClientSocialMedia index={index} href={x.href} name={x.name} artAuthor={x.artAuthor} imageContent={<StaticImageWithFallback className="absolute h-full object-cover ease-smooth duration-300 even:mr-4 group-hover/snapshot:scale-[1.05]" src={x.imageURL} alt="image" />} />)}
+        {socialsMedias.map((x, index) => <ClientSocialMedia key={`ClientSocialMedia_${index}`} index={index} href={x.href} name={x.name} artAuthor={x.artAuthor} imageContent={<StaticImageWithFallback className="absolute h-full object-cover ease-smooth duration-300 even:mr-4 group-hover/snapshot:scale-[1.05]" src={x.imageURL} alt="image" />} />)}
       </ClientContact>
     </>
   )

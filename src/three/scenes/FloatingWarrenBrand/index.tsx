@@ -3,7 +3,7 @@
 import { Canvas } from "@react-three/fiber"
 import { Suspense } from "react"
 
-import WarrenModelFloating from './WarrenModelFloating'
+// import WarrenModelFloating from './WarrenModelFloating'
 import Spiral3D from "@/components/Spiral3D"
 
 import Lights from "./Lights"

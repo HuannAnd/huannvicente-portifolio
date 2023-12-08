@@ -1,13 +1,18 @@
 import GithubHttpClient from "./GithubHttpClient";
 
-const token = "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"
+import * as dotenv from 'dotenv'
+import * as path from "path";
+
+const envPath = path.resolve(__dirname, ".env.local")
+
+dotenv.config({ path: envPath })
 
 export default {
   async getRepositories(): Promise<any> {
     try {
-      console.log("GET /user/repositories into GithubService ", token)
+      console.log("GET /user/repositories into GithubService ", process.env.NEXT_PUBLIC_GITHUB_API_TOKEN)
       const username = "HuannAnd"
-      const auth = GithubHttpClient.createAuthHeader(token)
+      const auth = GithubHttpClient.createAuthHeader(process.env.NEXT_PUBLIC_GITHUB_API_TOKEN)
 
       const repos = await GithubHttpClient.get<any>(`/user/repos`, auth)
 

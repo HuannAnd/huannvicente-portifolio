@@ -27,7 +27,7 @@ export default function ClientObjective({ }: Props) {
         <strong className="uppercase block tracking-tighter text-[#aaa] text-[1rem]">Creation</strong>
         <TextFadeInOnView className="@desktop:col-span-2" trigger="#objective">
           <p className="inline-block @desktop:col-span-3 text-white @mobileAndTablet:text-[1.25rem] leading-[150%]">
-            EduLink is not just an educational platform; it's a movement towards accessible, innovative learning. We believe in breaking down barriers to education, making learning an inclusive experience for all. Our mission is twofold: first, to redefine education by leveraging technology to create engaging and effective learning tools, and second, to build a global community of learners and educators.
+            EduLink is not just an educational platform; it&apos;s a movement towards accessible, innovative learning. We believe in breaking down barriers to education, making learning an inclusive experience for all. Our mission is twofold: first, to redefine education by leveraging technology to create engaging and effective learning tools, and second, to build a global community of learners and educators.
           </p>
         </TextFadeInOnView>
       </div>
