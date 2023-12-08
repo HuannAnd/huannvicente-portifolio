@@ -9,7 +9,7 @@ interface Props {
 
 export default function Hero({ scene: Scene3DServer }: Props) {
   return (
-    <section id="hero" className="flex min-h-screen px-@section py-@container justify-start items-center w-screen mx-auto z-50 gap-x-2 text-black">
+    <section id="hero" className="flex min-h-screen px-@section py-@container justify-start items-center w-auto max-w-[100vw] mx-auto z-50 gap-x-2 text-black">
       <Scene3DServer />
       <LettersSlideInOnView delay={1} trigger="#hero" threshold={20}>
         <h1 className="text-left overflow-hidden mix-blend-difference text-white">

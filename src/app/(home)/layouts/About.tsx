@@ -13,7 +13,7 @@ export default function About() {
     <section
       id="about"
       data-name="About"
-      className="w-screen @desktop:min-h-[200dvh] @mobileAndTablet:min-h-screen inline-flex relative flex-col items-start px-@section py-[9vw] mx-auto h-auto bg-transparent text-darkPrimary"
+      className="w-auto max-w-[100vw] @desktop:min-h-[200dvh] @mobileAndTablet:min-h-screen inline-flex relative flex-col items-start px-@section py-[9vw] mx-auto h-auto bg-transparent text-darkPrimary"
     >
       <div className="w-full  grid grid-cols-6 gap-4 mb-[3vw] bg-transparent">
         <strong className='uppercase w-max sticky top-0 tracking-tighter @mobileAndTablet:text-[1rem] text-[#aaa] self-start'>About Me</strong>

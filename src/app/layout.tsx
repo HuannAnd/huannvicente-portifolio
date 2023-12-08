@@ -31,7 +31,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${roboto.variable} font-roboto min-h-screen relative w-screen bg-[#050505] overflow-x-hidden selection:bg-white selection:text-lightPrimary`}>
+      <body className={`${roboto.variable} w-screen overflow-hidden font-roboto min-h-screen relative bg-[#050505] overflow-x-hidden selection:bg-white selection:text-lightPrimary`}>
         <Providers>
           {/* <Hamburger /> */}
           <Cursor />

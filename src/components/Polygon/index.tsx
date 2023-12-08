@@ -86,24 +86,26 @@ export default function Polygon({
   }, [trigger])
 
   return (
-    <svg
-      {...rest}
-      className={cn("pointer-events-none", className)}
-      ref={svg}
-      style={{ transformOrigin: "center" }}
-      width={width}
-      height={height}
-      viewBox={`0 0 ${width} ${height}`}
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <polygon
-        className="mix-blend-difference bg-blend-difference"
-        points={handleAllVertices()}
-        fill="none"
-        stroke="#ccc"
-        strokeWidth=".5"
-      />
-    </svg>
+    <>
+    </>
+    // <svg
+    //   {...rest}
+    //   className={cn("pointer-events-none", className)}
+    //   ref={svg}
+    //   style={{ transformOrigin: "center" }}
+    //   width={width}
+    //   height={height}
+    //   viewBox={`0 0 ${width} ${height}`}
+    //   fill="none"
+    //   xmlns="http://www.w3.org/2000/svg"
+    // >
+    //   <polygon
+    //     className="mix-blend-difference bg-blend-difference"
+    //     points={handleAllVertices()}
+    //     fill="none"
+    //     stroke="#ccc"
+    //     strokeWidth=".5"
+    //   />
+    // </svg>
   )
 }
