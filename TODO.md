@@ -2,13 +2,13 @@
 
 - [x] Ajustar Hamburger para mostrar a navegação correta
 - [x] Technologies tem que se ajustar de acordo com as tecnologias do projeto
-- [ ] O card que está em Suggestion do próximo projeto deve aparecer o banner do próximo projeto
+- [x] O card que está em Suggestion do próximo projeto deve aparecer o banner do próximo projeto
 - [x] Redirect para /home imediato
-- [ ] Favicon com a brand do portfolio
+- [x] Favicon com a brand do portfolio
 - [ ] Informações de Mídia social em Contact com artes de forma estável
 - [x] Colocar About de forma _sticky_ 
 - [x] Adicionar/Atualizar os projetos novos para exibir em Projects
-- [ ] Estilizar para mobile
+- [x] Estilizar para mobile
 - [ ] Antes de fazer o _deploy_, tirar os _console logs_
 
 # IDEAIS FUTURAS

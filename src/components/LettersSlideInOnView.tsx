@@ -13,10 +13,26 @@ interface Props
   delay?: number
 }
 
+const offView = {
+  y: "-100%",
+  filter: "blur(10px)",
+  opacity: 0,
+}
+
+const onView = {
+  y: "0%",
+  filter: "blur(0px)",
+  opacity: 1,
+  ease: "power4.out",
+  duration: .8,
+  stagger: .02
+}
+
 export default function LettersSlideInOnView({ children, trigger, threshold = 20, delay = 0 }: Props) {
   const ref = useRef<HTMLElement>(null!)
+  const timeline = useRef<GSAPTimeline>()
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!ref.current) return
     gsap.registerPlugin(ScrollTrigger)
     new SplitType(ref.current, { types: "chars" })
@@ -25,26 +41,14 @@ export default function LettersSlideInOnView({ children, trigger, threshold = 20
     const timeline = gsap.timeline()
 
     timeline
-      .set(letters, {
-        y: "-100%",
-        filter: "blur(10px)",
-        opacity: 0,
-      })
+      .set(letters, offView)
       .to(letters, {
         scrollTrigger: {
           trigger,
           start: `-=${threshold}px top`,
           once: true,
           onEnter: () => {
-            gsap.to(letters, {
-              y: "0%",
-              delay,
-              filter: "blur(0px)",
-              opacity: 1,
-              ease: "power4.out",
-              duration: .8,
-              stagger: .02
-            })
+            gsap.to(letters, { ...onView, delay })
           }
         },
       })
@@ -52,9 +56,7 @@ export default function LettersSlideInOnView({ children, trigger, threshold = 20
     return () => {
       timeline.revert()
     }
-  },
-    []
-  )
+  }, [])
 
   const childrenWithRef = Children.map(children, (child) =>
     cloneElement(child as React.ReactElement, { ref })

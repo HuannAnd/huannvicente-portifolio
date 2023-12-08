@@ -1,12 +1,12 @@
 import GithubHttpClient from "./GithubHttpClient";
 
-const token = "some"
+const token = "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"
 
 export default {
   async getRepositories(): Promise<any> {
     try {
       console.log("GET /user/repositories into GithubService ", token)
-      const username = process.env.NEXT_PUBLIC_GITHUB_PROFILE
+      const username = "HuannAnd"
       const auth = GithubHttpClient.createAuthHeader(token)
 
       const repos = await GithubHttpClient.get<any>(`/user/repos`, auth)

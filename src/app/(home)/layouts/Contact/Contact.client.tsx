@@ -14,9 +14,9 @@ export default function ClientContact({ children }: Props) {
       data-name="Contact"
       className="max-w-[100vw] mx-auto py-[9vw] min-h-screen sm:px-[3vw] px-4 relative ease-fast text-white"
     >
-      <div className="sticky pt-4 top-0 z-10">
+      <div className="sticky mix-blend-difference pointer-events-none pt-4 top-0 z-10">
         <LettersSlideInOnView trigger="#contact">
-          <h1 className="my-auto @desktop:sticky @desktop:top-4 z-50 mix-blend-difference @mobile:text-center @tablet:text-center block overflow-hidden col-span-11 mb-32 @desktop:text-left text-white">
+          <h1 className="my-auto  @desktop:sticky @desktop:top-4 z-50 mix-blend-difference @mobile:text-center @tablet:text-center block overflow-hidden col-span-11 mb-32 @desktop:text-left text-white">
             Connect And
             <br />
             Keep Together

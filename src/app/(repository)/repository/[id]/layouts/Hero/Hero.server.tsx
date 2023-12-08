@@ -1,7 +1,7 @@
 import GithubService from '@/services/github'
+import FloatingWarrenBrandScene from '@/three/scenes/FloatingWarrenBrand'
 
 import ClientHero from "./Hero.client"
-import ProjectsService from '@/services/projects'
 
 interface Props {
   repositoryId: number
@@ -16,6 +16,6 @@ export default async function ServerHero({ repositoryId }: Props) {
   // const blenderObject = transformGLTFModelInJSXElement(gltfModel)
 
   return (
-    <ClientHero title={title} description={description} />
+    <ClientHero title={title} description={description} scene={FloatingWarrenBrandScene} />
   )
 }

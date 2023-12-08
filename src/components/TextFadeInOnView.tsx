@@ -23,11 +23,12 @@ export default function TextFadeInOnView({ children, threshold = 20, trigger, de
 
     gsap.set(children, {
       opacity: 0,
+      y: "-10%",
       scrollTrigger: {
         start: `-=${threshold}px top`,
         once: true,
         markers: true,
-        onEnter: () => { gsap.to(children, { opacity: 1, duration: 1, delay: delayInSeconds }) },
+        onEnter: () => { gsap.to(children, { opacity: 1, y: "0%", duration: 1, delay: delayInSeconds }) },
         trigger
       }
     })
@@ -39,8 +40,5 @@ export default function TextFadeInOnView({ children, threshold = 20, trigger, de
     cloneElement(child as React.ReactElement, { ref })
   )
 
-  return (
-    <div ref={ref} {...rest}>
-      {childrenWithRef}
-    </div>)
+  return childrenWithRef
 }

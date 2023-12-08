@@ -28,7 +28,7 @@ export default function ClientProjects({ projects }: Props) {
       const onProjectAppear = gsap.timeline()
 
       const onAppear = {
-        stagger: .2,
+        stagger: .1,
         duration: .8,
         transform: "scaleX(1)",
         ease: "expo.inOut",
@@ -59,20 +59,22 @@ export default function ClientProjects({ projects }: Props) {
   return (
     <section
       id="projects"
-      className="w-screen relative mx-auto h-auto grid grid-cols-6 py-[9vw] px-@section text-white"
+      className="w-screen relative mx-auto h-auto flex flex-col gap-8 py-[9vw] px-@section text-white"
       data-name="Projects"
     >
       <LettersSlideInOnView trigger="#projects" threshold={20}>
-        <h1 className="@desktop:mb-32 @mobileAndTablet:mb-4 @mobileAndTablet:text-center z-50 col-span-full">
+        <h1 className="@desktop:mb-32 @mobileAndTablet:mb-0 @mobileAndTablet:text-center z-50 col-span-full">
           Modern Products
           <br />
           And Prowled
         </h1>
       </LettersSlideInOnView>
-      <p className="sticky self-start top-[10vh] text-white uppercase font-semibold">Works <span className="font-normal text-white/50 text-[11px] absolute translate-x-1/2 -translate-y-1/2">{quantityOfProjects}</span></p>
-      <Polygon trigger="#projects" vertexes={5} radius={400} data-scroll data-scroll-speed="0.4" className="absolute right-0 -z-10" />
-      <div className="h-auto mt-16 relative min-h-[800px] px-[3vw] w-full @desktop:col-span-4 @mobileAndTablet:col-span-5 @desktop:col-start-3 flex flex-col gap-2">
-        {projects.map((x, i) => <Project key={`Project_${i}`} nTh={i + 1} {...x} />)}
+      <div className="@mobileAndTablet:flex @mobileAndTablet:flex-row gap-2 @desktop:grid @desktop:grid-cols-6">
+        <p className="sticky top-32 self-start mix-blend-difference w-max grow text-white uppercase font-semibold">Works <span className="font-normal text-white/50 text-[11px] absolute translate-x-1/2 -translate-y-1/2">{quantityOfProjects}</span></p>
+        <Polygon trigger="#projects" vertexes={5} radius={400} data-scroll data-scroll-speed="0.4" className="absolute right-0 -z-10" />
+        <div className="h-auto relative min-h-[800px] w-full @desktop:col-span-4 @mobileAndTablet:col-span-5 @desktop:col-start-3 flex flex-col gap-2">
+          {projects.map((x, i) => <Project {...x} key={`Project_${i}`} hasDomain={x.has_domain} nTh={i + 1} />)}
+        </div>
       </div>
     </section>
   )

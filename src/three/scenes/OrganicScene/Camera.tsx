@@ -8,80 +8,70 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 
 import { useThree } from "@react-three/fiber";
 
-import useWindowEventListenerEffect from "@/hooks/useWindowEventListener";
-import { Vector3 } from "three";
+import { centerPosition, leftPosition, rightPosition } from "./Camera.animation";
+import useWindowViewport from "@/hooks/useWindowViewport";
+
+import installMediaQueryWatcher from "@/utils/media-query-watcher";
 
 
-interface CameraProps { }
-gsap.registerPlugin(ScrollTrigger)
-export default function Camera({ }: CameraProps) {
+interface Props { }
+
+export default function Camera({ }: Props) {
   const ref = useRef<CameraControls>(null!)
   const { camera } = useThree()
-
-  const depth = 125
-
- 
+  const windowViewport = useWindowViewport()
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger)
     const cameraContext = gsap.context(() => {
-      const centerPosition = {
-        x: 0,
-        y: 0,
-        z: depth + 25
-      }
-      const rightPosition = {
-        x: -30,
-        y: 0,
-        z: depth - 25,
-      }
-      const leftPosition = {
-        x: 30,
-        y: 0,
-        z: depth - 25,
-      }
-
       gsap.set(camera.position, centerPosition)
 
-      const timelineMovementsOnHero = gsap.timeline({
-        scrollTrigger: {
-          trigger: "#heroInitial",
-          start: "top top",
-          end: "bottom top",
-          scrub: 1
+      installMediaQueryWatcher("(max-width: 768px)", (matches) => {
+        if (matches) {
+          gsap.to(camera.position, centerPosition)
+        } else {
+          const timelineMovementsOnHero = gsap.timeline({
+            scrollTrigger: {
+              trigger: "#heroInitial",
+              start: "top top",
+              end: "bottom top",
+              scrub: 1
+            }
+          })
+
+          timelineMovementsOnHero.fromTo(camera.position, centerPosition, rightPosition)
+
+          const timelineMovementsOnHeroMiddle = gsap.timeline({
+            scrollTrigger: {
+              trigger: "#heroMiddle",
+              start: "bottom top",
+              end: "bottom bottom",
+              scrub: 1
+            }
+          })
+
+          timelineMovementsOnHeroMiddle.fromTo(camera.position, rightPosition, leftPosition)
+
+          const timelineMovementsOnHeroEnd = gsap.timeline({
+            scrollTrigger: {
+              trigger: "#heroEnd",
+              start: "top top",
+              end: "bottom top",
+              markers: true,
+              scrub: 1
+            }
+          })
+
+          timelineMovementsOnHeroEnd.fromTo(camera.position, leftPosition, centerPosition)
         }
       })
-
-      timelineMovementsOnHero.fromTo(camera.position, centerPosition, rightPosition)
-
-      const timelineMovementsOnHeroMiddle = gsap.timeline({
-        scrollTrigger: {
-          trigger: "#heroMiddle",
-          start: "bottom top",
-          end: "bottom bottom",
-          scrub: 1
-        }
-      })
-
-      timelineMovementsOnHeroMiddle.fromTo(camera.position, rightPosition, leftPosition)
-
-      const timelineMovementsOnHeroEnd = gsap.timeline({
-        scrollTrigger: {
-          trigger: "#heroEnd",
-          start: "top top",
-          end: "bottom top",
-          markers: true,
-          scrub: 1
-        }
-      })
-
-      timelineMovementsOnHeroEnd.fromTo(camera.position, leftPosition, centerPosition)
-    })
+    },)
 
     return () => {
       cameraContext.revert()
     }
   },
-    [camera, ref]
+    [camera, ref, windowViewport]
   )
 
 

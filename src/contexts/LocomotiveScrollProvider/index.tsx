@@ -25,6 +25,7 @@ export default function LocomotiveScrollProvider({
         const LocomotiveScroll = (await import('locomotive-scroll')).default
         const newLocomotiveScroll = new LocomotiveScroll({ autoResize: true, });
         setLocomotiveScroll(newLocomotiveScroll)
+        locomotiveScroll?.scrollTo(0, { immediate: true, force: true })
       }
     )()
 

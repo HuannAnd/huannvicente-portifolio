@@ -29,7 +29,7 @@ export default function FollowerRoot({ children }: FollowerRootProps) {
 
   return (
     <motion.div
-      className="pointer-events-none fixed lg:visible mix-blend-difference md:invisible sm:invisible select-none z-[202] w-[102px] aspect-square grid place-content-center m-0 left-0 top-0"
+      className="pointer-events-none fixed @desktop:visible mix-blend-difference @mobileAndTablet:invisible select-none z-[202] w-[102px] aspect-square grid place-content-center m-0 left-0 top-0"
       initial={{ opacity: 0, x: initialXPosition, y: initialYPosition }}
       animate={{ opacity: 1, transition: { duration: 1 } }}
       layout

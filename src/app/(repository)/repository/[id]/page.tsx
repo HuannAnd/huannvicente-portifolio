@@ -3,6 +3,8 @@ import Hero from "./layouts/Hero"
 import Quote from "./layouts/Quote"
 import Suggestion from "./layouts/Suggestion"
 import Technologies from "./layouts/Technologies"
+import Objective from "./layouts/Objective"
+import DesignConcept from "./layouts/DesignConcept"
 
 import GithubService from "@/services/github"
 
@@ -31,9 +33,8 @@ export default async function RepositoryPage({
     <LocomotiveScrollProvider>
       <Hamburger />
       <Hero repositoryId={repositoryId} />
-      <Gallery repositoryId={repositoryId} />
-      <Technologies repositoryId={repositoryId} />
-      <Quote repositoryId={repositoryId} />
+      <Objective />
+      <DesignConcept />
       <Suggestion repositoryId={repositoryId} />
     </LocomotiveScrollProvider>
   )

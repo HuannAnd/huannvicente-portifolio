@@ -1,44 +1,25 @@
 "use client";
 
-import OrganicScene from "@/three/scenes/OrganicScene";
-
 import LettersSlideInOnView from "@/components/LettersSlideInOnView";
+import { ElementType } from "react";
 
+interface Props {
+  scene: ElementType
+}
 
-export default function Hero() {
+export default function Hero({ scene: Scene3DServer }: Props) {
   return (
-    <section
-      className="min-h-[300vh] grid grid-rows-4 w-screen mx-auto z-50 gap-x-2 text-black"
-      // id="hero"
-    >
-      <OrganicScene />
-      <article id="heroInitial" data-scroll className="w-full px-@section grid place-content-center h-screen text-center">
-        <LettersSlideInOnView delay={1} trigger="#heroInitial" threshold={20}>
-          <h1 className="text-center overflow-hidden py-[9vw] text-white">
-            Huann Vicente
-          </h1>
-        </LettersSlideInOnView>
-      </article>
-      <article id="heroMiddle" className="w-full px-@section flex @desktop:h-[200dvh] @mobileAndTablet:h-screen justify-start items-baseline">
-        <LettersSlideInOnView trigger="#heroMiddle">
-          <h1 className="@desktop:text-left sticky @mobile:text-center top-0 py-[9vw] text-white  ">
-            Explore
-            <br />
-            Enjoy
-            <br />
-            The Worldwide Web
-          </h1>
-        </LettersSlideInOnView>
-      </article>
-      <article id="heroEnd" className="w-full flex px-@section @desktop:h-[200dvh] @mobileAndTablet:h-screen justify-end items-center">
-        <LettersSlideInOnView trigger="#heroEnd">
-          <h1 className="@desktop:text-left @mobile:text-center sticky top-0 py-[9vw] text-white">
-            Don&apos;t Forget
-            <br />
-            Me
-          </h1>
-        </LettersSlideInOnView>
-      </article>
+    <section id="hero" className="flex min-h-screen px-@section py-@container justify-start items-center w-screen mx-auto z-50 gap-x-2 text-black">
+      <Scene3DServer />
+      <LettersSlideInOnView delay={1} trigger="#hero" threshold={20}>
+        <h1 className="text-left overflow-hidden mix-blend-difference text-white">
+          Explore
+          <br />
+          Enjoy
+          <br />
+          The Worldwide Web
+        </h1>
+      </LettersSlideInOnView>
     </section>
   )
 }

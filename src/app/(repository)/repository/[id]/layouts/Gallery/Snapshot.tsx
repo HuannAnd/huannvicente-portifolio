@@ -10,22 +10,22 @@ function getVariantBytIndex(index: number) {
 
   switch (restOfDivisionBySeven) {
     case 1:
-      return "col-span-3 col-start-4"
+      return "@desktop:col-span-3 @desktop:col-start-4"
     case 2:
-      return "col-span-4 col-start-2"
+      return "@desktop:col-span-4 @desktop:col-start-2"
     case 3:
-      return "col-span-3 col-start-1"
+      return "@desktop:col-span-3 @desktop:col-start-1"
     case 4:
-      return "col-span-4 col-start-3"
+      return "@desktop:col-span-4 @desktop:col-start-3"
     case 5:
-      return "col-span-3 col-start-1"
+      return "@desktop:col-span-3 @desktop:col-start-1"
     case 6:
-      return "col-span-4 col-start-2"
+      return "@desktop:col-span-4 @desktop:col-start-2"
     case 7:
-      return "col-span-3 col-start-3"
+      return "@desktop:col-span-3 @desktop:col-start-3"
     case 0:
     default:
-      return "col-span-4 col-start-1"
+      return "@desktop:col-span-4 @desktop:col-start-1"
   }
 }
 
@@ -37,9 +37,9 @@ interface SnapshotProps extends Omit<ImageProps, "src"> {
 
 export default async function Snapshot({ index, src, alt, blurDataURL, ...rest }: SnapshotProps) {
   const variant = getVariantBytIndex(index)
-  const scrollSpeed = -(index % 3) * 0.15 - 0.1
+  const scrollSpeed = .1
   const baseConfig = {
-    className: cn("object-contain relative w-full h-full row-span-1 min-h-[75vmin] max-h-[100dvh] rounded-2xl", variant),
+    className: cn("object-contain relative w-full @mobileAndTablet:col-span-full h-full row-span-1 min-h-[75vmin] max-h-[100dvh] rounded-2xl", variant),
     src,
   }
 

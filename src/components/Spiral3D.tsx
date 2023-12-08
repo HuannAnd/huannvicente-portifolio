@@ -1,10 +1,12 @@
 'use client';
 
+import useWindowViewport from "@/hooks/useWindowViewport";
+import installMediaQueryWatcher from "@/utils/media-query-watcher";
 import { useGLTF } from "@react-three/drei";
 
 import { useFrame } from "@react-three/fiber";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 import { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
 
@@ -20,6 +22,22 @@ type GLTFResult = GLTF & {
 export default function Spiral3D({ }: Props) {
   const mesh = useRef<THREE.Mesh>(null)
   const { nodes } = useGLTF("/models/spiral.gltf") as GLTFResult
+  const windowViewport = useWindowViewport()
+
+  useEffect(() => {
+    installMediaQueryWatcher("(max-width: 768px)", (matches) => {
+      if (!mesh.current) return
+      if (matches) {
+        mesh.current.position.set(10, 0, -10)
+        mesh.current.rotation.y = Math.PI / 2
+        mesh.current.rotation.x = Math.PI / 2
+      } else {
+        mesh.current.position.set(-15, -5, -5)
+        mesh.current.rotation.y = -Math.PI / 4
+        mesh.current.rotation.x = Math.PI / 3
+      }
+    })
+  }, [windowViewport, mesh])
 
   useFrame(({ clock }, dt) => {
     if (!mesh.current) return
@@ -32,12 +50,12 @@ export default function Spiral3D({ }: Props) {
       ref={mesh}
       castShadow
       receiveShadow
-      position={[-15, -5, -5]}
-      rotation-x={Math.PI / 3}
-      rotation-y={-Math.PI / 4}
+      // position={[-15, -5, -5]}
+      // rotation-x={Math.PI / 3}
+      // rotation-y={-Math.PI / 4}
       geometry={nodes.Spiral.geometry}
     >
-      <meshStandardMaterial opacity={0} wireframe color={"#ffffff"} />
+      <meshStandardMaterial opacity={0} wireframe color={"#222"} />
     </mesh>
   )
 }

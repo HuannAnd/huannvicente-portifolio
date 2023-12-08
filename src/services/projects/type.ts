@@ -22,7 +22,7 @@ export interface IProjectData {
   frameworks: string[]
   filosophy: IFilosophy
   gallery: IImageContent[]
-  hasDomain: boolean
+  has_domain: boolean
   domain_url?: string
   repository_url: string,
   isInMaintenance: boolean

@@ -37,8 +37,8 @@ class ProjectsService {
     const project = this.getProjectById(projectId)
     console.log("Project: ", project)
 
-    if (!("hasDomain" in Object.keys(project))) return false
-    return project.hasDomain
+    if (!("has_domain" in Object.keys(project))) return false
+    return project.has_domain
   }
   private getProjectById(projectId: number) {
     return this.projects.find(x => x.id === projectId)!

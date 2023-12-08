@@ -1,8 +1,6 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 import { useGLTF, Float } from "@react-three/drei";
-
-import Skeleton3D from "@/components/Skeleton3D";
 
 import { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
 
@@ -10,9 +8,13 @@ import { useTransform } from "framer-motion";
 import { motion } from "framer-motion-3d"
 
 import useSmoothMousePosition from "./useSmoothMousePosition";
+import useWindowViewport from "@/hooks/useWindowViewport";
+import installMediaQueryWatcher from "@/utils/media-query-watcher";
+import { Group } from "three";
 
 export default function Model({ }) {
-  const group = useRef<any>(null)
+  const group = useRef<Group>(null)
+  const windowViewport = useWindowViewport()
   const centerY = -2.5
 
   const { nodes } = useGLTF("/models/warren.gltf") as GLTF & { nodes: any };
@@ -31,8 +33,9 @@ export default function Model({ }) {
   return (
     <Float>
       <motion.group
-        ref={group}
+        ref={group as any}
         rotation-y={rotationX}
+        scale={.75}
         rotation-x={rotationY}
         position-x={positionX}
         position-y={positionY}

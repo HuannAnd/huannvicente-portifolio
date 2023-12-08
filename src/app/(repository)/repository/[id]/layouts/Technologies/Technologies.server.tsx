@@ -9,11 +9,12 @@ interface Props {
 
 export default async function ServerTechnologies({ repositoryId }: Props) {
   const frameworks = ProjectsService.getProjectFrameworks(repositoryId)
-  const languages = await GithubService.getProjectLanguages(repositoryId)
+  let languagesInAscendingPercentage = await GithubService.getProjectLanguages(repositoryId)
+  languagesInAscendingPercentage = languagesInAscendingPercentage.sort((a, b) => a.percentage - b.percentage)
 
   return (
     <>
-      <ClientTechnologies frameworks={frameworks} languages={languages} />
+      <ClientTechnologies frameworks={frameworks} languages={languagesInAscendingPercentage} />
     </>
   )
 }

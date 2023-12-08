@@ -15,7 +15,7 @@ export default [
       { path: "599657419/3", isMobile: true, isVideo: true }
     ],
     isInMaintenance: false,
-    hasDomain: true,
+    has_domain: true,
     repository_url: "https://github.com/HuannAnd/warren-challange/tree/main",
     domain_url: ""
   },
@@ -27,7 +27,7 @@ export default [
       phrase: "some phrase",
       author: "René Descartes"
     },
-    hasDomain: false,
+    has_domain: false,
     repository_url: "https://github.com/HuannAnd/warren-challange/tree/master",
     gallery: [
       { path: "617668310/1", isMobile: false, isVideo: true },
@@ -44,7 +44,7 @@ export default [
       phrase: "Eureka!",
       author: "Archimedes of Syracuse"
     },
-    hasDomain: true,
+    has_domain: true,
     domain_url: "#",
     repository_url: "https://github.com/HuannAnd/Mercantte/tree/master",
     gallery: [
@@ -62,7 +62,7 @@ export default [
       phrase: "Imagination is more important than knowledge. For knowledge is limited, whereas imagination embraces the entire world.",
       author: "Henri Poincaré"
     },
-    hasDomain: true,
+    has_domain: true,
     repository_url: "",
     domain_url: "#",
     gallery: [
@@ -78,7 +78,7 @@ export default [
       phrase: "",
       author: ""
     },
-    hasDomain: false,
+    has_domain: false,
     repository_url: "",
     domain_url: "",
     gallery: [
@@ -94,7 +94,7 @@ export default [
       phrase: "",
       author: ""
     },
-    hasDomain: false,
+    has_domain: false,
     repository_url: "",
     domain_url: "",
     gallery: [
@@ -110,7 +110,7 @@ export default [
       phrase: "",
       author: ""
     },
-    hasDomain: false,
+    has_domain: false,
     repository_url: "",
     domain_url: "",
     gallery: [
@@ -127,7 +127,7 @@ export default [
       phrase: "",
       author: ""
     },
-    hasDomain: false,
+    has_domain: false,
     repository_url: "",
     domain_url: "",
     gallery: [

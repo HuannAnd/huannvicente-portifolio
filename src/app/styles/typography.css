@@ -7,6 +7,12 @@ h1 {
   transition: font-size 300ms;
 }
 
+@media (width <= 768px) {
+  h1 {
+    font-size: clamp(2.5rem, 5.5vw, 7rem);
+  }
+}
+
 p,
 a,
 li {
@@ -15,8 +21,14 @@ li {
   line-height: 1.75;
 }
 
+h5 {
+  text-transform: uppercase;
+  font-size: 1rem;
+  color: #aaa;
+}
+
 small {
-  font-size: 0.875rem;
+  font-size: clamp(0.6875rem, 1.3vw, 1rem);
 }
 
 h2 {

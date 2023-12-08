@@ -45,7 +45,7 @@ export default function Option({
       animate="fadeIn"
       exit="fadeOut"
       style={{ transform }}
-      className="font-semibold inline-block absolute w-auto text-white uppercase"
+      className="font-semibold w-max inline-block absolute text-white uppercase"
     >
       {name}
     </motion.span>

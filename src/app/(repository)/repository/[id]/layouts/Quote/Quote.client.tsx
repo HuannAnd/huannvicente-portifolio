@@ -13,18 +13,14 @@ interface Props {
 export default function ClientQuote({ phrase, author }: Props) {
   return (
     <section
-      id="philosophy"
-      data-name="Quote"
-      className="w-screen h-screen py-[9vw] px-1 grid grid-cols-6 gap-x-4 "
+      id="quote"
+      className="w-screen h-screen py-[9vw] px-@section grid place-content-center"
     >
-      <div data-scroll data-scroll-speed="0.2" className="col-span-4 col-start-2 self-center grid grid-cols-4">
-        <q className="font-normal leading-[200%] tracking-[-.07em] self-center col-span-2">
-          {splitPointText(phrase)
-            .map(
-              (text, key) => <span className="text-[1.5rem] text-[#111] even:text-[#222]" key={`line_${key}`}>{text}{". "}</span>
-            )}
+      <div data-scroll data-scroll-speed="0.2" className="flex @mobileAndTablet:flex-col">
+        <q className="font-normal @desktop:leading-[200%] text-[1.25rem] @mobileAndTablet:leading-[150%] @mobileAndTablet:text-center @mobileAndTablet:text-[1.25rem] tracking-[-.07em] self-center col-span-2">
+          {phrase}
         </q>
-        <small className="text-[#111] col-span-2 self-end  text-[1.25rem] font-medium float-right text-right" title="author">- {author}</small>
+        <small className="text-[#111] grow shrink-0 self-end text-[1.25rem] font-medium float-right text-right" title="author">- {author}</small>
       </div>
     </section>
   )
