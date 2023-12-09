@@ -30,39 +30,7 @@ export default function Camera({ }: Props) {
         if (matches) {
           gsap.to(camera.position, centerPosition)
         } else {
-          const timelineMovementsOnHero = gsap.timeline({
-            scrollTrigger: {
-              trigger: "#heroInitial",
-              start: "top top",
-              end: "bottom top",
-              scrub: 1
-            }
-          })
-
-          timelineMovementsOnHero.fromTo(camera.position, centerPosition, rightPosition)
-
-          const timelineMovementsOnHeroMiddle = gsap.timeline({
-            scrollTrigger: {
-              trigger: "#heroMiddle",
-              start: "bottom top",
-              end: "bottom bottom",
-              scrub: 1
-            }
-          })
-
-          timelineMovementsOnHeroMiddle.fromTo(camera.position, rightPosition, leftPosition)
-
-          const timelineMovementsOnHeroEnd = gsap.timeline({
-            scrollTrigger: {
-              trigger: "#heroEnd",
-              start: "top top",
-              end: "bottom top",
-              markers: true,
-              scrub: 1
-            }
-          })
-
-          timelineMovementsOnHeroEnd.fromTo(camera.position, leftPosition, centerPosition)
+          
         }
       })
     },)

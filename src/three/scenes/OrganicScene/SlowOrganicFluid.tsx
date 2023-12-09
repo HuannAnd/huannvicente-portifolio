@@ -1,12 +1,11 @@
 'use client';
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 import * as THREE from 'three'
 
 import { ThreeElements, useFrame } from '@react-three/fiber'
-import useWindowViewport from "@/hooks/useWindowViewport";
-import installMediaQueryWatcher from "@/utils/media-query-watcher";
+
 
 
 interface Props { z: number }
@@ -28,17 +27,13 @@ export default function OrganicFluid({ }: Props) {
 
     mesh.current.rotation.x += dt
     mesh.current.rotation.y += dt
-
-    if(window.innerWidth <= 768) {
-      state.performance.regress()
-    }
   })
 
   console.log("OrganicFluid data: ", data)
 
-  return (
-    <mesh ref={mesh} position={[0, -3, 0]}>
-      <sphereGeometry ref={geometry} args={[data.radius, 200, 200]} />
+  return (  
+    <mesh ref={mesh} position={[0, -3, -125]}>
+      <sphereGeometry ref={geometry} args={[data.radius, 25, 25]} />
       <noiseShaderMaterial
         uBump={data.bump}
         // uColor={"#188bfe"}

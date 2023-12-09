@@ -5,7 +5,7 @@
 - [x] O card que está em Suggestion do próximo projeto deve aparecer o banner do próximo projeto
 - [x] Redirect para /home imediato
 - [x] Favicon com a brand do portfolio
-- [ ] Informações de Mídia social em Contact com artes de forma estável
+- [x] Informações de Mídia social em Contact com artes de forma estável
 - [x] Colocar About de forma _sticky_ 
 - [x] Adicionar/Atualizar os projetos novos para exibir em Projects
 - [x] Estilizar para mobile

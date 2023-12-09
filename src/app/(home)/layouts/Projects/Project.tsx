@@ -60,7 +60,7 @@ function Project({
         onMouseEnter={handleOnMouseEnter}
         onMouseDown={setCursorToPressMode}
         onMouseLeave={setCursorToNormalMode}
-        {...props}
+      // {...props}
       >
         <small className="text-[.6875rem]">{tierInBaseFormat}</small>
         <div className={cn("items-center ease-fast duration-300", isInMaintenance ? "" : "group-hover/item:pl-[1vw]")}>

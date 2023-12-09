@@ -38,10 +38,10 @@ export default function ClientSocialMedia({
         {imageContent}
         <div className="absolute flex justify-between items-center w-full pb-4 px-4 bottom-0 text-white">
           <SlideInOnTriggerHover.Trigger>
-            <small className="font-semibold text-[clamp(.6875rem,1.3vw,1rem)] inline-block overflow-hidden">&copy; {name}</small>
+            <small className="font-semibold inline-block overflow-hidden">&copy; {name}</small>
           </SlideInOnTriggerHover.Trigger>
           <SlideInOnTriggerHover.Trigger>
-            <small className="float-right text-[clamp(.6875rem,1.3vw,1rem)] inline-block overflow-hidden">Art made by <span className="font-semibold">{artAuthor}</span></small>
+            <small className="float-right inline-block overflow-hidden">Art made by <span className="font-semibold">{artAuthor}</span></small>
           </SlideInOnTriggerHover.Trigger>
         </div>
       </a>
