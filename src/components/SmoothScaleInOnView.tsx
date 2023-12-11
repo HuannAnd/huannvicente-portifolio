@@ -20,7 +20,7 @@ export default function SmoothScaleInOnView({ trigger, children, scrub = true }:
       const timeline = gsap.timeline({
         scrollTrigger: {
           start: `top top`,
-          markers: true,
+          markers: false,
           end: "bottom bottom",
           trigger,
           scrub

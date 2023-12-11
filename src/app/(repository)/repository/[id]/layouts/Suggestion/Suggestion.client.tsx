@@ -33,23 +33,33 @@ export default function ClientSuggestion({ nextProject, nextProjectPhotoSrc }: P
       className="w-screen min-h-screen mb-[25vh] relative mx-auto px-@section py-[9vw]"
       data-name="Suggestions"
     >
-      <div className="top-0 sticky pt-4 z-10">
+      <div className="@desktop:top-0 sticky pt-4 z-10">
         <LettersSlideInOnView trigger="#suggestion" >
-          <h1 className="mb-32 sticky @mobileAndTablet:top-4 @desktop:top-0 z-10 text-[#fff] @mobileAndTablet:text-center overflow-hidden">
-            Discover My Journey
+          <h1 className="@desktop:mb-32 @mobileAndTablet:mb-4 sticky @desktop:top-0 z-10 text-[#fff] @mobileAndTablet:text-center overflow-hidden">
+            Discover My <br className="@desktop:[display:_none]" /> Journey
             <br />
             And Surprise
           </h1>
         </LettersSlideInOnView>
-        <svg onClick={redirectToHomepage} onMouseEnter={setCursorToInvisible} onMouseLeave={setCursorToNormal} data-scroll data-scroll-speed="-0.001" data-scroll- className="relative @desktop:w-[3vw] @mobileAndTablet:w-[5vh] aspect-square block cursor-pointer" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          onClick={redirectToHomepage}
+          onMouseEnter={setCursorToInvisible}
+          onMouseLeave={setCursorToNormal}
+          data-scroll
+          data-scroll-speed="-0.001"
+          className="relative @desktop:w-[3vw] @mobileAndTablet:mx-auto @mobileAndTablet:w-[10vh] aspect-square block cursor-pointer"
+          viewBox="0 0 10 10"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <circle cx="4.6875" cy="5.25" r="4.6875" stroke="#151515" strokeWidth={1} fill="#090909" />
           <path d="M3.29102 4.82039V6.30918H6.17852V4.82039M3.29102 4.82039H4.73477M3.29102 4.82039L4.73477 4.09668M6.17852 4.82039H4.73477M6.17852 4.82039L4.73477 4.09668M4.73477 4.82039V4.09668" stroke="#fff" strokeWidth="0.675" strokeLinejoin="round" />
         </svg>
       </div>
       <Polygon trigger="#suggestion" className="absolute right-0 -z-[1]" radius={500} isRegular vertexes={5} />
-      <article className="pt-[3vw] h-auto w-auto justify-center items-end @mobileAndTablet:mx-auto @desktop:ml-auto @mobileAndTablet:items-center @mobile:row-span-2 flex flex-col @mobile:justify-center">
+      <article className="pt-[3vw] h-auto w-auto justify-center gap-4 items-end @mobileAndTablet:mx-auto @desktop:ml-auto @mobileAndTablet:items-center @mobile:row-span-2 flex flex-col @mobile:justify-center">
         <LettersSlideInOnTriggerHover.Root>
-          <div data-scroll data-scroll-speed={0.2} onClick={redirectToNextProject} className="w-[55vmin] @mobileAndTablet:self-center @desktop:even:right-32 @mobileAndTablet:even:right-16 aspect-square rounded-2xl self-end relative cursor-pointer group/snapshot overflow-hidden bg-white">
+          <div data-scroll data-scroll-speed={0.2} onClick={redirectToNextProject} className="@mobileAndTablet:w-full @desktop:w-[55vmin] @mobileAndTablet:self-center @desktop:even:right-32 aspect-square rounded-2xl self-end relative cursor-pointer group/snapshot overflow-hidden bg-white">
             <img
               onMouseEnter={setCursorToHoveredMode}
               onMouseLeave={setCursorToNormal}
@@ -68,7 +78,7 @@ export default function ClientSuggestion({ nextProject, nextProjectPhotoSrc }: P
           </div>
         </LettersSlideInOnTriggerHover.Root>
         <LettersSlideInOnTriggerHover.Root>
-          <div data-scroll data-scroll-speed={0.2} onClick={redirectToNextProject} className="w-[55vmin] @mobileAndTablet:self-center @desktop:even:right-32 @mobileAndTablet:even:right-16 aspect-square rounded-2xl self-end @desktop:self-end relative cursor-pointer group/snapshot overflow-hidden bg-white">
+          <div data-scroll data-scroll-speed={0.2} onClick={redirectToNextProject} className="@mobileAndTablet:w-full @desktop:w-[55vmin] @mobileAndTablet:self-center @desktop:even:right-32 aspect-square rounded-2xl self-end @desktop:self-end relative cursor-pointer group/snapshot overflow-hidden bg-white">
             <img
               onMouseEnter={setCursorToHoveredMode}
               onMouseLeave={setCursorToNormal}

@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 import useWindowViewport from '@/hooks/useWindowViewport';
 
 import LocomotiveScroll from 'locomotive-scroll';
+import isMobileDevice from '@/utils/is-mobile-device';
 
 
 interface LocomotiveScrollProps
@@ -22,8 +23,23 @@ export default function LocomotiveScrollProvider({
   useEffect(() => {
     (
       async () => {
+        const isMobileResolution = window.innerWidth <= 768
+
+        if (
+          isMobileDevice
+          || isMobileResolution
+        ) {
+          console.log("Is A Mobile device")
+          return
+        }
+
         const LocomotiveScroll = (await import('locomotive-scroll')).default
-        const newLocomotiveScroll = new LocomotiveScroll({ autoResize: true, });
+        const newLocomotiveScroll = new LocomotiveScroll({
+          autoResize: true,
+          lenisOptions: {
+
+          }
+        });
         setLocomotiveScroll(newLocomotiveScroll)
         locomotiveScroll?.scrollTo(0, { immediate: true, force: true })
       }

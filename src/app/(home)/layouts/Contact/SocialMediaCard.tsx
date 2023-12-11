@@ -33,7 +33,7 @@ export default function ClientSocialMedia({
         href={href}
         data-scroll
         data-scroll-speed={scrollSpeed}
-        className="w-[55vmin] h-[55vmin] group/snapshot cursor-pointer @desktop:even:right-32 @mobileAndTablet:even:right-16 relative overflow-hidden rounded-2xl bg-white"
+        className="w-full aspect-square group/snapshot cursor-pointer relative overflow-hidden rounded-2xl bg-white"
       >
         {imageContent}
         <div className="absolute flex justify-between items-center w-full pb-4 px-4 bottom-0 text-white">

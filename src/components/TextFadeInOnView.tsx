@@ -27,7 +27,7 @@ export default function TextFadeInOnView({ children, threshold = 20, trigger, de
       scrollTrigger: {
         start: `-=${threshold}px top`,
         once: true,
-        markers: true,
+        markers: false,
         onEnter: () => { gsap.to(children, { opacity: 1, y: "0%", duration: 1, delay: delayInSeconds }) },
         trigger
       }

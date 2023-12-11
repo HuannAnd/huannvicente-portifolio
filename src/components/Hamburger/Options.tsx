@@ -8,6 +8,7 @@ import useSetCursor from "@/hooks/useSetCursor";
 import useSections from "./useSections";
 
 import Option from "./Option";
+import isMobileDevice from "@/utils/is-mobile-device";
 
 interface Props { }
 
@@ -20,12 +21,15 @@ const fades: Variants = {
 export default function Options({ }: Props) {
   const sections = useSections()
   const amountOfOptions = sections.length
+  const radius = isMobileDevice ? 150 : 250
 
   const sectionsInAscendingCharsOrder = sections.sort((a, b) => a.name.length - b.name.length)
 
   return (
-    <div className="absolute top-0 -left-[10px] -translate-x-full aspect-square w-[250px]">
-      {sectionsInAscendingCharsOrder.map((x, i) => <Option {...x} key={`Option_${i}`} amountOfVertexes={amountOfOptions} index={i} />)}
+    <div
+      style={{ width: `${radius}px` }}
+      className="absolute top-0 -left-[10px] -translate-x-full aspect-square">
+      {sectionsInAscendingCharsOrder.map((x, i) => <Option radius={radius} {...x} key={`Option_${i}`} amountOfVertexes={amountOfOptions} index={i} />)}
     </div>
   )
 }

@@ -20,9 +20,6 @@ export default function ClientObjective({ }: Props) {
 
   return (
     <section id="objective" data-name="Objetive" ref={ref} className="w-screen min-h-screen px-@section py-[9vw]">
-      <LettersSlideInOnView trigger="#objective">
-        <h1 className="text-white @mobileAndTablet:text-center mb-32">Prepare to you</h1>
-      </LettersSlideInOnView>
       <div className="@mobileAndTablet:flex @mobileAndTablet:mb-16 @mobileAndTablet:flex-col @desktop:mb-32 @desktop:grid @desktop:grid-cols-6 items-start @mobileAndTablet:gap-2 gap-4">
         <strong className="uppercase block tracking-tighter text-[#aaa] text-[1rem]">Creation</strong>
         <TextFadeInOnView className="@desktop:col-span-2" trigger="#objective">

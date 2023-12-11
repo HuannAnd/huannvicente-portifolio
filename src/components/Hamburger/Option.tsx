@@ -11,6 +11,7 @@ interface Props {
   index: number,
   name: string,
   id: string,
+  radius: number,
   amountOfVertexes: number
 }
 
@@ -18,9 +19,9 @@ export default function Option({
   index,
   amountOfVertexes,
   name,
+  radius,
   id
 }: Props) {
-  const radius = 250
   let angleInRadians = index * (Math.PI / (2 * (amountOfVertexes - 1)))
   const left = radius * (1 - Math.cos(angleInRadians))
   const bottom = radius * (1 - Math.sin(angleInRadians))

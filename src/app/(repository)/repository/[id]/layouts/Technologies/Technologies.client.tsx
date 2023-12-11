@@ -59,7 +59,7 @@ export default function ClientTechnologies({ frameworks, languages }: Props) {
             scrollTrigger: {
               trigger: ref.current,
               start: "top top",
-              markers: true,
+              markers: false,
               end: `${2 * window.innerHeight - 100} bottom`,
               scrub: false,
               onLeave: () => { gsap.to("button", { scale: 0 }) },
