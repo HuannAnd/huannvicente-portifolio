@@ -2,12 +2,14 @@ import { useState } from "react"
 
 import useWindowEventListenerEffect from "./useWindowEventListener"
 
+import isServerRendering from "@/utils/is-server-rendering"
+
 interface WindowViewport {
   height: number,
   width: number
 }
 
-const isServerRendering = typeof window === "undefined"
+
 
 export default function useWindowViewport() {
   let initialViewportValues = { width: 1000, height: 1000 }

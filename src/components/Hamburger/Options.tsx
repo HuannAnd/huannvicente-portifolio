@@ -19,9 +19,10 @@ const fades: Variants = {
 }
 
 export default function Options({ }: Props) {
+  const radius = isMobileDevice ? 150 : 250
   const sections = useSections()
   const amountOfOptions = sections.length
-  const radius = isMobileDevice ? 150 : 250
+
 
   const sectionsInAscendingCharsOrder = sections.sort((a, b) => a.name.length - b.name.length)
 
