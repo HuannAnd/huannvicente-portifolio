@@ -9,7 +9,7 @@ import useWindowViewport from "@/hooks/useWindowViewport";
 import installMediaQueryWatcher from "@/utils/media-query-watcher";
 
 
-interface Props { z: number }
+interface Props { }
 
 export default function OrganicFluid({ }: Props) {
   const mesh = useRef<THREE.Mesh>(null!)

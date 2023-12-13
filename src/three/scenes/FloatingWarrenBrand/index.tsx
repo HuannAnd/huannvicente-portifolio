@@ -3,13 +3,12 @@
 import { Canvas } from "@react-three/fiber"
 import { Suspense } from "react"
 
-// import WarrenModelFloating from './WarrenModelFloating'
 import Spiral3D from "@/components/Spiral3D"
 
 import Lights from "./Lights"
+
 import { useGLTF } from "@react-three/drei"
 import isMobileDevice from "@/utils/is-mobile-device";
-import isServerRendering from "@/utils/is-server-rendering";
 
 interface Props { }
 
@@ -19,7 +18,7 @@ export default function FloatingWarrenBrandScene({ }: Props) {
   return (
     <Suspense fallback={null}>
       <Canvas
-        className='top-0 bottom-0'
+        className='top-0 bottom-0 @mobileAndTablet:absolute @desktop:fixed'
         orthographic
         style={{ height: "100vh", zIndex: -1, width: "100vw", position }}
         gl={{ antialias: true }}

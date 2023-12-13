@@ -17,14 +17,10 @@ interface Props {
 }
 
 export default function Hero({ title, description, scene: Scene3DServer }: Props) {
-  const windowViewport = useWindowViewport()
-  const percentage = 94 / 100
   const titleWithoutSpecialCharacters = removeSpecialCharacters(title)
 
-  const radiusOfInscribedSquare = (windowViewport.height / Math.sqrt(2)) * percentage
-
   return (
-    <section id="projectHero" className="w-screen mx-auto min-h-screen">
+    <section id="projectHero" className="w-screen relative mx-auto clip-around min-h-screen">
       <Scene3DServer />
       <article className="h-screen px-@section w-full grid items-center place-content-center">
         <LettersSlideInOnView trigger="#projectHero">

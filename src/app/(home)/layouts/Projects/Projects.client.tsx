@@ -59,7 +59,7 @@ export default function ClientProjects({ projects }: Props) {
   return (
     <section
       id="projects"
-      className="w-screen relative mx-auto h-auto flex flex-col gap-32 py-[9vw] px-@section text-white"
+      className="w-screen relative mx-auto h-auto gap-32 py-[9vw] px-@section text-white"
       data-name="Projects"
     >
       <LettersSlideInOnView trigger="#projects" threshold={20}>
@@ -69,10 +69,10 @@ export default function ClientProjects({ projects }: Props) {
           And Prowled
         </h1>
       </LettersSlideInOnView>
-      <div className="@mobileAndTablet:flex @mobileAndTablet:flex-col gap-2 @desktop:grid @desktop:grid-cols-6">
-        <p className="sticky  @desktop:top-32 self-start mix-blend-difference w-max grow text-white uppercase font-semibold">Works <span className="font-normal text-white/50 text-[11px] absolute translate-x-1/2 -translate-y-1/2">{quantityOfProjects}</span></p>
+      <div className="@mobileAndTablet:flex pt-@container @mobileAndTablet:flex-col gap-2 @desktop:grid @desktop:grid-cols-6">
+        <p className="sticky @desktop:top-32 self-start mix-blend-difference w-max grow text-white uppercase font-semibold">Works <span className="font-normal text-white/50 text-[11px] absolute translate-x-1/2 -translate-y-1/2">{quantityOfProjects}</span></p>
         <Polygon trigger="#projects" vertexes={5} radius={400} data-scroll data-scroll-speed="0.4" className="absolute right-0 -z-10" />
-        <div className="h-auto relative min-h-[800px] w-full @desktop:col-span-4 @mobileAndTablet:col-span-5 @desktop:col-start-3 flex flex-col gap-2">
+        <div className="h-auto relative w-full @desktop:col-span-4 @desktop:col-end-[-1] @mobileAndTablet:col-span-5 flex flex-col gap-2">
           {projects.map((x, i) => <Project {...x} key={`Project_${i}`} hasDomain={x.has_domain} nTh={i + 1} />)}
         </div>
       </div>

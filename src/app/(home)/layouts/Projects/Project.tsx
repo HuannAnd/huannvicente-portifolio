@@ -55,18 +55,21 @@ function Project({
     <LettersSlideInOnTriggerHover.Root>
       <div
         data-project
-        className="col-span-12 z-10 group/item [transform-origin:top] [transform:_scaleX(0)] [filter:_blur(5px)] opacity-0 flex bg-transparent pl-4 border-t-[#333] border-t-[1px] relative cursor-pointer justify-between items-center py-8  h-auto"
+        className="@desktop:col-span-full @mobileAndTablet:border-b-[1px] @mobileAndTablet:border-b-[#222] py-@gap z-10 group/item pt-@container @desktop:px-[calc(var(--gap-padding)_*_2.25)] [transform-origin:top] @mobileAndTablet:flex-col @mobileAndTablet:gap-4 @mobileAndTablet:justify-center [transform:_scaleX(0)] [filter:_blur(5px)] opacity-0 flex bg-transparent @desktop:border-t-[#333] @desktop:border-t-[1px] relative cursor-pointer justify-between items-center  h-auto"
         onClick={handleOnClick}
         onMouseEnter={handleOnMouseEnter}
         onMouseDown={setCursorToPressMode}
         onMouseLeave={setCursorToNormalMode}
       // {...props}
       >
-        <small className="text-[.6875rem]">{tierInBaseFormat}</small>
-        <div className={cn("items-center ease-fast duration-300", isInMaintenance ? "" : "group-hover/item:pl-[1vw]")}>
+        <img className="@desktop:[display:none]" src="/projects/599657419/poster.png" alt="" />
+        <div className="flex w-full items-center pb-@gap justify-between">
+          <small className="text-[.6875rem] @mobileAndTablet:[display:_none] @desktop:right-0 @mobileAndTablet:relative absolute">{tierInBaseFormat}</small>
+          {/* <div className="items-center ease-fast duration-300"> */}
           <LettersSlideInOnTriggerHover.Trigger>
-            <h3 className={cn("duration-300 text-[clamp(1rem,3vw,2.25rem)] uppercase ease-smooth truncate", isInMaintenance ? "text-@secondary" : "text-darkPrimary group-hover/item:opacity-30")}>{name}</h3>
+            <h3 className="duration-300 text-[clamp(1.25rem,3vw,2.25rem)]  uppercase ease-smooth truncate">{name}</h3>
           </LettersSlideInOnTriggerHover.Trigger>
+          {/* </div> */}
         </div>
       </div >
     </LettersSlideInOnTriggerHover.Root>

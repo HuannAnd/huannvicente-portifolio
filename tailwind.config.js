@@ -28,7 +28,10 @@ module.exports = {
         "@container": "var(--container-padding)",
         "@gap": "var(--gap-padding)",
       },
-      colors: {
+      borderRadius: {
+        "@border": ".125em",
+      },
+      colors: {   
         darkPrimary: "var(--primary-color)",
         darkBg: "#444",
         lightBg: "#fff",

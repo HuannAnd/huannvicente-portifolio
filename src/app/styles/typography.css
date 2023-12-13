@@ -1,5 +1,5 @@
 h1 {
-  font-size: clamp(4.5rem, 5.5vw, 7rem);
+  font-size: 5.5vw;
   font-weight: 900;
   letter-spacing: -0.3vw;
   line-height: 80%;
@@ -17,14 +17,14 @@ small {
   }
 
   small {
-    font-size: 0.5625rem;
+    font-size: 0.875rem;
   }
 }
 
 p,
 a,
 li {
-  font-size: 1.25rem;
+  font-size: max(1rem, 1.125vw);
   font-weight: 300;
   line-height: 1.75;
 }

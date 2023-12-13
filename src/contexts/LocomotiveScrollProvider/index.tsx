@@ -23,16 +23,6 @@ export default function LocomotiveScrollProvider({
   useEffect(() => {
     (
       async () => {
-        const isMobileResolution = window.innerWidth <= 768
-
-        if (
-          isMobileDevice
-          || isMobileResolution
-        ) {
-          console.log("Is A Mobile device")
-          return
-        }
-
         const LocomotiveScroll = (await import('locomotive-scroll')).default
         const newLocomotiveScroll = new LocomotiveScroll({
           autoResize: true,
