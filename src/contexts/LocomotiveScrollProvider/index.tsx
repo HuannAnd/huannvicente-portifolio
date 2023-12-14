@@ -30,8 +30,9 @@ export default function LocomotiveScrollProvider({
 
           }
         });
-        setLocomotiveScroll(newLocomotiveScroll)
         locomotiveScroll?.scrollTo(0, { immediate: true, force: true })
+        window.scrollTo(0, 0)
+        setLocomotiveScroll(newLocomotiveScroll)
       }
     )()
 

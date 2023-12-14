@@ -36,12 +36,12 @@ export default function ClientSocialMedia({
         className="@mobileAndTablet:w-full @desktop:w-[55vmin] @desktop:even:right-32  aspect-square group/snapshot cursor-pointer relative overflow-hidden rounded-2xl bg-white"
       >
         {imageContent}
-        <div className="absolute flex justify-between items-center w-full pb-4 px-4 bottom-0 text-white">
+        <div className="absolute flex  justify-between items-center w-full pb-4 px-4 bottom-0 text-white">
           <SlideInOnTriggerHover.Trigger>
-            <small className="font-semibold inline-block overflow-hidden">&copy; {name}</small>
+            <small className="font-semibold font-roboto first-letter:inline-block overflow-hidden">&copy; {name}</small>
           </SlideInOnTriggerHover.Trigger>
           <SlideInOnTriggerHover.Trigger>
-            <small className="float-right inline-block overflow-hidden">Art made by <span className="font-semibold">{artAuthor}</span></small>
+            <small className="float-right font-roboto inline-block overflow-hidden">Art made by <span className="font-semibold">{artAuthor}</span></small>
           </SlideInOnTriggerHover.Trigger>
         </div>
       </a>

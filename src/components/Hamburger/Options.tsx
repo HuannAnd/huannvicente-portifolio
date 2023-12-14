@@ -9,6 +9,7 @@ import useSections from "./useSections";
 
 import Option from "./Option";
 import isMobileDevice from "@/utils/is-mobile-device";
+import useWindowViewport from "@/hooks/useWindowViewport";
 
 interface Props { }
 
@@ -19,8 +20,11 @@ const fades: Variants = {
 }
 
 export default function Options({ }: Props) {
-  const radius = isMobileDevice ? 150 : 250
+
   const sections = useSections()
+  const windowViewport = useWindowViewport()
+
+  const radius = windowViewport.width <= 768 ? 150 : 250
   const amountOfOptions = sections.length
 
 

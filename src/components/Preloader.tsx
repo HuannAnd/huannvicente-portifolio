@@ -17,7 +17,7 @@ interface Props {
 export default function Preloader({ requestPage }: Props) {
   const ref = useRef<HTMLDivElement>(null)
   const path = useRef<SVGPathElement>(null)
-  const pathHeight = 120
+  const pathHeight = 250
 
   const router = useRouter()
   const pathname = usePathname()
@@ -84,7 +84,7 @@ export default function Preloader({ requestPage }: Props) {
       ref={ref}
       id='loading'
       
-      className="w-screen h-screen fixed z-[999] top-0 bg-black"
+      className="w-screen h-screen fixed z-[999] top-0 bg-[#070707]"
       initial={{ scaleY: 1 }}
       style={{ transformOrigin: "top" }}
       transition={{ duration: .8, ease: [0.76, 0, 0.24, 1] }}

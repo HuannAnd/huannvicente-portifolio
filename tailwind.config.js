@@ -22,6 +22,7 @@ module.exports = {
       },
       fontFamily: {
         roboto: "var(--font-roboto)",
+        syne: "var(--font-syne)",
       },
       spacing: {
         "@section": "var(--section-padding)",
@@ -31,7 +32,7 @@ module.exports = {
       borderRadius: {
         "@border": ".125em",
       },
-      colors: {   
+      colors: {
         darkPrimary: "var(--primary-color)",
         darkBg: "#444",
         lightBg: "#fff",

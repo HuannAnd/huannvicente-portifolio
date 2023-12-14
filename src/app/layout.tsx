@@ -1,8 +1,14 @@
 import './styles/globals.css'
 import './styles/typography.css'
 
-import { Roboto } from 'next/font/google'
+import { Roboto, Syne } from 'next/font/google'
 
+const syne = Syne({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  style: ["normal"],
+  variable: "--font-syne",
+})
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -31,7 +37,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${roboto.variable} w-screen overflow-x-hidden font-roboto min-h-screen relative bg-[#050505] selection:bg-white selection:text-lightPrimary`}>
+      <body className={`${roboto.variable} ${syne.variable} w-screen overflow-x-hidden font-roboto min-h-screen relative bg-[#050505] selection:bg-white selection:text-lightPrimary`}>
         <Providers>
           {/* <Hamburger /> */}
           <Cursor />

@@ -33,29 +33,13 @@ export default function ClientSuggestion({ nextProject, nextProjectPhotoSrc }: P
       className="w-screen min-h-screen mb-[25vh] relative mx-auto px-@section py-[9vw]"
       data-name="Suggestions"
     >
-      <div className="@desktop:top-0 sticky pt-4 z-10">
-        <LettersSlideInOnView trigger="#suggestion" >
-          <h1 className="@desktop:mb-32 @mobileAndTablet:mb-4 sticky @desktop:top-0 z-10 text-[#fff] @mobileAndTablet:text-center overflow-hidden">
-            Discover My <br className="@desktop:[display:_none]" /> Journey
-            <br />
-            And Surprise
-          </h1>
-        </LettersSlideInOnView>
-        <svg
-          onClick={redirectToHomepage}
-          onMouseEnter={setCursorToInvisible}
-          onMouseLeave={setCursorToNormal}
-          data-scroll
-          data-scroll-speed="-0.001"
-          className="relative @desktop:w-[3vw] @mobileAndTablet:mx-auto @mobileAndTablet:w-[10vh] aspect-square block cursor-pointer"
-          viewBox="0 0 10 10"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle cx="4.6875" cy="5.25" r="4.6875" stroke="#151515" strokeWidth={1} fill="#090909" />
-          <path d="M3.29102 4.82039V6.30918H6.17852V4.82039M3.29102 4.82039H4.73477M3.29102 4.82039L4.73477 4.09668M6.17852 4.82039H4.73477M6.17852 4.82039L4.73477 4.09668M4.73477 4.82039V4.09668" stroke="#fff" strokeWidth="0.675" strokeLinejoin="round" />
-        </svg>
-      </div>
+      <LettersSlideInOnView trigger="#suggestion" >
+        <h1 className="@desktop:mb-32 @mobileAndTablet:mb-4 sticky pt-@container top-0 z-10 text-[#fff] @mobileAndTablet:text-center overflow-hidden">
+          Discover My <br className="@desktop:[display:_none]" /> Journey
+          <br />
+          And Surprise
+        </h1>
+      </LettersSlideInOnView>
       <Polygon trigger="#suggestion" className="absolute right-0 -z-[1]" radius={500} isRegular vertexes={5} />
       <article className="pt-[3vw] h-auto w-auto justify-center gap-4 items-end @mobileAndTablet:mx-auto @desktop:ml-auto @mobileAndTablet:items-center @mobile:row-span-2 flex flex-col @mobile:justify-center">
         <LettersSlideInOnTriggerHover.Root>
@@ -69,10 +53,10 @@ export default function ClientSuggestion({ nextProject, nextProjectPhotoSrc }: P
             />
             <div className="absolute flex justify-between w-full pb-4 px-4 bottom-0">
               <LettersSlideInOnTriggerHover.Trigger>
-                <small className="font-semibold overflow-hidden inline-block text-white">&copy; {nextProject.name}</small>
+                <small className="font-semibold font-roboto overflow-hidden inline-block text-white">&copy; {nextProject.name}</small>
               </LettersSlideInOnTriggerHover.Trigger>
               <LettersSlideInOnTriggerHover.Trigger>
-                <small className="float-right overflow-hidden text-white inline-block">Art made by <strong>HuannAnd</strong></small>
+                <small className="float-right font-roboto overflow-hidden text-white inline-block">Art made by <strong className="font-roboto">HuannAnd</strong></small>
               </LettersSlideInOnTriggerHover.Trigger>
             </div>
           </div>
@@ -88,10 +72,10 @@ export default function ClientSuggestion({ nextProject, nextProjectPhotoSrc }: P
             />
             <div className="absolute flex justify-between w-full pb-4 px-4 bottom-0">
               <LettersSlideInOnTriggerHover.Trigger>
-                <small className="font-semibold overflow-hidden inline-block text-white">&copy; {nextProject.name}</small>
+                <small className="font-semibold font-roboto overflow-hidden inline-block text-white">&copy; {nextProject.name}</small>
               </LettersSlideInOnTriggerHover.Trigger>
               <LettersSlideInOnTriggerHover.Trigger>
-                <small className="float-right overflow-hidden text-white inline-block">Art made by <strong>HuannAnd</strong></small>
+                <small className="float-right font-roboto overflow-hidden text-white inline-block">Art made by <strong className="font-roboto">HuannAnd</strong></small>
               </LettersSlideInOnTriggerHover.Trigger>
             </div>
           </div>

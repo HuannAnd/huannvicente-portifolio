@@ -37,7 +37,7 @@ export default function Option({
   console.log("Id value: ", id)
 
   return (
-    <motion.span
+    <motion.h5
       onClick={scrollTo}
       onMouseEnter={setCursorToHoverMode}
       variants={fades}
@@ -49,6 +49,6 @@ export default function Option({
       className="font-semibold w-max inline-block absolute text-white uppercase"
     >
       {name}
-    </motion.span>
+    </motion.h5>
   )
 }
