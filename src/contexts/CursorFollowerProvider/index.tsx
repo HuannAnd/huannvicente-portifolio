@@ -35,23 +35,16 @@ function CursorFollowerProvider({ children }: CursorFollowerProviderProps) {
   const [scope] = useAnimate()
 
   const handleCursor = useCallback((config: Partial<ICursor>) => {
-    console.log("Cursor changing")
-    console.log("Config value: ", config)
-
     if (config.mode !== undefined) {
-      console.log("Cursor mode change")
       setMode(config.mode)
     }
     if (config.icon !== undefined) {
-      console.log("Cursor icon change")
       setIcon(config.icon)
     }
     if (config.isLoading !== undefined) {
-      console.log("Cursor isLoading change")
       setIsLoading(config.isLoading)
     }
     if (config.title !== undefined) {
-      console.log("Cursor title change")
       setTitle(config.title)
     }
   },

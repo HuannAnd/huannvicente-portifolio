@@ -9,6 +9,7 @@ import useWindowViewport from "@/hooks/useWindowViewport";
 import installMediaQueryWatcher from "@/utils/media-query-watcher";
 
 import gsap from "gsap";
+import useLocomotiveScroll from "@/contexts/LocomotiveScrollProvider/useLocomotiveScroll";
 
 
 interface Props { }
@@ -17,6 +18,7 @@ export default function OrganicFluid({ }: Props) {
   const mesh = useRef<THREE.Mesh>(null!)
   const geometry = useRef<THREE.SphereGeometry>(null!)
   const shader = useRef<ThreeElements["noiseShaderMaterial"]>(null!)
+  const locomotiveScroll = useLocomotiveScroll()
 
   const [data] = useState({
     radius: 5,
@@ -39,15 +41,18 @@ export default function OrganicFluid({ }: Props) {
         let { isDesktop, isMobile } = context.conditions!
 
         if (isDesktop) {
-          gsap.to(mesh.current.position, { y: 0, duration: 3 })
+          gsap.to(mesh.current.position, { y: 0, duration: 3, ease: "power4.inOut" })
         } else if (isMobile) {
           gsap.to(mesh.current.position, { y: 0, duration: 0 })
         }
       }
     )
 
-    return () => mm.revert()
-  }, [])
+    return () => {
+      mm.revert()
+      locomotiveScroll?.destroy()
+    }
+  }, [locomotiveScroll])
 
   useFrame((state, dt) => {
     shader.current.uTime = state.clock.getElapsedTime() / 5
@@ -55,8 +60,6 @@ export default function OrganicFluid({ }: Props) {
     mesh.current.rotation.x += dt
     mesh.current.rotation.y += dt
   })
-
-  console.log("OrganicFluid data: ", data)
 
   return (
     <mesh ref={mesh} position={[0, -100, -20]}>

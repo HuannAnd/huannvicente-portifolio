@@ -19,7 +19,6 @@ export const RedirectWithPageTransitionContext = createContext({} as TRedirectWi
 
 export default function LoadingProvider({ children }: LoadingProviderProps) {
   const [requestPage, setRequestPage] = useState<string | null>(null)
-  const locomotiveScroll = useLocomotiveScroll()
   const setCursor = useSetCursor()
 
   const pathname = usePathname()

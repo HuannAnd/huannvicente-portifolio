@@ -42,7 +42,7 @@ export default function ClientProjects({ projects }: Props) {
         opacity: 0,
         scrollTrigger: {
           trigger: "#projects",
-          start: "-=20px top",
+          start: "-=20px center",
           onEnter: () => {
             onProjectAppear.to(projects, onAppear, 0)
           }

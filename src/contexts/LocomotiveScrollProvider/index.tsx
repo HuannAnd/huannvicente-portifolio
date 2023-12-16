@@ -2,13 +2,8 @@
 
 import { useEffect, createContext, useState } from 'react';
 
-import { usePathname } from 'next/navigation';
-
-import useWindowViewport from '@/hooks/useWindowViewport';
-
 import LocomotiveScroll from 'locomotive-scroll';
-import isMobileDevice from '@/utils/is-mobile-device';
-
+import wait from '@/utils/wait';
 
 interface LocomotiveScrollProps
   extends React.PropsWithChildren { }
@@ -21,22 +16,33 @@ export default function LocomotiveScrollProvider({
   const [locomotiveScroll, setLocomotiveScroll] = useState<LocomotiveScroll | null>(null)
 
   useEffect(() => {
+    let isMounting = true;
+
     (
       async () => {
+
         const LocomotiveScroll = (await import('locomotive-scroll')).default
         const newLocomotiveScroll = new LocomotiveScroll({
           autoResize: true,
           lenisOptions: {
-
+            smoothTouch: true,
+            touchMultiplier: .9
           }
         });
-        locomotiveScroll?.scrollTo(0, { immediate: true, force: true })
+        newLocomotiveScroll.scrollTo(0, { immediate: true, force: true })
+        newLocomotiveScroll.stop()
         window.scrollTo(0, 0)
         setLocomotiveScroll(newLocomotiveScroll)
       }
     )()
 
-    return () => locomotiveScroll?.destroy()
+
+    const cleanUp = () => {
+      isMounting = false
+      locomotiveScroll?.destroy()
+    }
+
+    return cleanUp()
   },
     []
   )

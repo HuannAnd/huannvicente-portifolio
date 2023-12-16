@@ -7,15 +7,9 @@ import useLoading from "./hooks/useLoading";
 
 interface FollowerTextProps { }
 
-export default function FollowerText({ }: FollowerTextProps) {
-  console.log("FollowerText has render")
+export default function FollowerText({ }: FollowerTextProps) {  
   const title = useTitle()
-  // console.log("title inside FollowerText: ", title)
-
   const isLoading = useLoading()
-  // console.log("IsLoading inside FollowerText: ", isLoading)
-
-
 
   return (
     <motion.span

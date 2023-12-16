@@ -21,19 +21,11 @@ export default function About() {
         <article id="about-me" className="@desktop:col-span-3 sticky @desktop:top-0 self-start @tablet:col-span-3 @desktop:col-start-2 @tablet:col-start-2 @mobile:col-span-full  @mobileAndTablet:mt-0  gap-4 z-20 col-start-6">
           <Polygon trigger='#about' className='-z-10 absolute' isRegular vertexes={5} radius={windowViewport.height / 2.2} />
           <TextFadeInOnView delayInSeconds={.2} trigger='#about'>
-            <p className='mb-@gap'>I&apos;m Frontend developer, from Brazil</p>
-            <p>
-              As a Developer my favorites technologies are Next.js, React.js, TailwindCSS and SCSS. Studying Software Development since 2022, my first contact with Software Development was solving basic problems using C#. Right now I&apos;m studying Next.js, Typescript, Docker, Three.js and C#
-            </p>
             <p className='mb-@gap'>
-              My Backends knowledge&apos;s are C# (.NET Core), Java Spring Boot and Node.js
-            </p>
-            <p>
-              If you haven&apos;t seen my projects, please take a look. If you find any bug, or want to contribute, open an issue, PR or contact me
+              I&apos;m Frontend developer, from Brazil.As a Developer my favorites technologies are Next.js, React.js, TailwindCSS and SCSS. Studying Software Development since 2022, my first contact with Software Development was solving basic problems using C#. Right now I&apos;m studying Next.js, Typescript, Docker, Three.js and C#.My Backends knowledge&apos;s are C# (.NET Core), Java Spring Boot and Node.js.If you haven&apos;t seen my projects, please take a look. If you find any bug, or want to contribute, open an issue, PR or contact me
             </p>
           </TextFadeInOnView>
         </article>
-        {/* <CustomButton className='@desktop:col-span-2 @desktop:col-end-[-1] @mobileAndTablet:col-start-2 @mobileAndTablet:col-span-full sticky @mobileAndTablet:w-auto @mobileAndTablet:self-center'>View Resume</CustomButton> */}
       </div>
     </section>
   )

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 
 import { AnimatePresence } from "framer-motion"
 
@@ -26,6 +26,16 @@ export default function Hamburger({ }: Props) {
     setIsOpen(false)
 
   })
+
+  useEffect(() => {
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        setIsOpen(false)
+      }
+    })
+  })
+
+
 
   function handleOnClick(e: React.MouseEvent<Element, MouseEvent>) {
     e.stopPropagation()

@@ -5,6 +5,8 @@ import Contact from './layouts/Contact'
 
 import Hamburger from '@/components/Hamburger'
 
+import LoadingLittleOrganicScene from '@/three/scenes/LoadingLittleOrganicScene'
+
 import LocomotiveScrollProvider from '@/contexts/LocomotiveScrollProvider'
 
 export default async function Home() {

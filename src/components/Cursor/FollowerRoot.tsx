@@ -3,7 +3,6 @@
 import React, { useEffect } from 'react';
 
 import { motion, useMotionValue, useSpring } from 'framer-motion';
-import useWindowViewport from '@/hooks/useWindowViewport';
 
 
 interface FollowerRootProps

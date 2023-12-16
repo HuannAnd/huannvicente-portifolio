@@ -28,7 +28,6 @@ function Project({
   repository_url,
   ...props
 }: ProjectProps) {
-  console.log(`Project with id ${id}: `, name)
   const setCursor = useSetCursor()
   const tierInBaseFormat = formatTierInTwoChars(nTh)
 

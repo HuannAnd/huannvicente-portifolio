@@ -1,7 +1,7 @@
 /* HEADINGS */
 
 h1 {
-  font-size: var(--text-heading);
+  font-size: calc(var(--text-heading) * 0.9);
   font-weight: 900;
   font-family: var(--font-syne);
   letter-spacing: calc(var(--text-heading) * -0.08);

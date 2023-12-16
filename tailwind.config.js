@@ -14,6 +14,7 @@ module.exports = {
         "@tablet": { min: "648px", max: "1022px" },
         "@mobile": { min: "1px", max: "647px" },
         "@mobileAndTablet": { min: "1px", max: "1022px" },
+        "@desktopAndTablet": { min: "648px" },
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

@@ -33,7 +33,7 @@ export default function ClientObjective({ }: Props) {
           autoPlay
           loop
           muted
-          className="@desktop:rounded-2xl pt-@container @mobileAndTablet:rounded  @desktop:h-[80vmin] @mobileAndTablet:w-full scale-[.9] mx-auto" src="/projects/599657419/videos/video-loading.mp4"
+          className="pt-@container @desktop:h-[80vmin] @mobileAndTablet:w-full scale-[.9] mx-auto" src="/projects/599657419/videos/video-loading.mp4"
         />
       </SmoothScaleInOnView>
     </section>

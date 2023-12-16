@@ -15,7 +15,7 @@ interface Props
 
 const offView = {
   y: "-100%",
-  filter: "blur(10px)",
+  filter: "blur(5px)",
   opacity: 0,
 }
 
@@ -24,19 +24,18 @@ const onView = {
   filter: "blur(0px)",
   opacity: 1,
   ease: "power4.out",
-  duration: .8,
-  stagger: .02
+  duration: 1.2,
+  stagger: 0.05
 }
 
 export default function LettersSlideInOnView({ children, trigger, threshold = 20, delay = 0 }: Props) {
   const ref = useRef<HTMLElement>(null!)
-  const timeline = useRef<GSAPTimeline>()
 
   useLayoutEffect(() => {
     if (!ref.current) return
     gsap.registerPlugin(ScrollTrigger)
-    new SplitType(ref.current, { types: "chars" })
-    const letters = ref.current.querySelectorAll(".char")
+    new SplitType(ref.current, { types: "words" })
+    const letters = ref.current.querySelectorAll(".word")
 
     const timeline = gsap.timeline()
 
@@ -45,7 +44,7 @@ export default function LettersSlideInOnView({ children, trigger, threshold = 20
       .to(letters, {
         scrollTrigger: {
           trigger,
-          start: `-=${threshold}px top`,
+          start: `-=${threshold}px center`,
           once: true,
           onEnter: () => {
             gsap.to(letters, { ...onView, delay })

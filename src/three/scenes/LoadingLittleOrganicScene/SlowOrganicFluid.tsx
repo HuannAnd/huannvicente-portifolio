@@ -8,7 +8,7 @@ import { ThreeElements, useFrame } from '@react-three/fiber'
 
 
 
-interface Props {  }
+interface Props { }
 
 export default function OrganicFluid({ }: Props) {
   const mesh = useRef<THREE.Mesh>(null!)
@@ -29,9 +29,9 @@ export default function OrganicFluid({ }: Props) {
     mesh.current.rotation.y += dt
   })
 
-  return (  
-    <mesh ref={mesh} position={[0, -3, -125]}>
-      <sphereGeometry ref={geometry} args={[data.radius, 40, 40]} />
+  return (
+    <mesh ref={mesh} scale={0.1} position={[0, -3, -125]}>
+      <sphereGeometry ref={geometry} args={[data.radius, 25, 25]} />
       <noiseShaderMaterial
         uBump={data.bump}
         // uColor={"#188bfe"}

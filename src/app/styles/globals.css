@@ -72,3 +72,13 @@ html.lenis {
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
   }
 }
+
+@keyframes spinOrganicFluid {
+  from {
+    transform: translate(50%, -50%) rotateZ(0deg);
+  }
+
+  to {
+    transform: translate(50%, -50%) rotateZ(360deg);
+  }
+}

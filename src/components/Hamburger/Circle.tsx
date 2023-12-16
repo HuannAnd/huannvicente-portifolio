@@ -54,6 +54,10 @@ export default function Circle({
   }
 
   useEffect(() => {
+    gsap.set(ref.current, { scale: 1, duration: 0 })
+  }, [])
+
+  useEffect(() => {
     if (isHamburgerOpen) {
       relocateCircleToCenter()
     } else {
