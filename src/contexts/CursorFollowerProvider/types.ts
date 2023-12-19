@@ -10,7 +10,7 @@ export type TCursorMode =
 
 export interface ICursor {
   isLoading: boolean,
-  projectId: number,
+  projectId: number | null,
   title: string | null,
   mode: TCursorMode
 }
