@@ -23,8 +23,8 @@ export default function ClientDesignConcept({ images }: Props) {
         </p>
       </TextFadeInOnView>
       <div className="min-h-[55vmin] gap-2 pt-@container @desktop:col-span-4 @desktopAndTablet:col-start-2 @mobile:flex @mobile:flex-col @desktopAndTablet:grid @desktopAndTablet:grid-cols-2">
-        {images.map(x => (
-          <SmoothScaleInOnView trigger="#design-concept">
+        {images.map((x, i) => (
+          <SmoothScaleInOnView key={`ImageMockup_${i}`} trigger="#design-concept">
             <ImageMockup src={x} alt="" />
           </SmoothScaleInOnView>
         ))}

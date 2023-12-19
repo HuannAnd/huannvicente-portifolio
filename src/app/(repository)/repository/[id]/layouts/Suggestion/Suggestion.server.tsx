@@ -17,7 +17,7 @@ export default async function ServerSuggestion({ repositoryId }: Props) {
 
   return (
     <ClientSuggestion>
-      {otherProjects.map(x => <ProjectSquareCard {...x} />)}
+      {otherProjects.map((x, i) => <ProjectSquareCard key={`ProjectSquareCard_${i}`} {...x} />)}
     </ClientSuggestion>
   )
 }

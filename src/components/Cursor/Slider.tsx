@@ -74,7 +74,7 @@ export default function Slider({ }: Props) {
   return (
     <div ref={ref} className="h-[35vh] -z-20 overflow-hidden rounded-lg aspect-square mix-blend-multiply bg-blend-multiply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
       <div className="absolute image-wrapper w-full h-full flex top-0 left-0">
-        {projects.map(x => <img src={`/projects/${x.id}/poster.png`} className="w-full brightness-100 relative aspect-square object-cover" />)}
+        {projects.map((x, i) => <img key={`Slide_${i}`} src={`/projects/${x.id}/poster.png`} className="w-full brightness-100 relative aspect-square object-cover" />)}
       </div>
     </div>
   )

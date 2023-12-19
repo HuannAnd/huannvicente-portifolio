@@ -29,8 +29,9 @@ export default function ClientObjective({ videos }: Props) {
         </TextFadeInOnView>
       </div>
       <SmoothScaleInOnView trigger="#objective">
-        {videos.map(x => (
+        {videos.map((x, i) => (
           <video
+            key={`Video_${i}`}
             autoPlay
             loop
             muted
