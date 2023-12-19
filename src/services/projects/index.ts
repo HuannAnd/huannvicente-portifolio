@@ -7,32 +7,6 @@ class ProjectsService {
   constructor(
     private projects: IProjectData[] = data
   ) { }
-  public static async getRepositoryPhotosById(projectId: number) {
-    // const assetsManager = new AssetsManager(`/projects/${projectId}`)
-    // const photos = await assetsManager.getPhotos()
-    // return photos
-  }
-
-  public async getRepositoryGLTFAssetById(projectId: number) {
-    // const assetsManager = new AssetsManager(`/projects/${projectId}`)
-
-    // const gltfModelPathname = (await assetsManager.getGLTFModels())[0]
-
-    // return gltfModelPathname
-  }
-  public async getRepositoryVideosById(projectId: number) {
-    // const assetsManager = new AssetsManager(`/projects/${projectId}`)
-
-    // const videos = await assetsManager.getPhotos()
-    // return videos
-  }
-
-  public getProjectFrameworks(projectId: number) {
-    const project = this.getProjectById(projectId)
-
-    return project.frameworks
-  }
-
   public isInProduction(projectId: number) {
     const project = this.getProjectById(projectId)
     console.log("Project: ", project)
@@ -68,12 +42,6 @@ class ProjectsService {
 
   public getProjects() {
     return this.projects
-  }
-
-  public getProjectPhilosophy(projectId: number) {
-    const project = this.getProjectById(projectId)
-
-    return project.filosophy
   }
 
   public getProjectUrls(projectId: number) {

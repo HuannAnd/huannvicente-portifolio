@@ -75,10 +75,10 @@ html.lenis {
 
 @keyframes spinOrganicFluid {
   from {
-    transform: translate(50%, -50%) rotateZ(0deg);
+    transform: translate(50%, -50%) rotateZ(0deg) scale(.5);
   }
 
   to {
-    transform: translate(50%, -50%) rotateZ(360deg);
+    transform: translate(50%, -50%) rotateZ(360deg) scale(.5);
   }
 }

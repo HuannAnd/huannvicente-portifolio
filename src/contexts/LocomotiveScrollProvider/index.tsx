@@ -16,11 +16,8 @@ export default function LocomotiveScrollProvider({
   const [locomotiveScroll, setLocomotiveScroll] = useState<LocomotiveScroll | null>(null)
 
   useEffect(() => {
-    let isMounting = true;
-
     (
       async () => {
-
         const LocomotiveScroll = (await import('locomotive-scroll')).default
         const newLocomotiveScroll = new LocomotiveScroll({
           autoResize: true,
@@ -37,12 +34,7 @@ export default function LocomotiveScrollProvider({
     )()
 
 
-    const cleanUp = () => {
-      isMounting = false
-      locomotiveScroll?.destroy()
-    }
-
-    return cleanUp()
+    return () => locomotiveScroll?.destroy()
   },
     []
   )

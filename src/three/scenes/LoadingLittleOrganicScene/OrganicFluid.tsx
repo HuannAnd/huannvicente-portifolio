@@ -1,12 +1,10 @@
 'use client';
 
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 
 import * as THREE from 'three'
 
 import { ThreeElements, useFrame } from '@react-three/fiber'
-import useWindowViewport from "@/hooks/useWindowViewport";
-import installMediaQueryWatcher from "@/utils/media-query-watcher";
 
 import gsap from "gsap";
 
@@ -45,20 +43,20 @@ export default function OrganicFluid({ }: Props) {
   }, [])
 
   useFrame((state, dt) => {
-    shader.current.uTime = state.clock.getElapsedTime() / 5
+    shader.current.uTime = state.clock.getElapsedTime()
 
-    mesh.current.rotation.x += dt
-    mesh.current.rotation.y += dt
+    mesh.current.rotation.z -= dt
+    // mesh.current.rotation.y += dt
   })
 
   return (
-    <mesh ref={mesh} scale={0.07} position={[0, 0, -20]}>
+    <mesh ref={mesh} scale={0.05} position={[0, 0, -20]}>
       <sphereGeometry ref={geometry} args={[data.radius, 25, 25]} />
       <noiseShaderMaterial
         uBump={data.bump}
         // uColor={"#188bfe"}
         uColor={"#cc6804"}
-        // uColor={"#089e08"}
+        // uColor={"#619304"}
         // uColor={"#73079e"}
         // uColor="#893a1b"
         ref={shader as any} />

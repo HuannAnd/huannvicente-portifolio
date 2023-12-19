@@ -10,10 +10,11 @@ import { time } from "console";
 
 interface Props {
   title: string,
-  description: string
+  description: string,
+  posterSrc: string
 }
 
-export default function Hero({ title, description }: Props) {
+export default function Hero({ title, description, posterSrc }: Props) {
   const ref = useRef<HTMLDivElement>(null)
   const titleWithoutSpecialCharacters = removeSpecialCharacters(title)
 
@@ -39,27 +40,26 @@ export default function Hero({ title, description }: Props) {
               opacity: 0
             }
           )
+          timeline.set(
+              "#image",
+              {
+              clipPath: "polygon(0 0, 0 0, 0 100%, 0 100%)"
+            }       
+          )
 
-          timeline.to(
-            ref.current,
-            {
-              y: "0%",
-              duration: 1,
-              ease: "power3.out",
-              delay: .8
-            })
           timeline.to(
             "li",
             {
               opacity: 1,
               stagger: 0.03,
-              duration: .8
+              duration: .8,
+              delay: 1.2,
             }
           )
           timeline.to(
-            "img",
+            "#image",
             {
-              clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+              clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
               duration: .8,
               ease: "expo.out"
             }
@@ -71,23 +71,30 @@ export default function Hero({ title, description }: Props) {
               opacity: 0
             }
           )
+          timeline.set(
+            "#image",
+            {
+              clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)"
+            }
+          )
+
 
           timeline.to(
-            "img",
+            "#image",
             {
               clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
               duration: 1.2,
               delay: 1,
               ease: "power4.out"
             })
-          timeline.to(
-            "li",
-            {
-              opacity: 1,
-              duration: 0.8,
-              stagger: 0.05
-            }
-          )
+            .to(
+              "li",
+              {
+                opacity: 1,
+                duration: 0.8,
+                stagger: 0.05
+              }
+            )
         }
 
       })
@@ -99,10 +106,10 @@ export default function Hero({ title, description }: Props) {
     <section
       ref={ref}
       id="projectHero"
-      className="w-screen @desktop:translate-y-full min-h-screen pb-[9vw] grid @desktop:grid-cols-6 @mobileAndTablet:col-span-4 relative mx-auto clip-around"
+      className="w-screen min-h-screen pb-[9vw] grid @desktop:grid-cols-6 @mobileAndTablet:col-span-4 relative mx-auto clip-around"
     >
-      <ul className="@desktop:col-span-1 @mobileAndTablet:order-2 @mobileAndTablet:col-span-full bg-[#050505] pt-@container px-@gap text-white">
-        <li className="pt-@gap">
+      <ul className="@desktop:col-span-2 @mobileAndTablet:order-2 @mobileAndTablet:col-span-full bg-[#050505] @mobileAndTablet:pt-@container @desktop:pt-[calc(3vw_+_50px)] px-@section text-white">
+        <li>
           <h5 className="text-[#aaa] font-bold font-syne uppercase">Title</h5>
           <p className="capitalize">{titleWithoutSpecialCharacters}</p>
         </li>
@@ -115,13 +122,13 @@ export default function Hero({ title, description }: Props) {
           <p>2023, 22 of January</p>
         </li>
       </ul>
-      <div className="w-full @desktop:col-span-5 [contain:_paint]">
+      <div id="image" className="w-full @desktop:col-span-4 overflow-hidden">
         <img
           data-scroll
           data-scroll-speed="-0.3"
-          className="col-span-5 z-10 @mobileAndTablet:[clip-path:_polygon(0_0,_100%_0,_100%_0,_0_0)] @desktop:[clip-path:_polygon(0_0,_0_0,_0_100%,_0_100%)] @mobileAndTablet:order-1 @mobileAndTablet:col-span-full h-[calc(100%_+_100px)] @desktop:min-h-screen object-cover"
-          src="/projects/599657419/poster.png"
-          alt=""
+          className="col-span-5 z-10 @mobileAndTablet:order-1 @mobileAndTablet:col-span-full h-[calc(100%_+_100px)] @desktop:min-h-screen object-cover"
+          src={posterSrc}
+          alt="Project Poster Image"
         />
       </div>
     </section >

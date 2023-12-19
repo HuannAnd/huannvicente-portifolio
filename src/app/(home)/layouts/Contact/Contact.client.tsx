@@ -12,7 +12,7 @@ export default function ClientContact({ children }: Props) {
     <section
       id="contact"
       data-name="Contact"
-      className="max-w-[100vw] mx-auto py-[9vw] px-@section min-h-screen relative ease-fast text-white"
+      className="max-w-[100vw] @mobileAndTablet:min-h-screen mx-auto pt-[9vw] mb-[calc(9vw_*_1.3)] px-@section min-h-screen relative ease-fast text-white"
     >
       <div className="sticky mix-blend-difference pointer-events-none pt-@container top-0 z-10">
         <LettersSlideInOnView trigger="#contact">

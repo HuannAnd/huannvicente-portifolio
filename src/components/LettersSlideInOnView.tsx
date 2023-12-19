@@ -14,18 +14,18 @@ interface Props
 }
 
 const offView = {
-  y: "-100%",
-  filter: "blur(5px)",
+  y: "100%",
   opacity: 0,
+  overflow: "hidden",
+  contain: "paint"
 }
 
 const onView = {
   y: "0%",
-  filter: "blur(0px)",
   opacity: 1,
-  ease: "power4.out",
-  duration: 1.2,
-  stagger: 0.05
+  ease: "power4.inOut",
+  duration: 0.8,
+  stagger: 0.03
 }
 
 export default function LettersSlideInOnView({ children, trigger, threshold = 20, delay = 0 }: Props) {
@@ -38,19 +38,18 @@ export default function LettersSlideInOnView({ children, trigger, threshold = 20
     const letters = ref.current.querySelectorAll(".word")
 
     const timeline = gsap.timeline()
-
-    timeline
-      .set(letters, offView)
-      .to(letters, {
-        scrollTrigger: {
-          trigger,
-          start: `-=${threshold}px center`,
-          once: true,
-          onEnter: () => {
-            gsap.to(letters, { ...onView, delay })
-          }
-        },
-      })
+    timeline.set(ref.current, { overflow: "hidden" })
+    timeline.set(letters, offView)
+    timeline.to(letters, {
+      scrollTrigger: {
+        trigger,
+        start: `-=${threshold}px center`,
+        once: true,
+        onEnter: () => {
+          gsap.to(letters, { ...onView, delay })
+        }
+      },
+    })
 
     return () => {
       timeline.revert()

@@ -33,8 +33,7 @@ export default function Hero({ }: Props) {
 
           const timeline = gsap.timeline()
 
-          timeline.to(".char", { y: "0%", delay: 1, duration: .8, stagger: 0.01 })
-          timeline.to("#hamburger", { scale: 1 })
+          timeline.to(".char", { y: "0%", delay: 1.2, ease: "power2.inOut", duration: .8, stagger: 0.01 })
         } else if (isMobile) {
           gsap.to(".char", { y: "0%", duration: 0 })
         }

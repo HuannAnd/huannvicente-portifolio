@@ -5,9 +5,11 @@ import TextFadeInOnView from "@/components/TextFadeInOnView";
 import SmoothScaleInOnView from "@/components/SmoothScaleInOnView";
 import ImageMockup from "./ImageMockup";
 
-interface Props { }
+interface Props {
+  images: string[]
+}
 
-export default function ClientDesignConcept({ }: Props) {
+export default function ClientDesignConcept({ images }: Props) {
   return (
     <section
       className="w-screen min-h-screen h-auto px-@section gap-4 py-[9vw] @desktop:grid @desktop:grid-cols-6"
@@ -21,12 +23,14 @@ export default function ClientDesignConcept({ }: Props) {
         </p>
       </TextFadeInOnView>
       <div className="min-h-[55vmin] gap-2 pt-@container @desktop:col-span-4 @desktopAndTablet:col-start-2 @mobile:flex @mobile:flex-col @desktopAndTablet:grid @desktopAndTablet:grid-cols-2">
-        <SmoothScaleInOnView trigger="#design-concept">
-          <ImageMockup src="/projects/599657419/poster.png" alt="" />
-        </SmoothScaleInOnView>
-        <SmoothScaleInOnView scrub={4} trigger="#design-concept">
+        {images.map(x => (
+          <SmoothScaleInOnView trigger="#design-concept">
+            <ImageMockup src={x} alt="" />
+          </SmoothScaleInOnView>
+        ))}
+        {/* <SmoothScaleInOnView scrub={4} trigger="#design-concept">
           <ImageMockup src="/projects/599657419/images/warren-poster3.png" alt="" />
-        </SmoothScaleInOnView>
+        </SmoothScaleInOnView> */}
       </div>
     </section>
   )

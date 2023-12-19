@@ -12,10 +12,10 @@ import TextFadeInOnView from "@/components/TextFadeInOnView";
 import SmoothScaleInOnView from "@/components/SmoothScaleInOnView";
 
 interface Props {
-
+  videos: string[]
 }
 
-export default function ClientObjective({ }: Props) {
+export default function ClientObjective({ videos }: Props) {
   const ref = useRef<HTMLDivElement>(null)
 
   return (
@@ -29,12 +29,15 @@ export default function ClientObjective({ }: Props) {
         </TextFadeInOnView>
       </div>
       <SmoothScaleInOnView trigger="#objective">
-        <video
-          autoPlay
-          loop
-          muted
-          className="pt-@container @desktop:h-[80vmin] @mobileAndTablet:w-full scale-[.9] mx-auto" src="/projects/599657419/videos/video-loading.mp4"
-        />
+        {videos.map(x => (
+          <video
+            autoPlay
+            loop
+            muted
+            className="pt-@container @desktop:h-[80vmin] @mobileAndTablet:w-full scale-[.9] mx-auto"
+            src={x}
+          />
+        ))}
       </SmoothScaleInOnView>
     </section>
   )

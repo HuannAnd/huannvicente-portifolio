@@ -41,7 +41,7 @@ export default function ClientSocialMedia({
             <small className="font-semibold font-roboto first-letter:inline-block overflow-hidden">&copy; {name}</small>
           </SlideInOnTriggerHover.Trigger>
           <SlideInOnTriggerHover.Trigger>
-            <small className="float-right font-roboto inline-block overflow-hidden">Art made by <span className="font-semibold">{artAuthor}</span></small>
+            <small className="float-right font-roboto inline-block overflow-hidden">Art made by <span className="font-semibold text-inherit [font-size:_inherit]">{artAuthor}</span></small>
           </SlideInOnTriggerHover.Trigger>
         </div>
       </a>

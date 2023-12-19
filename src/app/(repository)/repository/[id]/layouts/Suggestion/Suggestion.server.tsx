@@ -2,6 +2,7 @@ import ProjectsService from "@/services/projects"
 import * as ProjectsAssetsService from '@/app/ProjectsAssetsServices.actions'
 
 import ClientSuggestion from "./Suggestion.client"
+import ProjectSquareCard from "./ProjectSquareCard"
 
 
 
@@ -10,12 +11,13 @@ interface Props {
 }
 
 export default async function ServerSuggestion({ repositoryId }: Props) {
-  const nextProject = ProjectsService.getNextProjectByLastId(repositoryId)
-  let nextProjectPosterSrc = await ProjectsAssetsService.getProjectPoster(nextProject.id)
-  console.log("Next project poster pathname: ", nextProjectPosterSrc)
-
+  const otherProjects = ProjectsService
+    .getProjects()
+    .filter(x => x.id !== repositoryId)
 
   return (
-    <ClientSuggestion nextProjectPhotoSrc={nextProjectPosterSrc} nextProject={nextProject} />
+    <ClientSuggestion>
+      {otherProjects.map(x => <ProjectSquareCard {...x} />)}
+    </ClientSuggestion>
   )
 }

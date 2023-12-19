@@ -85,7 +85,7 @@ export default function Preloader({ requestPage }: Props) {
     <motion.div
       ref={ref}
       id='loading'
-      className="w-screen h-screen [clip-path:_polygon(0_0,_100%_0,_100%_100%,_0%_100%)] pointer-events-none select-none fixed z-[999] top-0 bg-[#070707]"
+      className="w-screen h-screen [clip-path:_polygon(0_0,_100%_0,_100%_100%,_0%_100%)] pointer-events-none select-none fixed z-[999] top-0 bg-[#080808]"
       initial={{ opacity: 1 }}
       transition={{ duration: .8, ease: [0.76, 0, 0.24, 1] }}
     >

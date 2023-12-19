@@ -1,17 +1,15 @@
 'use client';
 
-import { CameraControls } from "@react-three/drei";
 import { useEffect, useRef } from "react";
 
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 import { useThree } from "@react-three/fiber";
+import { CameraControls } from "@react-three/drei";
 
-import { centerPosition, leftPosition, rightPosition } from "./Camera.animation";
+import { centerPosition } from "./Camera.animation";
 import useWindowViewport from "@/hooks/useWindowViewport";
-
-import installMediaQueryWatcher from "@/utils/media-query-watcher";
 
 
 interface Props { }
@@ -23,20 +21,23 @@ export default function Camera({ }: Props) {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
-    const cameraContext = gsap.context(() => {
-      gsap.set(camera.position, centerPosition)
+    let mm = gsap.matchMedia()
+    mm.add(
+      {
+        isDesktop: "(min-width: 769px)",
+        isMobile: "(max-width: 768  px)",
+      },
+      (context) => {
+        let { isDesktop, isMobile } = context.conditions!
 
-      installMediaQueryWatcher("(max-width: 768px)", (matches) => {
-        if (matches) {
-          gsap.to(camera.position, centerPosition)
-        } else {
-          
+        if (isDesktop || isMobile) {
+          gsap.set(camera.position, centerPosition)
         }
-      })
-    },)
+      }
+    )
 
     return () => {
-      cameraContext.revert()
+      mm.revert()
     }
   },
     [camera, ref, windowViewport]

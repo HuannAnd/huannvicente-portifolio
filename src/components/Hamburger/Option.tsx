@@ -6,11 +6,12 @@ import useSetCursor from "@/hooks/useSetCursor"
 
 import { fades } from "./Option.animation";
 import useLocomotiveScroll from "@/contexts/LocomotiveScrollProvider/useLocomotiveScroll";
+import useRedirectWithPageTransition from "@/hooks/useRedirectWithPageTransition";
 
 interface Props {
   index: number,
-  name: string,
-  id: string,
+  path: string,
+  alias: string,
   radius: number,
   amountOfVertexes: number
 }
@@ -18,27 +19,25 @@ interface Props {
 export default function Option({
   index,
   amountOfVertexes,
-  name,
+  path,
   radius,
-  id
+  alias
 }: Props) {
-  let angleInRadians = index * (Math.PI / (2 * (amountOfVertexes - 1)))
+  let angleInRadians = amountOfVertexes <= 1 ? Math.PI / 4 : index * (Math.PI / (2 * (amountOfVertexes - 1)))
   const left = radius * (1 - Math.cos(angleInRadians))
   const bottom = radius * (1 - Math.sin(angleInRadians))
-  const locomotiveScroll = useLocomotiveScroll()
+  const pageTransitionTo = useRedirectWithPageTransition()
 
   const setCursor = useSetCursor()
   const setCursorToHoverMode = () => setCursor({ mode: "hovered" })
 
   const transform = useMotionTemplate`translate(-50%, 50%)`
 
-  const scrollTo = () => locomotiveScroll?.scrollTo(`#${id}`)
-
-  console.log("Id value: ", id)
+  const redirectToPage = () => pageTransitionTo(path)
 
   return (
     <motion.h5
-      onClick={scrollTo}
+      onClick={redirectToPage}
       onMouseEnter={setCursorToHoverMode}
       variants={fades}
       custom={{ left, bottom, index }}
@@ -48,7 +47,7 @@ export default function Option({
       style={{ transform }}
       className="font-semibold w-max inline-block absolute text-white uppercase"
     >
-      {name}
+      {alias}
     </motion.h5>
   )
 }

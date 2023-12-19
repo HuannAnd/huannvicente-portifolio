@@ -7,11 +7,10 @@ import { useAnimate } from "framer-motion";
 import {
   ICursor,
   TCursorMode,
-  TCursorIcon,
   TCursorModeContext,
   TCursorIsLoadingContext,
   TCursorTitleContext,
-  TCursorIconContext,
+  TCursorProjectIdContext,
   TCursorAnimationScopeContext
 } from "./types";
 
@@ -19,17 +18,17 @@ import {
 interface CursorFollowerProviderProps
   extends React.PropsWithChildren { }
 
-export const CursorModeContext = createContext<TCursorModeContext>(null);
+export const CursorModeContext = createContext<TCursorModeContext>(null);3
 export const CursorTitleContext = createContext<TCursorTitleContext>(null);
 export const CursorIsLoadingContext = createContext<TCursorIsLoadingContext>(null);
-export const CursorIconContext = createContext<TCursorIconContext>(null);
+export const CursorProjectIdContext = createContext<TCursorProjectIdContext>(null);
 export const SetCursorStatesContext = createContext<(config: Partial<ICursor>) => void>(() => { });
 export const CursorAnimationScopeContext = createContext<TCursorAnimationScopeContext>(null);
 
 
 function CursorFollowerProvider({ children }: CursorFollowerProviderProps) {
   const [isLoading, setIsLoading] = useState(true)
-  const [icon, setIcon] = useState<TCursorIcon>("none")
+  const [projectId, setProjectId] = useState<number | null>(null)
   const [title, setTitle] = useState<string | null>(null)
   const [mode, setMode] = useState<TCursorMode>("normal")
   const [scope] = useAnimate()
@@ -38,8 +37,8 @@ function CursorFollowerProvider({ children }: CursorFollowerProviderProps) {
     if (config.mode !== undefined) {
       setMode(config.mode)
     }
-    if (config.icon !== undefined) {
-      setIcon(config.icon)
+    if (config.projectId !== undefined) {
+      setProjectId(config.projectId)
     }
     if (config.isLoading !== undefined) {
       setIsLoading(config.isLoading)
@@ -54,16 +53,15 @@ function CursorFollowerProvider({ children }: CursorFollowerProviderProps) {
   return (
     <CursorTitleContext.Provider value={title}>
       <CursorIsLoadingContext.Provider value={isLoading}>
-        <CursorIconContext.Provider value={icon}>
+        <CursorProjectIdContext.Provider value={projectId}>
           <CursorModeContext.Provider value={mode}>
             <CursorAnimationScopeContext.Provider value={scope}>
               <SetCursorStatesContext.Provider value={handleCursor}>
-                {/* <Cursor /> */}
                 {children}
               </SetCursorStatesContext.Provider >
             </CursorAnimationScopeContext.Provider>
           </CursorModeContext.Provider>
-        </CursorIconContext.Provider>
+        </CursorProjectIdContext.Provider>
       </CursorIsLoadingContext.Provider>
     </CursorTitleContext.Provider>
 
