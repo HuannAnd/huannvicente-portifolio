@@ -53,17 +53,16 @@ export default function Preloader({ requestPage }: Props) {
   const slideIn = async () => {
     timeline.set(ref.current, { transformOrigin: "top" })
 
-    await timeline
-      .fromTo(
-        "#arc",
-        { opacity: 0 },
-        { opacity: 1, duration: .5 }
-      )
-      .fromTo(
-        ref.current,
-        { height: "0%" },
-        { height: "100%", duration: .8, ease: "power3.out" }
-      )
+    await timeline.fromTo(
+      ref.current,
+      { height: "0%" },
+      { height: "100%" }
+    )
+    await timeline.fromTo(
+      "#arc",
+      { opacity: 0 },
+      { opacity: 1, duration: .5 }
+    )
   }
 
   const slideOut = async () => {
@@ -75,17 +74,17 @@ export default function Preloader({ requestPage }: Props) {
       { opacity: 0, duration: .5 }
     )
     await timeline.fromTo(
-      ref.current,
-      { height: "100%" },
-      { height: "0%", duration: .8, ease: "power3.out" }
-    )
+        ref.current,
+        { height: "100%" },
+        { height: "0%" }
+      )
   }
 
   return (
     <motion.div
       ref={ref}
       id='loading'
-      className="w-screen h-screen [clip-path:_polygon(0_0,_100%_0,_100%_100%,_0%_100%)] pointer-events-none select-none fixed z-[999] top-0 bg-[#080808]"
+      className="w-screen h-screen [clip-path:_polygon(0_0,_100%_0,_100%_100%,_0%_100%)] pointer-events-none select-none fixed z-[999] top-0 bg-[#050505]"
       initial={{ opacity: 1 }}
       transition={{ duration: .8, ease: [0.76, 0, 0.24, 1] }}
     >

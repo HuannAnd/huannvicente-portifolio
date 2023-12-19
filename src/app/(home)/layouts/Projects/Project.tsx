@@ -17,7 +17,6 @@ interface ProjectProps
   extends Pick<IProjectData, "name" | "isInMaintenance" | "id" | "repository_url">,
   Omit<React.HTMLAttributes<HTMLDivElement>, "id"> {
   nTh: number,
-  hasDomain: boolean
 }
 
 function Project({
@@ -65,7 +64,7 @@ function Project({
         alt="Project Image"
       />
       <div className="flex w-full items-center justify-between">
-        <h3 className="duration-300 order-2 text-[#aaa] uppercase ease-smooth truncate">{name}</h3>
+        <h3 className="duration-300 order-2 text-@white-300 uppercase ease-smooth truncate">{name}</h3>
         <small className="text-[.6875rem] font-roboto @mobileAndTablet:[display:_none] @desktop:right-0 @mobileAndTablet:relative">{tierInBaseFormat}</small>
       </div>
     </div >

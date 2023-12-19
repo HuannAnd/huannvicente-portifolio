@@ -28,7 +28,7 @@ export default function LoadingLittleOrganicScene({ depth = 30 }) {
         >
           <OrganicFluid />
           {/* <PerformanceMonitor onDecline={() => setDpr(Math.min(dpr - .1, .1))} onIncline={() => setDpr(Math.min(dpr + .05, 1.5))} /> */}
-          <color attach="background" args={["#070707"]} />
+          <color attach="background" args={["#050505"]} />
           <Camera />
         </Canvas>
         <img id="arc" style={{ animation: "spinOrganicFluid 1.5s linear infinite", transformOrigin: "-50%" }} className='fixed left-1/2 w-[50vw] @mobileAndTablet:[scale:_0.3] top-1/2' src="/OrangeArc.png" alt="" />

@@ -9,7 +9,7 @@
 - [x] Colocar About de forma _sticky_ 
 - [x] Adicionar/Atualizar os projetos novos para exibir em Projects
 - [x] Estilizar para mobile
-- [ ] Antes de fazer o _deploy_, tirar os _console logs_
+- [x] Antes de fazer o _deploy_, tirar os _console logs_
 
 # IDEAIS FUTURAS
 
@@ -19,7 +19,7 @@
 - [ ] PageTransition de uma esfera em _furred_
 - [x] Refatorar Hamburger
 - [ ] Ajustar o layout para o Hamburger ficar no layout.tsx de alguma forma
-- [ ] Macro para criar/sincronizar os repositórios e empurrar para a _public_ do projeto
+- [x] Macro para criar/sincronizar os repositórios e empurrar para a _public_ do projeto
 
 
 

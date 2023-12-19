@@ -126,7 +126,7 @@ export default function Hero({ title, description, posterSrc }: Props) {
         <img
           data-scroll
           data-scroll-speed="-0.3"
-          className="col-span-5 z-10 @mobileAndTablet:order-1 @mobileAndTablet:col-span-full h-[calc(100%_+_100px)] @desktop:min-h-screen object-cover"
+          className="col-span-5 z-10 @mobileAndTablet:order-1 w-full @mobileAndTablet:col-span-full h-[calc(100%_+_100px)] @desktop:min-h-screen object-cover"
           src={posterSrc}
           alt="Project Poster Image"
         />

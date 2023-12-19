@@ -16,9 +16,9 @@ export default function ClientDesignConcept({ images }: Props) {
       id="design-concept"
       data-name="Design Concept"
     >
-      <h5 className="uppercase block tracking-tighter text-[1rem] text-[#aaa]">Design Concept</h5>
+      <h5 className="uppercase block tracking-tighter text-[1rem] text-@white-200">Design Concept</h5>
       <TextFadeInOnView className="@desktop:col-span-2 mix-blend-difference" trigger="#design-concept">
-        <p className="text-white @mobileAndTablet:pt-@gap @desktop:col-start-2 @desktop:col-span-3">
+        <p className="text-@white-300 @mobileAndTablet:pt-@gap @desktop:col-start-2 @desktop:col-span-3">
           The design concept for EduLink was conceived with a central focus on accessibility, innovation, and community. Inspired by the vision to make education more inclusive, we aimed for an intuitive and user-friendly design to ensure easy and barrier-free access to educational content. We prioritized an inclusive approach, ensuring the design is adaptable to various learning styles and user needs. EduLink&apos;s interface was developed to be accessible to all, regardless of prior technical skills or physical limitations.
         </p>
       </TextFadeInOnView>
@@ -28,9 +28,6 @@ export default function ClientDesignConcept({ images }: Props) {
             <ImageMockup src={x} alt="" />
           </SmoothScaleInOnView>
         ))}
-        {/* <SmoothScaleInOnView scrub={4} trigger="#design-concept">
-          <ImageMockup src="/projects/599657419/images/warren-poster3.png" alt="" />
-        </SmoothScaleInOnView> */}
       </div>
     </section>
   )

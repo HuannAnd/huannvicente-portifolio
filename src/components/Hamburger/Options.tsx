@@ -9,7 +9,6 @@ interface Props { }
 
 const pages = [
   { alias: "works", path: "/" },
-  { alias: "contact", path: "/contact" },
 ]
 export default function Options({ }: Props) {
   const windowViewport = useWindowViewport()

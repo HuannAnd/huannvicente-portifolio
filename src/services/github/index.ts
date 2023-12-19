@@ -42,7 +42,6 @@ class GithubServiceHttpClient {
       const auth = GithubHttpClient.createAuthHeader(this.token)
 
       const repos = await GithubHttpClient.get<GitHubTypes.GithubUserReposBody>(`/user/repos`, auth)
-      console.log("Full responde of repos: ", repos)
       const myRepositories = repos.filter(x => x.owner.login === "HuannAnd")
       const necessaryReposData = myRepositories.map(x => ({
         id: x.id,
@@ -79,18 +78,17 @@ class GithubServiceHttpClient {
     }
   }
   public async getProjectLanguages(repositoryId: number): Promise<{ language: string, percentage: number }[]> {
-    console.log("token inside GithubServices methods: ", this.token)
     const auth = GithubHttpClient.createAuthHeader(this.token)
 
     const languages = await GithubHttpClient.get<GitHubTypes.GithubLanguagesBody>(`/repositories/${repositoryId}/languages`, auth)
     const mapLangs = new Map(Object.entries(languages))
 
-    const quantitieOfCharsInRepo = Array.from(mapLangs).reduce((total, [_, value]) => total + value, 0)
+    const quantitiesOfCharsInRepo = Array.from(mapLangs).reduce((total, [_, value]) => total + value, 0)
 
     const frameworkData: { language: string, percentage: number }[] = [];
 
     mapLangs.forEach((value, key) => {
-      let percentage = (value / quantitieOfCharsInRepo) * 100
+      let percentage = (value / quantitiesOfCharsInRepo) * 100
       percentage = eval(Number(percentage).toFixed(2)) as number
 
       frameworkData.push({ language: key, percentage });
@@ -100,7 +98,6 @@ class GithubServiceHttpClient {
   }
   public async getMetadataRepository(repositoryId: number): Promise<{ title: string, description: string }> {
     try {
-      console.log("token inside GithubServices methods: ", this.token)
       const repository = await this.getRepositoryById(repositoryId)
 
       if (!repository) throw new Error

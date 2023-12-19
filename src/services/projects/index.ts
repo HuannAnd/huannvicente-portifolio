@@ -7,13 +7,6 @@ class ProjectsService {
   constructor(
     private projects: IProjectData[] = data
   ) { }
-  public isInProduction(projectId: number) {
-    const project = this.getProjectById(projectId)
-    console.log("Project: ", project)
-
-    if (!("has_domain" in Object.keys(project))) return false
-    return project.has_domain
-  }
   private getProjectById(projectId: number) {
     return this.projects.find(x => x.id === projectId)!
   }
@@ -31,8 +24,8 @@ class ProjectsService {
   }
 
   public getWorkInProgressProjects() {
-    const projectsInMaintance = this.projects.filter(x => x.isInMaintenance);
-    return projectsInMaintance
+    const projectsInMaintenance = this.projects.filter(x => x.isInMaintenance);
+    return projectsInMaintenance
   }
 
   public getDevelopedProjects() {
@@ -42,15 +35,6 @@ class ProjectsService {
 
   public getProjects() {
     return this.projects
-  }
-
-  public getProjectUrls(projectId: number) {
-    const project = this.getProjectById(projectId)!
-
-    return {
-      "domain_url": project.domain_url,
-      "github_repository_url": project.repository_url
-    }
   }
 }
 

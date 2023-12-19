@@ -38,6 +38,9 @@ module.exports = {
         darkBg: "#444",
         lightBg: "#fff",
         lightPrimary: "#222",
+        "@white-100": "#fff",
+        "@white-200": "#bbb",
+        "@white-300": "#999"
       },
       textColor: {
         lightPrimary: "#222",
