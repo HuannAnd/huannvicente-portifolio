@@ -30,7 +30,7 @@ export default function LoadingProvider({ children }: LoadingProviderProps) {
   }
 
   const resetCursor = () => {
-    setCursor({ isLoading: false, mode: "normal", title: null, icon: "none" })
+    setCursor({ isLoading: false, mode: "normal", title: null, projectId: null })
     document.documentElement.style.cursor = "default"
   }
 
