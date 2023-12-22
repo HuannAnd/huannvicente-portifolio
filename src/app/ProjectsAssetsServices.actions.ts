@@ -5,7 +5,7 @@ import fs from 'fs/promises'
 export async function getProjectsImages(projectId: number) {
   let staticDirectoryPathname = `./public/projects/${projectId}/images`
   if (process.env.VERCEL_URL) {
-    staticDirectoryPathname = `${process.env.VERCEL_URL}/projects/${projectId}/images`
+    staticDirectoryPathname = `https://${process.env.VERCEL_URL}/projects/${projectId}/images`
   }
 
   let images = await fs.readdir(staticDirectoryPathname)
@@ -17,7 +17,7 @@ export async function getProjectsImages(projectId: number) {
 export async function getProjectVideos(projectId: number) {
   let staticDirectoryPathname = `./public/projects/${projectId}/videos`
   if (process.env.VERCEL_URL) {
-    staticDirectoryPathname = `${process.env.VERCEL_URL}/projects/${projectId}/videos`
+    staticDirectoryPathname = `https://${process.env.VERCEL_URL}/projects/${projectId}/videos`
   }
 
   let videos = await fs.readdir(staticDirectoryPathname)
