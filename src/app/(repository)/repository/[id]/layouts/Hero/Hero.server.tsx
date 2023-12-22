@@ -11,7 +11,7 @@ interface Props {
 
 
 export default async function ServerHero({ repositoryId }: Props) {
-  const { title, description } = await GithubService.getMetadataRepository(repositoryId)
+  const { title } = await GithubService.getMetadataRepository(repositoryId)
   const poster = await ProjectsAssetsService.getProjectPoster(repositoryId)
   var creationDate = await GithubService.getRepositoryCreationDate(repositoryId)
   creationDate = format(new Date(creationDate), "yyyy',' dd 'of' LLLL")
