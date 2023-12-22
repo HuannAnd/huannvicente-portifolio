@@ -22,7 +22,7 @@ export default function ClientContact({ children }: Props) {
             Keep Together
           </h1>
         </LettersSlideInOnView>
-        <h5 className="uppercase block pt-@container font-semibold mix-blend-difference z-10">Socials<span className="font-roboto absolute translate-x-full -translate-y-1/2 text-@white-300">2</span></h5>
+        <h5 className="uppercase block pt-@container font-semibold mix-blend-difference z-10">Socials<span className="font-montserrat absolute translate-x-full -translate-y-1/2 text-@white-300">2</span></h5>
       </div>
       <Polygon trigger="#contact" className="absolute right-0 -z-[1]" radius={500} isRegular vertexes={5} />
       <article className="pt-@container @mobileAndTablet:gap-4 h-auto w-auto justify-center items-end @mobileAndTablet:mx-auto @desktop:ml-auto @mobileAndTablet:items-center @mobile:row-span-2 flex flex-col @mobile:justify-center">

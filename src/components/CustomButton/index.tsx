@@ -27,7 +27,6 @@ export default function Component({ className, children, variant, ...rest }: Com
   return (
     <button {...rest} className={cn(buttonVariants({ variant, className }))}>
       {children}
-      
     </button>
   )
 }

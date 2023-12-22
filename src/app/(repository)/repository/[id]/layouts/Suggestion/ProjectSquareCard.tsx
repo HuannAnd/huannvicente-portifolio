@@ -33,10 +33,10 @@ export default function ProjectSquareCard({ id, name }: Props) {
         />
         <div className="absolute flex justify-between w-full pb-4 px-4 bottom-0">
           <LettersSlideInOnTriggerHover.Trigger>
-            <small className="font-semibold font-roboto overflow-hidden inline-block text-white">&copy; {name}</small>
+            <small className="font-semibold font-montserrat overflow-hidden inline-block text-white">&copy; {name}</small>
           </LettersSlideInOnTriggerHover.Trigger>
           <LettersSlideInOnTriggerHover.Trigger>
-            <small className="float-right font-roboto overflow-hidden text-white inline-block">Art made by <strong className="font-roboto">HuannAnd</strong></small>
+            <small className="float-right font-montserrat overflow-hidden text-white inline-block">Art made by <strong className="font-montserrat">HuannAnd</strong></small>
           </LettersSlideInOnTriggerHover.Trigger>
         </div>
       </div>

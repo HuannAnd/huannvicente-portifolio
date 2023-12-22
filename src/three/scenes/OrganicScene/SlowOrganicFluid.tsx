@@ -23,7 +23,7 @@ export default function OrganicFluid({ }: Props) {
   })
 
   useFrame((state, dt) => {
-    shader.current.uTime = state.clock.getElapsedTime() / 5
+    shader.current.uTime = state.clock.getElapsedTime() / 2
 
     mesh.current.rotation.x += dt
     mesh.current.rotation.y += dt

@@ -77,6 +77,14 @@ class GithubServiceHttpClient {
       throw new Error("Failed to fetch README.md content from GitHub")
     }
   }
+  public async getRepositoryCreationDate(repositoryId: number) {
+    const auth = GithubHttpClient.createAuthHeader(this.token)
+
+    const creationDate = (await this.getRepositoryById(repositoryId)).created_at
+
+    return creationDate
+  } 
+
   public async getProjectLanguages(repositoryId: number): Promise<{ language: string, percentage: number }[]> {
     const auth = GithubHttpClient.createAuthHeader(this.token)
 

@@ -16,44 +16,78 @@ h2 {
 }
 
 h3 {
-  font-size: calc(var(--text-heading) * 0.48);
-  letter-spacing: calc(var(--text-heading) * 0.48 * -0.085);
-  font-family: var(--font-roboto);
-  font-weight: 400;
+  text-transform: uppercase;
+  font-size: calc(var(--text-heading) * 0.33);
+  letter-spacing: calc(var(--text-heading) * 0.33 * -0.085);
+  font-family: var(--font-syne);
+  font-weight: 600;
 }
 
-h5 {
+h5,
+a {
   text-transform: uppercase;
+  color: var(--text-color-gray);
   font-size: calc(var(--text-heading) * 0.19);
   letter-spacing: calc(var(--text-heading) * 0.19 * -0.05);
   font-family: var(--font-syne);
   font-weight: 600;
 }
 
+h5 > span,
+a > span {
+  text-transform: uppercase;
+  color: var(--text-color-gray);
+  font-size: calc(var(--text-body) * 0.57);
+  letter-spacing: normal;
+  font-family: var(--font-montserrat);
+  font-weight: 400;
+}
+
 @media (width <= 768px) {
   h1 {
-    font-size: calc(var(--text-heading) * 0.66)
+    font-size: calc(var(--text-heading) * 0.66);
   }
 
-  h5 {
+  h5,
+  a {
     font-size: calc(var(--text-heading) * 0.44);
+  }
+
+  h5 > span,
+  h5 > strong {
+    font-size: calc(var(--text-body) * 0.69);
   }
 }
 
 /* BODY */
 
 p,
-a,
 li {
-  font-size: var(--text-body);
-  font-weight: 300;
-  line-height: 1.75;
+  font-size: calc(var(--text-body) * 1.44);
+  letter-spacing: calc(var(--text-body) * 1.44 * -0.04);
+  color: var(--text-color-light);
+  letter-spacing: normal;
+  font-weight: 400;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+p.small {
+  font-size: calc(var(--text-body) * 0.83);
+  letter-spacing: calc(var(--text-body) * 0.83 * -0.04);
 }
 
 small,
 strong {
   font-size: calc(var(--text-body) * 0.57);
   font-family: var(--font-syne);
+  font-weight: 400;
+}
+
+small > strong {
+  font-size: inherit;
+  font-weight: 600;
+  font-family: inherit;
 }
 
 span {
@@ -67,14 +101,16 @@ span {
   }
 
   p,
-  a,
   li {
     font-size: calc(var(--text-body) * 1.2);
+  }
+
+  p.small {
+    font-size: calc(var(--text-body));
+    letter-spacing: calc(var(--text-body) * -0.04);
   }
 
   span {
     font-size: calc(var(--text-body) * 0.69);
   }
 }
-
-

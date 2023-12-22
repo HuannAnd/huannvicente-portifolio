@@ -52,7 +52,7 @@ function Project({
   return (
     <div
       data-project
-      className="@desktop:col-span-full @mobileAndTablet:border-b  @mobileAndTablet:border-b-[#222] py-@gap z-10 group/item @desktop:px-[calc(var(--gap-padding)_*_.5)] [transform-origin:top] @mobileAndTablet:flex-col @mobileAndTablet:gap-4 @mobileAndTablet:justify-center flex bg-transparent relative cursor-pointer justify-between items-center  h-auto"
+      className="@desktop:col-span-full @desktop:pl-@gap @desktop:py-@gap @desktop:border-r @desktop:border-r-[#222] @mobileAndTablet:border-b  @mobileAndTablet:border-b-[#222] py-@gap z-10 group/item @desktop:px-[calc(var(--gap-padding)_*_.5)] [transform-origin:top] @mobileAndTablet:flex-col @mobileAndTablet:gap-4 @mobileAndTablet:justify-center flex bg-transparent relative cursor-pointer justify-between items-center  h-auto"
       onClick={handleOnClick}
       onMouseEnter={handleOnMouseEnter}
       onMouseDown={setCursorToPressMode}
@@ -65,7 +65,7 @@ function Project({
       />
       <div className="flex w-full items-center justify-between">
         <h3 className="duration-300 order-2 text-@white-300 uppercase ease-smooth truncate">{name}</h3>
-        <small className="text-[.6875rem] font-roboto @mobileAndTablet:[display:_none] @desktop:right-0 @mobileAndTablet:relative">{tierInBaseFormat}</small>
+        <small className="text-[.6875rem] font-montserrat @mobileAndTablet:[display:_none] @desktop:right-0 @mobileAndTablet:relative">{tierInBaseFormat}</small>
       </div>
     </div >
   );

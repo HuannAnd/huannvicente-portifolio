@@ -15,6 +15,7 @@ interface Props
 
 const offView = {
   y: "100%",
+  scaleY: 0,
   opacity: 0,
   overflow: "hidden",
   contain: "paint"
@@ -23,9 +24,10 @@ const offView = {
 const onView = {
   y: "0%",
   opacity: 1,
-  ease: "power4.inOut",
-  duration: 0.8,
-  stagger: 0.03
+  scaleY: 1,
+  ease: "power4.out",
+  duration: 1.2,
+  stagger: 0.04
 }
 
 export default function LettersSlideInOnView({ children, trigger, threshold = 20, delay = 0 }: Props) {

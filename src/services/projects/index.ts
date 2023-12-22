@@ -11,6 +11,22 @@ class ProjectsService {
     return this.projects.find(x => x.id === projectId)!
   }
 
+  public getSiteURL(projectId: number) {
+    return this.getProjectById(projectId).site_url
+  }
+
+  public getRepositoryURL(projectId: number) {
+    return this.getProjectById(projectId).repository_url
+  }
+
+  public getRepositoryDesignConceptCopyright(projectId: number) {
+    return this.getProjectById(projectId).design_concept_text
+  }
+
+  public getRepositoryObjetiveCopyright(projectId: number) {
+    return this.getProjectById(projectId).objetive_text
+  }
+
   public getNextProjectByLastId(projectId: number) {
     let nextIndex = this.projects.findIndex(x => x.id === projectId) + 1
     nextIndex = nextIndex % this.projects.length

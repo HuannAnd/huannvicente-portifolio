@@ -23,7 +23,9 @@ export default function Option({
   radius,
   alias
 }: Props) {
-  let angleInRadians = amountOfVertexes <= 1 ? Math.PI / 4 : index * (Math.PI / (2 * (amountOfVertexes - 1)))
+  let angleInRadians = amountOfVertexes <= 1
+    ? Math.PI / 4
+    : index * (Math.PI / (2 * (amountOfVertexes - 1)))
   const left = radius * (1 - Math.cos(angleInRadians))
   const bottom = radius * (1 - Math.sin(angleInRadians))
   const pageTransitionTo = useRedirectWithPageTransition()

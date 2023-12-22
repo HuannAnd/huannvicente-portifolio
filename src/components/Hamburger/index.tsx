@@ -15,6 +15,8 @@ import Circle from "./Circle"
 
 interface Props { }
 
+
+
 export default function Hamburger({ }: Props) {
   const ref = useRef<HTMLDivElement>(null)
   const [isOpen, setIsOpen] = useState(false)
@@ -24,7 +26,6 @@ export default function Hamburger({ }: Props) {
   useWindowEventListenerEffect("click", () => {
     if (!isOpen) return
     setIsOpen(false)
-
   })
 
   useEffect(() => {

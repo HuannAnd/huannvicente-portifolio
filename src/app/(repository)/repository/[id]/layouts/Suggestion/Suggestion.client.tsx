@@ -22,7 +22,7 @@ export default function ClientSuggestion({ children }: Props) {
     >
       <LettersSlideInOnView trigger="#suggestion" >
         <h1 className="@desktop:mb-32 @mobileAndTablet:mb-4 sticky pt-@container top-0 z-10 text-[#fff] [contain:_paint] overflow-hidden">
-          Discover My <br className="@desktop:[display:_none]" /> Journey
+          Discover
           <br />
           And Surprise
         </h1>

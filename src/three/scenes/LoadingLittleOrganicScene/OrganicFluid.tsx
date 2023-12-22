@@ -19,7 +19,7 @@ export default function OrganicFluid({ }: Props) {
   const [data] = useState({
     radius: 5,
     color: new THREE.Color(`rgba(21,98,254,255)`),
-    bump: .3,
+    bump: 0.05,
     z: 0
   })
 
@@ -43,19 +43,20 @@ export default function OrganicFluid({ }: Props) {
   }, [])
 
   useFrame((state, dt) => {
-    shader.current.uTime = state.clock.getElapsedTime()
+    shader.current.uTime = state.clock.getElapsedTime() / .8
 
     mesh.current.rotation.z -= dt
     // mesh.current.rotation.y += dt
   })
 
   return (
-    <mesh ref={mesh} scale={0.05} position={[0, 0, -20]}>
+    <mesh ref={mesh} scale={0.08} position={[0, 0, -20]}>
       <sphereGeometry ref={geometry} args={[data.radius, 25, 25]} />
       <noiseShaderMaterial
         uBump={data.bump}
         // uColor={"#188bfe"}
         uColor={"#cc6804"}
+        // uColor={"#fff"}
         // uColor={"#619304"}
         // uColor={"#73079e"}
         // uColor="#893a1b"

@@ -1,7 +1,7 @@
 import './styles/globals.css'
 import './styles/typography.css'
 
-import { Roboto, Syne } from 'next/font/google'
+import { Montserrat, Syne } from 'next/font/google'
 
 const syne = Syne({
   subsets: ["latin"],
@@ -10,11 +10,11 @@ const syne = Syne({
   variable: "--font-syne",
 })
 
-const roboto = Roboto({
+const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "300", "500", "700", "900"],
   style: ["italic", "normal"],
-  variable: "--font-roboto",
+  variable: "--font-montserrat",
 })
 
 import Providers from '@/contexts/Providers'
@@ -37,7 +37,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${roboto.variable} ${syne.variable} w-screen overflow-x-hidden font-roboto min-h-screen relative bg-[#050505] selection:bg-white selection:text-lightPrimary`}>
+      <body className={`${montserrat.variable} ${syne.variable} w-screen overflow-x-hidden font-montserrat min-h-screen relative bg-[#050505]`}>
         <Providers>
           {/* <Hamburger /> */}
           <Cursor />

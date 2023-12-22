@@ -18,7 +18,7 @@ export default async function ServerContact({ }: Props) {
     {
       name: "Dribbble",
       artAuthor: "heyjeuss",
-      href: "",
+      href: "https://dribbble.com/HuannAnd",
       imageURL: "/dribbble-brand.png"
     },
   ]

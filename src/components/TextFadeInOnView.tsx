@@ -31,24 +31,22 @@ export default function TextFadeInOnView({ children, threshold = 20, trigger, de
         if (isDesktop) {
           gsap.set(ref.current, {
             opacity: 0,
-            y: "-10%",
             scrollTrigger: {
               start: `-=${threshold}px center`,
               once: true,
               markers: false,
-              onEnter: () => { gsap.to(ref.current, { opacity: 1, y: "0%", duration: 1.2, delay: delayInSeconds }) },
+              onEnter: () => { gsap.to(ref.current, { opacity: 1, ease: "power2.inOut",  duration: 0.4, delay: delayInSeconds }) },
               trigger
             }
           })
         } else if (isMobile) {
           gsap.set(ref.current, {
             opacity: 0,
-            y: "-5%",
             scrollTrigger: {
               start: `-=${threshold}px center`,
               once: true,
               markers: false,
-              onEnter: () => { gsap.to(ref.current, { opacity: 1, y: "0%", duration: 1.2, delay: delayInSeconds }) },
+              onEnter: () => { gsap.to(ref.current, { opacity: 1, ease: "power2.inOut", duration: 0.4, delay: delayInSeconds }) },
               trigger
             }
           })

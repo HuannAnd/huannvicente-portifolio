@@ -7,7 +7,6 @@ export async function getProjectsImages(projectId: number) {
   let images = await fs.readdir(staticDirectoryPathname)
   images = images.map(x => `/projects/${projectId}/images/${x}`)
 
-  // console.log("Images content: ", images)
   return images
 }
 
@@ -16,7 +15,6 @@ export async function getProjectVideos(projectId: number) {
   let videos = await fs.readdir(staticDirectoryPathname)
   videos = videos.map(x => `/projects/${projectId}/videos/${x}`)
 
-  // console.log("Videos content: ", videos)
   return videos
 }
 

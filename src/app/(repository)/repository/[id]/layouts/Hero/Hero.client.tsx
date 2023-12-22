@@ -6,17 +6,31 @@ import gsap from "gsap"
 import ScrollTrigger from "gsap/ScrollTrigger"
 
 import removeSpecialCharacters from "@/utils/remove-special-characters"
-import { time } from "console";
+import Link from "@/components/Link";
+import useSetCursor from "@/hooks/useSetCursor";
 
 interface Props {
   title: string,
-  description: string,
+  siteURL: string | null,
+  repositoryURL: string | null,
+  creationDate: string,
   posterSrc: string
 }
 
-export default function Hero({ title, description, posterSrc }: Props) {
+export default function Hero({
+  title,
+  siteURL,
+  repositoryURL,
+  posterSrc,
+  creationDate
+}: Props) {
   const ref = useRef<HTMLDivElement>(null)
   const titleWithoutSpecialCharacters = removeSpecialCharacters(title)
+
+  const setCursor = useSetCursor()
+
+  const setCursorToNormal = () => setCursor({ mode: "normal", title: null })
+  const setCursorToHoveredMode = () => setCursor({ mode: "hovered", title: null })
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
@@ -41,10 +55,10 @@ export default function Hero({ title, description, posterSrc }: Props) {
             }
           )
           timeline.set(
-              "#image",
-              {
+            "#image",
+            {
               clipPath: "polygon(0 0, 0 0, 0 100%, 0 100%)"
-            }       
+            }
           )
 
           timeline.to(
@@ -106,23 +120,52 @@ export default function Hero({ title, description, posterSrc }: Props) {
     <section
       ref={ref}
       id="projectHero"
-      className="w-screen min-h-screen pb-[9vw] grid @desktop:grid-cols-6 @mobileAndTablet:col-span-4 relative mx-auto clip-around"
+      className="w-screen h-[calc(100dvh_+_9vw)] pb-[9vw] grid @desktop:grid-cols-6 @mobileAndTablet:col-span-4 relative mx-auto clip-around"
     >
-      <ul className="@desktop:col-span-2 @mobileAndTablet:order-2 @mobileAndTablet:col-span-full bg-[#050505] @mobileAndTablet:pt-@container @desktop:pt-[calc(3vw_+_50px)] px-@section text-white">
-        <li>
-          <h5 className="text-[#aaa] font-bold font-syne uppercase">Title</h5>
-          <p className="capitalize">{titleWithoutSpecialCharacters}</p>
-        </li>
-        <li className="pt-@gap">
-          <h5 className="text-[#aaa] font-bold font-syne uppercase">Design/Development</h5>
-          <p>HuannAND</p>
-        </li>
-        <li className="pt-@gap">
-          <h5 className="text-[#aaa] font-bold font-syne uppercase">Created</h5>
-          <p>2023, 22 of January</p>
-        </li>
-      </ul>
-      <div id="image" className="w-full @desktop:col-span-4 overflow-hidden">
+      <div className="@desktop:col-span-2 @desktop:pl-@section @mobileAndTablet:px-@section flex flex-col justify-between relative @mobileAndTablet:order-2 @mobileAndTablet:col-span-full bg-[#050505] @mobileAndTablet:pt-@container @desktop:pt-[3vw] text-white">
+        <ul className="px-@gap">
+          <li>
+            <h5 className="font-bold font-syne uppercase">Title</h5>
+            <p className="capitalize small">{titleWithoutSpecialCharacters}</p>
+          </li>
+          <li className="pt-@gap">
+            <h5 className="font-bold font-syne uppercase">Design/Development</h5>
+            <p className="small">HuannAND</p>
+          </li>
+          <li className="pt-@gap ">
+            <h5 className="font-bold font-syne uppercase">Created</h5>
+            <p className="small">{creationDate}</p>
+          </li>
+        </ul>
+        <div className="@desktop:pb-@container">
+          {repositoryURL ? (
+            <Link
+              href={repositoryURL}
+              target="_blank"
+              onMouseEnter={setCursorToHoveredMode}
+              onMouseLeave={setCursorToNormal}
+              withArrow
+              className="w-full"
+            >View Repository</Link>
+          ) : null}
+          {siteURL ? (
+            <Link
+              href={siteURL}
+              target="_blank"
+              onMouseEnter={setCursorToHoveredMode}
+              onMouseLeave={setCursorToNormal}
+              withArrow
+              className="w-full"
+            >Discover</Link>
+          ) : null}
+        </div>
+      </div>
+      <div
+        onMouseEnter={setCursorToHoveredMode}
+        onMouseLeave={setCursorToNormal}
+        id="image"
+        className="w-full cursor-pointer hover:cursor-pointer hover:brightness-50 [transition:filter_800ms_cubic-bezier(0.45,0,0.55,1)] brightness-100 ease-smooth @desktop:col-span-4 overflow-hidden"
+      >
         <img
           data-scroll
           data-scroll-speed="-0.3"

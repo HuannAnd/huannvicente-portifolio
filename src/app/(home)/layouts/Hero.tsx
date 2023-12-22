@@ -48,7 +48,7 @@ export default function Hero({ }: Props) {
     <section ref={ref} id="hero" className="flex @desktop:overflow-clip @mobileAndTablet:justify-center @mobileAndTablet:relative min-h-screen p-@section justify-center @mobileAndTablet:items-center @desktop:items-end w-auto max-w-[100vw] mx-auto z-50 gap-x-2 text-black">
       <OrganicFluidScene />
       <LettersSlideInOnView delay={1} trigger="#hero" threshold={20}>
-        <h1 data-scroll data-scroll-speed="0.2" className="text-left @desktop:text-[13.33vw] overflow-hidden relative leading-[1] mix-blend-difference text-white">
+        <h1 data-scroll data-scroll-speed="0.2" className="text-left @mobileAndTablet:tracking-normal @desktop:text-[13.33vw] overflow-hidden relative leading-[1] mix-blend-difference text-white">
           Portfolio
           <span className="text-[1rem] [vertical-align:_text-top] p-2 self-start absolute top-0 right-0 text-white">&copy;</span>
         </h1>
