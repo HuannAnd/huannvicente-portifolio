@@ -5,20 +5,6 @@ import GitHubTypes from './types'
 class GithubServiceHttpClient {
   constructor(private token: string) { }
 
-  public async getUser(): Promise<GitHubTypes.GithubUserBody | undefined> {
-    try {
-      const userName = process.env.NEXT_PUBLIC_GITHUB_PROFILE
-      const auth = GithubHttpClient.createAuthHeader(this.token)
-      const data = await GithubHttpClient.get<GitHubTypes.GithubUserBody>(`/users/${userName}`, auth);
-
-      return data;
-    } catch (error) {
-      const err = error as Error;
-
-      console.error(err.message);
-      throw new Error("Failed to fetch user from GitHub")
-    }
-  }
   public async getRepositoryById(repositoryId: number) {
     try {
       console.log("token inside GithubServices methods: ", this.token)
@@ -31,79 +17,13 @@ class GithubServiceHttpClient {
       throw error
     }
   };
-  public async getRepositories(): Promise<{
-    name: string;
-    has_pages: boolean;
-    visibility: string;
-  }[]> {
-    try {
-      console.log("token inside GithubServices methods: ", this.token)
-      const username = process.env.NEXT_PUBLIC_GITHUB_PROFILE
-      const auth = GithubHttpClient.createAuthHeader(this.token)
-
-      const repos = await GithubHttpClient.get<GitHubTypes.GithubUserReposBody>(`/user/repos`, auth)
-      const myRepositories = repos.filter(x => x.owner.login === "HuannAnd")
-      const necessaryReposData = myRepositories.map(x => ({
-        id: x.id,
-        name: x.name,
-        has_pages: x.has_pages,
-        visibility: x.visibility,
-        created_at: x.created_at
-      }))
-
-      return necessaryReposData
-    } catch (error) {
-      const err = error as Error
-
-      console.error(err.message)
-      throw new Error("Failed to fetch user repos from GitHub")
-    }
-  }
-  public async getProjectREADME(repository: string): Promise<string | undefined> {
-    try {
-      const username = process.env.NEXT_PUBLIC_GITHUB_PROFILE
-      const auth = GithubHttpClient.createAuthHeader(this.token)
-
-      const res = await GithubHttpClient.get<GitHubTypes.GithubContentBody>(`/repos/${username}/${repository}/contents/README.md`, auth)
-      const readMe = Buffer.from(res.content, "base64").toString("utf-8")
-
-      console.log("Readme in string: " + readMe)
-
-      return readMe
-    } catch (error) {
-      const err = error as Error
-
-      console.error(err.message)
-      throw new Error("Failed to fetch README.md content from GitHub")
-    }
-  }
+  
   public async getRepositoryCreationDate(repositoryId: number) {
-    const auth = GithubHttpClient.createAuthHeader(this.token)
-
     const creationDate = (await this.getRepositoryById(repositoryId)).created_at
 
     return creationDate
   } 
 
-  public async getProjectLanguages(repositoryId: number): Promise<{ language: string, percentage: number }[]> {
-    const auth = GithubHttpClient.createAuthHeader(this.token)
-
-    const languages = await GithubHttpClient.get<GitHubTypes.GithubLanguagesBody>(`/repositories/${repositoryId}/languages`, auth)
-    const mapLangs = new Map(Object.entries(languages))
-
-    const quantitiesOfCharsInRepo = Array.from(mapLangs).reduce((total, [_, value]) => total + value, 0)
-
-    const frameworkData: { language: string, percentage: number }[] = [];
-
-    mapLangs.forEach((value, key) => {
-      let percentage = (value / quantitiesOfCharsInRepo) * 100
-      percentage = eval(Number(percentage).toFixed(2)) as number
-
-      frameworkData.push({ language: key, percentage });
-    })
-
-    return frameworkData
-  }
   public async getMetadataRepository(repositoryId: number): Promise<{ title: string, description: string }> {
     try {
       const repository = await this.getRepositoryById(repositoryId)

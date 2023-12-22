@@ -29,7 +29,7 @@ export const metadata = {
   },
   description: 'Portfolio created by Huann Vicente, with TailwindCSS and Next.js',
   openGraph: {
-    title: "Portifolio",
+    title: "Portfolio",
     description: "A different Next.js portfolio approach, simple, conceptive and smart.",
     siteName: "Huann Vicente",
     url: "https://https://huannvicente-portifolio.vercel.app/",
