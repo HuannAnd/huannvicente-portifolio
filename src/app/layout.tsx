@@ -28,6 +28,22 @@ export const metadata = {
     template: "%s | Huann Vicente"
   },
   description: 'Portfolio created by Huann Vicente, with TailwindCSS and Next.js',
+  openGraph: {
+    title: "Portifolio",
+    description: "A different Next.js portfolio approach, simple, conceptive and smart.",
+    siteName: "Huann Vicente",
+    url: "https://https://huannvicente-portifolio.vercel.app/",
+    images: [
+      {
+        url: "https://https://huannvicente-portifolio.vercel.app/",
+        width: 1280,
+        height: 720,
+        alt: "Website presentation"
+      }
+    ],
+    locale: "pt-BR",
+    type: "website"
+  }
 }
 
 export default function RootLayout({
