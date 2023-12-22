@@ -35,7 +35,7 @@ export const metadata = {
     url: "https://https://huannvicente-portifolio.vercel.app/",
     images: [
       {
-        url: "https://https://huannvicente-portifolio.vercel.app/",
+        url: "https://https://huannvicente-portifolio.vercel.app/PortifolioOpenGraphImage.png",
         width: 1280,
         height: 720,
         alt: "Website presentation"
