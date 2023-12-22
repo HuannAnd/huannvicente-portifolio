@@ -13,7 +13,7 @@ Please if you see any problems, contact me, otherwise if you not see problem, le
 
 Email me: [huannvicente14@outlook.com](mailto:huannvicente14@outlook.com)
 
-Connect with me at [Linkedin](https://www.linkedin.com/in/huann-vicente-5092a9261/)
+Connect with me at [LinkedIn](https://www.linkedin.com/in/huann-vicente-5092a9261/)
 
 
 ## Running Locally
@@ -26,4 +26,3 @@ This application requires Node.js v16.13+.
   npm install
   npm run dev
 ```
-

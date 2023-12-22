@@ -1,64 +1,47 @@
-"use client"
+"use client";
 
-import { ElementType, useEffect, useMemo, useRef } from 'react';
-import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
+import { useEffect, createContext, useState } from 'react';
 
-import { usePathname } from 'next/navigation';
+import LocomotiveScroll from 'locomotive-scroll';
+import wait from '@/utils/wait';
 
-import ContainerScroll from './ContainerScroll'
-import NavigationContextProvider from '@/contexts/NavigationContextProvider'
-import useWindowWidth from '@/hooks/useWindowWitdth';
+interface LocomotiveScrollProps
+  extends React.PropsWithChildren { }
 
+export const LocomotiveScrollRefContext = createContext({} as LocomotiveScroll | null);
 
-interface LocomotiveScrollProps {
-  children: React.ReactNode,
-  // context: React.ComponentType<any>
-}
-
-const options = {
-  smooth: true,
-  smartphone: {
-    smooth: true,
-    lerp: 1,
-    breakpoint: 0
-  },
-  tablet: {
-    smooth: true,
-    lerp: 1,
-    breakpoint: 0
-  },
-  reloadOnContextChange: true
-}
-export default function LocomotiveScrollLayout({
-  children,
-  // context: NesteingContextProvider
+export default function LocomotiveScrollProvider({
+  children
 }: LocomotiveScrollProps) {
-  const ref = useRef(null!)
-  const path = usePathname();
-  const windowWidth = useWindowWidth()
+  const [locomotiveScroll, setLocomotiveScroll] = useState<LocomotiveScroll | null>(null)
 
   useEffect(() => {
-    setTimeout(() => {
-      const html = document.querySelector("html")!
-      html.style.cursor = "default"
-    }, 1000)
+    (
+      async () => {
+        const LocomotiveScroll = (await import('locomotive-scroll')).default
+        const newLocomotiveScroll = new LocomotiveScroll({
+          autoResize: true,
+          lenisOptions: {
+            smoothTouch: true,
+            touchMultiplier: .9
+          }
+        });
+        newLocomotiveScroll.scrollTo(0, { immediate: true, force: true })
+        newLocomotiveScroll.stop()
+        window.scrollTo(0, 0)
+        setLocomotiveScroll(newLocomotiveScroll)
+      }
+    )()
+
+
+    return () => locomotiveScroll?.destroy()
   },
     []
   )
 
   return (
-    <LocomotiveScrollProvider
-      containerRef={ref}
-      options={options}
-      onLocationChange={(scroll: any) => scroll.scrollTo(0, { duration: 0, disableLerp: true })}
-      location={path}
-      watch={[path, windowWidth]}
-    >
-      <NavigationContextProvider>
-        <ContainerScroll ref={ref}>
-          {children}
-        </ContainerScroll>
-      </NavigationContextProvider>
-    </LocomotiveScrollProvider>
+    <LocomotiveScrollRefContext.Provider value={locomotiveScroll}>
+      {children}
+    </LocomotiveScrollRefContext.Provider>
   );
 }

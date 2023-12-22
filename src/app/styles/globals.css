@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+
+:root {
+  --section-padding: clamp(1rem, 3vw, 4rem);
+  --gap-padding: 1.75vw;
+  --container-padding: 3vw;
+
+  --content-width: 1200px;
+
+  --primary-color: #050505;
+  --text-color: rgb(230, 230, 230);
+  --text-color-gray: #777;
+  --text-color-light: #fff;
+
+  --text-heading: clamp(1.25rem, 5.5vw, 5rem);
+  --text-body: max(1rem, 1.125vw);
+}
+
+@media (width <= 768px) {
+  :root {
+    --section-padding: 1rem;
+    --gap-padding: 0.5rem;
+    --container-padding: 1rem;
+
+    --text-heading: clamp(2.275rem, 5.5vw, 7rem);
+  }
+}
+
+button {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::selection {
+  background-color: #188bfec4;
+  color: var(--text-color-light);
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  background-color: var(---primary-color);
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+html.lenis {
+  height: 100vh;
+  /* pointer-events: none; */
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+  /* pointer-events: none; */
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+@tailwind utilities;
+
+@layer utilities {
+  .clip-around {
+    clip-path: inset(0 -100vmax);
+  }
+
+  .not-clip-square {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+}
+
+@keyframes spinOrganicFluid {
+  from {
+    transform: translate(50%, -50%) rotateZ(0deg) scale(0.5);
+  }
+
+  to {
+    transform: translate(50%, -50%) rotateZ(360deg) scale(0.5);
+  }
+}

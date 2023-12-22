@@ -10,8 +10,11 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        lg: { min: "648px" },
-        sm: { min: "1px", max: "647px" },
+        "@desktop": { min: "1023px" },
+        "@tablet": { min: "648px", max: "1022px" },
+        "@mobile": { min: "1px", max: "647px" },
+        "@mobileAndTablet": { min: "1px", max: "1022px" },
+        "@desktopAndTablet": { min: "648px" },
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -19,23 +22,39 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       fontFamily: {
-        roboto: "var(--font-roboto)",
+        montserrat: "var(--font-montserrat)",
+        syne: "var(--font-syne)",
+      },
+      spacing: {
+        "@section": "var(--section-padding)",
+        "@container": "var(--container-padding)",
+        "@gap": "var(--gap-padding)",
+      },
+      borderRadius: {
+        "@border": ".125em",
       },
       colors: {
-        darkPrimary: "#000",
+        darkPrimary: "var(--primary-color)",
         darkBg: "#444",
         lightBg: "#fff",
         lightPrimary: "#222",
+        "@white-100": "#fff",
+        "@white-200": "#bbb",
+        "@white-300": "#999"
       },
       textColor: {
         lightPrimary: "#222",
+        "@secondary": "#888",
         lightSecondary: "#555",
         darkPrimary: "#fff",
         darkSecondary: "#bbb",
       },
+      maxWidth: {
+        "@content": "var(--content-width)",
+      },
       fontSize: {
         h1: "64px",
-        subTitle: "48px",
+        "@subtitle": "clamp(1.5625rem, 3vw, 3rem)",
         bold: "20px",
         body: "20px",
         small: "12px",

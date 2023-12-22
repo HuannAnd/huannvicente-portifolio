@@ -1,25 +1,17 @@
 'use client';
 
-import { createContext, useCallback, useLayoutEffect, useReducer, useState } from 'react'
+import { createContext, useCallback, useReducer, useState } from 'react'
 
-import Hamburguer from './Hamburguer';
-import Aside from './Aside';
+import {
+  TAction,
+  THamburgerIsOpenContext,
+  TState,
+  TValueAsideContext,
+  TValueHamburgerContext
+} from './type';
 
-import useNavigationRouting from './useNavigationRouting';
 
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-interface NavigationProviderProps {
-  children: React.ReactNode
-}
-
-type TValueHamburguerContext = (canBeShowed: boolean) => void
-type TValueAsideContext = React.Dispatch<TAction>
-
-type TState = boolean;
-
-export type TAction = { type: 'toogle' } | { type: 'set'; payload: boolean };
+interface NavigationProviderProps extends React.PropsWithChildren { }
 
 function reducer(state: TState, action: TAction): TState {
   switch (action.type) {
@@ -32,24 +24,23 @@ function reducer(state: TState, action: TAction): TState {
   }
 }
 
-export const NavigationHamburguerContext = createContext({} as TValueHamburguerContext)
+export const NavigationHamburgerContext = createContext({} as TValueHamburgerContext)
+export const NavigationHamburgerIsOpenContext = createContext({} as THamburgerIsOpenContext)
 export const NavigationAsideContext = createContext({} as TValueAsideContext)
 
 export default function NavigationContextProvider({ children }: NavigationProviderProps) {
-  const [showHamburguer, setShowHamburguer] = useState(false)
+  const [showHamburger, setShowHamburger] = useState(false)
   const [showAside, handleAsideStates] = useReducer(reducer, false);
-
-  const navigation = useNavigationRouting(handleAsideStates)
-  const canBeShowHamburguer = useCallback((canBeShowed: boolean) => setShowHamburguer(canBeShowed), [])
+  const canBeShowHamburger = useCallback((canBeShowed: boolean) => setShowHamburger(canBeShowed), [])
 
   return (
-    <NavigationHamburguerContext.Provider value={canBeShowHamburguer}>
-      <NavigationAsideContext.Provider value={handleAsideStates}>
-        <Hamburguer canBeShow={showHamburguer} />
-        <Aside navigation={navigation} canBeShow={showAside} />
-        {children}
-      </NavigationAsideContext.Provider>
-    </NavigationHamburguerContext.Provider>
+    <NavigationHamburgerContext.Provider value={canBeShowHamburger}>
+      <NavigationHamburgerIsOpenContext.Provider value={showHamburger}>
+        <NavigationAsideContext.Provider value={handleAsideStates}>
+          {children}
+        </NavigationAsideContext.Provider>
+      </NavigationHamburgerIsOpenContext.Provider>
+    </NavigationHamburgerContext.Provider>
   )
 }
 
