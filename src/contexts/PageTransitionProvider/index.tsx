@@ -1,10 +1,9 @@
 'use client';
 
-import { Suspense, createContext, useEffect, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation';
 
 import useSetCursor from '@/hooks/useSetCursor';
-import useLocomotiveScroll from '../LocomotiveScrollProvider/useLocomotiveScroll';
 import { AnimatePresence } from 'framer-motion';
 
 import Preloader from '@/components/Preloader';

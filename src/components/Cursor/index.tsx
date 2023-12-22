@@ -3,11 +3,9 @@
 import React from 'react';
 
 import Circle from './Circle';
-// import FollowerIcons from './FollowerIcons';
 import FollowerText from './FollowerText';
 import FollowerLoading from './FollowerLoading';
 import FollowingMotion from './FollowingMotion';
-import Slider from './Slider';
 
 interface Props
   extends React.PropsWithChildren { }
