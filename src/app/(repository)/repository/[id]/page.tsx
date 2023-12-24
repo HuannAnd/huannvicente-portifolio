@@ -25,7 +25,7 @@ export default async function RepositoryPage({
 }: {
   params: { [key in Params]: key extends Params.ID ? string : never }
 }) {
-  const repositoryId = Number(params.id)
+  const repositoryId = Number(params.id)  
 
   return (
     <LocomotiveScrollProvider>

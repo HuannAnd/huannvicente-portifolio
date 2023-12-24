@@ -7,10 +7,10 @@ import SmoothScaleInOnView from "@/components/SmoothScaleInOnView";
 
 interface Props
   extends React.PropsWithChildren {
-  videos: string[]
+    videoSrc: string
 }
 
-export default function ClientObjective({ videos, children }: Props) {
+export default function ClientObjective({ videoSrc, children }: Props) {
   return (
     <section
       className="w-screen px-@section py-[9vw]"
@@ -26,16 +26,13 @@ export default function ClientObjective({ videos, children }: Props) {
         </TextFadeInOnView>
       </div>
       <SmoothScaleInOnView trigger="#objective">
-        {videos.map((x, i) => (
-          <video
-            key={`Video_${i}`}
-            autoPlay
-            loop
-            muted
-            className="pt-@container @desktop:h-[80vmin] @mobileAndTablet:w-full scale-[.9] mx-auto"
-            src={x}
-          />
-        ))}
+        <video
+          autoPlay
+          loop
+          muted
+          className="pt-@container @desktop:h-[80vmin] @mobileAndTablet:w-full scale-[.9] mx-auto"
+          src={videoSrc}
+        />
       </SmoothScaleInOnView>
     </section>
   )

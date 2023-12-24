@@ -5,24 +5,20 @@ import { memo } from "react";
 import useRedirectWithPageTransition from "@/hooks/useRedirectWithPageTransition";
 import useSetCursor from '@/hooks/useSetCursor'
 
-import { IProjectData } from "@/services/projects/type";
+import { Project as ProjectSchema } from '@prisma/client'
 
-import cn from "@/utils/cn";
 import formatTierInTwoChars from "@/utils/formatTer"
 
-import LettersSlideInOnTriggerHover from "@/components/LettersSlideInOnTriggerHover";
-
-
 interface ProjectProps
-  extends Pick<IProjectData, "name" | "isInMaintenance" | "id" | "repository_url">,
+  extends Pick<ProjectSchema, "name" | "is_in_maintenance" | "project_id" | "repository_url">,
   Omit<React.HTMLAttributes<HTMLDivElement>, "id"> {
   nTh: number,
 }
 
 function Project({
   name,
-  id,
-  isInMaintenance,
+  project_id,
+  is_in_maintenance,
   nTh,
   repository_url,
   ...props
@@ -33,19 +29,19 @@ function Project({
   const redirectWithPageTransitionTo = useRedirectWithPageTransition()
 
   const setCursorToMaintenance = () => setCursor({ mode: "pressed", title: "Maintenance" })
-  const setCursorToViewMore = () => setCursor({ mode: "hovered", title: "View", projectId: id })
+  const setCursorToViewMore = () => setCursor({ mode: "hovered", title: "View", projectId: project_id })
   const setCursorToHovered = () => setCursor({ mode: "hovered" })
   const setCursorToPressMode = () => setCursor({ mode: "pressed" })
   const setCursorToNormalMode = () => setCursor({ mode: "normal", title: null, projectId: null })
 
   function handleOnClick() {
-    if (isInMaintenance) return setCursorToMaintenance()
+    if (is_in_maintenance) return setCursorToMaintenance()
     setCursorToNormalMode()
-    redirectWithPageTransitionTo(`/repository/${id}`)
+    redirectWithPageTransitionTo(`/repository/${project_id}`)
   }
 
   function handleOnMouseEnter() {
-    if (isInMaintenance) return setCursorToMaintenance()
+    if (is_in_maintenance) return setCursorToMaintenance()
     return setCursorToViewMore()
   }
 
@@ -60,7 +56,7 @@ function Project({
     >
       <img
         className="@desktop:[display:none] @mobileAndTablet:aspect-[9_/_5] @mobileAndTablet:object-cover"
-        src={`/projects/${id}/poster.png`}
+        src={`/projects/${project_id}/poster.png`}
         alt="Project Image"
       />
       <div className="flex w-full items-center justify-between">

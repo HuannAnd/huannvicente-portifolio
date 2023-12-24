@@ -8,13 +8,13 @@ import LettersSlideInOnView from "@/components/LettersSlideInOnView";
 
 import Project from "./Project";
 
-import { IProjectData } from "@/services/projects/type";
+import { Project as ProjectSchema } from '@prisma/client'
 
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 interface Props {
-  projects: IProjectData[]
+  projects: ProjectSchema[]
 }
 
 export default function ClientProjects({ projects }: Props) {
