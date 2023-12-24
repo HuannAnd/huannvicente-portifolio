@@ -1,5 +1,5 @@
 import ProjectsService from "@/services/projects"
-import * as ProjectsAssetsService from '@/app/ProjectsAssetsServices.actions'
+// import * as ProjectsAssetsService from '@/app/ProjectsAssetsServices.actions'
 
 import ClientSuggestion from "./Suggestion.client"
 import ProjectSquareCard from "./ProjectSquareCard"

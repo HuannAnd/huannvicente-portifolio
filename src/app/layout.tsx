@@ -32,10 +32,8 @@ export const metadata = {
     title: "Portfolio",
     description: "A different Next.js portfolio approach, simple, conceptive and smart.",
     siteName: "Huann Vicente",
-    url: "https://https://huannvicente-portifolio.vercel.app/",
     images: [
       {
-        url: "https://https://huannvicente-portifolio.vercel.app/PortifolioOpenGraphImage.png",
         width: 1280,
         height: 720,
         alt: "Website presentation"

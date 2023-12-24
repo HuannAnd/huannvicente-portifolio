@@ -33,6 +33,12 @@ a {
   font-weight: 600;
 }
 
+h1 span {
+  font-family: var(--font-montserrat);
+  font-size: 2rem;
+  font-weight: 400;
+}
+
 h5 > span,
 a > span {
   text-transform: uppercase;

@@ -50,7 +50,7 @@ export default function Hero({ }: Props) {
       <LettersSlideInOnView delay={1} trigger="#hero" threshold={20}>
         <h1 data-scroll data-scroll-speed="0.2" className="text-left @mobileAndTablet:tracking-normal @desktop:text-[13.33vw] overflow-hidden relative leading-[1] mix-blend-difference text-white">
           Portfolio
-          <span className="text-[1rem] [vertical-align:_text-top] p-2 self-start absolute top-0 right-0 text-white">&copy;</span>
+          <span className="[vertical-align:_text-top] p-2 self-start absolute top-0 right-0 text-white">&copy;</span>
         </h1>
       </LettersSlideInOnView>
     </section>
