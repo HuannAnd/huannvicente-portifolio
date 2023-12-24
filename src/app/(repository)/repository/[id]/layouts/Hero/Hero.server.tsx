@@ -1,6 +1,6 @@
 import GithubService from '@/services/github'
 import ProjectsService from '@/services/projects'
-import * as ProjectsAssetsService from '@/app/ProjectsAssetsServices.actions'
+// import * as ProjectsAssetsService from '@/app/ProjectsAssetsServices.actions'
 
 import ClientHero from "./Hero.client"
 import { format } from 'date-fns'
@@ -12,7 +12,7 @@ interface Props {
 
 export default async function ServerHero({ repositoryId }: Props) {
   const { title } = await GithubService.getMetadataRepository(repositoryId)
-  const poster = await ProjectsAssetsService.getProjectPoster(repositoryId)
+  const posterSrc = `/projects/${repositoryId}/poster.png`
   var creationDate = await GithubService.getRepositoryCreationDate(repositoryId)
   creationDate = format(new Date(creationDate), "yyyy',' dd 'of' LLLL")
   var siteURL = ProjectsService.getSiteURL(repositoryId)
@@ -28,7 +28,7 @@ export default async function ServerHero({ repositoryId }: Props) {
     <ClientHero
       creationDate={creationDate}
       title={title}
-      posterSrc={poster}
+      posterSrc={posterSrc}
       siteURL={siteURL}
       repositoryURL={repositoryURL}
     />
