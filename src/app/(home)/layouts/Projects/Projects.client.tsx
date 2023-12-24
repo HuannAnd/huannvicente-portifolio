@@ -8,7 +8,7 @@ import LettersSlideInOnView from "@/components/LettersSlideInOnView";
 
 import Project from "./Project";
 
-import { Project as ProjectSchema } from '@prisma/client'
+import { Projects as ProjectSchema } from '@prisma/client'
 
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";

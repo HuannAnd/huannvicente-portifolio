@@ -5,7 +5,7 @@ import { memo } from "react";
 import useRedirectWithPageTransition from "@/hooks/useRedirectWithPageTransition";
 import useSetCursor from '@/hooks/useSetCursor'
 
-import { Project as ProjectSchema } from '@prisma/client'
+import { Projects as ProjectSchema } from '@prisma/client'
 
 import formatTierInTwoChars from "@/utils/formatTer"
 
