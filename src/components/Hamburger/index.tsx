@@ -11,6 +11,8 @@ import useWindowEventListenerEffect from "@/hooks/useWindowEventListener";
 
 import Options from "./Options"
 import Circle from "./Circle"
+import useSections from "./useSections";
+import { usePathname } from "next/navigation";
 
 
 interface Props { }
@@ -20,6 +22,7 @@ interface Props { }
 export default function Hamburger({ }: Props) {
   const ref = useRef<HTMLDivElement>(null)
   const [isOpen, setIsOpen] = useState(false)
+  const pathname = usePathname()
 
   const setCursor = useSetCursor()
 
@@ -34,8 +37,7 @@ export default function Hamburger({ }: Props) {
         setIsOpen(false)
       }
     })
-  })
-
+  }, [])
 
 
   function handleOnClick(e: React.MouseEvent<Element, MouseEvent>) {
@@ -45,6 +47,8 @@ export default function Hamburger({ }: Props) {
 
   const setCursorToInvisible = () => setCursor({ mode: "invisible" })
   const setCursorToNormal = () => setCursor({ mode: "normal" })
+
+  if (pathname === "/") return null
 
   return (
     <div

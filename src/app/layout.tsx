@@ -19,7 +19,6 @@ const montserrat = Montserrat({
 
 import Providers from '@/contexts/Providers'
 
-import Hamburger from '@/components/Hamburger'
 import Cursor from '@/components/Cursor'
 
 export const metadata = {
@@ -32,13 +31,6 @@ export const metadata = {
     title: "Portfolio",
     description: "A different Next.js portfolio approach, simple, conceptive and smart.",
     siteName: "Huann Vicente",
-    images: [
-      {
-        width: 1280,
-        height: 720,
-        alt: "Website presentation"
-      }
-    ],
     locale: "pt-BR",
     type: "website"
   }

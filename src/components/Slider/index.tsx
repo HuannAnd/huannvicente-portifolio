@@ -23,17 +23,6 @@ export default function Slider({ }: Props) {
   const projectId = useCursorProjectId()
 
   useLayoutEffect(() => {
-    timeline.current = gsap.timeline()
-
-    return () => {
-      if (timeline.current) {
-        timeline.current.kill()
-      }
-    }
-  }, [])
-
-
-  useLayoutEffect(() => {
     let mm = gsap.matchMedia(ref)
     mm.add(
       {
