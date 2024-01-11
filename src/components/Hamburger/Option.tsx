@@ -35,7 +35,7 @@ export default function Option({
 
   const transform = useMotionTemplate`translate(-50%, 50%)`
 
-  const redirectToPage = () => pageTransitionTo(path)
+  const redirectToPage = () => {pageTransitionTo(path)}
 
   return (
     <motion.h5

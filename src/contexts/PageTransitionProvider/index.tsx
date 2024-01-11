@@ -24,6 +24,7 @@ export default function LoadingProvider({ children }: LoadingProviderProps) {
 
   function pageTransitionTo(to: string) {
     setCursor({ isLoading: true })
+    resetCursor()
     document.documentElement.style.cursor = "wait"
     setRequestPage(to)
   }
@@ -34,7 +35,6 @@ export default function LoadingProvider({ children }: LoadingProviderProps) {
   }
 
   const unsubscribeLoading = () => resetCursor()
-
 
   useEffect(() => {
     unsubscribeLoading()
